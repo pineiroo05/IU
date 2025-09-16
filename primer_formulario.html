@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #cabecera{
+                font-size: 50px;
+                text-align: center;
+                color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <header id='cabecera'>TITULO RANDOM</header>
+        <form action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data">
+
+            <h3>Escribe tu nombre, contraseña, y una descripcion</h3>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="escribe tu nombre..."/>
+            <br>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" size="30" value="0123456789"/>
+            <br>
+
+            <textarea rows="5" cols="60" name="descripcion">Escribe una descripcion...</textarea>
+            <br>
+
+            <h3>Estudios</h3>
+            <fieldset>
+                <input type="checkbox" id="check" name="check" value="1"/>Ninguno
+                <br>
+                <input type="checkbox" id="check" name="check" value="2"/>Secundaria
+                <br>
+                <input type="checkbox" id="check" name="check" value="3"/>Grado universitario
+                <br>
+                <input type="checkbox" id="check" name="check" value="4"/>Fp de cualquier tipo
+                <br>
+            </fieldset>
+
+            <h3>Edad</h3>
+            <fieldset>
+                <input type="radio" id="opcA" value="opcA" name="opcion"/>Menos de 18<br>
+                <input type="radio" id="opcB" value="opcB" name="opcion"/>Entre 18 y 65<br>
+                <input type="radio" id="opcC" value="opcC" name="opcion"/>Mas de 65<br>
+            </fieldset>
+
+            <h3>Completa los siguientes campos</h3>
+            <select>
+                <option selected="selected">Elige una opcion</option>
+                <option>Opcion A</option>
+                <option>Opcion B</option>
+                <option>Opcion C</option>
+            </select>
+            <br>
+            <select>
+                <option selected="selected">Elige una opcion</option>
+                <optgroup label="Grupo A">
+                    <option>Opcion A1</option>
+                    <option>Opcion A2</option>
+                    <option>Opcion A3</option>
+                </optgroup>
+                <optgroup label="Grupo B">
+                    <option>Opcion B1</option>
+                    <option>Opcion B2</option>
+                    <option>Opcion B3</option>
+                </optgroup>
+            </select>
+            <br>
+
+            <label for="arch">Adjunta una foto</label>
+            <input type="file" id="arch" name="arch"/>
+            <br>
+
+            <input type="image" src="" name="img" alt="pulsa para enviar?"/>
+            <br>
+
+            <input type="submit" value="Enviar"/>
+            <input type="reset" value="Borrar todo"/>
+
+            <input type="hidden" id="oculto" value="valor_oculto" name="oculto"/>
+        </form>
+    </body>
+</html>
