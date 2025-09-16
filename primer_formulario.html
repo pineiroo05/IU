@@ -25,15 +25,15 @@
             <textarea rows="5" cols="60" name="descripcion">Escribe una descripcion...</textarea>
             <br>
 
-            <h3>Cursos que has realizado</h3>
+            <h3>Elige una o varias aficiones</h3>
             <fieldset>
-                <input type="checkbox" id="check" name="check" value="1"/>1º
+                <input type="checkbox" id="check" name="check" value="1"/>Escuchar musica
                 <br>
-                <input type="checkbox" id="check" name="check" value="2"/>2º
+                <input type="checkbox" id="check" name="check" value="2"/>Ver series
                 <br>
-                <input type="checkbox" id="check" name="check" value="3"/>3º
+                <input type="checkbox" id="check" name="check" value="3"/>Hacer deporte
                 <br>
-                <input type="checkbox" id="check" name="check" value="4"/>4º
+                <input type="checkbox" id="check" name="check" value="4"/>Tocar la guitarra
                 <br>
             </fieldset>
 
@@ -45,24 +45,26 @@
             </fieldset>
 
             <h3>Completa los siguientes campos</h3>
+            <label for="select">-Universidad donde estudias</label>
             <select>
                 <option selected="selected">Elige una opcion</option>
-                <option>Opcion A</option>
-                <option>Opcion B</option>
-                <option>Opcion C</option>
+                <option>UVigo</option>
+                <option>USC</option>
+                <option>UDC</option>
             </select>
             <br>
+            <label for="select">-Que estudias?</label>
             <select>
                 <option selected="selected">Elige una opcion</option>
-                <optgroup label="Grupo A">
-                    <option>Opcion A1</option>
-                    <option>Opcion A2</option>
-                    <option>Opcion A3</option>
+                <optgroup label="Ingenierías">
+                    <option>Informática</option>
+                    <option>Aeroespacial</option>
+                    <option>Agraria</option>
                 </optgroup>
-                <optgroup label="Grupo B">
-                    <option>Opcion B1</option>
-                    <option>Opcion B2</option>
-                    <option>Opcion B3</option>
+                <optgroup label="Sociales">
+                    <option>Derecho</option>
+                    <option>Economia</option>
+                    <option>Ade</option>
                 </optgroup>
             </select>
             <br>
@@ -71,9 +73,10 @@
             <input type="file" id="arch" name="arch"/>
             <br>
 
-            <input type="image" src="" name="img" alt="pulsa para enviar?"/>
-            <br>
+            <!--<input type="image" src="" name="img" alt="pulsa para enviar?"/>
+            <br>-->
 
+            <br>
             <input type="submit" value="Enviar"/>
             <input type="reset" value="Borrar todo"/>
 
