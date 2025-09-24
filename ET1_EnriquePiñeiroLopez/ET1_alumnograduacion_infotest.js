@@ -2,7 +2,7 @@
     alumnograduacion_def_tests=
     Array(
         //En 'accion a realizar' no se q carallo hay que poner
-        Array('alumnograduacion', 'alumnograduacion_login', 1, 'tamaño inferior a 4', '', false, 'El login es demasiado corto, deberia tener entre 4 y 15 caracteres'),
+        Array('alumnograduacion', 'alumnograduacion_login', 1, 'tamaño inferior a 4', 'ADD', false, 'El login es demasiado corto, deberia tener entre 4 y 15 caracteres'),
         Array('alumnograduacion', 'alumnograduacion_login', 2, 'tamaño superior a 15', '', false, 'El login es demasiado largo, deberia tener entre 4 y 15 caracteres'),
         Array('alumnograduacion', 'alumnograduacion_login', 3, 'formato incorrecto', '', false, 'El login solo acepta caracteres alfabeticos sin acentos ni ñ'),
         Array('alumnograduacion', 'alumnograduacion_login', 4, 'tamaño entre 4 y 15, y formato correcto', '', true, 'Valor correcto'),
