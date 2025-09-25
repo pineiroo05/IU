@@ -92,7 +92,7 @@
 
     alumnograduacion_tests_fields=
     Array(
-        //En accion a realizar sigo sen saber q poñer
+        //login
         Array('alumnograduacion', 'alumnograduacion_login', 1, 1, 'ADD', [[]], 'alumnograduacion_login_min_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_login', 2, 2, 'ADD', [[]], 'alumnograduacion_login_max_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_login', 3, 3, 'ADD', [[]], 'alumnograduacion_login_format_KO'),
@@ -100,6 +100,14 @@
         Array('alumnograduacion', 'alumnograduacion_login', 3, 5, 'ADD', [[]], 'alumnograduacion_login_format_KO'),
         Array('alumnograduacion', 'alumnograduacion_login', 4, 6, 'ADD', [[]], true),
 
+        Array('alumnograduacion', 'alumnograduacion_login', 1, 1, 'EDIT', [[]], 'alumnograduacion_login_min_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_login', 2, 2, 'EDIT', [[]], 'alumnograduacion_login_max_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_login', 3, 3, 'EDIT', [[]], 'alumnograduacion_login_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_login', 3, 4, 'EDIT', [[]], 'alumnograduacion_login_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_login', 3, 5, 'EDIT', [[]], 'alumnograduacion_login_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_login', 4, 6, 'EDIT', [[]], true),
+
+        //password
         Array('alumnograduacion', 'alumnograduacion_password', 1, 1, 'ADD', [[]], 'alumnograduacion_password_min_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_password', 2, 2, 'ADD', [[]], 'alumnograduacion_password_max_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_password', 3, 3, 'ADD', [[]], 'alumnograduacion_password_format_KO'), //Caso donde se mete numerico
@@ -107,47 +115,83 @@
         Array('alumnograduacion', 'alumnograduacion_password', 3, 5, 'ADD', [[]], 'alumnograduacion_password_format_KO'), //Caso donde se mete ñ
         Array('alumnograduacion', 'alumnograduacion_password', 4, 6, 'ADD', [[]], true),
 
+        Array('alumnograduacion', 'alumnograduacion_password', 1, 1, 'EDIT', [[]], 'alumnograduacion_password_min_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_password', 2, 2, 'EDIT', [[]], 'alumnograduacion_password_max_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_password', 3, 3, 'EDIT', [[]], 'alumnograduacion_password_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_password', 3, 4, 'EDIT', [[]], 'alumnograduacion_password_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_password', 3, 5, 'EDIT', [[]], 'alumnograduacion_password_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_password', 3, 6, 'EDIT', [[]], true),
+
+        //nombre
         Array('alumnograduacion', 'alumnograduacion_nombre', 1, 1, 'ADD', [[]], 'alumnograduacion_nombre_min_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_nombre', 2, 2, 'ADD', [[]], 'alumnograduacion_nombre_max_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_nombre', 3, 3, 'ADD', [[]], 'alumnograduacion_nombre_format_KO'), //Caso donde se meten numeros
         Array('alumnograduacion', 'alumnograduacion_nombre', 4, 4, 'ADD', [[]], true),
 
+        Array('alumnograduacion', 'alumnograduacion_nombre', 1, 1, 'EDIT', [[]], 'alumnograduacion_nombre_min_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_nombre', 2, 2, 'EDIT', [[]], 'alumnograduacion_nombre_max_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_nombre', 3, 3, 'EDIT', [[]], 'alumnograduacion_nombre_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_nombre', 4, 4, 'EDIT', [[]], true),
+
+        //apellidos
         Array('alumnograduacion', 'alumnograduacion_apellidos', 1, 1, 'ADD', [[]], 'alumnograduacion_apellidos_min_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_apellidos', 2, 2, 'ADD', [[]], 'alumnograduacion_apellidos_max_size_KO'),
         Array('alumnograduacion', 'alumnograduacion_apellidos', 3, 3, 'ADD', [[]], 'alumnograduacion_apellidos_format_KO'), //Caso donde se meten numeros
         Array('alumnograduacion', 'alumnograduacion_apellidos', 4, 4, 'ADD', [[]], true),
 
-        //Igual q antes, no estoy seguro si deberia de hacer las comprobaciones de longitud maxima y minima
-        Array('alumnograduacion', 'alumnograduacion_titulacion', 1, 1, 'ADD', [[]], 'alumnograduacion_titulacion_size_KO'), //Caso donde el campo queda vacio
-        Array('alumnograduacion', 'alumnograduacion_titulacion', 1, 2, 'ADD', [[]], 'alumnograduacion_titulacion_format_KO'), //Caso donde se mete algo q no sean los valores
-        Array('alumnograduacion', 'alumnograduacion_titulacion', 1, 3, 'ADD', [[]], true),
+        Array('alumnograduacion', 'alumnograduacion_apellidos', 1, 1, 'EDIT', [[]], 'alumnograduacion_apellidos_min_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_apellidos', 2, 2, 'EDIT', [[]], 'alumnograduacion_apellidos_max_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_apellidos', 3, 3, 'EDIT', [[]], 'alumnograduacion_apellidos_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_apellidos', 4, 4, 'EDIT', [[]], true),
+
+        //titulacion
+        Array('alumnograduacion', 'alumnograduacion_titulacion', 1, 1, 'ADD', [[]], 'alumnograduacion_titulacion_format_KO'), //Caso donde se mete algo q no sean los valores
+        Array('alumnograduacion', 'alumnograduacion_titulacion', 2, 2, 'ADD', [[]], true),
+
+        Array('alumnograduacion', 'alumnograduacion_titulacion', 1, 1, 'EDIT', [[]], 'alumnograduacion_titulacion_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_titulacion', 2, 2, 'EDIT', [[]], true),
 
         //AQUI DEBERIA IR EL DE DNI
 
+        //telefono
         Array('alumnograduacion', 'alumnograduacion_telefono', 1, 1, 'ADD', [[]], 'alumnograduacion_telefono_size_KO'), //longitud
-        Array('alumnograduacion', 'alumnograduacion_telefono', 1, 2, 'ADD', [[]], 'alumnograduacion_telefono_format_KO'), //Caso donde se meten letras
-        Array('alumnograduacion', 'alumnograduacion_telefono', 1, 3, 'ADD', [[]], true), 
+        Array('alumnograduacion', 'alumnograduacion_telefono', 2, 2, 'ADD', [[]], 'alumnograduacion_telefono_format_KO'), //Caso donde se meten letras
+        Array('alumnograduacion', 'alumnograduacion_telefono', 3, 3, 'ADD', [[]], true),
+        
+        Array('alumnograduacion', 'alumnograduacion_telefono', 1, 1, 'EDIT', [[]], 'alumnograduacion_telefono_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_telefono', 2, 2, 'EDIT', [[]], 'alumnograduacion_telefono_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_telefono', 3, 3, 'EDIT', [[]], true),
 
+        //direccion
         Array('alumnograduacion', 'alumnograduacion_direccion', 1, 1, 'ADD', [[]], 'alumnograduacion_direccion_size_KO'), //Caso donde queda vacio el campo
         Array('alumnograduacion', 'alumnograduacion_direccion', 2, 2, 'ADD', [[]], 'alumnograduacion_direccion_format_KO'), //Caso formato?
         Array('alumnograduacion', 'alumnograduacion_direccion', 3, 3, 'ADD', [[]], true),
 
+        Array('alumnograduacion', 'alumnograduacion_direccion', 1, 1, 'EDIT', [[]], 'alumnograduacion_direccion_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_direccion', 2, 2, 'EDIT', [[]], 'alumnograduacion_direccion_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_direccion', 3, 3, 'EDIT', [[]], true),
+
+        //email
         Array('alumnograduacion', 'alumnograduacion_email', 1, 1, 'ADD', [[]], 'alumnograduacion_email_size_KO'), //Caso campo vacio
         Array('alumnograduacion', 'alumnograduacion_email', 2, 2, 'ADD', [[]], 'alumnograduacion_email_format_KO'), //Caso donde incumple el formato
         Array('alumnograduacion', 'alumnograduacion_email', 3, 3, 'ADD', [[]], true),
+        
+        Array('alumnograduacion', 'alumnograduacion_email', 1, 1, 'EDIT', [[]], 'alumnograduacion_email_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_email', 2, 2, 'EDIT', [[]], 'alumnograduacion_email_format_KO'),
+        Array('alumnograduacion', 'alumnograduacion_email', 3, 3, 'EDIT', [[]], true),
     );
 
     alumnograduacion_tests_files=
     Array(
         //COMO SERIA EL TRUE AQUI??????
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 1, 1, '', 'format_name_file', [[]], 'alumnograduacion_fotoacto_min_size_KO'),
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 2, 2, '', 'format_name_file', [[]], 'alumnograduacion_fotoacto_max_size_KO'),
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 3, '', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con acentos
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 4, '', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con ñ
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 4, '', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con espacios
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 4, 5, '', 'max_size_file', [[]], 'alumnograduacion_fotoacto_max_size_file_KO'),
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 5, 6, '', 'type_file', [[]], 'alumnograduacion_fotoacto_type_file_KO'),
-        Array('alumnograduacion', 'alumnograduacion_fotoacto', 6, 7, '', ),
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 1, 1, 'ADD', 'format_name_file', [[]], 'alumnograduacion_fotoacto_min_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 2, 2, 'ADD', 'format_name_file', [[]], 'alumnograduacion_fotoacto_max_size_KO'),
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 3, 'ADD', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con acentos
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 4, 'ADD', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con ñ
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 3, 4, 'ADD', 'format_name_file', [[]], 'alumnograduacion_fotoacto_format_KO'), //Caso con espacios
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 4, 5, 'ADD', 'max_size_file', [[]], 'alumnograduacion_fotoacto_max_size_file_KO'),
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 5, 6, 'ADD', 'type_file', [[]], 'alumnograduacion_fotoacto_type_file_KO'),
+        Array('alumnograduacion', 'alumnograduacion_fotoacto', 6, 7, 'ADD', ),
     );
 
-    //TOTAL DE HORAS HECHAS HASTA AHORA: 9
+    //TOTAL DE HORAS HECHAS HASTA AHORA: 10
