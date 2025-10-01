@@ -136,6 +136,7 @@ let alumnograduacion_def_tests=Array(
 
     //Foto
     //Este estaria bien con todas estas pruebas???
+    //Me falta el nuevo_foto_acto
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 100, 'tamaño minimo OK', 'ADD', 'alumnograduacion_fotoacto_min_size_KO', 'El nombre del archivo debe tener por lo menos 7 caracteres o mas'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 101, 'tamaño maximo OK', 'ADD', 'alumnograduacion_fotoacto_max_size_KO', 'El nombre del archivo no puede tener mas de 100 caracteres'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 102, 'formato OK', 'ADD', 'alumnograduacion_fotoacto_format_KO', 'El fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
