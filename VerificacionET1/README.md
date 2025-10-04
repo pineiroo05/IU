@@ -1,0 +1,1 @@
+Ficheros para la verificacion de la ET1, hechos a partir de lo que nos dio el profesor, pero modificado para ajustarse al fichero ET1 q esta en el directorio app (el de el era persona, y solo tenia para contraseña, nombre y dni, se modificaron los 2 ficheros de /app).
