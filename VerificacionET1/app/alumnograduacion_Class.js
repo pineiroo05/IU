@@ -102,7 +102,7 @@ class alumnograduacion extends Validations{
 			this.dom.mostrar_error_campo('alumnograduacion_login', 'alumnograduacion_login_min_size_KO');
 			return "alumnograduacion_login_min_size_KO";
 		}
-		if(!(this.max_size('alumnograduacion_login', 14))){
+		if(!(this.max_size('alumnograduacion_login', 15))){
 			this.dom.mostrar_error_campo('alumnograduacion_login', 'alumnograduacion_login_max_size_KO');
 			return "alumnograduacion_login_max_size_KO";
 		}
@@ -119,7 +119,7 @@ class alumnograduacion extends Validations{
 			this.dom.mostrar_error_campo('alumnograduacion_password', 'alumnograduacion_password_min_size_KO');
 			return "alumnograduacion_password_min_size_KO";
 		}
-		if(!(this.max_size('alumnograduacion_password', 100))){
+		if(!(this.max_size('alumnograduacion_password', 64))){
 			this.dom.mostrar_error_campo('alumnograduacion_password', 'alumnograduacion_password_max_size_KO');
 			return "alumnograduacion_password_max_size_KO";
 		}
@@ -136,7 +136,7 @@ class alumnograduacion extends Validations{
 			this.dom.mostrar_error_campo('alumnograduacion_nombre','alumnograduacion_nombre_min_size_KO');
 			return "alumnograduacion_nombre_min_size_KO";
 		}
-		if (!(this.max_size('alumnograduacion_nombre',15))){
+		if (!(this.max_size('alumnograduacion_nombre',25))){
 			this.dom.mostrar_error_campo('alumnograduacion_nombre','alumnograduacion_nombre_max_size_KO');
 			return "alumnograduacion_nombre_max_size_KO";
 		}
@@ -170,10 +170,10 @@ class alumnograduacion extends Validations{
 
 
 	ADD_alumnograduacion_titulacion_validation(){
-		if (!(this.min_size('alumnograduacion_titulacion',1))){
+		/*if (!(this.min_size('alumnograduacion_titulacion',1))){
 			this.dom.mostrar_error_campo('alumnograduacion_titulacion','alumnograduacion_titulacion_min_size_KO');
 			return "alumnograduacion_titulacion_min_size_KO";
-		}
+		}*/
 		const valor=document.getElementById('alumnograduacion_titulacion').value;
 		const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
 		if(!valoresPermitidos.includes(valor)){
@@ -217,7 +217,7 @@ class alumnograduacion extends Validations{
 		}
 		if (!(this.format('alumnograduacion_telefono', '^[0-9]*$'))){
 			this.dom.mostrar_error_campo('alumnograduacion_telefono','alumnograduacion_telefono_format_KO');
-			return "alumnograduacion_apellidos_telefono_KO";
+			return "alumnograduacion_telefono_format_KO";
 		}
 		this.dom.mostrar_exito_campo('alumnograduacion_telefono');
 		return true;
@@ -227,6 +227,10 @@ class alumnograduacion extends Validations{
 		if (!(this.min_size('alumnograduacion_direccion',1))){
 			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_min_size_KO');
 			return "alumnograduacion_direccion_min_size_KO";
+		}
+        if (!(this.max_size('alumnograduacion_direccion',100))){
+			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_max_size_KO');
+			return "alumnograduacion_direccion_max_size_KO";
 		}
 		if (!(this.format('alumnograduacion_direccion', '^[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]*$'))){
 			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_format_KO');
@@ -240,6 +244,10 @@ class alumnograduacion extends Validations{
         if (!(this.min_size('alumnograduacion_email', 1))) {
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_min_size_KO');
             return "alumnograduacion_email_min_size_KO";
+        }
+        if (!(this.max_size('alumnograduacion_email', 40))) {
+            this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_max_size_KO');
+            return "alumnograduacion_email_max_size_KO";
         }
         if (!(this.format('alumnograduacion_email', '^[^@]+@[^@]+\.[a-zA-Z]{2,}$'))) {
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_format_KO');
@@ -397,7 +405,6 @@ EDIT_submit_alumnograduacion(){
 }
 
 	SEARCH_alumnograduacion_login_validation(){
-    // Para búsqueda, las validaciones pueden ser más flexibles
     if(document.getElementById('alumnograduacion_login').value !== ''){
         if(!(this.max_size('alumnograduacion_login', 14))){
             this.dom.mostrar_error_campo('alumnograduacion_login', 'alumnograduacion_login_max_size_KO');
@@ -414,10 +421,14 @@ EDIT_submit_alumnograduacion(){
 
 SEARCH_alumnograduacion_password_validation(){
     if(document.getElementById('alumnograduacion_password').value !== ''){
-        if(!(this.max_size('alumnograduacion_password', 100))){ // CORREGIDO: cambiado de max_size a max_size
+        if(!(this.max_size('alumnograduacion_password', 64))){
             this.dom.mostrar_error_campo('alumnograduacion_password', 'alumnograduacion_password_max_size_KO');
             return "alumnograduacion_password_max_size_KO";
         }
+        if(!(this.format('alumnograduacion_password', '^[a-zA-Z ]*$'))){
+			this.dom.mostrar_error_campo('alumnograduacion_password', 'alumnograduacion_password_format_KO');
+			return "alumnograduacion_password_format_KO";
+		}
     }
     this.dom.mostrar_exito_campo('alumnograduacion_password');
     return true;
