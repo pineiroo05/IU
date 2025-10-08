@@ -445,6 +445,7 @@ let alumnograduacion_tests_fields=Array(
     Array('alumnograduacion', 'alumnograduacion_email', 104, 221, 'SEARCH', [{alumnograduacion_email:'enrique@gmail.com'}], true),
 
     //fotoacto
+    /*
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 105, 222, 'ADD', [{alumnograduacion_fotoacto:'aaaaaa'}], 'alumnograduacion_fotoacto_min_size_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 106, 223, 'ADD', [{alumnograduacion_fotoacto:'a'.repeat(41)}], 'alumnograduacion_fotoacto_max_size_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 107, 224, 'ADD', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
@@ -452,31 +453,31 @@ let alumnograduacion_tests_fields=Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 107, 226, 'ADD', [{alumnograduacion_fotoacto:'/home/usuñrio/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 107, 227, 'ADD', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 108, 228, 'ADD', [{alumnograduacion_fotoacto:'/home/usuario/Imagenes/foto.jpg'}], true),
-    
+    */
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 109, 229, 'EDIT', [{alumnograduacion_fotoacto:'aaaaaa'}], 'alumnograduacion_fotoacto_min_size_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 110, 230, 'EDIT', [{alumnograduacion_fotoacto:'a'.repeat(41)}], 'alumnograduacion_fotoacto_max_size_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 231, 'EDIT', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 232, 'EDIT', [{alumnograduacion_fotoacto:'/home usuario/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 233, 'EDIT', [{alumnograduacion_fotoacto:'/home/usuñrio/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 234, 'EDIT', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 231, 'EDIT', [{alumnograduacion_fotoacto:'ñombre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 232, 'EDIT', [{alumnograduacion_fotoacto:'nómbre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 233, 'EDIT', [{alumnograduacion_fotoacto:'n ombre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 111, 234, 'EDIT', [{alumnograduacion_fotoacto:'.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 112, 235, 'EDIT', [{alumnograduacion_fotoacto:'/home/usuario/Imagenes/foto.jpg'}], true),
 
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 113, 236, 'SEARCH', [{alumnograduacion_fotoacto:'a'.repeat(41)}], 'alumnograduacion_fotoacto_max_size_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 237, 'SEARCH', [{alumnograduacion_fotoacto:'á'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 238, 'SEARCH', [{alumnograduacion_fotoacto:'ñ'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 239, 'SEARCH', [{alumnograduacion_fotoacto:'a ñ'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 240, 'SEARCH', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 241, 'SEARCH', [{alumnograduacion_fotoacto:'/home usuario/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 242, 'SEARCH', [{alumnograduacion_fotoacto:'/home/usuñrio/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 243, 'SEARCH', [{alumnograduacion_fotoacto:'/home/usuário/Imagenes/foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 240, 'SEARCH', [{alumnograduacion_fotoacto:'ñombre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 241, 'SEARCH', [{alumnograduacion_fotoacto:'nómbre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 242, 'SEARCH', [{alumnograduacion_fotoacto:'n ombre.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 114, 243, 'SEARCH', [{alumnograduacion_fotoacto:'foto.jpg'}], 'alumnograduacion_fotoacto_format_KO'),
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 115, 244, 'SEARCH', [{alumnograduacion_fotoacto:'a'}], true),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 115, 245, 'SEARCH', [{alumnograduacion_fotoacto:'foto'}], true),
-    Array('alumnograduacion', 'alumnograduacion_fotoacto', 115, 246, 'SEARCH', [{alumnograduacion_fotoacto:'/home/usuario/Imagenes/foto.jpg'}], true),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 115, 245, 'SEARCH', [{alumnograduacion_fotoacto:'nombre'}], true),
+    Array('alumnograduacion', 'alumnograduacion_fotoacto', 115, 246, 'SEARCH', [{alumnograduacion_fotoacto:'nombre.jpg'}], true),
 
 );
 
 let alumnograduacion_tests_files=Array(
-    /* Haria falta hacer el add de esto
+    
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 116, 247, 'ADD', 'existe el fichero', [], 'alumnograduacion_nuevo_fotoacto_not_exist_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 117, 248, 'ADD', 'tamaño maximo OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:20000000}], 'alumnograduacion_nuevo_fotoacto_max_size_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 118, 249, 'ADD', 'tipo fichero OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/png'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_type_file_KO'),
@@ -484,7 +485,7 @@ let alumnograduacion_tests_files=Array(
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 119, 251, 'ADD', 'nombre OK', [{format_name_file:'nómbre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 119, 252, 'ADD', 'nombre OK', [{format_name_file:'n ombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 120, 253, 'ADD', 'todo correcto', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], true),
-*/
+    
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 121, 254, 'EDIT', 'existe el fichero', [], 'alumnograduacion_nuevo_fotoacto_not_exist_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 122, 255, 'EDIT', 'tamaño maximo OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:20000000}], 'alumnograduacion_nuevo_fotoacto_max_size_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 123, 256, 'EDIT', 'tipo fichero OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/png'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_type_file_KO'),
@@ -497,7 +498,7 @@ let alumnograduacion_tests_files=Array(
         Habria que hacer busquedas x tamaño o formato cuando solo se aceptan jpgs??
         Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 126, 261, 'SEARCH', 'tamaño maximo OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:20000000}], 'alumnograduacion_nuevo_fotoacto_max_size_file_KO'),
         Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 127, 249, 'SEARCH', 'tipo fichero OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/png'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_type_file_KO'),
-    */   
+      
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 128, 250, 'SEARCH', 'nombre OK', [{format_name_file:'ñ'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 128, 250, 'SEARCH', 'nombre OK', [{format_name_file:'ó'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 128, 250, 'SEARCH', 'nombre OK', [{format_name_file:'n o'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
@@ -507,5 +508,6 @@ let alumnograduacion_tests_files=Array(
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 129, 253, 'SEARCH', 'todo correcto', [{format_name_file:'n'}], true),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 129, 253, 'SEARCH', 'todo correcto', [{format_name_file:'nombre.jpg'}], true),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 129, 253, 'SEARCH', 'todo correcto', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], true),
+    */
 );
 //TOTAL DE HORAS HECHAS HASTA AHORA: 17
