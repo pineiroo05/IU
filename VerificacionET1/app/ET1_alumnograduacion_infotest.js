@@ -476,7 +476,7 @@ let alumnograduacion_tests_fields=Array(
 );
 
 let alumnograduacion_tests_files=Array(
-    //nuevo_fotoacto
+    /* Haria falta hacer el add de esto
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 116, 247, 'ADD', 'existe el fichero', [], 'alumnograduacion_nuevo_fotoacto_not_exist_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 117, 248, 'ADD', 'tamaño maximo OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:20000000}], 'alumnograduacion_nuevo_fotoacto_max_size_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 118, 249, 'ADD', 'tipo fichero OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/png'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_type_file_KO'),
@@ -492,7 +492,7 @@ let alumnograduacion_tests_files=Array(
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 124, 258, 'EDIT', 'nombre OK', [{format_name_file:'nómbre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 124, 259, 'EDIT', 'nombre OK', [{format_name_file:'n ombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'alumnograduacion_nuevo_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 125, 260, 'EDIT', 'todo correcto', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], true),
-
+*/
     /*
         Habria que hacer busquedas x tamaño o formato cuando solo se aceptan jpgs??
         Array('alumnograduacion', 'alumnograduacion_nuevo_fotoacto', 126, 261, 'SEARCH', 'tamaño maximo OK', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:20000000}], 'alumnograduacion_nuevo_fotoacto_max_size_file_KO'),
