@@ -15,7 +15,7 @@ class Unit_Test {
                                 'alumnograduacion_direccion',
                                 'alumnograduacion_email',
                                 'alumnograduacion_fotoacto',
-                                'alumnograduacion_nuevo_fotoacto'
+                                'nuevo_alumnograduacion_fotoacto'
                             ],
             },
             /*{

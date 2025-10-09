@@ -72,8 +72,8 @@ class alumnograduacion extends Validations{
 			<a id="link_foto_persona" href="http://193.147.87.202/ET2/filesuploaded/files_foto_persona/"><img src="./iconos/FILE.png" /></a>
 			
 			<label id="label_nuevo_foto_persona" class="label_nuevo_foto_persona">Nueva Foto Persona</label>
-			<input type='file' id='alumnograduacion_nuevo_fotoacto' name='alumnograduacion_nuevo_fotoacto'></input>
-			<span id="span_error_alumnograduacion_nuevo_fotoacto"><a id="error_alumnograduacion_nuevo_fotoacto"></a></span>
+			<input type='file' id='nuevo_alumnograduacion_fotoacto' name='nuevo_alumnograduacion_fotoacto'></input>
+			<span id="span_error_nuevo_alumnograduacion_fotoacto"><a id="error_nuevo_alumnograduacion_fotoacto"></a></span>
 			<br>
 
 			<input id="submit_button" type="submit" value="Submit">
@@ -185,7 +185,6 @@ class alumnograduacion extends Validations{
 	}
 
 	ADD_alumnograduacion_dni_validation(){
-    
     if(!(this.min_size('alumnograduacion_dni',9))){
         this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_min_size_KO');
         return "alumnograduacion_dni_min_size_KO";
@@ -194,7 +193,6 @@ class alumnograduacion extends Validations{
         this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_max_size_KO');
         return "alumnograduacion_dni_max_size_KO";
     }
-            
     var resp = this.personalize_dni_nie();
     console.log(resp);
     if (!(resp === true)){
@@ -223,25 +221,31 @@ class alumnograduacion extends Validations{
 		return true;
 	}
 	
-	ADD_alumnograduacion_direccion_validation(){
-		if (!(this.min_size('alumnograduacion_direccion',1))){
-			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_min_size_KO');
-			return "alumnograduacion_direccion_min_size_KO";
-		}
-        if (!(this.max_size('alumnograduacion_direccion',100))){
-			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_max_size_KO');
-			return "alumnograduacion_direccion_max_size_KO";
-		}
-		if (!(this.format('alumnograduacion_direccion', '^[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]*$'))){
-			this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_format_KO');
-			return "alumnograduacion_direccion_format_KO";
-		}
-		this.dom.mostrar_exito_campo('alumnograduacion_direccion');
-		return true;
-	}
+	ADD_alumnograduacion_direccion_validation(){   
+    if (!(this.min_size('alumnograduacion_direccion', 5))){
+        this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_min_size_KO');
+        return "alumnograduacion_direccion_min_size_KO";
+    }
+    if (!(this.max_size('alumnograduacion_direccion', 100))){
+        this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_max_size_KO');
+        return "alumnograduacion_direccion_max_size_KO";
+    }
+    // Calle abc, 12, 1ºB, 32001, Ourense -->> ^[a-zA-ZáéíóúÁÉÍÓÚÑñ0-9 ]\,[0-9]{1,}\, 
+    if (!(this.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,\/ºª]+$'))){
+        this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_format_KO');
+        return "alumnograduacion_direccion_format_KO";
+    }
+    
+    this.dom.mostrar_exito_campo('alumnograduacion_direccion');
+    return true;
+    }
+
+    EDIT_alumnograduacion_direccion_validation(){
+        return this.ADD_alumnograduacion_direccion_validation();
+    }
 
     ADD_alumnograduacion_email_validation() {
-        if (!(this.min_size('alumnograduacion_email', 1))) {
+        if (!(this.min_size('alumnograduacion_email', 5))) {
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_min_size_KO');
             return "alumnograduacion_email_min_size_KO";
         }
@@ -249,44 +253,13 @@ class alumnograduacion extends Validations{
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_max_size_KO');
             return "alumnograduacion_email_max_size_KO";
         }
-        if (!(this.format('alumnograduacion_email', '^[^@]+@[^@]+\.[a-zA-Z]{2,}$'))) {
+        if (!(this.format('alumnograduacion_email', '^[^@]+@[^@]+\.[a-zA-Z]{2,}\.[a-z]{2,}$'))) {
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_format_KO');
             return "alumnograduacion_email_format_KO";
         }
         this.dom.mostrar_exito_campo('alumnograduacion_email');
         return true;
     }
-
-	/**
-		
-		@param 
-		@return
-			{string} Error code of field value (fieldname_validationfunction_KO) 
-			or
-			{bool} true due the field value is correct
-
-	*/
-
-	ADD_alumnograduacion_fotoacto_validation() {
-    if (!(this.min_size('alumnograduacion_fotoacto', 7))) {
-        this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_min_size_KO');
-        return "alumnograduacion_fotoacto_min_size_KO";
-    }
-    if (!(this.max_size('alumnograduacion_fotoacto', 40))) {
-        this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_max_size_KO');
-        return "alumnograduacion_fotoacto_max_size_KO";
-    }
-    if (!(this.format('alumnograduacion_fotoacto', '^[a-zA-Z0-9._/-]+$'))) {
-        this.dom.mostrar_error_campo('alumnograduacion_fotoacto', 'alumnograduacion_fotoacto_format_KO');
-        return "alumnograduacion_fotoacto_format_KO";
-    }
-    this.dom.mostrar_exito_campo('alumnograduacion_fotoacto');
-    return true;
-}
-
-EDIT_alumnograduacion_fotoacto_validation() {
-    return this.ADD_alumnograduacion_fotoacto_validation();
-}
 
 SEARCH_alumnograduacion_fotoacto_validation() {
     if (document.getElementById('alumnograduacion_fotoacto').value !== '') {
@@ -303,25 +276,25 @@ SEARCH_alumnograduacion_fotoacto_validation() {
     return true;
 }
 
+    ADD_nuevo_alumnograduacion_fotoacto_validation() {
 
-    ADD_alumnograduacion_nuevo_fotoacto_validation() {
-        if (!(this.not_exist_file('alumnograduacion_nuevo_fotoacto'))) {
-            this.dom.mostrar_error_campo('alumnograduacion_nuevo_fotoacto', 'alumnograduacion_nuevo_fotoacto_empty_file_KO');
-            return "alumnograduacion_nuevo_fotoacto_not_exist_file_KO";
+        if (!(this.not_exist_file('nuevo_alumnograduacion_fotoacto'))) {
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_not_exist_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_not_exist_file_KO";
         }
-        if (!(this.max_size_file('alumnograduacion_nuevo_fotoacto', 2000000))) { // 2MB
-            this.dom.mostrar_error_campo('alumnograduacion_nuevo_fotoacto', 'alumnograduacion_nuevo_fotoacto_max_size_file_KO');
-            return "alumnograduacion_nuevo_fotoacto_max_size_file_KO";
+        if (!(this.max_size_file('nuevo_alumnograduacion_fotoacto', 2000000))) { // 2MB
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_size_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_max_size_file_KO";
         }
-        if (!(this.type_file('alumnograduacion_nuevo_fotoacto', ['image/jpeg']))) {
-            this.dom.mostrar_error_campo('alumnograduacion_nuevo_fotoacto', 'alumnograduacion_nuevo_fotoacto_type_file_KO');
-            return "alumnograduacion_nuevo_fotoacto_type_file_KO";
+        if (!(this.type_file('nuevo_alumnograduacion_fotoacto', ['image/jpeg']))) {
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_type_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_type_file_KO";
         }
-        if (!(this.format_name_file('alumnograduacion_nuevo_fotoacto', '^[a-zA-Z0-9._-]+$'))) {
-            this.dom.mostrar_error_campo('alumnograduacion_nuevo_fotoacto', 'alumnograduacion_nuevo_fotoacto_format_name_file_KO');
-            return "alumnograduacion_nuevo_fotoacto_format_name_file_KO";
+        if (!(this.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]{7,100}$'))) {
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_format_name_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_format_name_file_KO";
         }
-        this.dom.mostrar_exito_campo('alumnograduacion_nuevo_fotoacto');
+        this.dom.mostrar_exito_campo('nuevo_alumnograduacion_fotoacto');
         return true;
     }
 
@@ -341,9 +314,8 @@ ADD_submit_alumnograduacion(){
                   this.ADD_alumnograduacion_telefono_validation() & 
                   this.ADD_alumnograduacion_dni_validation() & 
                   this.ADD_alumnograduacion_direccion_validation() & 
-                  this.ADD_alumnograduacion_email_validation() & // Faltaban paréntesis aquí
-                  this.ADD_alumnograduacion_fotoacto_validation() & // Agregar esta validación
-                  this.ADD_alumnograduacion_nuevo_fotoacto_validation())
+                  this.ADD_alumnograduacion_email_validation() &
+                  this.ADD_nuevo_alumnograduacion_fotoacto_validation())
     result = Boolean(result);
     return result;
 }
@@ -376,17 +348,26 @@ ADD_submit_alumnograduacion(){
 		return this.ADD_alumnograduacion_telefono_validation();
 	}
 
-	EDIT_alumnograduacion_direccion_validation(){
-		return this.ADD_alumnograduacion_direccion_validation();
-	}
-
 	EDIT_alumnograduacion_email_validation(){
 		return this.ADD_alumnograduacion_email_validation();
 	}
 
-	EDIT_alumnograduacion_nuevo_fotoacto_validation(){
-		return this.ADD_alumnograduacion_nuevo_fotoacto_validation();
-	}
+	EDIT_nuevo_alumnograduacion_fotoacto_validation() {
+        if (!(this.max_size_file('nuevo_alumnograduacion_fotoacto', 2000000))) { // 2MB
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_size_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_max_size_file_KO";
+        }
+        if (!(this.type_file('nuevo_alumnograduacion_fotoacto', ['image/jpeg']))) {
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_type_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_type_file_KO";
+        }
+        if (!(this.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]{7,100}$'))) {
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_format_name_file_KO');
+            return "nuevo_alumnograduacion_fotoacto_format_name_file_KO";
+        }
+        this.dom.mostrar_exito_campo('nuevo_alumnograduacion_fotoacto');
+        return true;
+    }
 
 EDIT_submit_alumnograduacion(){
     let result = (this.EDIT_alumnograduacion_login_validation() & 
@@ -397,9 +378,8 @@ EDIT_submit_alumnograduacion(){
                   this.EDIT_alumnograduacion_telefono_validation() & 
                   this.EDIT_alumnograduacion_dni_validation() & 
                   this.EDIT_alumnograduacion_direccion_validation() & 
-                  this.EDIT_alumnograduacion_email_validation() & // Faltaban paréntesis aquí
-                  this.EDIT_alumnograduacion_fotoacto_validation() & // Agregar esta validación
-                  this.EDIT_alumnograduacion_nuevo_fotoacto_validation())
+                  this.EDIT_alumnograduacion_email_validation() &
+                  this.EDIT_nuevo_alumnograduacion_fotoacto_validation())
     result = Boolean(result);
     return result;
 }
@@ -466,15 +446,22 @@ SEARCH_alumnograduacion_apellidos_validation(){
 
 SEARCH_alumnograduacion_titulacion_validation(){
     if(document.getElementById('alumnograduacion_titulacion').value !== ''){
-        const valor=document.getElementById('alumnograduacion_titulacion').value;
-        const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
-        if(!valoresPermitidos.includes(valor)){
+        const valor = document.getElementById('alumnograduacion_titulacion').value.toUpperCase();
+        const valoresPermitidos = ['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
+        
+        // Verificar si el valor es una subcadena de algún valor permitido
+        const coincide = valoresPermitidos.some(permiso => 
+            permiso.includes(valor)
+        );
+        
+        if(!coincide){
             this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
             return "alumnograduacion_titulacion_format_KO";
         }
     }
     this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
     return true;
+
 }
 
 SEARCH_alumnograduacion_dni_validation(){
@@ -483,10 +470,25 @@ SEARCH_alumnograduacion_dni_validation(){
             this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_max_size_KO');
             return "alumnograduacion_dni_max_size_KO";
         }
-        // Para búsqueda, solo validar formato básico, no cálculo de letra
-        if (!(this.format('alumnograduacion_dni', '^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z])$'))){
-            this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_format_KO');
-            return "alumnograduacion_dni_format_KO";
+        var dniValue = document.getElementById('alumnograduacion_dni').value.toUpperCase(); // Convertir a mayúsculas
+        
+        //9 caracteres mirar que cumpla formato completo y letra
+        if (dniValue.length === 9) {
+            if (!(this.format('alumnograduacion_dni', '^([0-9]{8}[A-Z]|[XYZ][0-9]{7}[A-Z])$'))){
+                this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_format_KO');
+                return "alumnograduacion_dni_format_KO";
+            }
+            var resp = this.personalize_dni_nie();
+            if (!(resp === true)){
+                this.dom.mostrar_error_campo('alumnograduacion_dni',resp);
+                return resp;
+            }
+        } else {
+            //menos de 9 mirar caracteres permitidos
+            if (!(this.format('alumnograduacion_dni', '^[0-9XYZxyz]*$'))){
+                this.dom.mostrar_error_campo('alumnograduacion_dni','alumnograduacion_dni_format_KO');
+                return "alumnograduacion_dni_format_KO";
+            }
         }
     }
     this.dom.mostrar_exito_campo('alumnograduacion_dni');
@@ -510,7 +512,11 @@ SEARCH_alumnograduacion_telefono_validation(){
 
 SEARCH_alumnograduacion_direccion_validation(){
     if(document.getElementById('alumnograduacion_direccion').value !== ''){
-        if (!(this.format('alumnograduacion_direccion', '^[A-Za-záéíóúÁÉÍÓÚñÑ0-9 ]*$'))){
+        if(!(this.max_size('alumnograduacion_direccion', 100))){
+            this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_max_size_KO');
+            return "alumnograduacion_direccion_max_size_KO";
+        }
+        if (!(this.format('alumnograduacion_direccion', '^^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,\/ºª]+$'))){
             this.dom.mostrar_error_campo('alumnograduacion_direccion','alumnograduacion_direccion_format_KO');
             return "alumnograduacion_direccion_format_KO";
         }
@@ -521,7 +527,11 @@ SEARCH_alumnograduacion_direccion_validation(){
 
 SEARCH_alumnograduacion_email_validation(){
     if(document.getElementById('alumnograduacion_email').value !== ''){
-        if (!(this.format('alumnograduacion_email', '^[^@]+@[^@]+\.[a-zA-Z]{2,}$'))){
+        if(!(this.max_size('alumnograduacion_email', 40))){
+            this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_max_size_KO');
+            return "alumnograduacion_email_max_size_KO";
+        }
+        if (!(this.format('alumnograduacion_email', '^[a-zA-Z0-9@_.]+$'))){
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_format_KO');
             return "alumnograduacion_email_format_KO";
         }
@@ -566,7 +576,7 @@ SEARCH_submit_alumnograduacion(){
 	 * @return {bool} true is regular expression is satified false otherwise  
 	 * */ 
 
-	personalize_dni_nie(){
+    personalize_dni_nie(){
     // Buscar el elemento en el contexto correcto
     var dniElement = document.getElementById('alumnograduacion_dni');
     if (!dniElement) {
@@ -582,19 +592,22 @@ SEARCH_submit_alumnograduacion(){
     }
     
     var dni = dniElement.value;
+    
+    // Primero verificar si es formato DNI
     if (this.personalize_dni_format() == true){
         if (!(this.personalize_validate_dni(dni))){
-            return "dni_validate_KO";
+            return "alumnograduacion_dni_format_nif_KO"; // Cambiado
         }
     }
     else{
+        // Si no es DNI, verificar si es formato NIE
         if (this.personalize_nie_format() === true){
-                if (!(this.personalize_validate_nie(dni))){
-                    return "nie_validate_KO";
-                }
+            if (!(this.personalize_validate_nie(dni))){
+                return "alumnograduacion_dni_format_nie_KO"; // Cambiado
+            }
         }
         else{
-            return "dni_nie_format_KO";
+            return "alumnograduacion_dni_format_KO"; // Cambiado
         }
     }
 
@@ -617,11 +630,8 @@ personalize_dni_format(){
     
     var dniValue = dniElement.value;
     var dniRegex = /^[0-9]{8}[A-Z]$/;
-    if (!dniRegex.test(dniValue)){
-        this.dom.mostrar_error_campo('alumnograduacion_dni','dni_format_KO');
-        return false;
-    }
-    return true;
+    // Eliminar la muestra de error aquí, solo validar
+    return dniRegex.test(dniValue);
 }
 
 personalize_nie_format(){
@@ -640,45 +650,25 @@ personalize_nie_format(){
     
     var dniValue = dniElement.value;
     var nieRegex = /^[XYZ][0-9]{7}[A-Z]$/;
-    if (!nieRegex.test(dniValue)){
-        this.dom.mostrar_error_campo('alumnograduacion_dni','nie_format_KO');
-        return false;
-    }
-    return true;
+    // Eliminar la muestra de error aquí, solo validar
+    return nieRegex.test(dniValue);
 }
-	personalize_validate_dni(dni){
-		
-		//var dni = document.getElementById('dni').value;
-		var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
-    	var letter = dni_letters.charAt( parseInt( dni, 10 ) % 23 );
-		
-    	return letter == dni.charAt(8);
-	}
 
-	/**
-	 * get nie as parameter, split firts letter, calculate
-	 * the number from this letter and create dni for validating in 
-	 * personalizate method
-	 * 
-	 * @param nie value
-	 * @returns true if nie is valid false otherwise
-	 */
-	personalize_validate_nie(nie){
-		
-		//var nie = document.getElementById('dni').value;
-		// Change the initial letter for the corresponding number and validate as DNI
-		var nie_prefix = nie.charAt( 0 );
+personalize_validate_dni(dni){
+    var dni_letters = "TRWAGMYFPDXBNJZSQVHLCKE";
+    var letter = dni_letters.charAt( parseInt( dni, 10 ) % 23 );
+    return letter == dni.charAt(8);
+}
 
-		switch (nie_prefix) {
-		case 'X': nie_prefix = 0; break;
-		case 'Y': nie_prefix = 1; break;
-		case 'Z': nie_prefix = 2; break;
-		}
+personalize_validate_nie(nie){
+    var nie_prefix = nie.charAt( 0 );
 
-		return this.personalize_validate_dni( nie_prefix + nie.substr(1) );
-	
-	}
+    switch (nie_prefix) {
+    case 'X': nie_prefix = 0; break;
+    case 'Y': nie_prefix = 1; break;
+    case 'Z': nie_prefix = 2; break;
+    }
 
-
-
+    return this.personalize_validate_dni( nie_prefix + nie.substr(1) );
+}
 }
