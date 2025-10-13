@@ -4,12 +4,17 @@ class alumnograduacion extends Validations {
         super();
         this.dom = new dom();
         this.nombreentidad = 'alumnograduacion';
+        this.validations=new Validations();
+        this.externalFunctions=new ExternalAccess();
+        this.columnasamostrar=[];
+        this.mostrarespecial=[];
 
         if (esTest == 'test') {
 
-        }
-        else {
-            this.dom.fillform(this.manual_form_creation(), 'IU_form');
+        }else {
+            document.getElementById('IU_manage_entity').style.display='block'; //muestra mi tabla y botones
+            document.getElementById('IU_form').innerHTML=this.manual_form_creation(); //crear formulario vacio
+            this.SEARCH(); //ir al back a buscar
         }
     }
 
@@ -19,7 +24,7 @@ class alumnograduacion extends Validations {
      */
     manual_form_creation() {
         var form_content = `
-			<form action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_alumnograduacion();">
+			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_alumnograduacion();">
 
 			<label class="label_login">login</label>
 			<input type='text' id='alumnograduacion_login' name='alumnograduacion_login' onblur=" return entidad.ADD_alumnograduacion_login_validation();"></input>
@@ -654,80 +659,156 @@ class alumnograduacion extends Validations {
         A partir de aqui todo seria para la creacion de los formularios para hacer los add, edit y search
     */
     createForm_ADD(){
-        alert('Crear formulario add');
+        document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+        this.dom.show_element('Div_IU_form');
+        //onsubmit
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.ADD_submit_'+this.nombreentidad+'()');
+        //action
+        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.ADD();');
+        //nuevo_fotoacto oculto
+        this.dom.hide_element('nuevo_alumnograduacion_fotoacto');
+        this.dom.hide_element_form('link_nuevo_alumnograduacion_fotoacto');
+        //validaciones
+        this.colocarvalidaciones('form_iu', 'ADD');
+        this.colocarboton('ADD');
     }
-    //createForm_EDIT(fila){alert('Crear formulario edit'+fila)}
     createForm_SEARCH(){
         alert('Crear formulario search');
     }
+    createForm_EDIT(fila){
+        alert('Crear formulario edit'+fila);
+    }
+    createForm_DELETE(){
+        alert('Crear formulario delete');
+    }
+    createForm_SHOWCURRENT(){
+        alert('Crear formulario mostrar');
+    }
+
+    colocarboton(accion){
+
+		let divboton = document.createElement('div');
+		divboton.id = 'div_boton';
+		//divboton.stype.display = 'block';
+		document.getElementById('form_iu').append(divboton);
+		let boton = document.createElement('button');
+		boton.id = 'submit_button';
+		boton.type = 'submit';
+		let img = document.createElement('img');
+		img.src = './iconos/'+accion+'.png';
+		boton.append(img);
+		document.getElementById('div_boton').append(boton);
+
+	}
+
+    colocarvalidaciones(idform, accion){
+        let campos=document.forms[idform].elements;
+        for(let i=0; i<campos.length; i++){
+            if((document.getElementById(campos[i].id).tagName == 'INPUT')&&(document.getElementById(campos[i].id).tagName != 'file')){
+                evento='onblur';
+            }else{
+                evento='onchange';
+            }
+            if (document.getElementById(campos[i].id).type == 'submit'){}
+			else{
+				document.getElementById(campos[i].id).setAttribute (evento,'entidad.'+accion+'_'+campos[i].id+'_validation'+'();');
+			}	
+        }
+    }
 
     crearTablaDatos(datos, mostrarespecial){
-        var misdatos=datos;
-        /*No tengo ni idea de para q carallo esta esto
-        if(mostrarespecial>0){
-            for(var i=0; i<misdatos.length; i++){
-                for(var clave in misdatos[i]){
-                    misdatos[i][clave]=this.cambiarmostrarespecial(clave, misdatos[i][clave]);
-                }
-            }
-        }*/
-        for(var i=0; i<misdatos.length; i++){
-            var linEdit=`<img id="botonEDIT" src='./iconos/EDIT.png' onclick='entidad.createForm_EDIT(`+JSON.stringify(misdatos[i])+`);'>`; //el stringify sirve para convertir un objeto a string
-            var lindelete=`<img id="botonDELETE" src='./iconos/DELETE.png' onclick='entidad.createForm_DELETE(`+JSON.stringify(misdatos[i])+`)'>`;
-            var linshowcurrent=`<img id="botonSHOWCURRENT" src='./iconos/SHOWCURRENT.png' onclick='entidad.createForm_SHOWCURRENT(`+JSON.stringify(misdatos[i])+`)'>`;
-            //saca los datos en las tablas
-            this.dom.showData('IU_manage_table', misDatos);
-            this.mostrarocultarcolumnas();
-            this.crearSeleccionablecolumnas(this.columnasamostrar, this.atributos);
-        }
-    }
+		var misdatos = datos;
+		//recorrer todas las filas de datos y cada atributo para si tiene una funcion de transformación de valor modificarlo en el momento
+		if (mostrarespecial > 0){
+			for (var i=0; i<misdatos.length; i++){
+				for (var clave in misdatos[i]){
+					if (clave in mostrarespecial){
+						//misdatos[i][clave] = this.cambiarmostrarespecial(clave, misdatos[i][clave]);
+					}
+				}
+			}
+		}
+		// proceso los datos de la tabla para incluir en cada fila los tres botones conectados a createForm_ACCION()
+		for (var i=0; i<misdatos.length; i++){
+			var linedit = `<img id='botonEDIT' src='./iconos/EDIT.png' onclick='entidad.createForm_EDIT(`+JSON.stringify(misdatos[i])+`);'>`;
+			var lindelete = `<img id='botonDELETE' src='./iconos/DELETE.png' onclick='entidad.createForm_DELETE(`+JSON.stringify(misdatos[i])+`);'>`;
+			var linshowcurrent = `<img id='botonSHOWCURRENT' src='./iconos/SHOWCURRENT.png' onclick='entidad.createForm_SHOWCURRENT(`+JSON.stringify(misdatos[i])+`);'>`;
+			misdatos[i]['EDIT'] = linedit;
+			misdatos[i]['DELETE'] = lindelete;
+			misdatos[i]['SHOWCURRENT'] = linshowcurrent;
+		}
+		//muestro datos en tabla
+		this.dom.showData('IU_manage_table', misdatos);
+		this.mostrarocultarcolumnas();
+		this.crearSeleccionablecolumnas(this.columnasamostrar, this.atributos);
+	}
 
-    mostrarocultarcolumnas(){
-        var estadodisplay='';
-        for(let columna of this.atributos){
-            //atributo en columna->lo dejo
-            if(this.columnasamostrar.includes(columna)){
-                estadodisplay='';
-            }
-            //si no->se oculta
-            else{
-                estadodisplay='none';
-            }
-            document.querySelector("th[class='tabla-th-"+columna+"']").style.display=estadodisplay;
-            let arraytds=document.querySelectorAll("td[class='tabla-td-"+columna+"']");
-            for(let i=0; i<arraytds.length; i++){
-                arraytds[i].style.display=estadodisplay;
-            }
-        }
-    }
+	/**
+	 * Redibuja el select en funcion del contenido de columnasamostrar
+	 * 
+	 * @param {*} columnasamostrar 
+	 * @param {*} atributos 
+	 */
+	crearSeleccionablecolumnas(columnasamostrar,atributos){
+		document.getElementById("seleccioncolumnas").innerHTML = '';
+		for (let atributo of atributos){
+			var optionselect = document.createElement('option');
+			optionselect.className = atributo;
+			optionselect.innerHTML = atributo;
+			var textofuncion = "entidad.modificarcolumnasamostrar('"+atributo+"');";
+			optionselect.setAttribute("onclick",textofuncion);
+			if (columnasamostrar.includes(atributo)){
+				optionselect.selected = true;
+			}
+			document.getElementById("seleccioncolumnas").append(optionselect);
+		}
+		//setLang();
+	}
 
-    crearSeleccionablecolumnas(columnasamostrar, atributos){
-        document.getElementById("seleccioncolumnas").innerHTML='';
-        for(let atributo of atributos){
-            var optionselect=document.createElement('option');
-            optionselect.className=atributo;
-            optionselect.innerHTML=atributo;
-            var textofuncion="entidad.modificarcolumnasamostrar('"+atributo+"');";
-            optionselect.setAttribute("onclick", textofuncion);
-            if(columnasamostrar.includes(atributo)){
-                optionselect.selected=true;
-            }
-            document.getElementById("seleccioncolumnas").append(optionselect);
-        }
-    }
+// candidatas abstract
 
-    modificarcolumnasamostrar(atributo){
-        if(this.columnasamostrar.includes(atributo)){
-            this.columnasamostrar=this.columnasamostrar.filter(columna=>columna!=atributo);
-        }else{
-            this.columnasamostrar.push(atributo);
-        }
-        this.mostrarocultarcolumnas();
-        this.crearSeleccionablecolumnas(this.columnasamostrar, this.atributos);
-    }
+	/**
+	 * muestra o no las columnas de la tabla segun indique columnasamostrar
+	 */
+	mostrarocultarcolumnas(){
+		var estadodisplay = '';
+		// recorro todos los atributos de la tabla
+		for (let columna of this.atributos){
+			// si el atributo esta en columnas a mostrar lo dejo como esta
+			if (this.columnasamostrar.includes(columna)){
+				estadodisplay = '';
+			}
+			// si el atributo no esta en columnas a mostrar lo oculto
+			else{
+				estadodisplay = 'none';
+			}
+			//document.querySelector("th[class='tabla-th-"+columna+"']").style.display = estadodisplay;
+			let arraytds = document.querySelectorAll("td[class='tabla-td-"+columna+"']");
+			for (let i=0;i<arraytds.length;i++){
+				arraytds[i].style.display = estadodisplay;
+			}
+		}
+	}
 
-    async SEARCH(){
-        await this.access_functions.peticionBack('form_iu', this.nombreentidad, 'SEARCH')
+	//Modifica el array de columnas a mostrar al hacer click sobre el atributo en el select poniendolo como oculto o como visible
+	modificarcolumnasamostrar(atributo){
+
+		if (this.columnasamostrar.includes(atributo)){
+			// borrar ese atributo
+			this.columnasamostrar = this.columnasamostrar.filter(columna => columna != atributo);
+		}
+		else{
+			// añadir
+			this.columnasamostrar.push(atributo);
+		}
+		
+		this.mostrarocultarcolumnas();
+		this.crearSeleccionablecolumnas(this.columnasamostrar, this.atributos);
+
+	}
+
+	async SEARCH(){
+        await this.externalFunctions.peticionBackGeneral('form_iu', this.nombreentidad, 'SEARCH')
         .then((respuesta) => {
             //limpiar el formulario
 			document.getElementById('IU_form').innerHTML = this.manual_form_creation();
