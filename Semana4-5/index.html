@@ -41,17 +41,31 @@
 		<section id="IU_manage_table"></section>
 	</section>
 
-	<section id="IU_form" class='bordeado'>
-		
+	<section id="Div_IU_form" class='div_IU_form bordeado'>
+		<div class="contenidoForm" id="contenidoForm">
+			<div class="class_titulo_form">
+				<span id="class_contenido_titulo_form" class="">titulo formulario</span>
+			</div>
+			<div id="IU_form"></div>
+			<br>
+			<img src="./iconos/BACK.png" onclick="entidad.dom.hide_element('Div_IU_form');"/>
+		</div>
 	</section>
 
 	<article class='bordeado'>Sección article</article>
 
 	<footer class='bordeado'>Pie de página</footer>
 	
+	<!--Overlay para el modal, y modal para mostrar los errores en el action-->
+	<div id="modal_action_overlay"></div>
+	<div id="error_action_modal">
+		<span id="error_action_msg"></span>
+		<button onclick="entidad.dom.cerrarModalError()">X</button>
+	</div>
+
 	<script type="text/javascript">
 		document.getElementById('div-menu').style.display = 'none';
-		document.getElementById('IU_form').style.display = 'none';
+		document.getElementById('Div_IU_form').style.display = 'none';
 		document.getElementById('IU_manage_entity').style.display='none';
 		/*	hide the text error box if is necessary	
 		document.getElementById('span_error_name').style.display = 'none';

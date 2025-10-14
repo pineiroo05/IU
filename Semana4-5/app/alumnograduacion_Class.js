@@ -660,7 +660,7 @@ class alumnograduacion extends Validations {
     */
     createForm_ADD(){
         document.getElementById('IU_form').innerHTML=this.manual_form_creation();
-        this.dom.show_element('Div_IU_form');
+        document.getElementById('Div_IU_form').style.display='block';
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.ADD_submit_'+this.nombreentidad+'()');
         //action
@@ -673,20 +673,63 @@ class alumnograduacion extends Validations {
         this.colocarboton('ADD');
     }
     createForm_SEARCH(){
-        alert('Crear formulario search');
+        document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+        document.getElementById('Div_IU_form').style.display='block';
+        //onsubmit
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.SEARCH_submit_'+this.nombreentidad+'()');
+        //action
+        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
+        //nuevo_fotoacto oculto
+        this.dom.hide_element('nuevo_alumnograduacion_fotoacto');
+        this.dom.hide_element_form('link_nuevo_alumnograduacion_fotoacto');
+        //validaciones
+        this.colocarvalidaciones('form_iu', 'SEARCH');
+        this.colocarboton('SEARCH');
     }
+    //como no tengo fecha, aqui no tendría que cambiarle el formato a nada
     createForm_EDIT(fila){
-        alert('Crear formulario edit'+fila);
+        document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+        document.getElementById('Div_IU_form').style.display='block';
+        //onsubmit
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit'+this.nombreentidad+'()');
+        //action
+        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
+        //acceso al fichero de fotoacto
+        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        //rellenar valores
+        this.rellenarvaloresform(fila);
+        //validaciones y campos inactivos
+        this.dom.assign_property_value('dni', 'readonly', 'true');
+        this.dom.assign_property_value('alumnograduacion_fotoacto', 'readonly', 'true');
+        this.colocarboton('EDIT');
     }
-    createForm_DELETE(){
-        alert('Crear formulario delete');
+    createForm_DELETE(fila){
+        document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+        document.getElementById('Div_IU_form').style.display='block';
+        //action
+        this.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
+        //oculto el nuevo_fotoacto
+        this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
+        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        //rellenar valores
+        this.dom.rellenarvaloresform(fila);
+        //campos inactivos
+        this.colocartodosreadonly('form_iu');
+        this.colocarboton('DELETE');
     }
-    createForm_SHOWCURRENT(){
-        alert('Crear formulario mostrar');
+    createForm_SHOWCURRENT(fila){
+        document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+        document.getElementById('Div_IU_form').style.display='block';
+        //campos no visibles
+        this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
+        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        //rellenar valores
+        this.rellenarvaloresform(fila);
+        //poner los campos inactivos
+        this.colocartodosreadonly('form_iu');
     }
 
     colocarboton(accion){
-
 		let divboton = document.createElement('div');
 		divboton.id = 'div_boton';
 		//divboton.stype.display = 'block';
@@ -698,8 +741,30 @@ class alumnograduacion extends Validations {
 		img.src = './iconos/'+accion+'.png';
 		boton.append(img);
 		document.getElementById('div_boton').append(boton);
-
 	}
+
+    colocartodosreadonly(id){
+        let campos=document.forms[id].elements;
+        for(let i=0; i<campos.length; i++){
+            document.getElementById(campos[i].id).setAttribute('readonly', true);
+        }
+    }
+
+    rellenarvaloresform(parametros){
+        let campos=document.forms['form_iu'].elements;
+        for(let i=0; i<campos.length; i++){
+            switch(document.getElementById(campos[i].id).type){
+                case 'file':
+                    break;
+                case 'submit':
+                    break;
+                case 'textarea':
+                    document.getElementById(campos[i].id).innerHTML=parametros[campos[i].id];
+                default:
+                    document.getElementById(campos[i].id).value=parametros[campos[i].id];
+            }
+        }
+    }
 
     colocarvalidaciones(idform, accion){
         let campos=document.forms[idform].elements;
@@ -804,14 +869,15 @@ class alumnograduacion extends Validations {
 		
 		this.mostrarocultarcolumnas();
 		this.crearSeleccionablecolumnas(this.columnasamostrar, this.atributos);
-
 	}
 
+    //metodos q hacen peticiones al back
 	async SEARCH(){
         await this.externalFunctions.peticionBackGeneral('form_iu', this.nombreentidad, 'SEARCH')
         .then((respuesta) => {
             //limpiar el formulario
 			document.getElementById('IU_form').innerHTML = this.manual_form_creation();
+            this.dom.hide_element("Div_IU_form");
             if (respuesta['code'] == 'RECORDSET_DATOS'){
 				this.datos = respuesta['resource'];
 				this.atributos = Object.keys(this.datos[0]);
@@ -827,6 +893,51 @@ class alumnograduacion extends Validations {
                 document.getElementById('IU_manage_table').className = 'RECORDSET_VACIO';
             }
 			//setLang();
+        });
+    }
+
+    async ADD(){
+        await this.externalFunctions.peticionBackGeneral('form_iu', this.nombreentidad, 'ADD')
+        .then((respuesta) => {
+            if(respuesta['ok']){
+                //limipiar el formulario
+                document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+                this.dom.hide_element("Div_IU_form");
+                this.SEARCH();
+            }else{
+                //mostrar error de accion
+                this.dom.abrirModalError(respuesta['code']);
+            }
+        });
+    }
+
+    async EDIT(){
+        await this.externalFunctions.peticionBackGeneral('form_iu', this.nombreentidad, 'EDIT')
+        .then((respuesta) => {
+            if(respuesta['ok']){
+                //limipiar el formulario
+                document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+                this.dom.hide_element("Div_IU_form");
+                this.SEARCH();
+            }else{
+                //mostrar error de accion
+                this.dom.abrirModalError(respuesta['code']);
+            }
+        });
+    }
+
+    async DELETE(){
+        await this.externalFunctions.peticionBackGeneral('form_iu', this.nombreentidad, 'DELETE')
+        .then((respuesta) => {
+            if(respuesta['ok']){
+                //limpiar el formulario
+                document.getElementById('IU_form').innerHTML=this.manual_form_creation();
+                this.dom.hide_element("Div_IU_form");
+                this.SEARCH();
+            }else{
+                //mostrar error de accion
+                this.dom.abrirModalError(respuesta['code']);
+            }
         });
     }
 }
