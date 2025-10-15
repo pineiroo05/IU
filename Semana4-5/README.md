@@ -4,9 +4,11 @@ Codigo sacado a partir de verificacionET1, aqui tuvimos q meter una tabla de mue
 
 -Todos los sitios donde aparezca dom.showelement // dom.hideelement me parece completamante innecesario, y seguramente cuando tenga ganas lo cambiaré por otra cosa, pq me lía mas que otra cosa
 
--ESTA SIN ACABAR, FALTAN AUN COSAS-
-1. Funciona pero cuando le doy al + para añadir no lo añade en verdad, y por consola sale algun q otro error relacionado con el hide_element().
-2. El search funciona, pero solo con lo dado, lo otro como no lo añade no lo puede encontrar.
-3. Delete, showcurrent y edit tampoco funcionan, me sacan el mismo formulario que deberia salirme solo cuando quiero hacer add y search, pero nada mas. Me saca ademas errores tmb por consola relacionado con lo mismo.
+-Delete y showcurrent arreglados creo, era con el assign_property_value() le estaba poniendo un id erroneo.
 
-Da tmb algun problema con el setAttribute en assign_property_value
+-ESTA SIN ACABAR, FALTAN AUN COSAS-
+
+El error esta en el hide_element_form(), por el id que no lo debe pillar bien ns pq
+
+1. Funciona pero cuando le doy al + para añadir no lo añade en verdad, y por consola sale algun q otro error relacionado con el hide_element_form().
+2. El edit muestra todo bien, y parece hacer el edit correctamente, pero saca algunos errores en la consola q no acabo de pillar bien.

@@ -26,57 +26,57 @@ class alumnograduacion extends Validations {
         var form_content = `
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_alumnograduacion();">
 
-			<label class="label_login">login</label>
+			<label class="label_alumnograduacion_login">login</label>
 			<input type='text' id='alumnograduacion_login' name='alumnograduacion_login' onblur=" return entidad.ADD_alumnograduacion_login_validation();"></input>
 			<span id="span_error_alumnograduacion_login"><a id="error_alumnograduacion_login"></a></span>
 			<br>
 
-			<label class="label_password">Contraseña</label>
+			<label class="label_alumnograduacion_password">Contraseña</label>
 			<input type='text' id='alumnograduacion_password' name='alumnograduacion_password' onblur=" return entidad.ADD_alumnograduacion_password_validation();"></input>
 			<span id="span_error_alumnograduacion_password"><a id="error_alumnograduacion_password"></a></span>
 			<br>
 
-			<label class="label_nombre">Nombre</label>
+			<label class="label_alumnograduacion_nombre">Nombre</label>
 			<input type='text' id='alumnograduacion_nombre' name='alumnograduacion_nombre' onblur=" return entidad.ADD_alumnograduacion_nombre_validation();"></input>
 			<span id="span_error_alumnograduacion_nombre"><a id="error_alumnograduacion_nombre"></a></span>
 			<br>
 
-			<label class="label_apellidos">Apellidos</label>
+			<label class="label_alumnograduacion_apellidos">Apellidos</label>
 			<input type='text' id='alumnograduacion_apellidos' name='alumnograduacion_apellidos' onblur=" return entidad.ADD_alumnograduacion_apellidos_validation();"></input>
 			<span id="span_error_alumnograduacion_apellidos"><a id="error_alumnograduacion_apellidos"></a></span>
 			<br>
 
-			<label class="label_titulacion">Titulacion</label>
+			<label class="label_alumnograduacion_titulacion">Titulacion</label>
 			<input type='text' id='alumnograduacion_titulacion' name='alumnograduacion_titulacion' onblur=" return entidad.ADD_alumnograduacion_titulacion_validation();"></input>
 			<span id="span_error_alumnograduacion_titulacion"><a id="error_alumnograduacion_titulacion"></a></span>
 			<br>
 
-			<label class="label_dni">Dni</label>
+			<label class="label_alumnograduacion_dni">Dni</label>
 			<input type='text' id='alumnograduacion_dni' name='alumnograduacion_dni' onblur=" return entidad.ADD_alumnograduacion_dni_validation();""></input>
 			<span id="span_error_alumnograduacion_dni"><a id="error_alumnograduacion_dni"></a></span>
 			<br>
 			
-			<label class="label_telefono">Telefono</label>
+			<label class="label_alumnograduacion_telefono">Telefono</label>
 			<input type='text' id='alumnograduacion_telefono' name='alumnograduacion_telefono' onblur=" return entidad.ADD_alumnograduacion_telefono_validation();"></input>
 			<span id="span_error_alumnograduacion_telefono"><a id="error_alumnograduacion_telefono"></a></span>
 			<br>
 
-			<label class="label_direccion">Direccion</label>
+			<label class="label_alumnograduacion_direccion">Direccion</label>
 			<input type='text' id='alumnograduacion_direccion' name='alumnograduacion_direccion' onblur=" return entidad.ADD_alumnograduacion_direccion_validation();"></input>
 			<span id="span_error_alumnograduacion_direccion"><a id="error_alumnograduacion_direccion"></a></span>
 			<br>
 
-			<label class="label_email">Email</label>
+			<label class="label_alumnograduacion_email">Email</label>
 			<input type='text' id='alumnograduacion_email' name='alumnograduacion_email' onblur=" return entidad.ADD_alumnograduacion_email_validation();"></input>
 			<span id="span_error_alumnograduacion_email"><a id="error_alumnograduacion_email"></a></span>
 			<br>
 
-			<label id="label_foto_persona" class="label_foto_persona">Foto Persona</label>
+			<label id="label_alumnograduacion_fotoacto" class="label_foto_persona">Foto Persona</label>
 			<input type='text' id='alumnograduacion_fotoacto' name='alumnograduacion_fotoacto'></input>
 			<span id="span_error_alumnograduacion_fotoacto"><a id="error_alumnograduacion_fotoacto"></a></span>
 			<a id="link_foto_persona" href="http://193.147.87.202/ET2/filesuploaded/files_foto_persona/"><img src="./iconos/FILE.png" /></a>
 			
-			<label id="label_nuevo_foto_persona" class="label_nuevo_foto_persona">Nueva Foto Persona</label>
+			<label id="label_nuevo_alumnograduacion_fotoacto" class="label_nuevo_foto_persona">Nueva Foto Persona</label>
 			<input type='file' id='nuevo_alumnograduacion_fotoacto' name='nuevo_alumnograduacion_fotoacto'></input>
 			<span id="span_error_nuevo_alumnograduacion_fotoacto"><a id="error_nuevo_alumnograduacion_fotoacto"></a></span>
 			<br>
@@ -691,15 +691,16 @@ class alumnograduacion extends Validations {
         document.getElementById('IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';
         //onsubmit
-        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit'+this.nombreentidad+'()');
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit_'+this.nombreentidad+'()');
         //action
-        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
+        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
         //acceso al fichero de fotoacto
-        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
         //rellenar valores
         this.rellenarvaloresform(fila);
         //validaciones y campos inactivos
-        this.dom.assign_property_value('dni', 'readonly', 'true');
+        this.colocarvalidaciones('form_iu', 'EDIT');
+        this.dom.assign_property_value('alumnograduacion_dni', 'readonly', 'true');
         this.dom.assign_property_value('alumnograduacion_fotoacto', 'readonly', 'true');
         this.colocarboton('EDIT');
     }
@@ -707,12 +708,12 @@ class alumnograduacion extends Validations {
         document.getElementById('IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';
         //action
-        this.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
+        this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
         //oculto el nuevo_fotoacto
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
-        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
         //rellenar valores
-        this.dom.rellenarvaloresform(fila);
+        this.rellenarvaloresform(fila);
         //campos inactivos
         this.colocartodosreadonly('form_iu');
         this.colocarboton('DELETE');
@@ -722,7 +723,7 @@ class alumnograduacion extends Validations {
         document.getElementById('Div_IU_form').style.display='block';
         //campos no visibles
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
-        this.dom.assign_property_value('link_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
         //rellenar valores
         this.rellenarvaloresform(fila);
         //poner los campos inactivos
