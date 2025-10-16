@@ -4,8 +4,8 @@ class dom extends dom_table {
 		super()
 	}
 
-	show_element(id){
-		document.getElementById(id).style.display = 'block';
+	show_element(id, mode){
+		document.getElementById(id).style.display = mode;
 	}
 
 	hide_element(id){

@@ -80,9 +80,6 @@ class alumnograduacion extends Validations {
 			<input type='file' id='nuevo_alumnograduacion_fotoacto' name='nuevo_alumnograduacion_fotoacto'></input>
 			<span id="span_error_nuevo_alumnograduacion_fotoacto"><a id="error_nuevo_alumnograduacion_fotoacto"></a></span>
 			<br>
-
-			<input id="submit_button" type="submit" value="Submit">
-
 		</form>
 		`;
         return form_content;
@@ -666,8 +663,8 @@ class alumnograduacion extends Validations {
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.ADD();');
         //nuevo_fotoacto oculto
-        this.dom.hide_element('nuevo_alumnograduacion_fotoacto');
-        this.dom.hide_element_form('link_nuevo_alumnograduacion_fotoacto');
+        this.dom.hide_element('alumnograduacion_fotoacto');
+        this.dom.hide_element_form('alumnograduacion_fotoacto');
         //validaciones
         this.colocarvalidaciones('form_iu', 'ADD');
         this.colocarboton('ADD');
@@ -681,7 +678,7 @@ class alumnograduacion extends Validations {
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
         //nuevo_fotoacto oculto
         this.dom.hide_element('nuevo_alumnograduacion_fotoacto');
-        this.dom.hide_element_form('link_nuevo_alumnograduacion_fotoacto');
+        this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
         //validaciones
         this.colocarvalidaciones('form_iu', 'SEARCH');
         this.colocarboton('SEARCH');
@@ -769,6 +766,7 @@ class alumnograduacion extends Validations {
 
     colocarvalidaciones(idform, accion){
         let campos=document.forms[idform].elements;
+        let evento;
         for(let i=0; i<campos.length; i++){
             if((document.getElementById(campos[i].id).tagName == 'INPUT')&&(document.getElementById(campos[i].id).tagName != 'file')){
                 evento='onblur';
