@@ -333,6 +333,11 @@ class alumnograduacion extends Validations {
     }
 
     EDIT_nuevo_alumnograduacion_fotoacto_validation() {
+        let fileInput=document.getElementById('nuevo_alumnograduacion_fotoacto');
+        if(!fileInput || fileInput.files.length==0){
+            return true;
+        }
+
         if (!(this.max_size_file('nuevo_alumnograduacion_fotoacto', 2000000))) { // 2MB
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_size_file_KO');
             return "nuevo_alumnograduacion_fotoacto_max_size_file_KO";
@@ -529,24 +534,19 @@ class alumnograduacion extends Validations {
             this.SEARCH_alumnograduacion_telefono_validation() &
             this.SEARCH_alumnograduacion_dni_validation() &
             this.SEARCH_alumnograduacion_direccion_validation() &
-            this.SEARCH_alumnograduacion_email_validation())
-        result = Boolean(result);
-        return result;
-    }
-
-    SEARCH_submit_alumnograduacion() {
-        let result = (this.SEARCH_alumnograduacion_login_validation() &
-            this.SEARCH_alumnograduacion_password_validation() &
-            this.SEARCH_alumnograduacion_nombre_validation() &
-            this.SEARCH_alumnograduacion_apellidos_validation() &
-            this.SEARCH_alumnograduacion_titulacion_validation() &
-            this.SEARCH_alumnograduacion_telefono_validation() &
-            this.SEARCH_alumnograduacion_dni_validation() &
-            this.SEARCH_alumnograduacion_direccion_validation() &
             this.SEARCH_alumnograduacion_email_validation() &
             this.SEARCH_alumnograduacion_fotoacto_validation()) // Agregar esta validación
         result = Boolean(result);
         return result;
+    }
+
+    DELETE_submit_alumnograduacion(){
+        let confirmacion=confir("Quieres borrar?");
+        if(!confirmacion){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     /**
@@ -708,7 +708,7 @@ class alumnograduacion extends Validations {
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
         //oculto el nuevo_fotoacto
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
-        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
+        this.dom.assign_property_value('link_foto_persona', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_foto_persona/'+fila.foto_persona);
         //rellenar valores
         this.rellenarvaloresform(fila);
         //campos inactivos
@@ -781,6 +781,7 @@ class alumnograduacion extends Validations {
     }
 
     crearTablaDatos(datos, mostrarespecial){
+        document.getElementById('IU_manage_table').innerHTML='';
 		var misdatos = datos;
 		//recorrer todas las filas de datos y cada atributo para si tiene una funcion de transformación de valor modificarlo en el momento
 		if (mostrarespecial > 0){
@@ -814,7 +815,7 @@ class alumnograduacion extends Validations {
 	 * @param {*} atributos 
 	 */
 	crearSeleccionablecolumnas(columnasamostrar,atributos){
-		document.getElementById("seleccioncolumnas").innerHTML = '';
+		document.getElementById("seleccioncolumnas").innerHTML="";
 		for (let atributo of atributos){
 			var optionselect = document.createElement('option');
 			optionselect.className = atributo;

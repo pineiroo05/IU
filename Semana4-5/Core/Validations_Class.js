@@ -90,7 +90,7 @@ class Validations{
 	 */
 	not_exist_file(id){
 		let objfile = document.getElementById(id);
-		if (objfile.files.length == 0){
+		if (!objfile || objfile.files.length == 0){
 			return false;
 		}
 		return true;
@@ -102,6 +102,9 @@ class Validations{
 	*/
 	max_size_file(id, maxsize){
 		let objfile = document.getElementById(id);
+		if(!objfile || objfiles.files.length == 0){
+			return true; //Si no hay fichero no habria error
+		}
 		if (objfile.files[0].size>maxsize){
 			return false;
 		}
@@ -110,6 +113,9 @@ class Validations{
 
 	type_file(id, array_tipos){
 		let objfile = document.getElementById(id);
+		if(!objfile || objfile.files.length == 0){
+			return true; //No fichero no error
+		}
 		if (!(array_tipos.includes(objfile.files[0].type))){
 			return false;
 		}
@@ -118,6 +124,9 @@ class Validations{
 
 	format_name_file(id, exprreg){
 		let objfile = document.getElementById(id);
+		if(!objfile || objfile.files.length == 0){
+			return true;
+		}
 		let expresionregular = new RegExp(exprreg);
 		let valor = objfile.files[0].name;
 		return expresionregular.test(valor);
