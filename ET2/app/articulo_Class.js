@@ -50,7 +50,7 @@ class articulo extends EntidadAbstracta{
 			<br>
 
 			<label class="label_FechaPublicacionR">Fecha publicacion artículo</label>
-			<input type='text' id='FechaPublicacionR' name='FechaPublicacionR' onblur=" return entidad.ADD_FechaPublicacionR_validation();"></input>
+			<input type='date' id='FechaPublicacionR' name='FechaPublicacionR' onblur=" return entidad.ADD_FechaPublicacionR_validation();"></input>
 			<span id="span_error_FechaPublicacionR"><a id="error_FechaPublicacionR"></a></span>
 			<br>
 
@@ -63,6 +63,14 @@ class articulo extends EntidadAbstracta{
 			<input type='file' id='nuevo_FicheropdfA' name='nuevo_FicheropdfA'></input>
 			<span id="span_error_nuevo_FicheropdfA"><a id="error_nuevo_FicheropdfA"></a></span>
 			<br>
+
+            <label for="EstadoA">Estado de tramitación del artículo</label>
+            <select id="EstadoA" name="EstadoA">
+                <option value="Publicado" selected="selected">Publicado</option>
+                <option value="Enviado">Enviado</option>
+                <option value="Revision">Revision</option>
+            </select>
+            <span id="span_error_EstadoA"><a id="error_EstadoA"></a></span>
 		</form>
 		`;
         return form_content;
@@ -118,7 +126,7 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_TituloR_validation(){
-        if(!(this.validations.min_size('TituloR', 20))){
+        if(!(this.validations.min_size('TituloR', 5))){
             this.dom.mostrar_error_campo('TituloR', 'TituloR_min_size_KO');
             return "TituloR_min_size_KO";
         }
@@ -197,25 +205,18 @@ class articulo extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
     }
-    /* COMO HAY Q COMPROBAR ESTA COSA????????
+    //Revisar este carallo, ver tmb si me conviene evitar que puedan coger fechas futuras
     ADD_FechaPublicacionR_validation(){
-        if(!(this.validations.min_size('FechaPublicacionR', 1))){
-            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_min_size_KO');
-            return "FechaPublicacionR_min_size_KO";
-        }
-        if(!(this.validations.max_size('FechaPublicacionR', 4))){
-            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_max_size_KO');
-            return "FechaPublicacionR_max_size_KO";
-        }
-        if(!(this.validations.format('FechaPublicacionR', '^[0-9]*$'))){
-            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_format_KO');
-            return "FechaPublicacionR_format_KO";
+        const valor=document.getElementById('FechaPublicacionR').value;
+        if(valor==="" || valor===null){
+            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacion_vacio_KO');
+            return "FechaPublicacion_vacio_KO";
         }
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
-    }*/
+    }
     ADD_nuevo_FicheropdfA_validation(){
-        if(!(this.not_exist_file('nuevo_FicheropdfA'))){
+        if(!(this.validations.not_exist_file('nuevo_FicheropdfA'))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_not_exist_file_KO');
             return "nuevo_FicheropdfA_not_exist_file_KO";
         }
@@ -223,7 +224,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_max_size_file_KO');
             return "nuevo_FicheropdfA_max_size_file_KO";
         }
-        if(!(this.type_file('nuevo_FicheropdfA', ['application/pdf']))){
+        if(!(this.validations.type_file('nuevo_FicheropdfA', ['application/pdf']))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_type_file_KO');
             return "nuevo_ficheropdfA_type_file_KO";
         }

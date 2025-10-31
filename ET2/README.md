@@ -22,3 +22,8 @@ Uncaught TypeError: can't access property "remove", document.getElementById(...)
     colocartodosreadonly http://127.0.0.1:5500/Core/Dom_table_Class.js:232
     createForm_DELETE http://127.0.0.1:5500/app/alumnograduacion_Class.js:705
     onclick http://127.0.0.1:5500/:1
+
+
+
+TEMA VALIDACIONES
+- En issn, hay un formato muy especifico. Ver como implementar una funcion personalize.

@@ -194,25 +194,119 @@ let articulo_def_tests=Array(
     Array('articulo', 'TituloA', 'input', 30, 'formato OK', 'EDIT', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
     Array('articulo', 'TituloA', 'input', 31, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('articulo', 'TituloA', 'input', 32, 'tamaño maximo OK', 'ADD', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloA', 'input', 33, 'formato OK', 'ADD', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
-    Array('articulo', 'TituloA', 'input', 34, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('articulo', 'TituloA', 'input', 32, 'tamaño maximo OK', 'SEARCH', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloA', 'input', 33, 'formato OK', 'SEARCH', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
+    Array('articulo', 'TituloA', 'input', 34, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //TituloR
+    Array('articulo', 'TituloR', 'input', 35, 'tamaño minimo OK', 'ADD', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
+    Array('articulo', 'TituloR', 'input', 36, 'tamaño maximo OK', 'ADD', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 37, 'formato OK', 'ADD', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 38, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    //ISSN
+    Array('articulo', 'TituloR', 'input', 39, 'tamaño minimo OK', 'EDIT', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
+    Array('articulo', 'TituloR', 'input', 40, 'tamaño maximo OK', 'EDIT', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 41, 'formato OK', 'EDIT', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 42, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
+    Array('articulo', 'TituloR', 'input', 43, 'tamaño maximo OK', 'SEARCH', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 44, 'formato OK', 'SEARCH', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 45, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //ISSN --> Aqui ojo, habria que retocar las validaciones de formato para cuando haga el metodo personalize
+    Array('articulo', 'ISSN', 'input', 46, 'tamaño minimo OK', 'ADD', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 47, 'tamaño maximo Ok', 'ADD', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 48, 'formato OK', 'ADD', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 49, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'ISSN', 'input', 50, 'tamaño minimo OK', 'EDIT', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 51, 'tamaño maximo Ok', 'EDIT', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 52, 'formato OK', 'EDIT', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 53, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'ISSN', 'input', 54, 'tamaño maximo OK', 'SEARCH', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 55, 'formato OK', 'SEARCH', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 56, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
     //VolumenR
+    Array('articulo', 'VolumenR', 'input', 57, 'tamaño minimo OK', 'ADD', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
+    Array('articulo', 'VolumenR', 'input', 58, 'tamaño maximo OK', 'ADD', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 59, 'formato OK', 'ADD', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 60, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
+    Array('articulo', 'VolumenR', 'input', 61, 'tamaño minimo OK', 'EDIT', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
+    Array('articulo', 'VolumenR', 'input', 62, 'tamaño maximo OK', 'EDIT', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 63, 'formato OK', 'EDIT', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 64, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'VolumenR', 'input', 65, 'tamaño maximo OK', 'SEARCH', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 66, 'formato OK', 'SEARCH', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 67, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
     //PagIniA
+    Array('articulo', 'PagIniA', 'input', 68, 'tamaño minimo OK', 'ADD', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagIniA', 'input', 69, 'tamaño maximo OK', 'ADD', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 70, 'formato OK', 'ADD', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 71, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    //PagFinA
+    Array('articulo', 'PagIniA', 'input', 72, 'tamaño minimo OK', 'EDIT', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagIniA', 'input', 73, 'tamaño maximo OK', 'EDIT', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 74, 'formato OK', 'EDIT', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 75, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    //FechaPublicacionR
+    Array('articulo', 'PagIniA', 'input', 76, 'tamaño maximo OK', 'SEARCH', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 77, 'formato OK', 'SEARCH', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 78, 'todo correcto', 'SEARCH', true, 'Valor correcto'),    
 
+    //PagFinA --> meter validacion para que compruebe que la pag es mayor/igual a la inicial
+    Array('articulo', 'PagFinA', 'input', 79, 'tamaño minimo OK', 'ADD', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagFinA', 'input', 80, 'tamaño maximo OK', 'ADD', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 81, 'formato OK', 'ADD', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 82, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 83, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'PagFinA', 'input', 84, 'tamaño minimo OK', 'EDIT', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagFinA', 'input', 85, 'tamaño maximo OK', 'EDIT', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 86, 'formato OK', 'EDIT', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 87, 'final mayor/igual a inicial OK', 'EDIT', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 88, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'PagFinA', 'input', 89, 'tamaño maximo OK', 'SEARCH', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 90, 'formato OK', 'SEARCH', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    //Haria falta esto?? Array('articulo', 'PagFinA', 'input', 91, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 91, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    //FechaPublicacionR -> tendría que ver como hacer el search con un text normal
+    Array('articulo', 'FechaPublicacionR', 'input', 92, 'contenido OK', 'ADD', 'FechaPublicacionR_vacio_KO', 'Error, el campo de fecha no puede quedar vacio'),
+    Array('articulo', 'FechaPublicacionR', 'input', 93, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'FechaPublicacionR', 'input', 94, 'contenido OK', 'EDIT', 'FechaPublicacionR_vacio_KO', 'Error, el campo de fecha no puede quedar vacio'),
+    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'EDIT', true, 'Valor correcto'),
     //FicheropdfA
-
+    Array('articulo', 'FicheropdfA', 'input', 96, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
+    Array('articulo', 'FicheropdfA', 'input', 97, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
+    Array('articulo', 'FicheropdfA', 'input', 98, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
     //nuevo_FicheropdfA
+    Array('articulo', 'FicheropdfA', 'inputfile', 99, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 100, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 101, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 102, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 103, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('articulo', 'FicheropdfA', 'inputfile', 104, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 105, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    
+    //EstadoA --> esto lo hago con un desplegable. POR DEFECTO ESTA PUBLICADO
+    Array('articulo', 'EstadoA', 'select', 108, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 109, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'EstadoA', 'select', 110, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 111, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'EstadoA', 'select', 112, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 113, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 );
 
 let alumnograduacion_tests_fields=Array(
