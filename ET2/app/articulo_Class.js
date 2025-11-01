@@ -1,9 +1,9 @@
 class articulo extends EntidadAbstracta{
     constructor(esTest){
         super();
-        this.columnasamostrar=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheroPdfA'];
-        this.mostrarespecial=['FicheroPdfA'];
-        this.attributes=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheroPdfA', 'nuevo_FicheroPdfA'];
+        this.columnasamostrar=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA'];
+        this.mostrarespecial=['FicheropdfA'];
+        this.attributes=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA', 'nuevo_FicheropdfA'];
     }
     manual_form_creation(){
         var form_content = `
@@ -54,7 +54,7 @@ class articulo extends EntidadAbstracta{
 			<span id="span_error_FechaPublicacionR"><a id="error_FechaPublicacionR"></a></span>
 			<br>
 
-			<label id="label_FicheropdfA" class="label_foto_persona">Fichero articulo</label>
+			<label id="label_FicheropdfA" class="label_FicheropdfA">Fichero articulo</label>
 			<input type='text' id='FicheropdfA' name='FicheropdfA'></input>
 			<span id="span_error_FicheropdfA"><a id="error_FicheropdfA"></a></span>
 			<a id="link_FicheropdfA" href="http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/"><img src="./iconos/FILE.png" /></a>
@@ -226,11 +226,11 @@ class articulo extends EntidadAbstracta{
         }
         if(!(this.validations.type_file('nuevo_FicheropdfA', ['application/pdf']))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_type_file_KO');
-            return "nuevo_ficheropdfA_type_file_KO";
+            return "nuevo_FicheropdfA_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7-20}$'))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_format_name_file_KO');
-            return "nuevo_ficheropdfA_format_name_file_KO";
+            return "nuevo_FicheropdfA_format_name_file_KO";
         }
         this.dom.mostrar_exito_campo('FicheropdfA');
         return true;
@@ -285,6 +285,9 @@ class articulo extends EntidadAbstracta{
     EDIT_PagFinA_validation(){
         return this.ADD_PagFinA_validation();
     }
+    EDIT_FechaPublicacionR_validation(){
+        return this.ADD_FechaPublicacionR_validation();
+    }
     EDIT_nuevo_FicheropdfA_validation(){
         let fichero=document.getElementById('nuevo_FicheropdfA');
         if(!fichero||fichero.files.length==0){
@@ -296,11 +299,11 @@ class articulo extends EntidadAbstracta{
         }
         if(!(this.validations.type_file('nuevo_FicheropdfA', ['application/pdf']))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_type_file_KO');
-            return "nuevo_ficheropdfA_type_file_KO";
+            return "nuevo_FicheropdfA_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7-20}$'))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_format_name_file_KO');
-            return "nuevo_ficheropdfA_format_name_file_KO";
+            return "nuevo_FicheropdfA_format_name_file_KO";
         }
         this.dom.mostrar_exito_campo('FicheropdfA');
         return true;
@@ -317,6 +320,7 @@ class articulo extends EntidadAbstracta{
             this.EDIT_VolumenR_validation()&
             this.EDIT_PagIniA_validation()&
             this.EDIT_PagFinA_validation()&
+            this.EDIT_FechaPublicacionR_validation()&
             this.EDIT_nuevo_FicheropdfA_validation()&
             this.EDIT_EstadoA_validation())
         result=Boolean(result);
@@ -589,7 +593,7 @@ class articulo extends EntidadAbstracta{
 			case 'FicheropdfA':
 				var link = 'error';
 				if (valorentrada !== ''){
-					link = valorentrada+`  <a class="link_FicheropdfA" href="http://193.147.87.202/ET2/filesuploaded/files_FicheroPdfA/`+valorentrada+`"><img src="./iconos/FILE.png" /></a>`;
+					link = valorentrada+`  <a class="link_FicheropdfA" href="http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/`+valorentrada+`"><img src="./iconos/FILE.png" /></a>`;
 				}
 				return link;
 				break;

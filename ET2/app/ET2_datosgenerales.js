@@ -1,1 +1,1 @@
-datosgenerales=Array('Enrique Piñeiro Lopez', 'ET2', 9);
+datosgenerales=Array('Enrique Piñeiro Lopez', 'ET2', 11);

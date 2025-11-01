@@ -152,12 +152,12 @@ class alumnograduacion extends EntidadAbstracta {
 
     ADD_alumnograduacion_titulacion_validation() {
         const seleccion=document.querySelector('input[name="alumnograduacion_titulacion"]:checked');
-        const valorActual=seleccion.value.toUpperCase();
-        const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
         if(!seleccion){
             this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
             return "alumnograduacion_titulacion_format_KO";
         }
+        const valorActual=seleccion.value.toUpperCase();
+        const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
         if(!valoresPermitidos.includes(valorActual)){
             this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
             return "alumnograduacion_titulacion_format_KO";
@@ -284,7 +284,7 @@ class alumnograduacion extends EntidadAbstracta {
             this.ADD_alumnograduacion_dni_validation() &
             this.ADD_alumnograduacion_direccion_validation() &
             this.ADD_alumnograduacion_email_validation() &
-            this.ADD_nuevo_alumnograduacion_fotoacto_validation())
+            this.ADD_nuevo_alumnograduacion_fotoacto_validation());
         result = Boolean(result);
         return result;
     }
@@ -335,7 +335,7 @@ class alumnograduacion extends EntidadAbstracta {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_size_file_KO');
             return "nuevo_alumnograduacion_fotoacto_max_size_file_KO";
         }
-        if (!(this.type_file('nuevo_alumnograduacion_fotoacto', ['image/jpeg']))) {
+        if (!(this.validations.type_file('nuevo_alumnograduacion_fotoacto', ['image/jpeg']))) {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_type_file_KO');
             return "nuevo_alumnograduacion_fotoacto_type_file_KO";
         }
@@ -357,7 +357,7 @@ class alumnograduacion extends EntidadAbstracta {
             this.EDIT_alumnograduacion_dni_validation() &
             this.EDIT_alumnograduacion_direccion_validation() &
             this.EDIT_alumnograduacion_email_validation() &
-            this.EDIT_nuevo_alumnograduacion_fotoacto_validation())
+            this.EDIT_nuevo_alumnograduacion_fotoacto_validation());
         result = Boolean(result);
         return result;
     }
@@ -525,7 +525,7 @@ class alumnograduacion extends EntidadAbstracta {
             this.SEARCH_alumnograduacion_dni_validation() &
             this.SEARCH_alumnograduacion_direccion_validation() &
             this.SEARCH_alumnograduacion_email_validation() &
-            this.SEARCH_alumnograduacion_fotoacto_validation())
+            this.SEARCH_alumnograduacion_fotoacto_validation());
         result = Boolean(result);
         return result;
     }

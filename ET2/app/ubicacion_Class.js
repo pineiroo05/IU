@@ -15,7 +15,7 @@ class ubicacion extends EntidadAbstracta{
 			<br>
 
 			<label class="label_site_latitud">Latitud WGS84</label>
-			<input type='text' id='site_latitiud' name='site_latitud' onblur=" return entidad.ADD_site_latitud_validation();"></input>
+			<input type='text' id='site_latitud' name='site_latitud' onblur=" return entidad.ADD_site_latitud_validation();"></input>
 			<span id="span_error_site_latitud"><a id="error_site_latitud"></a></span>
 			<br>
 
@@ -35,7 +35,7 @@ class ubicacion extends EntidadAbstracta{
 			<br>
 
 			<label class="label_site_provider_login">Login proveedor sitio</label>
-			<input type='text' id='site_provider_login' name='site_provider_login' onblur=" return entidad.ADD_site_provider_login_validation();""></input>
+			<input type='text' id='site_provider_login' name='site_provider_login' onblur=" return entidad.ADD_site_provider_login_validation();"></input>
 			<span id="span_error_site_provider_login"><a id="error_site_provider_login"></a></span>
 			<br>
 			
@@ -85,11 +85,11 @@ class ubicacion extends EntidadAbstracta{
 
     //Validaciones add
     ADD_id_site_validation(){
-        if(!(this.validations.min_size('id_site', 2))){
+        if(!(this.validations.min_size('id_site', 3))){
             this.dom.mostrar_error_campo('id_site', 'id_site_min_size_KO');
             return "id_site_min_size_KO";
         }
-        if(!(this.validations.max_size('id_site', 'id_site_max_size_KO'))){
+        if(!(this.validations.max_size('id_site', 11))){
             this.dom.mostrar_error_campo('id_site', 'id_site_max_size_KO');
             return "id_site_max_size_KO";
         }
@@ -100,16 +100,16 @@ class ubicacion extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('id_site');
         return true;
     }
-    /* Sabe dios lo q hay q hacer aqui
+    // Sabe dios lo q hay q hacer aqui
     ADD_site_latitud_validation(){
-
+        return true;
     }
     ADD_site_longitud_validation(){
-
+        return true;
     }
     ADD_site_altitude_validation(){
-
-    }*/
+        return true;
+    }
     ADD_site_locality_validation(){
         if(!(this.validations.min_size('site_locality', 3))){
             this.dom.mostrar_error_campo('site_locality', 'site_locality_min_size_KO');
@@ -123,7 +123,7 @@ class ubicacion extends EntidadAbstracta{
             this.dom.mostrar_error_campo('site_locality', 'site_locality_format_KO');
             return "site_locality_format_KO";
         }
-        this.mostrar_exito_campo('site_locality');
+        this.dom.mostrar_exito_campo('site_locality');
         return true;
     }
     ADD_site_provider_login_validation(){
@@ -139,7 +139,7 @@ class ubicacion extends EntidadAbstracta{
             this.dom.mostrar_error_campo('site_provider_login', 'site_provider_login_format_KO');
             return "site_provider_login_format_KO";
         }
-        this.mostrar_exito_campo('site_provider_login');
+        this.dom.mostrar_exito_campo('site_provider_login');
         return true;
     }
     //Mirar de simplificar todos estos metodos en uno solo
@@ -226,6 +226,9 @@ class ubicacion extends EntidadAbstracta{
     //Faltan latitud, longitud y altitud
     ADD_submit_ubicacion(){
         let result=(this.ADD_id_site_validation()&
+            this.ADD_site_latitud_validation()&
+            this.ADD_site_longitud_validation()&
+            this.ADD_site_altitude_validation()&
             this.ADD_site_locality_validation()&
             this.ADD_site_provider_login_validation()&
             this.ADD_nuevo_site_north_photo_validation()&
@@ -240,7 +243,7 @@ class ubicacion extends EntidadAbstracta{
     EDIT_id_site_validation(){
         return this.ADD_id_site_validation();
     }
-    /*EDIT_site_latitud_validation(){
+    EDIT_site_latitud_validation(){
         return this.ADD_site_latitud_validation();
     }
     EDIT_site_longitud_validation(){
@@ -248,7 +251,7 @@ class ubicacion extends EntidadAbstracta{
     }
     EDIT_site_altitude_validation(){
         return this.ADD_site_altitude_validation();
-    }*/
+    }
     EDIT_site_locality_validation(){
         return this.ADD_site_locality_validation();
     }
