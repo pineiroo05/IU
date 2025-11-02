@@ -63,16 +63,19 @@ class ubicacion extends EntidadAbstracta{
 			<input type='text' id='site_north_photo' name='site_north_photo'></input>
 			<span id="span_error_site_north_photo"><a id="error_site_north_photo"></a></span>
 			<a id="link_north_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_north_photo/"><img src="./iconos/FILE.png" /></a>
-			
+			<br>
+
 			<label id="label_site_south_photo" class="label_site_south_photo">Foto hacia el sur</label>
 			<input type='text' id='site_south_photo' name='site_south_photo'></input>
 			<span id="span_error_site_south_photo"><a id="error_site_south_photo"></a></span>
 			<a id="link_south_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_south_photo/"><img src="./iconos/FILE.png" /></a>
+            <br>
 
             <label id="label_site_east_photo" class="label_site_east_photo">Foto hacia el este</label>
 			<input type='text' id='site_east_photo' name='site_east_photo'></input>
 			<span id="span_error_site_east_photo"><a id="error_site_east_photo"></a></span>
 			<a id="link_east_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_east_photo/"><img src="./iconos/FILE.png" /></a>
+            <br>
 
             <label id="label_site_west_photo" class="label_site_west_photo">Foto hacia el oeste</label>
 			<input type='text' id='site_west_photo' name='site_west_photo'></input>
@@ -85,7 +88,7 @@ class ubicacion extends EntidadAbstracta{
 
     //Validaciones add
     ADD_id_site_validation(){
-        if(!(this.validations.min_size('id_site', 3))){
+        if(!(this.validations.min_size('id_site', 1))){
             this.dom.mostrar_error_campo('id_site', 'id_site_min_size_KO');
             return "id_site_min_size_KO";
         }
@@ -100,14 +103,51 @@ class ubicacion extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('id_site');
         return true;
     }
-    // Sabe dios lo q hay q hacer aqui
     ADD_site_latitud_validation(){
+        const latitud=document.getElementById('site_latitud').value.trim();
+        if(!latitud || latitud ===''){
+            this.dom.mostrar_error_campo('site_latitud', 'site_latitud_vacio_KO');
+            return "site_latitud_vacio_KO";
+        }
+        if(!this.personalize_coord_formato_rango(latitud, 'latitud')){
+            this.mostrar_error_campo('site_latitud', 'site_latitud_formato_rango_KO');
+            return "site_latitud_formato_rango_KO";
+        }
+        if(!this.personalize_coord_decimales(latitud, 6)){
+            this.dom.mostrar_error_campo('site_latitud', 'site_latitud_decimales_KO');
+            return "site_latitud_decimales_KO";
+        }
+        this.dom.mostrar_exito_campo('site_latitud');
         return true;
     }
     ADD_site_longitud_validation(){
+        const longitud=document.getElementById('site_longitud').value.trim();
+        if(!longitud || longitud ===''){
+            this.dom.mostrar_error_campo('site_longitud', 'site_longitud_vacio_KO');
+            return "site_longitud_vacio_KO";
+        }
+        if(!this.personalize_coord_formato_rango(longitud, 'longitud')){
+            this.mostrar_error_campo('site_longitud', 'site_longitud_formato_rango_KO');
+            return "site_longitud_formato_rango_KO";
+        }
+        if(!this.personalize_coord_decimales(longitud, 6)){
+            this.dom.mostrar_error_campo('site_lonitud', 'site_longitud_decimales_KO');
+            return "site_longitud_decimales_KO";
+        }
+        this.dom.mostrar_exito_campo('site_longitud');
         return true;
     }
     ADD_site_altitude_validation(){
+        const altitud=document.getElementById('site_altitude').value.trim();
+        if(!altitud || altitud===''){
+            this.dom.mostrar_error_campo('site_altitude', 'site_altitude_vacio_KO');
+            return "site_altitude_vacio_KO";
+        }
+        if(!this.personalize_altitude_coord_formato_rango(altitud)){
+            this.dom.mostrar_error_campo('site_altitude', 'site_altitude_formato_rango_KO');
+            return "site_altitude_formato_rango_KO";
+        }
+        this.dom.mostrar_exito_campo('site_altitude');
         return true;
     }
     ADD_site_locality_validation(){
@@ -471,6 +511,40 @@ class ubicacion extends EntidadAbstracta{
         }else{
             return true;
         }
+    }
+
+    //metodos personalize para latitud, altitud y longitud
+    personalize_coord_formato_rango(valor, tipo){
+        const expRegular=/^-?[0-9]+(\.[0-9]+)?$/;
+        if(!expRegular.test(valor)){
+            return false;
+        }
+        const num=parseFloat(valor);
+        if(isNaN(num)){
+            return false;
+        }
+        if(tipo==='latitud'){
+            return num>=-90 && num<=90;
+        }else if(tipo==='longitud'){
+            return num>=-180 && num<=180;
+        }
+        return false;
+    }
+    personalize_altitude_coord_formato_rango(valor){
+        const expRegular=/-?[0-9]+$/;
+        if(!expRegular.test(valor)){
+            return false;
+        }
+        const num=parseInt(valor);
+        return num>=-11000 && num<=9000;
+    }
+    personalize_coord_decimales(valor, maxDecimales){
+        const partes=valor.toString().split('.');
+        if(partes.length===1){
+            //Si el nº de partes en las que se dividio el valor del campo == 1, entonces es un entero y ya cumple
+            return true;
+        }
+        return partes[1].length <= maxDecimales;
     }
 
     //Creacion formularios

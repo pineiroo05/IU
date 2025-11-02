@@ -11,8 +11,16 @@ PROBLEMA GENERAL, el fichero que tengo subido, luego como si no se mantuviese su
 
 --articulo: el fallo general de arriba, por lo demas a simple vista esta bien.
 
---ubicacion esta sin revisar del todo.
+--ubicacion 
+- add y edit bien
+- search, delete y showcurrent me dan el sig error.
+Uncaught TypeError: can't access property "style", document.getElementById(...) is null
+    hide_element http://127.0.0.1:5500/Core/Dom_Class.js:21
+    hide_element_form http://127.0.0.1:5500/Core/Dom_Class.js:33
+    createForm_SHOWCURRENT http://127.0.0.1:5500/app/ubicacion_Class.js:565
+    onclick http://127.0.0.1:5500/:1
+-OJO -> falta por meter las validaciones del search en altitud, longitud y latitud, tanto en ubicacion_Class, como en ET2_infotest.
+-OJO 2.0 -> como seria el rango maximo y minimo de valores que acepta altitude?????
 
-TEMA VALIDACIONES, en issn, hay un formato muy especifico. Ver como implementar una funcion personalize. Lo mismo en latitud, altitud y longitud.
-
+TEMA VALIDACIONES, en issn, hay un formato muy especifico. Ver como implementar una funcion personalize.
 OJO -> DEBERIA HECHARLE UN VISTAZO A LAS EXPRESIONES REGULARES DE LAS VALIDACIONES DE FORMATO

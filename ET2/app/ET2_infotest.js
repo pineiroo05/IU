@@ -336,109 +336,133 @@ let ubicacion_def_tests=Array(
     Array('ubicacion', 'id_site', 'input', 10, 'formato OK', 'SEARCH', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
     Array('ubicacion', 'id_site', 'input', 11, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
-    //site_latitud
+    //site_latitud FALTA SEARCH
+    Array('ubicacion', 'site_latitud', 'input', 12, 'valor añadido OK', 'ADD', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_latitud', 'input', 13, 'formato y rangos OK', 'ADD', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
+    Array('ubicacion', 'site_latitud', 'input', 14, 'longitud decimales OK', 'ADD', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_latitud', 'input', 15, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    //site_longitud
+    Array('ubicacion', 'site_latitud', 'input', 16, 'valor añadido OK', 'EDIT', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_latitud', 'input', 17, 'formato y rangos OK', 'EDIT', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
+    Array('ubicacion', 'site_latitud', 'input', 18, 'longitud decimales OK', 'EDIT', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_latitud', 'input', 19, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    //site_altitude
+    //site_longitud FALTA SEARCH
+    Array('ubicacion', 'site_longitud', 'input', 23, 'valor añadido OK', 'ADD', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_longitud', 'input', 24, 'formato y rangos OK', 'ADD', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_longitud', 'input', 25, 'longitud decimales OK', 'ADD', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_longitud', 'input', 26, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('ubicacion', 'site_longitud', 'input', 27, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_longitud', 'input', 28, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_longitud', 'input', 29, 'longitud decimales OK', 'EDIT', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_longitud', 'input', 30, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    //site_altitude FALTA SEARCH
+    Array('ubicacion', 'site_altitude', 'input', 34, 'valor añadido OK', 'ADD', 'site_altitude_vacio_KO', 'Error, la altitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_altitude', 'input', 35, 'formato y rangos OK', 'ADD', 'site_altitude_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros entre -11000 y 9000'),
+    Array('ubicacion', 'site_altitude', 'input', 36, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    
+    Array('ubicacion', 'site_altitude', 'input', 37, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_altitude', 'input', 38, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_altitude', 'input', 39, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
     //site_locality
-    Array('ubicacion', 'site_locality', 'input', 45, 'tamaño minimo OK', 'ADD', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 46, 'tamaño maximo OK', 'ADD', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 47, 'formato OK', 'ADD', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 48, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('ubicacion', 'site_locality', 'input', 44, 'tamaño minimo OK', 'ADD', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 45, 'tamaño maximo OK', 'ADD', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 46, 'formato OK', 'ADD', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 47, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('ubicacion', 'site_locality', 'input', 49, 'tamaño minimo OK', 'EDIT', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 50, 'tamaño maximo OK', 'EDIT', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 51, 'formato OK', 'EDIT', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 52, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_locality', 'input', 53, 'tamaño maximo OK', 'SEARCH', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 54, 'formato OK', 'SEARCH', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 55, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_locality', 'input', 48, 'tamaño minimo OK', 'EDIT', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 49, 'tamaño maximo OK', 'EDIT', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 50, 'formato OK', 'EDIT', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 51, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    
+    Array('ubicacion', 'site_locality', 'input', 52, 'tamaño maximo OK', 'SEARCH', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 53, 'formato OK', 'SEARCH', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 54, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //site_provider_login
-    Array('ubicacion', 'site_provider_login', 'input', 56, 'tamaño minimo OK', 'ADD', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 57, 'tamaño maximo OK', 'ADD', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 58, 'formato OK', 'ADD', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 59, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('ubicacion', 'site_provider_login', 'input', 55, 'tamaño minimo OK', 'ADD', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 56, 'tamaño maximo OK', 'ADD', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 57, 'formato OK', 'ADD', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 58, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('ubicacion', 'site_provider_login', 'input', 59, 'tamaño minimo OK', 'EDIT', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 60, 'tamaño maximo OK', 'EDIT', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 61, 'formato OK', 'EDIT', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 62, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('ubicacion', 'site_provider_login', 'input', 60, 'tamaño minimo OK', 'EDIT', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 61, 'tamaño maximo OK', 'EDIT', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 62, 'formato OK', 'EDIT', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 63, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_provider_login', 'input', 64, 'tamaño maximo OK', 'SEARCH', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 65, 'formato OK', 'SEARCH', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 66, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_provider_login', 'input', 63, 'tamaño maximo OK', 'SEARCH', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 64, 'formato OK', 'SEARCH', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 65, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //site_north_photo
-    Array('ubicacion', 'site_north_photo', 'input', 67, 'tamaño maximo OK', 'SEARCH', 'site_north_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_north_photo', 'input', 68, 'formato OK', 'SEARCH', 'site_north_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_north_photo', 'input', 69, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_north_photo', 'input', 66, 'tamaño maximo OK', 'SEARCH', 'site_north_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_north_photo', 'input', 67, 'formato OK', 'SEARCH', 'site_north_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_north_photo', 'input', 68, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //nuevo_site_north_photo
-    Array('ubicacion', 'site_north_photo', 'inputfile', 70, 'existe el fichero', 'ADD', 'nuevo_site_north_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 71, 'tamaño maximo OK', 'ADD', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 72, 'tipo fichero OK', 'ADD', 'nuevo_site_north_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 73, 'nombre OK', 'ADD', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 74, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 69, 'existe el fichero', 'ADD', 'nuevo_site_north_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 70, 'tamaño maximo OK', 'ADD', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 71, 'tipo fichero OK', 'ADD', 'nuevo_site_north_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 72, 'nombre OK', 'ADD', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 73, 'todo correcto', 'ADD', true, 'Fichero correcto'),
     
-    Array('ubicacion', 'site_north_photo', 'inputfile', 75, 'tamaño maximo OK', 'EDIT', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 76, 'tipo fichero OK', 'EDIT', 'nuevo_site_north_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 77, 'nombre OK', 'EDIT', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 78, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 74, 'tamaño maximo OK', 'EDIT', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 75, 'tipo fichero OK', 'EDIT', 'nuevo_site_north_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 76, 'nombre OK', 'EDIT', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 77, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
 
     //site_south_photo
-    Array('ubicacion', 'site_south_photo', 'input', 79, 'tamaño maximo OK', 'SEARCH', 'site_south_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_south_photo', 'input', 80, 'formato OK', 'SEARCH', 'site_south_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_south_photo', 'input', 81, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_south_photo', 'input', 78, 'tamaño maximo OK', 'SEARCH', 'site_south_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_south_photo', 'input', 79, 'formato OK', 'SEARCH', 'site_south_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_south_photo', 'input', 80, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //nuevo_site_south_photo
-    Array('ubicacion', 'site_south_photo', 'inputfile', 82, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 83, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 84, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 85, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 86, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 81, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 82, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 83, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 84, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 85, 'todo correcto', 'ADD', true, 'Fichero correcto'),
     
-    Array('ubicacion', 'site_south_photo', 'inputfile', 87, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 88, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 89, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 90, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 86, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 87, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 88, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 89, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
 
     //site_east_photo
-    Array('ubicacion', 'site_east_photo', 'input', 91, 'tamaño maximo OK', 'SEARCH', 'site_east_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_east_photo', 'input', 92, 'formato OK', 'SEARCH', 'site_east_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_east_photo', 'input', 93, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_east_photo', 'input', 90, 'tamaño maximo OK', 'SEARCH', 'site_east_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_east_photo', 'input', 91, 'formato OK', 'SEARCH', 'site_east_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_east_photo', 'input', 92, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //nuevo_site_east_photo
-    Array('ubicacion', 'site_south_photo', 'inputfile', 94, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 95, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 96, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 97, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 98, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 93, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 94, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 95, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 96, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 97, 'todo correcto', 'ADD', true, 'Fichero correcto'),
     
-    Array('ubicacion', 'site_south_photo', 'inputfile', 99, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 100, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 101, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 102, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 98, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 99, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 100, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 101, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
 
     //site_west_photo
-    Array('ubicacion', 'site_west_photo', 'input', 103, 'tamaño maximo OK', 'SEARCH', 'site_west_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_west_photo', 'input', 104, 'formato OK', 'SEARCH', 'site_west_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_west_photo', 'input', 105, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('ubicacion', 'site_west_photo', 'input', 102, 'tamaño maximo OK', 'SEARCH', 'site_west_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_west_photo', 'input', 103, 'formato OK', 'SEARCH', 'site_west_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_west_photo', 'input', 104, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //nuevo_site_west_photo
-    Array('ubicacion', 'site_west_photo', 'inputfile', 106, 'existe el fichero', 'ADD', 'nuevo_site_west_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 107, 'tamaño maximo OK', 'ADD', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 108, 'tipo fichero OK', 'ADD', 'nuevo_site_west_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 109, 'nombre OK', 'ADD', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 110, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 105, 'existe el fichero', 'ADD', 'nuevo_site_west_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 106, 'tamaño maximo OK', 'ADD', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 107, 'tipo fichero OK', 'ADD', 'nuevo_site_west_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 108, 'nombre OK', 'ADD', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 109, 'todo correcto', 'ADD', true, 'Fichero correcto'),
     
-    Array('ubicacion', 'site_west_photo', 'inputfile', 111, 'tamaño maximo OK', 'EDIT', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 112, 'tipo fichero OK', 'EDIT', 'nuevo_site_west_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 113, 'nombre OK', 'EDIT', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 114, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 110, 'tamaño maximo OK', 'EDIT', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 111, 'tipo fichero OK', 'EDIT', 'nuevo_site_west_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 112, 'nombre OK', 'EDIT', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 113, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
 );
 
 let alumnograduacion_tests_fields=Array(
