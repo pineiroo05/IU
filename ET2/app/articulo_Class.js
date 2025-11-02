@@ -50,7 +50,7 @@ class articulo extends EntidadAbstracta{
 			<br>
 
 			<label class="label_FechaPublicacionR">Fecha publicacion artículo</label>
-			<input type='date' id='FechaPublicacionR' name='FechaPublicacionR' onblur=" return entidad.ADD_FechaPublicacionR_validation();"></input>
+			<input type='text' id='FechaPublicacionR' name='FechaPublicacionR' onblur=" return entidad.ADD_FechaPublicacionR_validation();"></input>
 			<span id="span_error_FechaPublicacionR"><a id="error_FechaPublicacionR"></a></span>
 			<br>
 
@@ -65,7 +65,7 @@ class articulo extends EntidadAbstracta{
 			<br>
 
             <label for="EstadoA">Estado de tramitación del artículo</label>
-            <select id="EstadoA" name="EstadoA">
+            <select id="EstadoA" name="EstadoA" onblur=" return entidad.ADD_EstadoA_validation();">
                 <option value="Publicado" selected="selected">Publicado</option>
                 <option value="Enviado">Enviado</option>
                 <option value="Revision">Revision</option>
@@ -78,7 +78,7 @@ class articulo extends EntidadAbstracta{
 
     //Validaciones add
     ADD_CodigoA_validation(){
-        if(!(this.validations.min_size('CodigoA', 11))){
+        if(!(this.validations.min_size('CodigoA', 1))){
             this.dom.mostrar_error_campo('CodigoA', 'CodigoA_min_size_KO');
             return "CodigoA_min_size_KO";
         }
@@ -205,14 +205,21 @@ class articulo extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
     }
-    //Revisar este carallo, ver tmb si me conviene evitar que puedan coger fechas futuras
+    //Ver tmb si me conviene evitar que puedan coger fechas futuras
     ADD_FechaPublicacionR_validation(){
-        const valor=document.getElementById('FechaPublicacionR').value;
-        if(valor==="" || valor===null){
-            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacion_vacio_KO');
-            return "FechaPublicacion_vacio_KO";
+        if(!(this.validations.min_size('FechaPublicacionR', 10))){
+            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_min_size_KO');
+            return "FechaPublicacion_min_size_KO";
         }
-        this.dom.mostrar_exito_campo('PagFinA');
+        if(!(this.validations.max_size('FechaPublicacionR', 10))){
+            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_max_size_KO');
+            return "FechaPublicacionR_max_size_KO";
+        }
+        if(!(this.validations.format('FechaPublicacionR', '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$'))){
+            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_format_KO');
+            return "FechaPublicacionR_format_KO";
+        }
+        this.dom.mostrar_exito_campo('FechaPublicacionR');
         return true;
     }
     ADD_nuevo_FicheropdfA_validation(){
@@ -228,7 +235,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_type_file_KO');
             return "nuevo_FicheropdfA_type_file_KO";
         }
-        if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7-20}$'))){
+        if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7,20}$'))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_format_name_file_KO');
             return "nuevo_FicheropdfA_format_name_file_KO";
         }
@@ -254,6 +261,7 @@ class articulo extends EntidadAbstracta{
             this.ADD_VolumenR_validation()&
             this.ADD_PagIniA_validation()&
             this.ADD_PagFinA_validation()&
+            this.ADD_FechaPublicacionR_validation()&
             this.ADD_nuevo_FicheropdfA_validation()&
             this.ADD_EstadoA_validation())
         result=Boolean(result);
@@ -301,7 +309,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_type_file_KO');
             return "nuevo_FicheropdfA_type_file_KO";
         }
-        if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7-20}$'))){
+        if(!(this.validations.format_name_file('nuevo_FicheropdfA', '^[a-zA-Z0-9._-]{7,20}$'))){
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_format_name_file_KO');
             return "nuevo_FicheropdfA_format_name_file_KO";
         }
@@ -440,23 +448,18 @@ class articulo extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
     }
-    /* COMO HAY Q COMPROBAR ESTA COSA????????
     SEARCH_FechaPublicacionR_validation(){
-        if(!(this.validations.min_size('FechaPublicacionR', 1))){
-            this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_min_size_KO');
-            return "FechaPublicacionR_min_size_KO";
-        }
-        if(!(this.validations.max_size('FechaPublicacionR', 4))){
+        if(!(this.validations.max_size('FechaPublicacionR', 10))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_max_size_KO');
             return "FechaPublicacionR_max_size_KO";
         }
-        if(!(this.validations.format('FechaPublicacionR', '^[0-9]*$'))){
+        if(!(this.validations.format('FechaPublicacionR', '^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$'))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_format_KO');
             return "FechaPublicacionR_format_KO";
         }
-        this.dom.mostrar_exito_campo('PagFinA');
+        this.dom.mostrar_exito_campo('FechaPublicacionR');
         return true;
-    }*/
+    }
     SEARCH_FicheropdfA_validation(){
         if(document.getElementById('FicheropdfA').value !== ''){
             if(!(this.validations.max_size('FicheropdfA', 20))){
@@ -536,7 +539,6 @@ class articulo extends EntidadAbstracta{
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
     }
-    //como no tengo fecha, aqui no tendría que cambiarle el formato a nada
     createForm_EDIT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';
@@ -544,11 +546,11 @@ class articulo extends EntidadAbstracta{
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit_'+this.nombreentidad+'()');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
-        //acceso al fichero de fotoacto
+        //acceso
         this.dom.assign_property_value('nuevo_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
+        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
-        //validaciones y campos inactivos
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
         //this.dom.assign_property_value('alumnograduacion_dni', 'readonly', 'true');
         this.dom.assign_property_value('FicheropdfA', 'readonly', 'true');
@@ -559,10 +561,11 @@ class articulo extends EntidadAbstracta{
         document.getElementById('Div_IU_form').style.display='block';
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
-        //oculto el nuevo_fotoacto
+
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
+        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
@@ -575,6 +578,7 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('nuevo_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
+        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
@@ -597,6 +601,13 @@ class articulo extends EntidadAbstracta{
 				}
 				return link;
 				break;
+            case 'FechaPublicacionR':
+                var a=valorentrada.split('-');
+                var dia=a[2];
+                var mes=a[1];
+                var ano=a[0];
+                return dia+'/'+mes+'/'+ano;
+                break;
 			case 'default':
 				alert('no existe mostrar especial para ese atributo');
 				break;

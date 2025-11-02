@@ -1,20 +1,18 @@
 ERRORES ENCONTRADOS:
+
+PROBLEMA GENERAL, el fichero que tengo subido, luego como si no se mantuviese subido al entrar en los formularios. Casi seguro pq no esta cogiendo la fila.
+
 --alumnograduacion
-- Falla todo POR CULPA DEL RADIO, cuando titulacion era text no daba fallos
-- En el momento de hacer el submit en add, y en segun que campos en el edit me sale una ventanita y no hace lo de añadir.
-- Search, busca bien pero saca esto:
-Uncaught TypeError: can't access property "value", document.getElementById(...) is null
-    SEARCH_alumnograduacion_titulacion_validation http://127.0.0.1:5500/app/alumnograduacion_Class.js:427
-    onchange http://127.0.0.1:5500/:1
+- En el momento de hacer el submit en add me sale una ventanita y no hace lo de añadir.
+- Edit tiene un fallo rarisimo, resulta que si intentas editar algo que incumplia formato ya de antes, sale la ventanita del add.
 
---en articulo la fecha luego nunca se muestra en los menus de edicion, borrado. Tampoco van los delete y edit. Sospecho que sea algo relacionado con ids.
-- El add por lo que sea ya no me deja meter el pdf.
+- OJO CON EL RADIO, PQ ME ESTA DANDO FALLO POR TODOS LADOS, AHORA ESTA COMO TEXT, PERO CUANDO LO CAMBIO FALLA MUCHISIMO.
+- OJO CON EL RADIO 2.0, hay un metodo que es rellenarvalorradio en dom_table
 
---ubicacion mas o menos igual que en alumnograduacion.
+--articulo: el fallo general de arriba, por lo demas a simple vista esta bien.
 
-TEMA VALIDACIONES
-- En issn, hay un formato muy especifico. Ver como implementar una funcion personalize.
+--ubicacion esta sin revisar del todo.
 
-POR LO QUE SEA EN LOS TEST DE DATOS NO PILLA LOS METODOS DE CADA ENTIDAD
+TEMA VALIDACIONES, en issn, hay un formato muy especifico. Ver como implementar una funcion personalize. Lo mismo en latitud, altitud y longitud.
 
 OJO -> DEBERIA HECHARLE UN VISTAZO A LAS EXPRESIONES REGULARES DE LAS VALIDACIONES DE FORMATO

@@ -83,6 +83,7 @@ let alumnograduacion_def_tests=Array(
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 60, 'formato nif OK', 'EDIT', 'alumnograduacion_dni_format_nif_KO', 'Error, la cadena introducida no es valida, la letra no se corresponde para esa combinacion de numeros'),
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 61, 'formato nie OK', 'EDIT', 'alumnograduacion_dni_format_nie_KO', 'Error, la cadena introducida no es valida, la letra no se corresponde para esa combinacion de numeros'),
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 62, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 63, 'tamaño maximo OK', 'SEARCH', 'alumnograduacion_dni_max_size_KO', 'El dni/nie es demasiado largo. Debe tener 9 caracteres.'),
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 64, 'formato OK', 'SEARCH', 'alumnograduacion_dni_format_KO', 'Error, la cadena introducida no es valida. El formato debe ser 12345678X(para nif) o x1234567x(para nie'),
     Array('alumnograduacion', 'alumnograduacion_dni', 'input', 65, 'formato nif OK', 'SEARCH', 'alumnograduacion_dni_format_nif_KO', 'Error, la cadena introducida no es valida, la letra no se corresponde para esa combinacion de numeros'),
@@ -154,8 +155,8 @@ let alumnograduacion_def_tests=Array(
 
 let articulo_def_tests=Array(
     //CodigoA
-    Array('articulo', 'CodigoA', 'input', 1, 'tamaño minimo OK', 'ADD', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener 11 caracteres'),
-    Array('articulo', 'CodigoA', 'input', 2, 'tamaño maximo OK', 'ADD', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener 11 caracteres'),
+    Array('articulo', 'CodigoA', 'input', 1, 'tamaño minimo OK', 'ADD', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener minimo 1 caracter'),
+    Array('articulo', 'CodigoA', 'input', 2, 'tamaño maximo OK', 'ADD', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener como maximo 11 caracteres'),
     Array('articulo', 'CodigoA', 'input', 3, 'formato OK', 'ADD', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
     Array('articulo', 'CodigoA', 'input', 4, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
@@ -277,36 +278,46 @@ let articulo_def_tests=Array(
     Array('articulo', 'PagFinA', 'input', 91, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
     //FechaPublicacionR -> tendría que ver como hacer el search con un text normal
-    Array('articulo', 'FechaPublicacionR', 'input', 92, 'contenido OK', 'ADD', 'FechaPublicacionR_vacio_KO', 'Error, el campo de fecha no puede quedar vacio'),
-    Array('articulo', 'FechaPublicacionR', 'input', 93, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'FechaPublicacionR', 'input', 92, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 93, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 94, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'FechaPublicacionR', 'input', 94, 'contenido OK', 'EDIT', 'FechaPublicacionR_vacio_KO', 'Error, el campo de fecha no puede quedar vacio'),
-    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-    //FicheropdfA
-    Array('articulo', 'FicheropdfA', 'input', 96, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
-    Array('articulo', 'FicheropdfA', 'input', 97, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
-    Array('articulo', 'FicheropdfA', 'input', 98, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-    //nuevo_FicheropdfA
-    Array('articulo', 'FicheropdfA', 'inputfile', 99, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 100, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 101, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 102, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 103, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('articulo', 'FechaPublicacionR', 'input', 96, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 97, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 98, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 99, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'FechaPublicacionR', 'input', 100, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 101, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 102, 'todo correcto', 'ADD', true, 'Valor correcto'),
     
-    Array('articulo', 'FicheropdfA', 'inputfile', 104, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 105, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    //FicheropdfA
+    Array('articulo', 'FicheropdfA', 'input', 103, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
+    Array('articulo', 'FicheropdfA', 'input', 104, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
+    Array('articulo', 'FicheropdfA', 'input', 105, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
+    //nuevo_FicheropdfA
+    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 108, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 109, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 110, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('articulo', 'FicheropdfA', 'inputfile', 111, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 112, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 113, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 114, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
     
     //EstadoA --> esto lo hago con un desplegable. POR DEFECTO ESTA PUBLICADO
-    Array('articulo', 'EstadoA', 'select', 108, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 109, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 115, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 116, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'EstadoA', 'select', 110, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 111, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 118, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 119, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('articulo', 'EstadoA', 'select', 112, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 113, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 120, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 121, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 );
 
 let ubicacion_def_tests=Array(

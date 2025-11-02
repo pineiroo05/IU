@@ -227,7 +227,6 @@ class dom_table {
 	 * @param {String} idform id del formulario
 	 */
 	colocartodosreadonly(idform){
-		
 		this.dejarsoloenumchecked(this.getNameCheck(idform,'checkbox'));
 		this.dejarsoloenumchecked(this.getNameCheck(idform,'radio'));
 
