@@ -3,8 +3,8 @@ ERRORES ENCONTRADOS:
 PROBLEMA GENERAL, el fichero que tengo subido, luego como si no se mantuviese subido al entrar en los formularios. Casi seguro pq no esta cogiendo la fila.
 
 --alumnograduacion
-- En el momento de hacer el submit en add me sale una ventanita y no hace lo de añadir.
 - Edit tiene un fallo rarisimo, resulta que si intentas editar algo que incumplia formato ya de antes, sale la ventanita del add.
+- En delete me pasa lo del fallo general de arriba.
 
 - OJO CON EL RADIO, PQ ME ESTA DANDO FALLO POR TODOS LADOS, AHORA ESTA COMO TEXT, PERO CUANDO LO CAMBIO FALLA MUCHISIMO.
 - OJO CON EL RADIO 2.0, hay un metodo que es rellenarvalorradio en dom_table

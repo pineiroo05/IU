@@ -153,318 +153,6 @@ let alumnograduacion_def_tests=Array(
     Array('alumnograduacion', 'alumnograduacion_fotoacto', 'inputfile', 112, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
 );
 
-let articulo_def_tests=Array(
-    //CodigoA
-    Array('articulo', 'CodigoA', 'input', 1, 'tamaño minimo OK', 'ADD', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener minimo 1 caracter'),
-    Array('articulo', 'CodigoA', 'input', 2, 'tamaño maximo OK', 'ADD', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener como maximo 11 caracteres'),
-    Array('articulo', 'CodigoA', 'input', 3, 'formato OK', 'ADD', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
-    Array('articulo', 'CodigoA', 'input', 4, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'CodigoA', 'input', 5, 'tamaño minimo OK', 'EDIT', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener 11 caracteres'),
-    Array('articulo', 'CodigoA', 'input', 6, 'tamaño maximo OK', 'EDIT', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener 11 caracteres'),
-    Array('articulo', 'CodigoA', 'input', 7, 'formato OK', 'EDIT', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
-    Array('articulo', 'CodigoA', 'input', 8, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'CodigoA', 'input', 9, 'tamaño maximo OK', 'SEARCH', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener 11 caracteres'),
-    Array('articulo', 'CodigoA', 'input', 10, 'formato OK', 'SEARCH', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
-    Array('articulo', 'CodigoA', 'input', 11, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //AutoresA
-    Array('articulo', 'AutoresA', 'input', 12, 'tamaño minimo OK', 'ADD', 'AutoresA_min_size_KO', 'Error, el nombre de los autores es demasiado corto. Deberia tener como minimo 5 caracteres'),
-    Array('articulo', 'AutoresA', 'input', 13, 'tamaño maximo OK', 'ADD', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 200 caracteres'),
-    Array('articulo', 'AutoresA', 'input', 15, 'formato OK', 'ADD', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
-    Array('articulo', 'AutoresA', 'input', 16, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'AutoresA', 'input', 17, 'tamaño minimo OK', 'EDIT', 'AutoresA_min_size_KO', 'Error, el nombre de los autores es demasiado corto. Deberia tener como minimo 5 caracteres'),
-    Array('articulo', 'AutoresA', 'input', 18, 'tamaño maximo OK', 'EDIT', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 200 caracteres'),
-    Array('articulo', 'AutoresA', 'input', 19, 'formato OK', 'EDIT', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
-    Array('articulo', 'AutoresA', 'input', 20, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'AutoresA', 'input', 21, 'tamaño maximo OK', 'SEARCH', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 5 caracteres'),
-    Array('articulo', 'AutoresA', 'input', 22, 'formato OK', 'SEARCH', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
-    Array('articulo', 'AutoresA', 'input', 23, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //TituloA
-    Array('articulo', 'TituloA', 'input', 24, 'tamaño minimo OK', 'ADD', 'TituloA_min_size_KO', 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres'),
-    Array('articulo', 'TituloA', 'input', 25, 'tamaño maximo OK', 'ADD', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloA', 'input', 26, 'formato OK', 'ADD', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
-    Array('articulo', 'TituloA', 'input', 27, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'TituloA', 'input', 28, 'tamaño minimo OK', 'EDIT', 'TituloA_min_size_KO', 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres'),
-    Array('articulo', 'TituloA', 'input', 29, 'tamaño maximo OK', 'EDIT', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloA', 'input', 30, 'formato OK', 'EDIT', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
-    Array('articulo', 'TituloA', 'input', 31, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'TituloA', 'input', 32, 'tamaño maximo OK', 'SEARCH', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloA', 'input', 33, 'formato OK', 'SEARCH', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
-    Array('articulo', 'TituloA', 'input', 34, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //TituloR
-    Array('articulo', 'TituloR', 'input', 35, 'tamaño minimo OK', 'ADD', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
-    Array('articulo', 'TituloR', 'input', 36, 'tamaño maximo OK', 'ADD', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloR', 'input', 37, 'formato OK', 'ADD', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
-    Array('articulo', 'TituloR', 'input', 38, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'TituloR', 'input', 39, 'tamaño minimo OK', 'EDIT', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
-    Array('articulo', 'TituloR', 'input', 40, 'tamaño maximo OK', 'EDIT', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloR', 'input', 41, 'formato OK', 'EDIT', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
-    Array('articulo', 'TituloR', 'input', 42, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'TituloR', 'input', 43, 'tamaño maximo OK', 'SEARCH', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
-    Array('articulo', 'TituloR', 'input', 44, 'formato OK', 'SEARCH', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
-    Array('articulo', 'TituloR', 'input', 45, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //ISSN --> Aqui ojo, habria que retocar las validaciones de formato para cuando haga el metodo personalize
-    Array('articulo', 'ISSN', 'input', 46, 'tamaño minimo OK', 'ADD', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
-    Array('articulo', 'ISSN', 'input', 47, 'tamaño maximo Ok', 'ADD', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
-    Array('articulo', 'ISSN', 'input', 48, 'formato OK', 'ADD', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
-    Array('articulo', 'ISSN', 'input', 49, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'ISSN', 'input', 50, 'tamaño minimo OK', 'EDIT', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
-    Array('articulo', 'ISSN', 'input', 51, 'tamaño maximo Ok', 'EDIT', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
-    Array('articulo', 'ISSN', 'input', 52, 'formato OK', 'EDIT', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
-    Array('articulo', 'ISSN', 'input', 53, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'ISSN', 'input', 54, 'tamaño maximo OK', 'SEARCH', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
-    Array('articulo', 'ISSN', 'input', 55, 'formato OK', 'SEARCH', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
-    Array('articulo', 'ISSN', 'input', 56, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-    
-    //VolumenR
-    Array('articulo', 'VolumenR', 'input', 57, 'tamaño minimo OK', 'ADD', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
-    Array('articulo', 'VolumenR', 'input', 58, 'tamaño maximo OK', 'ADD', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
-    Array('articulo', 'VolumenR', 'input', 59, 'formato OK', 'ADD', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
-    Array('articulo', 'VolumenR', 'input', 60, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'VolumenR', 'input', 61, 'tamaño minimo OK', 'EDIT', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
-    Array('articulo', 'VolumenR', 'input', 62, 'tamaño maximo OK', 'EDIT', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
-    Array('articulo', 'VolumenR', 'input', 63, 'formato OK', 'EDIT', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
-    Array('articulo', 'VolumenR', 'input', 64, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'VolumenR', 'input', 65, 'tamaño maximo OK', 'SEARCH', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
-    Array('articulo', 'VolumenR', 'input', 66, 'formato OK', 'SEARCH', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
-    Array('articulo', 'VolumenR', 'input', 67, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-    
-    //PagIniA
-    Array('articulo', 'PagIniA', 'input', 68, 'tamaño minimo OK', 'ADD', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagIniA', 'input', 69, 'tamaño maximo OK', 'ADD', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 70, 'formato OK', 'ADD', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 71, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'PagIniA', 'input', 72, 'tamaño minimo OK', 'EDIT', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagIniA', 'input', 73, 'tamaño maximo OK', 'EDIT', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 74, 'formato OK', 'EDIT', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 75, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'PagIniA', 'input', 76, 'tamaño maximo OK', 'SEARCH', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 77, 'formato OK', 'SEARCH', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 78, 'todo correcto', 'SEARCH', true, 'Valor correcto'),    
-
-    //PagFinA --> meter validacion para que compruebe que la pag es mayor/igual a la inicial
-    Array('articulo', 'PagFinA', 'input', 79, 'tamaño minimo OK', 'ADD', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagFinA', 'input', 80, 'tamaño maximo OK', 'ADD', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 81, 'formato OK', 'ADD', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagFinA', 'input', 82, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 83, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'PagFinA', 'input', 84, 'tamaño minimo OK', 'EDIT', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagFinA', 'input', 85, 'tamaño maximo OK', 'EDIT', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 86, 'formato OK', 'EDIT', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagFinA', 'input', 87, 'final mayor/igual a inicial OK', 'EDIT', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 88, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'PagFinA', 'input', 89, 'tamaño maximo OK', 'SEARCH', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 90, 'formato OK', 'SEARCH', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    //Haria falta esto?? Array('articulo', 'PagFinA', 'input', 91, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 91, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    //FechaPublicacionR -> tendría que ver como hacer el search con un text normal
-    Array('articulo', 'FechaPublicacionR', 'input', 92, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 93, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 94, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
-    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'FechaPublicacionR', 'input', 96, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 97, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 98, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
-    Array('articulo', 'FechaPublicacionR', 'input', 99, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'FechaPublicacionR', 'input', 100, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 101, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
-    Array('articulo', 'FechaPublicacionR', 'input', 102, 'todo correcto', 'ADD', true, 'Valor correcto'),
-    
-    //FicheropdfA
-    Array('articulo', 'FicheropdfA', 'input', 103, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
-    Array('articulo', 'FicheropdfA', 'input', 104, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
-    Array('articulo', 'FicheropdfA', 'input', 105, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-    
-    //nuevo_FicheropdfA
-    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 108, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 109, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 110, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('articulo', 'FicheropdfA', 'inputfile', 111, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 112, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 113, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 114, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
-    
-    //EstadoA --> esto lo hago con un desplegable. POR DEFECTO ESTA PUBLICADO
-    Array('articulo', 'EstadoA', 'select', 115, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 116, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('articulo', 'EstadoA', 'select', 118, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 119, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('articulo', 'EstadoA', 'select', 120, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 121, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-);
-
-let ubicacion_def_tests=Array(
-    //id_site
-    Array('ubicacion', 'id_site', 'input', 1, 'tamaño minimo OK', 'ADD', 'id_site_min_size_KO', 'Error, el identificador del sitio es demasiado corto. Debe tener mas de 3 caracteres'),
-    Array('ubicacion', 'id_site', 'input', 2, 'tamaño maximo OK', 'ADD', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
-    Array('ubicacion', 'id_site', 'input', 3, 'formato OK', 'ADD', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
-    Array('ubicacion', 'id_site', 'input', 4, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('ubicacion', 'id_site', 'input', 5, 'tamaño minimo OK', 'EDIT', 'id_site_min_size_KO', 'Error, el identificador del sitio es demasiado corto. Debe tener mas de 3 caracteres'),
-    Array('ubicacion', 'id_site', 'input', 6, 'tamaño maximo OK', 'EDIT', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
-    Array('ubicacion', 'id_site', 'input', 7, 'formato OK', 'EDIT', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
-    Array('ubicacion', 'id_site', 'input', 8, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('ubicacion', 'id_site', 'input', 9, 'tamaño maximo OK', 'SEARCH', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
-    Array('ubicacion', 'id_site', 'input', 10, 'formato OK', 'SEARCH', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
-    Array('ubicacion', 'id_site', 'input', 11, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //site_latitud FALTA SEARCH
-    Array('ubicacion', 'site_latitud', 'input', 12, 'valor añadido OK', 'ADD', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_latitud', 'input', 13, 'formato y rangos OK', 'ADD', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
-    Array('ubicacion', 'site_latitud', 'input', 14, 'longitud decimales OK', 'ADD', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
-    Array('ubicacion', 'site_latitud', 'input', 15, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_latitud', 'input', 16, 'valor añadido OK', 'EDIT', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_latitud', 'input', 17, 'formato y rangos OK', 'EDIT', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
-    Array('ubicacion', 'site_latitud', 'input', 18, 'longitud decimales OK', 'EDIT', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
-    Array('ubicacion', 'site_latitud', 'input', 19, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    //site_longitud FALTA SEARCH
-    Array('ubicacion', 'site_longitud', 'input', 23, 'valor añadido OK', 'ADD', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_longitud', 'input', 24, 'formato y rangos OK', 'ADD', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
-    Array('ubicacion', 'site_longitud', 'input', 25, 'longitud decimales OK', 'ADD', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
-    Array('ubicacion', 'site_longitud', 'input', 26, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_longitud', 'input', 27, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_longitud', 'input', 28, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
-    Array('ubicacion', 'site_longitud', 'input', 29, 'longitud decimales OK', 'EDIT', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
-    Array('ubicacion', 'site_longitud', 'input', 30, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    //site_altitude FALTA SEARCH
-    Array('ubicacion', 'site_altitude', 'input', 34, 'valor añadido OK', 'ADD', 'site_altitude_vacio_KO', 'Error, la altitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_altitude', 'input', 35, 'formato y rangos OK', 'ADD', 'site_altitude_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros entre -11000 y 9000'),
-    Array('ubicacion', 'site_altitude', 'input', 36, 'todo correcto', 'ADD', true, 'Valor correcto'),
-    
-    Array('ubicacion', 'site_altitude', 'input', 37, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
-    Array('ubicacion', 'site_altitude', 'input', 38, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
-    Array('ubicacion', 'site_altitude', 'input', 39, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    //site_locality
-    Array('ubicacion', 'site_locality', 'input', 44, 'tamaño minimo OK', 'ADD', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 45, 'tamaño maximo OK', 'ADD', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 46, 'formato OK', 'ADD', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 47, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_locality', 'input', 48, 'tamaño minimo OK', 'EDIT', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 49, 'tamaño maximo OK', 'EDIT', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 50, 'formato OK', 'EDIT', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 51, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-    
-    Array('ubicacion', 'site_locality', 'input', 52, 'tamaño maximo OK', 'SEARCH', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
-    Array('ubicacion', 'site_locality', 'input', 53, 'formato OK', 'SEARCH', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
-    Array('ubicacion', 'site_locality', 'input', 54, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //site_provider_login
-    Array('ubicacion', 'site_provider_login', 'input', 55, 'tamaño minimo OK', 'ADD', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 56, 'tamaño maximo OK', 'ADD', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 57, 'formato OK', 'ADD', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 58, 'todo correcto', 'ADD', true, 'Valor correcto'),
-    Array('ubicacion', 'site_provider_login', 'input', 59, 'tamaño minimo OK', 'EDIT', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 60, 'tamaño maximo OK', 'EDIT', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 61, 'formato OK', 'EDIT', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 62, 'todo correcto', 'EDIT', true, 'Valor correcto'),
-
-    Array('ubicacion', 'site_provider_login', 'input', 63, 'tamaño maximo OK', 'SEARCH', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
-    Array('ubicacion', 'site_provider_login', 'input', 64, 'formato OK', 'SEARCH', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
-    Array('ubicacion', 'site_provider_login', 'input', 65, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //site_north_photo
-    Array('ubicacion', 'site_north_photo', 'input', 66, 'tamaño maximo OK', 'SEARCH', 'site_north_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_north_photo', 'input', 67, 'formato OK', 'SEARCH', 'site_north_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_north_photo', 'input', 68, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //nuevo_site_north_photo
-    Array('ubicacion', 'site_north_photo', 'inputfile', 69, 'existe el fichero', 'ADD', 'nuevo_site_north_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 70, 'tamaño maximo OK', 'ADD', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 71, 'tipo fichero OK', 'ADD', 'nuevo_site_north_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 72, 'nombre OK', 'ADD', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 73, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('ubicacion', 'site_north_photo', 'inputfile', 74, 'tamaño maximo OK', 'EDIT', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 75, 'tipo fichero OK', 'EDIT', 'nuevo_site_north_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 76, 'nombre OK', 'EDIT', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_north_photo', 'inputfile', 77, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
-
-    //site_south_photo
-    Array('ubicacion', 'site_south_photo', 'input', 78, 'tamaño maximo OK', 'SEARCH', 'site_south_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_south_photo', 'input', 79, 'formato OK', 'SEARCH', 'site_south_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_south_photo', 'input', 80, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //nuevo_site_south_photo
-    Array('ubicacion', 'site_south_photo', 'inputfile', 81, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 82, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 83, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 84, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 85, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('ubicacion', 'site_south_photo', 'inputfile', 86, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 87, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 88, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 89, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
-
-    //site_east_photo
-    Array('ubicacion', 'site_east_photo', 'input', 90, 'tamaño maximo OK', 'SEARCH', 'site_east_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_east_photo', 'input', 91, 'formato OK', 'SEARCH', 'site_east_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_east_photo', 'input', 92, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //nuevo_site_east_photo
-    Array('ubicacion', 'site_south_photo', 'inputfile', 93, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 94, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 95, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 96, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 97, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('ubicacion', 'site_south_photo', 'inputfile', 98, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 99, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 100, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_south_photo', 'inputfile', 101, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
-
-    //site_west_photo
-    Array('ubicacion', 'site_west_photo', 'input', 102, 'tamaño maximo OK', 'SEARCH', 'site_west_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
-    Array('ubicacion', 'site_west_photo', 'input', 103, 'formato OK', 'SEARCH', 'site_west_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
-    Array('ubicacion', 'site_west_photo', 'input', 104, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
-
-    //nuevo_site_west_photo
-    Array('ubicacion', 'site_west_photo', 'inputfile', 105, 'existe el fichero', 'ADD', 'nuevo_site_west_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 106, 'tamaño maximo OK', 'ADD', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 107, 'tipo fichero OK', 'ADD', 'nuevo_site_west_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 108, 'nombre OK', 'ADD', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 109, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('ubicacion', 'site_west_photo', 'inputfile', 110, 'tamaño maximo OK', 'EDIT', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 111, 'tipo fichero OK', 'EDIT', 'nuevo_site_west_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 112, 'nombre OK', 'EDIT', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
-    Array('ubicacion', 'site_west_photo', 'inputfile', 113, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
-);
-
 let alumnograduacion_tests_fields=Array(
     //login
     Array('alumnograduacion', 'alumnograduacion_login', 1, 1, 'ADD', [{alumnograduacion_login:'aaa'}], 'alumnograduacion_login_min_size_KO'),
@@ -759,4 +447,488 @@ let alumnograduacion_tests_files=Array(
     Array('alumnograduacion', 'nuevo_alumnograduacion_fotoacto', 111, 11, 'EDIT', 'nombre OK', [{format_name_file:'nómbre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'nuevo_alumnograduacion_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'nuevo_alumnograduacion_fotoacto', 111, 12, 'EDIT', 'nombre OK', [{format_name_file:'n ombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], 'nuevo_alumnograduacion_fotoacto_format_name_file_KO'),
     Array('alumnograduacion', 'nuevo_alumnograduacion_fotoacto', 112, 13, 'EDIT', 'todo correcto', [{format_name_file:'nombre.jpg'}, {type_file:'image/jpeg'}, {max_size_file:2000000}], true),
+);
+
+let articulo_def_tests=Array(
+    //CodigoA
+    Array('articulo', 'CodigoA', 'input', 1, 'tamaño minimo OK', 'ADD', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener minimo 1 caracter'),
+    Array('articulo', 'CodigoA', 'input', 2, 'tamaño maximo OK', 'ADD', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener como maximo 11 caracteres'),
+    Array('articulo', 'CodigoA', 'input', 3, 'formato OK', 'ADD', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
+    Array('articulo', 'CodigoA', 'input', 4, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'CodigoA', 'input', 5, 'tamaño minimo OK', 'EDIT', 'CodigoA_min_size_KO', 'Error, el codigo es demasiado corto. Debe tener 11 caracteres'),
+    Array('articulo', 'CodigoA', 'input', 6, 'tamaño maximo OK', 'EDIT', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener 11 caracteres'),
+    Array('articulo', 'CodigoA', 'input', 7, 'formato OK', 'EDIT', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
+    Array('articulo', 'CodigoA', 'input', 8, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'CodigoA', 'input', 9, 'tamaño maximo OK', 'SEARCH', 'CodigoA_max_size_KO', 'Error, el codigo es demasiado largo. Debe tener 11 caracteres'),
+    Array('articulo', 'CodigoA', 'input', 10, 'formato OK', 'SEARCH', 'CodigoA_format_KO', 'Error, el codigo del articulo solo acepta caracteres numericos'),
+    Array('articulo', 'CodigoA', 'input', 11, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //AutoresA
+    Array('articulo', 'AutoresA', 'input', 12, 'tamaño minimo OK', 'ADD', 'AutoresA_min_size_KO', 'Error, el nombre de los autores es demasiado corto. Deberia tener como minimo 5 caracteres'),
+    Array('articulo', 'AutoresA', 'input', 13, 'tamaño maximo OK', 'ADD', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 200 caracteres'),
+    Array('articulo', 'AutoresA', 'input', 14, 'formato OK', 'ADD', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
+    Array('articulo', 'AutoresA', 'input', 15, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'AutoresA', 'input', 16, 'tamaño minimo OK', 'EDIT', 'AutoresA_min_size_KO', 'Error, el nombre de los autores es demasiado corto. Deberia tener como minimo 5 caracteres'),
+    Array('articulo', 'AutoresA', 'input', 17, 'tamaño maximo OK', 'EDIT', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 200 caracteres'),
+    Array('articulo', 'AutoresA', 'input', 18, 'formato OK', 'EDIT', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
+    Array('articulo', 'AutoresA', 'input', 19, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'AutoresA', 'input', 20, 'tamaño maximo OK', 'SEARCH', 'AutoresA_max_size_KO', 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 5 caracteres'),
+    Array('articulo', 'AutoresA', 'input', 21, 'formato OK', 'SEARCH', 'CodigoA_format_KO', 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç'),
+    Array('articulo', 'AutoresA', 'input', 22, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //TituloA
+    Array('articulo', 'TituloA', 'input', 23, 'tamaño minimo OK', 'ADD', 'TituloA_min_size_KO', 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres'),
+    Array('articulo', 'TituloA', 'input', 24, 'tamaño maximo OK', 'ADD', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloA', 'input', 25, 'formato OK', 'ADD', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
+    Array('articulo', 'TituloA', 'input', 26, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'TituloA', 'input', 27, 'tamaño minimo OK', 'EDIT', 'TituloA_min_size_KO', 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres'),
+    Array('articulo', 'TituloA', 'input', 28, 'tamaño maximo OK', 'EDIT', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloA', 'input', 29, 'formato OK', 'EDIT', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
+    Array('articulo', 'TituloA', 'input', 30, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'TituloA', 'input', 31, 'tamaño maximo OK', 'SEARCH', 'TituloA_max_size_KO', 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloA', 'input', 32, 'formato OK', 'SEARCH', 'TituloA_format_KO', 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ'),
+    Array('articulo', 'TituloA', 'input', 33, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //TituloR
+    Array('articulo', 'TituloR', 'input', 34, 'tamaño minimo OK', 'ADD', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
+    Array('articulo', 'TituloR', 'input', 35, 'tamaño maximo OK', 'ADD', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 36, 'formato OK', 'ADD', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 37, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'TituloR', 'input', 38, 'tamaño minimo OK', 'EDIT', 'TituloR_min_size_KO', 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres'),
+    Array('articulo', 'TituloR', 'input', 39, 'tamaño maximo OK', 'EDIT', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 40, 'formato OK', 'EDIT', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 41, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'TituloR', 'input', 42, 'tamaño maximo OK', 'SEARCH', 'TituloR_max_size_KO', 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres'),
+    Array('articulo', 'TituloR', 'input', 43, 'formato OK', 'SEARCH', 'TituloR_format_KO', 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos'),
+    Array('articulo', 'TituloR', 'input', 44, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //ISSN --> Aqui ojo, habria que retocar las validaciones de formato para cuando haga el metodo personalize
+    Array('articulo', 'ISSN', 'input', 45, 'tamaño minimo OK', 'ADD', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 46, 'tamaño maximo Ok', 'ADD', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 47, 'formato OK', 'ADD', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 48, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'ISSN', 'input', 49, 'tamaño minimo OK', 'EDIT', 'ISSN_min_size_KO', 'Error, el issn no puede tener menos de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 50, 'tamaño maximo Ok', 'EDIT', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 51, 'formato OK', 'EDIT', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 52, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'ISSN', 'input', 53, 'tamaño maximo OK', 'SEARCH', 'ISSN_max_size_KO', 'Error, el issn no puede tener mas de 13 caracteres'),
+    Array('articulo', 'ISSN', 'input', 54, 'formato OK', 'SEARCH', 'ISSN_format_KO', 'Error, el issn solo puede tener una cadena de 13 caracteres numericos'),
+    Array('articulo', 'ISSN', 'input', 55, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
+    //VolumenR
+    Array('articulo', 'VolumenR', 'input', 56, 'tamaño minimo OK', 'ADD', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
+    Array('articulo', 'VolumenR', 'input', 57, 'tamaño maximo OK', 'ADD', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 58, 'formato OK', 'ADD', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 59, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'VolumenR', 'input', 60, 'tamaño minimo OK', 'EDIT', 'VolumenR_min_size_KO', 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1'),
+    Array('articulo', 'VolumenR', 'input', 61, 'tamaño maximo OK', 'EDIT', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 62, 'formato OK', 'EDIT', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 63, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'VolumenR', 'input', 64, 'tamaño maximo OK', 'SEARCH', 'VolumenR_max_size_KO', 'Error, el volumen es demasiado grande. No puede superar al 9999'),
+    Array('articulo', 'VolumenR', 'input', 65, 'formato OK', 'SEARCH', 'VolumenR_format_KO', 'Error, el volumen solo acepta numericos y alfabeticos'),
+    Array('articulo', 'VolumenR', 'input', 66, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
+    //PagIniA
+    Array('articulo', 'PagIniA', 'input', 67, 'tamaño minimo OK', 'ADD', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagIniA', 'input', 68, 'tamaño maximo OK', 'ADD', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 69, 'formato OK', 'ADD', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 70, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'PagIniA', 'input', 71, 'tamaño minimo OK', 'EDIT', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagIniA', 'input', 72, 'tamaño maximo OK', 'EDIT', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 73, 'formato OK', 'EDIT', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 74, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'PagIniA', 'input', 75, 'tamaño maximo OK', 'SEARCH', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagIniA', 'input', 76, 'formato OK', 'SEARCH', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 77, 'todo correcto', 'SEARCH', true, 'Valor correcto'),    
+
+    //PagFinA --> meter validacion para que compruebe que la pag es mayor/igual a la inicial
+    Array('articulo', 'PagFinA', 'input', 78, 'tamaño minimo OK', 'ADD', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagFinA', 'input', 79, 'tamaño maximo OK', 'ADD', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 80, 'formato OK', 'ADD', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 81, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 82, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'PagFinA', 'input', 83, 'tamaño minimo OK', 'EDIT', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
+    Array('articulo', 'PagFinA', 'input', 84, 'tamaño maximo OK', 'EDIT', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 85, 'formato OK', 'EDIT', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 86, 'final mayor/igual a inicial OK', 'EDIT', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 87, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'PagFinA', 'input', 88, 'tamaño maximo OK', 'SEARCH', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
+    Array('articulo', 'PagFinA', 'input', 89, 'formato OK', 'SEARCH', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    //Haria falta esto?? Array('articulo', 'PagFinA', 'input', 91, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 91, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    //FechaPublicacionR -> tendría que ver como hacer el search con un text normal
+    Array('articulo', 'FechaPublicacionR', 'input', 92, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 93, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 94, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'FechaPublicacionR', 'input', 96, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 97, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 98, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 99, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'FechaPublicacionR', 'input', 100, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 101, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 102, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    
+    //FicheropdfA
+    Array('articulo', 'FicheropdfA', 'input', 103, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
+    Array('articulo', 'FicheropdfA', 'input', 104, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
+    Array('articulo', 'FicheropdfA', 'input', 105, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    
+    //nuevo_FicheropdfA
+    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 108, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 109, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 110, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('articulo', 'FicheropdfA', 'inputfile', 111, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 112, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 113, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 114, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    
+    //EstadoA --> esto lo hago con un desplegable. POR DEFECTO ESTA PUBLICADO
+    Array('articulo', 'EstadoA', 'select', 115, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 116, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'EstadoA', 'select', 118, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 119, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('articulo', 'EstadoA', 'select', 120, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 121, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+);
+
+let articulo_tests_fields=Array(
+    //CodigoA
+    Array('articulo', 'CodigoA', 1, 1, 'ADD', [{articulo:''}], 'CodigoA_min_size_KO'),
+    Array('articulo', 'CodigoA', 2, 2, 'ADD', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 3, 3, 'ADD', [{articulo:'a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 3, 4, 'ADD', [{articulo:'1a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 3, 5, 'ADD', [{articulo:'a1'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 4, 6, 'ADD', [{articulo:1111}], true),
+
+    Array('articulo', 'CodigoA', 5, 7, 'EDIT', [{articulo:''}], 'CodigoA_min_size_KO'),
+    Array('articulo', 'CodigoA', 6, 8, 'EDIT', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 7, 9, 'EDIT', [{articulo:'a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 7, 10, 'EDIT', [{articulo:'1a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 7, 11, 'EDIT', [{articulo:'a1'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 8, 12, 'EDIT', [{articulo:1111}], true),
+
+    Array('articulo', 'CodigoA', 9, 13, 'SEARCH', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 10, 14, 'SEARCH', [{articulo:'a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 10, 15, 'SEARCH', [{articulo:'1a'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 10, 16, 'SEARCH', [{articulo:'a1'}], 'CodigoA_format_KO'),
+    Array('articulo', 'CodigoA', 11, 17, 'SEARCH', [{articulo:''}], true),
+    Array('articulo', 'CodigoA', 11, 18, 'SEARCH', [{articulo:1111}], true),
+
+    //AutoresA
+    Array('articulo', 'AutoresA', 12, 19, 'ADD', [{articulo:'a'.repeat(3)}], 'AutoresA_min_size_KO'),
+    Array('articulo', 'AutoresA', 13, 20, 'ADD', [{articulo:'a'.repeat(201)}], 'AutoresA_max_size_KO'),
+    Array('articulo', 'AutoresA', 14, 21, 'ADD', [{articulo:'abc-21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 14, 22, 'ADD', [{articulo:'abc_21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 14, 23, 'ADD', [{articulo:'abc(21)'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 14, 24, 'ADD', [{articulo:21}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 15, 25, 'ADD', [{articulo:'Pepito Fulanito'}], true),
+
+    Array('articulo', 'AutoresA', 16, 19, 'EDIT', [{articulo:'a'.repeat(3)}], 'AutoresA_min_size_KO'),
+    Array('articulo', 'AutoresA', 17, 20, 'EDIT', [{articulo:'a'.repeat(201)}], 'AutoresA_max_size_KO'),
+    Array('articulo', 'AutoresA', 18, 21, 'EDIT', [{articulo:'abc-21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 18, 22, 'EDIT', [{articulo:'abc_21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 18, 23, 'EDIT', [{articulo:'abc(21)'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 18, 24, 'EDIT', [{articulo:21}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 19, 25, 'EDIT', [{articulo:'Pepito Fulanito'}], true),
+    
+    Array('articulo', 'AutoresA', 20, 20, 'SEARCH', [{articulo:'a'.repeat(201)}], 'AutoresA_max_size_KO'),
+    Array('articulo', 'AutoresA', 21, 21, 'SEARCH', [{articulo:'-'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 22, 'SEARCH', [{articulo:'_'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 23, 'SEARCH', [{articulo:'()'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 24, 'SEARCH', [{articulo:'abc-21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 25, 'SEARCH', [{articulo:'abc_21'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 26, 'SEARCH', [{articulo:'abc(21)'}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 21, 27, 'SEARCH', [{articulo:21}], 'AutoresA_format_KO'),
+    Array('articulo', 'AutoresA', 22, 28, 'SEARCH', [{articulo:''}], true),
+    Array('articulo', 'AutoresA', 22, 29, 'SEARCH', [{articulo:'Pep'}], true),
+    Array('articulo', 'AutoresA', 22, 30, 'SEARCH', [{articulo:'Pepito Fulanito'}], true),
+
+    //TituloA
+    Array('articulo', 'TituloA', 23, 31, 'ADD', [{articulo:'a'.repeat(8)}], 'TituloA_min_size_KO'),
+    Array('articulo', 'TituloA', 24, 32, 'ADD', [{articulo:'a'.repeat(101)}], 'TituloA_max_size_KO'),
+    Array('articulo', 'TituloA', 25, 33, 'ADD', [{articulo:'a-b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 25, 34, 'ADD', [{articulo:'a_b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 25, 35, 'ADD', [{articulo:'a ç'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 26, 36, 'ADD', [{articulo:'Titulo del articulo 2'}], true),
+
+    Array('articulo', 'TituloA', 27, 37, 'EDIT', [{articulo:'a'.repeat(8)}], 'TituloA_min_size_KO'),
+    Array('articulo', 'TituloA', 28, 38, 'EDIT', [{articulo:'a'.repeat(101)}], 'TituloA_max_size_KO'),
+    Array('articulo', 'TituloA', 29, 39, 'EDIT', [{articulo:'a-b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 29, 40, 'EDIT', [{articulo:'a_b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 29, 41, 'EDIT', [{articulo:'a ç'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 30, 42, 'EDIT', [{articulo:'Titulo del articulo 2'}], true), 
+
+    Array('articulo', 'TituloA', 31, 43, 'SEARCH', [{articulo:'a'.repeat(101)}], 'TituloA_max_size_KO'),
+    Array('articulo', 'TituloA', 32, 44, 'SEARCH', [{articulo:'-'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 32, 45, 'SEARCH', [{articulo:'_'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 32, 44, 'SEARCH', [{articulo:'a-b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 32, 45, 'SEARCH', [{articulo:'a_b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 32, 46, 'SEARCH', [{articulo:'a ç'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloA', 33, 47, 'SEARCH', [{articulo:''}], true), 
+    Array('articulo', 'TituloA', 33, 48, 'SEARCH', [{articulo:'Tit'}], true), 
+    Array('articulo', 'TituloA', 33, 49, 'SEARCH', [{articulo:'Titulo del articulo 2'}], true), 
+
+    //TituloR
+    Array('articulo', 'TituloR', 34, 50, 'ADD', [{articulo:'a'.repeat(4)}], 'TituloR_min_size_KO'),
+    Array('articulo', 'TituloR', 35, 51, 'ADD', [{articulo:'a'.repeat(101)}], 'TituloR_max_size_KO'),
+    Array('articulo', 'TituloR', 36, 52, 'ADD', [{articulo:'a-b'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 36, 53, 'ADD', [{articulo:'a_b'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 36, 54, 'ADD', [{articulo:'a ç'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 37, 55, 'ADD', [{articulo:'Revista muy importante'}], true),
+
+    Array('articulo', 'TituloR', 38, 56, 'EDIT', [{articulo:'a'.repeat(4)}], 'TituloR_min_size_KO'),
+    Array('articulo', 'TituloR', 39, 57, 'EDIT', [{articulo:'a'.repeat(101)}], 'TituloR_max_size_KO'),
+    Array('articulo', 'TituloR', 40, 59, 'EDIT', [{articulo:'a-b'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 40, 60, 'EDIT', [{articulo:'a_b'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 40, 61, 'EDIT', [{articulo:'a ç'}], 'TituloR_format_KO'),
+    Array('articulo', 'TituloR', 41, 62, 'EDIT', [{articulo:'Revista muy importante'}], true),
+
+    Array('articulo', 'TituloR', 42, 63, 'SEARCH', [{articulo:'a'.repeat(101)}], 'TituloR_max_size_KO'),
+    Array('articulo', 'TituloR', 43, 64, 'SEARCH', [{articulo:'-'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloR', 43, 65, 'SEARCH', [{articulo:'_'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloR', 43, 66, 'SEARCH', [{articulo:'a-b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloR', 43, 67, 'SEARCH', [{articulo:'a_b'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloR', 43, 68, 'SEARCH', [{articulo:'a ç'}], 'TituloA_format_KO'),
+    Array('articulo', 'TituloR', 44, 69, 'SEARCH', [{articulo:''}], true), 
+    Array('articulo', 'TituloR', 44, 70, 'SEARCH', [{articulo:'Rev'}], true), 
+    Array('articulo', 'TituloR', 44, 71, 'SEARCH', [{articulo:'Revista muy importante'}], true), 
+
+    //ISSN ojo con lo de formato
+    Array('articulo', 'ISSN', 45, 72, 'ADD', [{articulo:'1'.repeat(12)}], 'ISSN_min_size_KO'),
+    Array('articulo', 'ISSN', 46, 73, 'ADD', [{articulo:'1'.repeat(14)}], 'ISSN_max_size_KO'),
+    Array('articulo', 'ISSN', 47, 74, 'ADD', [{articulo:'111111111111a'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 47, 75, 'ADD', [{articulo:'111111111111-'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 47, 76, 'ADD', [{articulo:'111111111111_'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 48, 77, 'ADD', [{articulo:'1234567890112'}], true),
+
+    Array('articulo', 'ISSN', 49, 78, 'EDIT', [{articulo:'1'.repeat(12)}], 'ISSN_min_size_KO'),
+    Array('articulo', 'ISSN', 50, 79, 'EDIT', [{articulo:'1'.repeat(14)}], 'ISSN_max_size_KO'),
+    Array('articulo', 'ISSN', 51, 80, 'EDIT', [{articulo:'111111111111a'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 51, 81, 'EDIT', [{articulo:'111111111111-'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 51, 82, 'EDIT', [{articulo:'111111111111_'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 52, 83, 'EDIT', [{articulo:'1234567890112'}], true),    
+
+    Array('articulo', 'ISSN', 53, 84, 'SEARCH', [{articulo:'1'.repeat(14)}], 'ISSN_max_size_KO'),
+    Array('articulo', 'ISSN', 54, 85, 'SEARCH', [{articulo:'a'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 54, 86, 'SEARCH', [{articulo:'-'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 54, 87, 'SEARCH', [{articulo:'_'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 54, 88, 'SEARCH', [{articulo:'111111111111a'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 54, 89, 'SEARCH', [{articulo:'111111111111-'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 54, 90, 'SEARCH', [{articulo:'111111111111_'}], 'ISSN_format_KO'),
+    Array('articulo', 'ISSN', 55, 91, 'SEARCH', [{articulo:''}], true),
+    Array('articulo', 'ISSN', 55, 91, 'SEARCH', [{articulo:'12'}], true),
+    Array('articulo', 'ISSN', 55, 91, 'SEARCH', [{articulo:'1234567890112'}], true),
+
+    //VolumenR
+    Array('articulo', 'VolumenR', 56, 92, 'ADD', [{articulo:''}], 'VolumenR_min_size_KO'),
+    Array('articulo', 'VolumenR', 57, 93, 'ADD', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 58, 94, 'ADD', [{articulo:'111a'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 58, 95, 'ADD', [{articulo:'a111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 58, 96, 'ADD', [{articulo:'111-'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 58, 96, 'ADD', [{articulo:'-111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 59, 97, 'ADD', [{articulo:1234}], true),
+
+    Array('articulo', 'VolumenR', 60, 98, 'EDIT', [{articulo:''}], 'VolumenR_min_size_KO'),
+    Array('articulo', 'VolumenR', 61, 99, 'EDIT', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 62, 100, 'EDIT', [{articulo:'111a'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 62, 101, 'EDIT', [{articulo:'a111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 62, 102, 'EDIT', [{articulo:'111-'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 62, 103, 'EDIT', [{articulo:'-111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 63, 104, 'EDIT', [{articulo:1234}], true),
+
+    Array('articulo', 'VolumenR', 64, 105, 'SEARCH', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 65, 101, 'SEARCH', [{articulo:'a'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 65, 102, 'SEARCH', [{articulo:'-'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 65, 103, 'SEARCH', [{articulo:'111a'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 65, 104, 'SEARCH', [{articulo:'a111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 65, 105, 'SEARCH', [{articulo:'111-'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 65, 106, 'SEARCH', [{articulo:'-111'}], 'VolumenR_format_KO'),
+    Array('articulo', 'VolumenR', 66, 104, 'SEARCH', [{articulo:''}], true),
+    Array('articulo', 'VolumenR', 66, 104, 'SEARCH', [{articulo:1}], true),
+    Array('articulo', 'VolumenR', 66, 104, 'SEARCH', [{articulo:1234}], true),
+
+    //PagIniA
+    
+);
+
+let articulo_tests_files=Array(
+
+);
+
+let ubicacion_def_tests=Array(
+    //id_site
+    Array('ubicacion', 'id_site', 'input', 1, 'tamaño minimo OK', 'ADD', 'id_site_min_size_KO', 'Error, el identificador del sitio es demasiado corto. Debe tener mas de 3 caracteres'),
+    Array('ubicacion', 'id_site', 'input', 2, 'tamaño maximo OK', 'ADD', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
+    Array('ubicacion', 'id_site', 'input', 3, 'formato OK', 'ADD', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
+    Array('ubicacion', 'id_site', 'input', 4, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('ubicacion', 'id_site', 'input', 5, 'tamaño minimo OK', 'EDIT', 'id_site_min_size_KO', 'Error, el identificador del sitio es demasiado corto. Debe tener mas de 3 caracteres'),
+    Array('ubicacion', 'id_site', 'input', 6, 'tamaño maximo OK', 'EDIT', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
+    Array('ubicacion', 'id_site', 'input', 7, 'formato OK', 'EDIT', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
+    Array('ubicacion', 'id_site', 'input', 8, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('ubicacion', 'id_site', 'input', 9, 'tamaño maximo OK', 'SEARCH', 'id_site_max_size_KO', 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres'),
+    Array('ubicacion', 'id_site', 'input', 10, 'formato OK', 'SEARCH', 'id_site_format_KO', 'Error, el identificador solo acepta caracteres numericos'),
+    Array('ubicacion', 'id_site', 'input', 11, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //site_latitud FALTA SEARCH
+    Array('ubicacion', 'site_latitud', 'input', 12, 'valor añadido OK', 'ADD', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_latitud', 'input', 13, 'formato y rangos OK', 'ADD', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
+    Array('ubicacion', 'site_latitud', 'input', 14, 'longitud decimales OK', 'ADD', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_latitud', 'input', 15, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('ubicacion', 'site_latitud', 'input', 16, 'valor añadido OK', 'EDIT', 'site_latitud_vacio_KO', 'Error, la latitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_latitud', 'input', 17, 'formato y rangos OK', 'EDIT', 'site_latitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90'),
+    Array('ubicacion', 'site_latitud', 'input', 18, 'longitud decimales OK', 'EDIT', 'site_latitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_latitud', 'input', 19, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    //site_longitud FALTA SEARCH
+    Array('ubicacion', 'site_longitud', 'input', 23, 'valor añadido OK', 'ADD', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_longitud', 'input', 24, 'formato y rangos OK', 'ADD', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_longitud', 'input', 25, 'longitud decimales OK', 'ADD', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_longitud', 'input', 26, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('ubicacion', 'site_longitud', 'input', 27, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_longitud', 'input', 28, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_longitud', 'input', 29, 'longitud decimales OK', 'EDIT', 'site_longitud_decimales_KO', 'Error, no puede haber + de 6 decimales'),
+    Array('ubicacion', 'site_longitud', 'input', 30, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    //site_altitude FALTA SEARCH
+    Array('ubicacion', 'site_altitude', 'input', 34, 'valor añadido OK', 'ADD', 'site_altitude_vacio_KO', 'Error, la altitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_altitude', 'input', 35, 'formato y rangos OK', 'ADD', 'site_altitude_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros entre -11000 y 9000'),
+    Array('ubicacion', 'site_altitude', 'input', 36, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    
+    Array('ubicacion', 'site_altitude', 'input', 37, 'valor añadido OK', 'EDIT', 'site_longitud_vacio_KO', 'Error, la longitud del sitio no puede ser vacia'),
+    Array('ubicacion', 'site_altitude', 'input', 38, 'formato y rangos OK', 'EDIT', 'site_longitud_formato_rango_KO', 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180'),
+    Array('ubicacion', 'site_altitude', 'input', 39, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    //site_locality
+    Array('ubicacion', 'site_locality', 'input', 44, 'tamaño minimo OK', 'ADD', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 45, 'tamaño maximo OK', 'ADD', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 46, 'formato OK', 'ADD', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 47, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('ubicacion', 'site_locality', 'input', 48, 'tamaño minimo OK', 'EDIT', 'site_locality_min_size_KO', 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 49, 'tamaño maximo OK', 'EDIT', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 50, 'formato OK', 'EDIT', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 51, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    
+    Array('ubicacion', 'site_locality', 'input', 52, 'tamaño maximo OK', 'SEARCH', 'site_locality_max_size_KO', 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres'),
+    Array('ubicacion', 'site_locality', 'input', 53, 'formato OK', 'SEARCH', 'site_locality_format_KO', 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios'),
+    Array('ubicacion', 'site_locality', 'input', 54, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //site_provider_login
+    Array('ubicacion', 'site_provider_login', 'input', 55, 'tamaño minimo OK', 'ADD', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 56, 'tamaño maximo OK', 'ADD', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 57, 'formato OK', 'ADD', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 58, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('ubicacion', 'site_provider_login', 'input', 59, 'tamaño minimo OK', 'EDIT', 'site_provider_login_min_size_KO', 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 60, 'tamaño maximo OK', 'EDIT', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 61, 'formato OK', 'EDIT', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 62, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+
+    Array('ubicacion', 'site_provider_login', 'input', 63, 'tamaño maximo OK', 'SEARCH', 'site_provider_login_max_size_KO', 'Error, el login es demasiado largo. No puede superar los 30 caracteres'),
+    Array('ubicacion', 'site_provider_login', 'input', 64, 'formato OK', 'SEARCH', 'site_provider_login_format_KO', 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _'),
+    Array('ubicacion', 'site_provider_login', 'input', 65, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //site_north_photo
+    Array('ubicacion', 'site_north_photo', 'input', 66, 'tamaño maximo OK', 'SEARCH', 'site_north_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_north_photo', 'input', 67, 'formato OK', 'SEARCH', 'site_north_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_north_photo', 'input', 68, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //nuevo_site_north_photo
+    Array('ubicacion', 'site_north_photo', 'inputfile', 69, 'existe el fichero', 'ADD', 'nuevo_site_north_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 70, 'tamaño maximo OK', 'ADD', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 71, 'tipo fichero OK', 'ADD', 'nuevo_site_north_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 72, 'nombre OK', 'ADD', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 73, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('ubicacion', 'site_north_photo', 'inputfile', 74, 'tamaño maximo OK', 'EDIT', 'nuevo_site_north_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 75, 'tipo fichero OK', 'EDIT', 'nuevo_site_north_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 76, 'nombre OK', 'EDIT', 'nuevo_site_north_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_north_photo', 'inputfile', 77, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+
+    //site_south_photo
+    Array('ubicacion', 'site_south_photo', 'input', 78, 'tamaño maximo OK', 'SEARCH', 'site_south_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_south_photo', 'input', 79, 'formato OK', 'SEARCH', 'site_south_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_south_photo', 'input', 80, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //nuevo_site_south_photo
+    Array('ubicacion', 'site_south_photo', 'inputfile', 81, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 82, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 83, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 84, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 85, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('ubicacion', 'site_south_photo', 'inputfile', 86, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 87, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 88, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 89, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+
+    //site_east_photo
+    Array('ubicacion', 'site_east_photo', 'input', 90, 'tamaño maximo OK', 'SEARCH', 'site_east_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_east_photo', 'input', 91, 'formato OK', 'SEARCH', 'site_east_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_east_photo', 'input', 92, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //nuevo_site_east_photo
+    Array('ubicacion', 'site_south_photo', 'inputfile', 93, 'existe el fichero', 'ADD', 'nuevo_site_south_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 94, 'tamaño maximo OK', 'ADD', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 95, 'tipo fichero OK', 'ADD', 'nuevo_site_south_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 96, 'nombre OK', 'ADD', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 97, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('ubicacion', 'site_south_photo', 'inputfile', 98, 'tamaño maximo OK', 'EDIT', 'nuevo_site_south_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 99, 'tipo fichero OK', 'EDIT', 'nuevo_site_south_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 100, 'nombre OK', 'EDIT', 'nuevo_site_south_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_south_photo', 'inputfile', 101, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+
+    //site_west_photo
+    Array('ubicacion', 'site_west_photo', 'input', 102, 'tamaño maximo OK', 'SEARCH', 'site_west_photo_max_size_KO', 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres'),
+    Array('ubicacion', 'site_west_photo', 'input', 103, 'formato OK', 'SEARCH', 'site_west_photo_format_KO', 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _'),
+    Array('ubicacion', 'site_west_photo', 'input', 104, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+
+    //nuevo_site_west_photo
+    Array('ubicacion', 'site_west_photo', 'inputfile', 105, 'existe el fichero', 'ADD', 'nuevo_site_west_photo_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 106, 'tamaño maximo OK', 'ADD', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 107, 'tipo fichero OK', 'ADD', 'nuevo_site_west_photo_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 108, 'nombre OK', 'ADD', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 109, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    
+    Array('ubicacion', 'site_west_photo', 'inputfile', 110, 'tamaño maximo OK', 'EDIT', 'nuevo_site_west_photo_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 111, 'tipo fichero OK', 'EDIT', 'nuevo_site_west_photo_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter jpg'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 112, 'nombre OK', 'EDIT', 'nuevo_site_west_photo_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 50 caracteres, sin ñ acentos ni espacios.'),
+    Array('ubicacion', 'site_west_photo', 'inputfile', 113, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+);
+
+let ubicacion_tests_fields=Array(
+
+);
+
+let ubicacion_tests_files=Array(
+
 );
