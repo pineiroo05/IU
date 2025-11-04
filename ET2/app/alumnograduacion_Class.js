@@ -273,9 +273,17 @@ class alumnograduacion extends EntidadAbstracta {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_type_file_KO');
             return "nuevo_alumnograduacion_fotoacto_type_file_KO";
         }
-        if (!(this.validations.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]{7,100}$'))) {
+        if (!(this.validations.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]*$'))) {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_format_name_file_KO');
             return "nuevo_alumnograduacion_fotoacto_format_name_file_KO";
+        }
+        if(!(this.personalize_min_file_name_size('nuevo_alumnograduacion_fotoacto', 7))){
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_min_file_name_size_KO');
+            return "nuevo_alumnograduacion_fotoacto_min_file_name_size_KO";
+        }
+        if(!(this.personalize_max_file_name_size('nuevo_alumnograduacion_fotoacto', 40))){
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_file_name_size_KO');
+            return "nuevo_alumnograduacion_fotoacto_max_file_name_size_KO";
         }
         this.dom.mostrar_exito_campo('nuevo_alumnograduacion_fotoacto');
         return true;
@@ -337,7 +345,6 @@ class alumnograduacion extends EntidadAbstracta {
         if(!fichero || fichero.files.length==0){
             return true;
         }
-
         if (!(this.validations.max_size_file('nuevo_alumnograduacion_fotoacto', 2000000))) { // 2MB
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_size_file_KO');
             return "nuevo_alumnograduacion_fotoacto_max_size_file_KO";
@@ -346,9 +353,17 @@ class alumnograduacion extends EntidadAbstracta {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_type_file_KO');
             return "nuevo_alumnograduacion_fotoacto_type_file_KO";
         }
-        if (!(this.validations.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]{7,100}$'))) {
+        if (!(this.validations.format_name_file('nuevo_alumnograduacion_fotoacto', '^[a-zA-Z0-9._-]*$'))) {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_format_name_file_KO');
             return "nuevo_alumnograduacion_fotoacto_format_name_file_KO";
+        }
+        if(!(this.personalize_min_file_name_size('nuevo_alumnograduacion_fotoacto', 7))){
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_min_file_name_size_KO');
+            return "nuevo_alumnograduacion_fotoacto_min_file_name_size_KO";
+        }
+        if(!(this.personalize_max_file_name_size('nuevo_alumnograduacion_fotoacto', 40))){
+            this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_max_file_name_size_KO');
+            return "nuevo_alumnograduacion_fotoacto_max_file_name_size_KO";
         }
         this.dom.mostrar_exito_campo('nuevo_alumnograduacion_fotoacto');
         return true;
@@ -652,7 +667,26 @@ class alumnograduacion extends EntidadAbstracta {
         var nieNum=nie_prefix + nie.substr(1);
         return this.personalize_validate_dni(nieNum);
     }
-
+    personalize_min_file_name_size(fichero, minimoCaracteres){
+        const input=document.getElementById(fichero);
+        if(!input||!input.files||input.files.length===0){
+            return false;
+        }
+        const arch=input.files[0];
+        let nombre=arch.name;
+        const sinExtension=nombre.substring(0, nombre.lastIndexOf('.'));
+        return sinExtension.length>=minimoCaracteres;
+    }
+    personalize_max_file_name_size(fichero, maximoCaracteres){
+        const input=document.getElementById(fichero);
+        if(!input||!input.files||input.files.length===0){
+            return false;
+        }
+        const arch=input.files[0];
+        let nombre=arch.name;
+        const sinExtension=nombre.substring(0, nombre.lastIndexOf('.'));
+        return sinExtension.length<=maximoCaracteres;
+    }
     /*
         A partir de aqui todo seria para la creacion de los formularios para hacer los add, edit y search
     */
