@@ -7,10 +7,15 @@ PROBLEMA GENERAL, el fichero que tengo subido, luego como si no se mantuviese su
 
 --articulo: el fallo general de arriba, por lo demas a simple vista esta bien.
 - MIRAR DE METER UN DATE
+- meter personalizes para el rango de paginas
+- meter personalize para que la pag final no sea inferior a la inicial
+- En volumen puede ser con numero o letra -> tocar la regEx
+- ISSN son 6 digitos guion y 6 digitos
 
 --ubicacion 
 - add y edit bien
 - search, delete y showcurrent me dan el sig error.
+- altitud puede ser negativa :(
 Uncaught TypeError: can't access property "style", document.getElementById(...) is null
     hide_element http://127.0.0.1:5500/Core/Dom_Class.js:21
     hide_element_form http://127.0.0.1:5500/Core/Dom_Class.js:33

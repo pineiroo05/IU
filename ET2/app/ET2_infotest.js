@@ -549,103 +549,108 @@ let articulo_def_tests=Array(
     Array('articulo', 'VolumenR', 'input', 66, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
     
     //PagIniA
-    Array('articulo', 'PagIniA', 'input', 67, 'tamaño minimo OK', 'ADD', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagIniA', 'input', 68, 'tamaño maximo OK', 'ADD', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 69, 'formato OK', 'ADD', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 70, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'PagIniA', 'input', 67, 'tamaño minimo OK', 'ADD', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño.'),
+    Array('articulo', 'PagIniA', 'input', 68, 'tamaño maximo OK', 'ADD', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagIniA', 'input', 69, 'rango OK', 'ADD', 'PagIniA_rango_KO', 'Error, la pagina tiene que estar dentro del rango 1 a 9999'),
+    Array('articulo', 'PagIniA', 'input', 70, 'formato OK', 'ADD', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 71, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'PagIniA', 'input', 71, 'tamaño minimo OK', 'EDIT', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagIniA', 'input', 72, 'tamaño maximo OK', 'EDIT', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 73, 'formato OK', 'EDIT', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 74, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('articulo', 'PagIniA', 'input', 72, 'tamaño minimo OK', 'EDIT', 'PagIniA_min_size_KO', 'Error, el nº de pagina de inicio es demasiado pequeño.'),
+    Array('articulo', 'PagIniA', 'input', 73, 'tamaño maximo OK', 'EDIT', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagIniA', 'input', 74, 'formato OK', 'EDIT', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 75, 'rango OK', 'EDIT', 'PagIniA_rango_KO', 'Error, la pagina tiene que estar dentro del rango 1 a 9999'),
+    Array('articulo', 'PagIniA', 'input', 76, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('articulo', 'PagIniA', 'input', 75, 'tamaño maximo OK', 'SEARCH', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagIniA', 'input', 76, 'formato OK', 'SEARCH', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagIniA', 'input', 77, 'todo correcto', 'SEARCH', true, 'Valor correcto'),    
+    Array('articulo', 'PagIniA', 'input', 77, 'tamaño maximo OK', 'SEARCH', 'PagIniA_max_size_KO', 'Error, el nº de pagina de inicio es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagIniA', 'input', 78, 'formato OK', 'SEARCH', 'PagIniA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagIniA', 'input', 79, 'rango OK', 'SEARCH', 'PagIniA_rango_KO', 'Error, la pagina tiene que estar dentro del rango 1 a 9999'),
+    Array('articulo', 'PagIniA', 'input', 80, 'todo correcto', 'SEARCH', true, 'Valor correcto'),    
 
     //PagFinA --> meter validacion para que compruebe que la pag es mayor/igual a la inicial
-    Array('articulo', 'PagFinA', 'input', 78, 'tamaño minimo OK', 'ADD', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagFinA', 'input', 79, 'tamaño maximo OK', 'ADD', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 80, 'formato OK', 'ADD', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagFinA', 'input', 81, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 82, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'PagFinA', 'input', 81, 'tamaño minimo OK', 'ADD', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño.'),
+    Array('articulo', 'PagFinA', 'input', 82, 'tamaño maximo OK', 'ADD', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagFinA', 'input', 83, 'formato OK', 'ADD', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 84, 'final mayor/igual a inicial OK', 'ADD', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 85, 'rango OK', 'ADD', 'PagFinA_rango_KO', 'Error, el numero de pagina debe estar entre la pagina inicial y 9999'),
+    Array('articulo', 'PagFinA', 'input', 86, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'PagFinA', 'input', 83, 'tamaño minimo OK', 'EDIT', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño. Debe empezar en 1'),
-    Array('articulo', 'PagFinA', 'input', 84, 'tamaño maximo OK', 'EDIT', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 85, 'formato OK', 'EDIT', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
-    Array('articulo', 'PagFinA', 'input', 86, 'final mayor/igual a inicial OK', 'EDIT', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 87, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('articulo', 'PagFinA', 'input', 87, 'tamaño minimo OK', 'EDIT', 'PagFinA_min_size_KO', 'Error, el nº de pagina final es demasiado pequeño.'),
+    Array('articulo', 'PagFinA', 'input', 88, 'tamaño maximo OK', 'EDIT', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagFinA', 'input', 89, 'formato OK', 'EDIT', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 90, 'final mayor/igual a inicial OK', 'EDIT', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
+    Array('articulo', 'PagFinA', 'input', 91, 'rango OK', 'EDIT', 'PagFinA_rango_KO', 'Error, el numero de pagina debe estar entre la inicial y 9999'),
+    Array('articulo', 'PagFinA', 'input', 92, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('articulo', 'PagFinA', 'input', 88, 'tamaño maximo OK', 'SEARCH', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede ser superior a 9999'),
-    Array('articulo', 'PagFinA', 'input', 89, 'formato OK', 'SEARCH', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
+    Array('articulo', 'PagFinA', 'input', 93, 'tamaño maximo OK', 'SEARCH', 'PagFinA_max_size_KO', 'Error, el nº de pagina final es demasiado grande. No puede tener mas de 4 caracteres'),
+    Array('articulo', 'PagFinA', 'input', 94, 'formato OK', 'SEARCH', 'PagFinA_format_KO', 'Error, la pagina solo se puede representar mediante numericos'),
     //Haria falta esto?? Array('articulo', 'PagFinA', 'input', 91, 'final mayor/igual a inicial OK', 'PagFinA_mayor_igual_inicial_KO', 'Error, la pagina final del articulo no puede ser menor a la inicial'),
-    Array('articulo', 'PagFinA', 'input', 91, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'PagFinA', 'input', 95, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
     //FechaPublicacionR -> tendría que ver como hacer el search con un text normal
-    Array('articulo', 'FechaPublicacionR', 'input', 92, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 93, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 94, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
-    Array('articulo', 'FechaPublicacionR', 'input', 95, 'todo correcto', 'ADD', true, 'Valor correcto'),
-
     Array('articulo', 'FechaPublicacionR', 'input', 96, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
     Array('articulo', 'FechaPublicacionR', 'input', 97, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
     Array('articulo', 'FechaPublicacionR', 'input', 98, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
     Array('articulo', 'FechaPublicacionR', 'input', 99, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'FechaPublicacionR', 'input', 100, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
-    Array('articulo', 'FechaPublicacionR', 'input', 101, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
-    Array('articulo', 'FechaPublicacionR', 'input', 102, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'FechaPublicacionR', 'input', 100, 'tamaño minimo OK', 'ADD', 'FechaPublicacionR_min_size_KO', 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 101, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 102, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 103, 'todo correcto', 'ADD', true, 'Valor correcto'),
+
+    Array('articulo', 'FechaPublicacionR', 'input', 104, 'tamaño maximo OK', 'ADD', 'FechaPublicacionR_max_size_KO', 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.'),
+    Array('articulo', 'FechaPublicacionR', 'input', 105, 'formato OK', 'ADD', 'FechaPublicacionR_format_KO', 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa'),
+    Array('articulo', 'FechaPublicacionR', 'input', 106, 'todo correcto', 'ADD', true, 'Valor correcto'),
     
     //FicheropdfA
-    Array('articulo', 'FicheropdfA', 'input', 103, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
-    Array('articulo', 'FicheropdfA', 'input', 104, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
-    Array('articulo', 'FicheropdfA', 'input', 105, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('articulo', 'FicheropdfA', 'input', 107, 'tamaño maximo OK', 'SEARCH', 'FicheropdfA_max_size_KO', 'Error, el nombre del fichero no puede ser superior a 20 caracteres'),
+    Array('articulo', 'FicheropdfA', 'input', 108, 'formato OK', 'SEARCH', 'FicheropdfA_format_KO', 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios'),
+    Array('articulo', 'FicheropdfA', 'input', 109, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
     
     //nuevo_FicheropdfA
-    Array('articulo', 'FicheropdfA', 'inputfile', 106, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 107, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 108, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 109, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 110, 'todo correcto', 'ADD', true, 'Fichero correcto'),
-    
-    Array('articulo', 'FicheropdfA', 'inputfile', 111, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 112, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 113, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
-    Array('articulo', 'FicheropdfA', 'inputfile', 114, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 110, 'existe el fichero', 'ADD', 'nuevo_FicheropdfA_not_exist_file_KO', 'Error, si vas a subir un archivo debe haber un fichero subido.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 111, 'tamaño maximo OK', 'ADD', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 112, 'tipo fichero OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 113, 'nombre OK', 'ADD', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 114, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+
+    Array('articulo', 'FicheropdfA', 'inputfile', 115, 'tamaño maximo OK', 'EDIT', 'nuevo_FicheropdfA_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 116, 'tipo fichero OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 117, 'nombre OK', 'EDIT', 'nuevo_FicheropdfA_fotoacto_format_name_file_KO', 'El nombre no es valido, solo se aceptan nombres de entre 7 y 20 caracteres, sin ñ acentos ni espacios.'),
+    Array('articulo', 'FicheropdfA', 'inputfile', 118, 'todo correcto', 'EDIT', true, 'Fichero correcto'),
     
     //EstadoA --> esto lo hago con un desplegable. POR DEFECTO ESTA PUBLICADO
-    Array('articulo', 'EstadoA', 'select', 115, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 116, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 119, 'valor valido OK', 'ADD', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 120, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('articulo', 'EstadoA', 'select', 118, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 119, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 121, 'valor valido OK', 'EDIT', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 122, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('articulo', 'EstadoA', 'select', 120, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
-    Array('articulo', 'EstadoA', 'select', 121, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
+    Array('articulo', 'EstadoA', 'select', 123, 'valor valido OK', 'SEARCH', 'EstadoA_format_KO', 'Error, solo hay 3 estados posibles: enviado, revision, publicado'),
+    Array('articulo', 'EstadoA', 'select', 124, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 );
 
 let articulo_tests_fields=Array(
     //CodigoA
     Array('articulo', 'CodigoA', 1, 1, 'ADD', [{articulo:''}], 'CodigoA_min_size_KO'),
-    Array('articulo', 'CodigoA', 2, 2, 'ADD', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 2, 2, 'ADD', [{articulo:'1'.repeat(12)}], 'CodigoA_max_size_KO'),
     Array('articulo', 'CodigoA', 3, 3, 'ADD', [{articulo:'a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 3, 4, 'ADD', [{articulo:'1a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 3, 5, 'ADD', [{articulo:'a1'}], 'CodigoA_format_KO'),
-    Array('articulo', 'CodigoA', 4, 6, 'ADD', [{articulo:1111}], true),
+    Array('articulo', 'CodigoA', 4, 6, 'ADD', [{articulo:'1111'}], true),
 
     Array('articulo', 'CodigoA', 5, 7, 'EDIT', [{articulo:''}], 'CodigoA_min_size_KO'),
-    Array('articulo', 'CodigoA', 6, 8, 'EDIT', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 6, 8, 'EDIT', [{articulo:'1'.repeat(12)}], 'CodigoA_max_size_KO'),
     Array('articulo', 'CodigoA', 7, 9, 'EDIT', [{articulo:'a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 7, 10, 'EDIT', [{articulo:'1a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 7, 11, 'EDIT', [{articulo:'a1'}], 'CodigoA_format_KO'),
-    Array('articulo', 'CodigoA', 8, 12, 'EDIT', [{articulo:1111}], true),
+    Array('articulo', 'CodigoA', 8, 12, 'EDIT', [{articulo:'1111'}], true),
 
-    Array('articulo', 'CodigoA', 9, 13, 'SEARCH', [{articulo:(1).repeat(12)}], 'CodigoA_max_size_KO'),
+    Array('articulo', 'CodigoA', 9, 13, 'SEARCH', [{articulo:'1'.repeat(12)}], 'CodigoA_max_size_KO'),
     Array('articulo', 'CodigoA', 10, 14, 'SEARCH', [{articulo:'a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 10, 15, 'SEARCH', [{articulo:'1a'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 10, 16, 'SEARCH', [{articulo:'a1'}], 'CodigoA_format_KO'),
     Array('articulo', 'CodigoA', 11, 17, 'SEARCH', [{articulo:''}], true),
-    Array('articulo', 'CodigoA', 11, 18, 'SEARCH', [{articulo:1111}], true),
+    Array('articulo', 'CodigoA', 11, 18, 'SEARCH', [{articulo:'1111'}], true),
 
     //AutoresA
     Array('articulo', 'AutoresA', 12, 19, 'ADD', [{articulo:'a'.repeat(3)}], 'AutoresA_min_size_KO'),
@@ -754,22 +759,22 @@ let articulo_tests_fields=Array(
 
     //VolumenR
     Array('articulo', 'VolumenR', 56, 92, 'ADD', [{articulo:''}], 'VolumenR_min_size_KO'),
-    Array('articulo', 'VolumenR', 57, 93, 'ADD', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 57, 93, 'ADD', [{articulo:'1'.repeat(5)}], 'VolumenR_max_size_KO'),
     Array('articulo', 'VolumenR', 58, 94, 'ADD', [{articulo:'111a'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 58, 95, 'ADD', [{articulo:'a111'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 58, 96, 'ADD', [{articulo:'111-'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 58, 96, 'ADD', [{articulo:'-111'}], 'VolumenR_format_KO'),
-    Array('articulo', 'VolumenR', 59, 97, 'ADD', [{articulo:1234}], true),
+    Array('articulo', 'VolumenR', 59, 97, 'ADD', [{articulo:'1234'}], true),
 
     Array('articulo', 'VolumenR', 60, 98, 'EDIT', [{articulo:''}], 'VolumenR_min_size_KO'),
-    Array('articulo', 'VolumenR', 61, 99, 'EDIT', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 61, 99, 'EDIT', [{articulo:'1'.repeat(5)}], 'VolumenR_max_size_KO'),
     Array('articulo', 'VolumenR', 62, 100, 'EDIT', [{articulo:'111a'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 62, 101, 'EDIT', [{articulo:'a111'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 62, 102, 'EDIT', [{articulo:'111-'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 62, 103, 'EDIT', [{articulo:'-111'}], 'VolumenR_format_KO'),
-    Array('articulo', 'VolumenR', 63, 104, 'EDIT', [{articulo:1234}], true),
+    Array('articulo', 'VolumenR', 63, 104, 'EDIT', [{articulo:'1234'}], true),
 
-    Array('articulo', 'VolumenR', 64, 105, 'SEARCH', [{articulo:(1).repeat(5)}], 'VolumenR_max_size_KO'),
+    Array('articulo', 'VolumenR', 64, 105, 'SEARCH', [{articulo:'1'.repeat(5)}], 'VolumenR_max_size_KO'),
     Array('articulo', 'VolumenR', 65, 106, 'SEARCH', [{articulo:'a'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 65, 107, 'SEARCH', [{articulo:'-'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 65, 108, 'SEARCH', [{articulo:'111a'}], 'VolumenR_format_KO'),
@@ -777,11 +782,11 @@ let articulo_tests_fields=Array(
     Array('articulo', 'VolumenR', 65, 110, 'SEARCH', [{articulo:'111-'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 65, 111, 'SEARCH', [{articulo:'-111'}], 'VolumenR_format_KO'),
     Array('articulo', 'VolumenR', 66, 112, 'SEARCH', [{articulo:''}], true),
-    Array('articulo', 'VolumenR', 66, 113, 'SEARCH', [{articulo:1}], true),
-    Array('articulo', 'VolumenR', 66, 114, 'SEARCH', [{articulo:1234}], true),
+    Array('articulo', 'VolumenR', 66, 113, 'SEARCH', [{articulo:'1'}], true),
+    Array('articulo', 'VolumenR', 66, 114, 'SEARCH', [{articulo:'1234'}], true),
 
     //PagIniA
-    
+    Array(),
 );
 
 let articulo_tests_files=Array(

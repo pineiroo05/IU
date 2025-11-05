@@ -182,6 +182,10 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('PagIniA', 'PagIniA_max_size_KO');
             return "PagIniA_max_size_KO";
         }
+        if(this.personalize_rango_pag('PagIniA')){
+            this.dom.mostrar_error_campo('PagIniA', 'PagIniA_rango_KO');
+            return "PagIniA_rango_KO";            
+        }
         if(!(this.validations.format('PagIniA', '^[0-9]*$'))){
             this.dom.mostrar_error_campo('PagIniA', 'PagIniA_format_KO');
             return "PagIniA_format_KO";
@@ -197,6 +201,10 @@ class articulo extends EntidadAbstracta{
         if(!(this.validations.max_size('PagFinA', 4))){
             this.dom.mostrar_error_campo('PagFinA', 'PagFinA_max_size_KO');
             return "PagFinA_max_size_KO";
+        }
+        if(this.personalize_rango_pag('PagFinA')){
+            this.dom.mostrar_error_campo('PagFinA', 'PagFinA_rango_KO');
+            return "PagFinA_rango_KO";
         }
         if(!(this.validations.format('PagFinA', '^[0-9]*$'))){
             this.dom.mostrar_error_campo('PagFinA', 'PagFinA_format_KO');
@@ -546,7 +554,17 @@ class articulo extends EntidadAbstracta{
         const sinExtension=nombre.substring(0, nombre.lastIndexOf('.'));
         return sinExtension.length<=maximoCaracteres;
     }
-    personalize_issn_format
+    personalize_rango_pagIni(numPag){
+        const input=document.getElementById(numPag);
+        if(!input||input.length===0){
+            return false;
+        }
+
+    }
+
+    personalize_rango_pagFin(numPagIni, numPag){
+        
+    }
 
     //Creacion de formularios
     createForm_ADD(){
