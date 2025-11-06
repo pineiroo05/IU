@@ -142,17 +142,21 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_ISSN_validation(){
-        if(!(this.validations.min_size('ISSN', 13))){
+        if(!(this.validations.min_size('ISSN', 9))){
             this.dom.mostrar_error_campo('ISSN', 'ISSN_min_size_KO');
             return "ISSN_min_size_KO";
         }
-        if(!(this.validations.max_size('ISSN', 13))){
+        if(!(this.validations.max_size('ISSN', 9))){
             this.dom.mostrar_error_campo('ISSN', 'ISSN_max_size_KO');
             return "ISSN_max_size_KO";
         }
-        if(!(this.validations.format('ISSN', '^[0-9]{13}'))){
+        if(!(this.validations.format('ISSN', '^[0-9]{4}-[0-9]{3}[0-9X]$'))){
             this.dom.mostrar_error_campo('ISSN', 'ISSN_format_KO');
             return "ISSN_format_KO";
+        }
+        if(!(this.personalize_valor_valido('ISSN'))){
+            this.dom.mostrar_error_campo('ISSN', 'ISSN_valor_valido_KO');
+            return "ISSN_valor_valido_KO";
         }
         this.dom.mostrar_exito_campo('ISSN');
         return true;
@@ -182,7 +186,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('PagIniA', 'PagIniA_max_size_KO');
             return "PagIniA_max_size_KO";
         }
-        if(this.personalize_rango_pag('PagIniA')){
+        if(this.personalize_rango_pagIni('PagIniA')){
             this.dom.mostrar_error_campo('PagIniA', 'PagIniA_rango_KO');
             return "PagIniA_rango_KO";            
         }
@@ -202,7 +206,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('PagFinA', 'PagFinA_max_size_KO');
             return "PagFinA_max_size_KO";
         }
-        if(this.personalize_rango_pag('PagFinA')){
+        if(this.personalize_rango_pagFin('PagFinA', 'PagIniA')){
             this.dom.mostrar_error_campo('PagFinA', 'PagFinA_rango_KO');
             return "PagFinA_rango_KO";
         }
@@ -213,7 +217,6 @@ class articulo extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
     }
-    //Ver tmb si me conviene evitar que puedan coger fechas futuras
     ADD_FechaPublicacionR_validation(){
         if(!(this.validations.min_size('FechaPublicacionR', 10))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_min_size_KO');
@@ -418,13 +421,17 @@ class articulo extends EntidadAbstracta{
     }
     SEARCH_ISSN_validation(){
         if(document.getElementById('ISSN').value !== ''){
-            if(!(this.validations.max_size('ISSN', 13))){
+            if(!(this.validations.max_size('ISSN', 9))){
                 this.dom.mostrar_error_campo('ISSN', 'ISSN_max_size_KO');
                 return "ISSN_max_size_KO";
             }
-            if(!(this.validations.format('ISSN', '^[0-9]{13}'))){
+            if(!(this.validations.format('ISSN', '^[0-9]{4}-[0-9]{3}[0-9X]$'))){
                 this.dom.mostrar_error_campo('ISSN', 'ISSN_format_KO');
                 return "ISSN_format_KO";
+            }
+            if(!(this.personalize_valor_valido('ISSN'))){
+                this.dom.mostrar_error_campo('ISSN', 'ISSN_valor_valido_KO');
+                return "ISSN_valor_valido_KO";
             }
         }
         this.dom.mostrar_exito_campo('ISSN');
@@ -445,29 +452,33 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     SEARCH_PagIniA_validation(){
-        if(document.getElementById('PagIniA').value !== ''){
-            if(!(this.validations.max_size('PagIniA', 4))){
-                this.dom.mostrar_error_campo('PagIniA', 'PagIniA_max_size_KO');
-                return "PagIniA_max_size_KO";
-            }
-            if(!(this.validations.format('PagIniA', '^[0-9]*$'))){
-                this.dom.mostrar_error_campo('PagIniA', 'PagIniA_format_KO');
-                return "PagIniA_format_KO";
-            }
+        if(!(this.validations.max_size('PagIniA', 4))){
+            this.dom.mostrar_error_campo('PagIniA', 'PagIniA_max_size_KO');
+            return "PagIniA_max_size_KO";
+        }
+        if(this.personalize_rango_pagIni('PagIniA')){
+            this.dom.mostrar_error_campo('PagIniA', 'PagIniA_rango_KO');
+            return "PagIniA_rango_KO";            
+        }
+        if(!(this.validations.format('PagIniA', '^[0-9]*$'))){
+            this.dom.mostrar_error_campo('PagIniA', 'PagIniA_format_KO');
+            return "PagIniA_format_KO";
         }
         this.dom.mostrar_exito_campo('PagIniA');
         return true;
     }
     SEARCH_PagFinA_validation(){
-        if(document.getElementById('PagIniA').value !== ''){
-            if(!(this.validations.max_size('PagFinA', 4))){
-                this.dom.mostrar_error_campo('PagFinA', 'PagFinA_max_size_KO');
-                return "PagFinA_max_size_KO";
-            }
-            if(!(this.validations.format('PagFinA', '^[0-9]*$'))){
-                this.dom.mostrar_error_campo('PagFinA', 'PagFinA_format_KO');
-                return "PagFinA_format_KO";
-            }
+        if(!(this.validations.max_size('PagFinA', 4))){
+            this.dom.mostrar_error_campo('PagFinA', 'PagFinA_max_size_KO');
+            return "PagFinA_max_size_KO";
+        }
+        if(this.personalize_rango_pagFin('PagFinA', 'PagIniA')){
+            this.dom.mostrar_error_campo('PagFinA', 'PagFinA_rango_KO');
+            return "PagFinA_rango_KO";
+        }
+        if(!(this.validations.format('PagFinA', '^[0-9]*$'))){
+            this.dom.mostrar_error_campo('PagFinA', 'PagFinA_format_KO');
+            return "PagFinA_format_KO";
         }
         this.dom.mostrar_exito_campo('PagFinA');
         return true;
@@ -533,7 +544,7 @@ class articulo extends EntidadAbstracta{
             return true;
         }
     }
-
+    //Metodos personalizados
     personalize_min_file_name_size(fichero, minimoCaracteres){
         const input=document.getElementById(fichero);
         if(!input||!input.files||input.files.length===0){
@@ -555,15 +566,75 @@ class articulo extends EntidadAbstracta{
         return sinExtension.length<=maximoCaracteres;
     }
     personalize_rango_pagIni(numPag){
-        const input=document.getElementById(numPag);
-        if(!input||input.length===0){
+        const inicio=document.getElementById(numPag);
+        const final=document.getElementById('PagFinA');
+        const valorInicio=inicio.value;
+        const valorFinal=final.value
+        if(valorInicio===''){
             return false;
         }
-
+        const ini=parseInt(valorInicio, 10);
+        if(isNaN(ini)){
+            return true;
+        }
+        if(ini<1||ini>9999){
+            return true;
+        }
+        if (valorFinal!==''){
+            const fin=parseInt(valorFinal,10);
+            if(!isNaN(fin)&&ini>fin){
+                return true;
+            }
+        }
+        return false;
     }
-
-    personalize_rango_pagFin(numPagIni, numPag){
-        
+    personalize_rango_pagFin(numPagFin, numPagIni){
+        const inicio=document.getElementById(numPagIni);
+        const final=document.getElementById(numPagFin);
+        const valorInicio=inicio.value;
+        const valorFin=final.value;
+        if(valorFin===''){
+            return false;
+        }
+        const fin=parseInt(valorFin, 10);
+        if(isNaN(fin)){
+            return true;
+        }
+        if(valorInicio!==''){
+            const ini=parseInt(valorInicio,10);
+            if(!isNaN(ini)){
+                if(fin<ini || fin>9999){
+                    return true;
+                }
+            }
+        }else{
+            if(fin<1||fin>9999){
+                return true;
+            }
+        }
+        return false;
+    }
+    personalize_valor_valido(valorIssn){
+        const issn=document.getElementById(valorIssn);
+        const valor=issn.value;
+        const digitos=valor.replace('-', '');
+        //Para sacar el ultimo digito de control
+        let sum=0;
+        for(let i=0; i<7; i++){
+            sum+=parseInt(digitos[i])*(8-i);
+        }
+        const modulo=sum%11;
+        let digitoControl;
+        if(modulo===0){
+            digitoControl='0';
+        }else{
+            digitoControl=(11-modulo).toString();
+            if(digitoControl==='10'){
+                digitoControl='X';
+            }
+        }
+        const digitoControlCadena=digitos[7].toUpperCase();
+        return digitoControlCadena===digitoControl;
     }
 
     //Creacion de formularios
@@ -580,6 +651,7 @@ class articulo extends EntidadAbstracta{
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
+        setLang();
     }
     createForm_SEARCH(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -594,6 +666,7 @@ class articulo extends EntidadAbstracta{
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
+        setLang();
     }
     createForm_EDIT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -608,9 +681,9 @@ class articulo extends EntidadAbstracta{
         fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
-        //this.dom.assign_property_value('alumnograduacion_dni', 'readonly', 'true');
         this.dom.assign_property_value('FicheropdfA', 'readonly', 'true');
         this.dom.colocarboton('EDIT');
+        setLang();
     }
     createForm_DELETE(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -626,6 +699,7 @@ class articulo extends EntidadAbstracta{
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
         this.dom.colocarboton('DELETE');
+        setLang();
     }
     createForm_SHOWCURRENT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -638,6 +712,7 @@ class articulo extends EntidadAbstracta{
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
+        setLang();
     }
 
     /**

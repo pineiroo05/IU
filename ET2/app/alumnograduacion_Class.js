@@ -35,10 +35,16 @@ class alumnograduacion extends EntidadAbstracta {
 			<span id="span_error_alumnograduacion_apellidos"><a id="error_alumnograduacion_apellidos"></a></span>
 			<br>
 
-            <label class="label_alumnograduacion_titulacion">Titulacion</label>
-			<input type='text' id='alumnograduacion_titulacion' name='alumnograduacion_titulacion' onblur=" return entidad.ADD_alumnograduacion_titulacion_validation();"></input>
-			<span id="span_error_alumnograduacion_titulacion"><a id="error_alumnograduacion_titulacion"></a></span>
-			<br>
+            <label for="alumnograduacion_titulacion">Titulacion</label>
+            <select id="alumnograducion_titulacion" name="alumnograduacion_titulacion" onblur=" return entidad.ADD_alumnograduacion_titulacion_validation();">
+                <option value="GREI" selected="selected">GREI</option>
+                <option value="GRIA">GRIA</option>
+                <option value="MEI">MEI</option>
+                <option value="MIA">MIA</option>
+                <option value="PCEO">PCEO</option>
+            </select>
+            <span id="span_error_alumnograduacion_titulacion"><a id="error_alumnograduacion_titulacion"></a></span>
+            <br>
 
 			<label class="label_alumnograduacion_dni">Dni</label>
 			<input type='text' id='alumnograduacion_dni' name='alumnograduacion_dni' onblur=" return entidad.ADD_alumnograduacion_dni_validation();"></input>
@@ -145,32 +151,33 @@ class alumnograduacion extends EntidadAbstracta {
 
 
     ADD_alumnograduacion_titulacion_validation() {
-        /*const seleccion=document.querySelector('input[name="alumnograduacion_titulacion"]:checked');
-        if(!seleccion){
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
-            return "alumnograduacion_titulacion_format_KO";
+        var menu=document.getElementsByName('alumnograduacion_titulacion');
+        var contador=0;
+        var valores=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
+
+        for(var i=0; i<menu.length; i++){
+            if(menu[i].checked){
+                if(valores.includes(menu[i].value)){
+                    contador++;
+                }else{
+                    if(!(menu[i].value=='')){
+                        this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
+                        return 'alumnograduacion_titulacion_format_KO';
+                    }
+                }
+            }
         }
-        const valorActual=seleccion.value.toUpperCase();
-        const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
-        if(!valoresPermitidos.includes(valorActual)){
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
-            return "alumnograduacion_titulacion_format_KO";
+        var codeerror='';
+        switch(contador){
+            case 1:
+                this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
+                return true;
+            default:
+                codeerror='alumnograduacion_tituacion_vacio_KO';
+                break;
         }
-        this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
-        return true;*/
-        
-        /*if (!(this.min_size('alumnograduacion_titulacion',1))){
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion','alumnograduacion_titulacion_min_size_KO');
-            return "alumnograduacion_titulacion_min_size_KO";
-        }*/
-        const valor=document.getElementById('alumnograduacion_titulacion').value;
-        const valoresPermitidos=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
-        if (!valoresPermitidos.includes(valor)) {
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
-            return "alumnograduacion_titulacion_format_KO";
-        }
-        this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
-        return true;
+        this.dom.mostrar_error_campo('alumnograduacion_titulacion', codeerror);
+        return codeerror;
     }
 
     ADD_alumnograduacion_dni_validation() {
@@ -703,6 +710,7 @@ class alumnograduacion extends EntidadAbstracta {
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
+        setLang();
     }
     createForm_SEARCH(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -717,6 +725,7 @@ class alumnograduacion extends EntidadAbstracta {
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
+        setLang();
     }
     //como no tengo fecha, aqui no tendría que cambiarle el formato a nada
     createForm_EDIT(fila){
@@ -733,6 +742,7 @@ class alumnograduacion extends EntidadAbstracta {
         //validaciones y campos inactivos
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
         this.dom.colocarboton('EDIT');
+        setLang();
     }
     createForm_DELETE(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -745,8 +755,9 @@ class alumnograduacion extends EntidadAbstracta {
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
-        this.dom.colocartodosreadonly('form_iu'); //AQUI ESTA OTRO FALLO
+        this.dom.colocartodosreadonly('form_iu'); 
         this.dom.colocarboton('DELETE');
+        setLang();
     }
     createForm_SHOWCURRENT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -757,7 +768,8 @@ class alumnograduacion extends EntidadAbstracta {
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
-        this.dom.colocartodosreadonly('form_iu'); //AQUI ESTA OTRO FALLO
+        this.dom.colocartodosreadonly('form_iu');
+        setLang();
     }
 
     /**

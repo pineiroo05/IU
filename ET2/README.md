@@ -1,30 +1,31 @@
 ERRORES ENCONTRADOS:
 
-PROBLEMA GENERAL, el fichero que tengo subido, luego como si no se mantuviese subido al entrar en los formularios. Casi seguro pq no esta cogiendo la fila.
+PROBLEMA GENERAL, el fichero que tengo subido, luego es como si no lo recuperase, pq al darle al delete me dice que el campo esta vacio.
+OTRO FALLO: ns pq carallo no puedo cambiar el id una vez metido
 
+------------
 --alumnograduacion: fallo general de arriba, por lo demas a simple vista bien.
-- OJO CON EL RADIO, PQ ME ESTA DANDO FALLO POR TODOS LADOS, AHORA ESTA COMO TEXT, PERO CUANDO LO CAMBIO FALLA MUCHISIMO.
+- Select metido en la titulacion, ahora habria que adaptar las validaciones
 
---articulo: el fallo general de arriba, por lo demas a simple vista esta bien.
+--articulo.
 - MIRAR DE METER UN DATE
-- meter personalizes para el rango de paginas
-- meter personalize para que la pag final no sea inferior a la inicial
-- En volumen puede ser con numero o letra -> tocar la regEx
-- ISSN son 6 digitos guion y 6 digitos
+- Con los personalizes, me haria falta la mierda del min y max_size ????
+- ISSN es de 9, o 13 digitos??????
+ ##ADD, SEARCH Y SHOWCURRENT BIEN, EDIT CREO Y DELETE NO BORRA PERO NO SACA FALLO, ES POR EL FALLO GENERAL.
+
 
 --ubicacion 
 - add y edit bien
-- search, delete y showcurrent me dan el sig error.
-- altitud puede ser negativa :(
+- search, delete y showcurrent me dan el sig error. NO TIENE NINGUN TIPO DE SENTIDO QUE ME DE ESE ERROR
 Uncaught TypeError: can't access property "style", document.getElementById(...) is null
     hide_element http://127.0.0.1:5500/Core/Dom_Class.js:21
     hide_element_form http://127.0.0.1:5500/Core/Dom_Class.js:33
     createForm_SHOWCURRENT http://127.0.0.1:5500/app/ubicacion_Class.js:565
     onclick http://127.0.0.1:5500/:1
 
--OJO -> falta por meter las validaciones del search en altitud, longitud y latitud, tanto en ubicacion_Class, como en ET2_infotest.
--OJO 2.0 -> como seria el rango maximo y minimo de valores que acepta altitude?????
+- altitud puede ser negativa :(
+- falta por meter las validaciones del search en altitud, longitud y latitud, tanto en ubicacion_Class, como en ET2_infotest.
+- como seria el rango maximo y minimo de valores que acepta altitude?????
 
-TEMA VALIDACIONES, en issn, hay un formato muy especifico. Ver como implementar una funcion personalize.
 
 FALTAN ACABAR LAS TRADUCCIONES

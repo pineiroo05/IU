@@ -40,22 +40,22 @@ class ubicacion extends EntidadAbstracta{
 			<br>
 			
 			<label class="label_nuevo_site_north_photo">Nueva foto hacia el norte</label>
-			<input type='file' id='nuevo_site_north_photo' name='nuevo_site_north_photo' onblur=" return entidad.ADD_nuevo_site_north_photo_validation();"></input>
+			<input type='file' id='nuevo_site_north_photo' name='nuevo_site_north_photo'></input>
 			<span id="span_error_nuevo_site_north_photo"><a id="error_nuevo_site_north_photo"></a></span>
 			<br>
 
 			<label class="label_nuevo_site_south_photo">Nueva foto hacia el sur</label>
-			<input type='file' id='nuevo_site_south_photo' name='nuevo_site_south_photo' onblur=" return entidad.ADD_nuevo_site_south_photo_validation();"></input>
+			<input type='file' id='nuevo_site_south_photo' name='nuevo_site_south_photo'></input>
 			<span id="span_error_nuevo_site_south_photo"><a id="error_nuevo_site_south_photo"></a></span>
 			<br>
 
 			<label class="label_nuevo_site_east_photo">Nueva foto hacia el oeste</label>
-			<input type='file' id='nuevo_site_east_photo' name='nuevo_site_east_photo' onblur=" return entidad.ADD_nuevo_site_east_photo_validation();"></input>
+			<input type='file' id='nuevo_site_east_photo' name='nuevo_site_east_photo'></input>
 			<span id="span_error_nuevo_site_east_photo"><a id="error_nuevo_site_east_photo"></a></span>
 			<br>
 
             <label class="label_nuevo_site_west_photo">Nueva foto hacia el este</label>
-			<input type='file' id='nuevo_site_west_photo' name='nuevo_site_west_photo' onblur=" return entidad.ADD_nuevo_site_west_photo_validation();"></input>
+			<input type='file' id='nuevo_site_west_photo' name='nuevo_site_west_photo'></input>
 			<span id="span_error_nuevo_site_west_photo"><a id="error_nuevo_site_west_photo"></a></span>
 			<br>
 
@@ -110,7 +110,7 @@ class ubicacion extends EntidadAbstracta{
             return "site_latitud_vacio_KO";
         }
         if(!this.personalize_coord_formato_rango(latitud, 'latitud')){
-            this.mostrar_error_campo('site_latitud', 'site_latitud_formato_rango_KO');
+            this.dom.mostrar_error_campo('site_latitud', 'site_latitud_formato_rango_KO');
             return "site_latitud_formato_rango_KO";
         }
         if(!this.personalize_coord_decimales(latitud, 6)){
@@ -127,11 +127,11 @@ class ubicacion extends EntidadAbstracta{
             return "site_longitud_vacio_KO";
         }
         if(!this.personalize_coord_formato_rango(longitud, 'longitud')){
-            this.mostrar_error_campo('site_longitud', 'site_longitud_formato_rango_KO');
+            this.dom.mostrar_error_campo('site_longitud', 'site_longitud_formato_rango_KO');
             return "site_longitud_formato_rango_KO";
         }
         if(!this.personalize_coord_decimales(longitud, 6)){
-            this.dom.mostrar_error_campo('site_lonitud', 'site_longitud_decimales_KO');
+            this.dom.mostrar_error_campo('site_longitud', 'site_longitud_decimales_KO');
             return "site_longitud_decimales_KO";
         }
         this.dom.mostrar_exito_campo('site_longitud');
@@ -592,7 +592,7 @@ class ubicacion extends EntidadAbstracta{
         return false;
     }
     personalize_altitude_coord_formato_rango(valor){
-        const expRegular=/-?[0-9]+$/;
+        const expRegular=/^-?[0-9]+$/;
         if(!expRegular.test(valor)){
             return false;
         }
@@ -649,6 +649,7 @@ class ubicacion extends EntidadAbstracta{
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
+        setLang();
     }
     createForm_SEARCH(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -659,16 +660,17 @@ class ubicacion extends EntidadAbstracta{
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
         //nuevo_fotoacto oculto
         this.dom.hide_element('nuevo_site_north_photo');
-        this.dom.hide_element_form('nuevo_site_north_photo');
+        this.dom.hide_element_form('nuevo_site_north_photo'); //ERROR
         this.dom.hide_element('nuevo_site_south_photo');
-        this.dom.hide_element_form('nuevo_site_south_photo');
+        this.dom.hide_element_form('nuevo_site_south_photo'); //ERROR
         this.dom.hide_element('nuevo_site_east_photo');
-        this.dom.hide_element_form('nuevo_site_east_photo');
+        this.dom.hide_element_form('nuevo_site_east_photo'); //ERROR
         this.dom.hide_element('nuevo_site_west_photo');
-        this.dom.hide_element_form('nuevo_site_west_photo');
+        this.dom.hide_element_form('nuevo_site_west_photo'); //ERROR
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
+        setLang();
     }
     //como no tengo fecha, aqui no tendría que cambiarle el formato a nada
     createForm_EDIT(fila){
@@ -693,53 +695,48 @@ class ubicacion extends EntidadAbstracta{
         this.dom.assign_property_value('site_east_photo', 'readonly', 'true');
         this.dom.assign_property_value('site_west_photo', 'readonly', 'true');
         this.dom.colocarboton('EDIT');
+        setLang();
     }
     createForm_DELETE(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
-        //oculto el nuevo_fotoacto
-        this.dom.hide_element_form('nuevo_site_north_photo');
+        //oculto las fotos
+        this.dom.hide_element_form('nuevo_site_north_photo'); //ERROR
         this.dom.assign_property_value('link_site_north_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_north_photo/'+fila.site_north_photo);
-        this.dom.hide_element_form('nuevo_site_south_photo');
+        this.dom.hide_element_form('nuevo_site_south_photo'); //ERROR
         this.dom.assign_property_value('link_site_south_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_south_photo/'+fila.site_south_photo);
-        this.dom.hide_element_form('nuevo_site_east_photo');
+        this.dom.hide_element_form('nuevo_site_east_photo'); //ERROR
         this.dom.assign_property_value('link_site_east_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_east_photo/'+fila.site_east_photo);
-        this.dom.hide_element_form('nuevo_site_west_photo');
+        this.dom.hide_element_form('nuevo_site_west_photo'); //ERROR
         this.dom.assign_property_value('link_site_west_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_west_photo/'+fila.site_west_photo);
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
         this.dom.colocarboton('DELETE');
+        setLang();
     }
     createForm_SHOWCURRENT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';
         //campos no visibles
-        this.dom.hide_element_form('nuevo_site_north_photo');
+        console.log(nuevo_site_north_photo);
+        this.dom.hide_element_form('nuevo_site_north_photo'); //ERROR
         this.dom.assign_property_value('nuevo_site_north_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_north_photo/'+fila.site_north_photo);
-        this.dom.hide_element_form('nuevo_site_south_photo');
+        this.dom.hide_element_form('nuevo_site_south_photo'); //ERROR
         this.dom.assign_property_value('nuevo_site_south_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_south_photo/'+fila.site_south_photo);
-        this.dom.hide_element_form('nuevo_site_east_photo');
+        this.dom.hide_element_form('nuevo_site_east_photo'); //ERROR
         this.dom.assign_property_value('nuevo_site_east_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_east_photo/'+fila.site_east_photo);
-        this.dom.hide_element_form('nuevo_site_west_photo');
+        this.dom.hide_element_form('nuevo_site_west_photo'); //ERROR
         this.dom.assign_property_value('nuevo_site_west_photo', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_site_west_photo/'+fila.site_west_photo);
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
+        setLang();
     }
-
-    /* VER SI ME HACE FALTA
-    cambiarFormatoFecha(fecha){
-        var a=fecha.split('-');
-        var dia=a[2];
-        var mes=a[1];
-        var ano=a[0];
-        return dia+'/'+mes+'/'+ano;
-    }*/
 
     /**
 	 * modifica el formato de visualización de un atributo concreto y se devuelve el valor modificado
