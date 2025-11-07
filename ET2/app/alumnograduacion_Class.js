@@ -16,28 +16,29 @@ class alumnograduacion extends EntidadAbstracta {
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_alumnograduacion();">
 
 			<label class="label_alumnograduacion_login">login</label>
-			<input type='text' id='alumnograduacion_login' name='alumnograduacion_login' onblur=" return entidad.ADD_alumnograduacion_login_validation();"></input>
+			<input type='text' id='alumnograduacion_login' name='alumnograduacion_login'></input>
 			<span id="span_error_alumnograduacion_login"><a id="error_alumnograduacion_login"></a></span>
 			<br>
 
 			<label class="label_alumnograduacion_password">Contraseña</label>
-			<input type='text' id='alumnograduacion_password' name='alumnograduacion_password' onblur=" return entidad.ADD_alumnograduacion_password_validation();"></input>
+			<input type='text' id='alumnograduacion_password' name='alumnograduacion_password'></input>
 			<span id="span_error_alumnograduacion_password"><a id="error_alumnograduacion_password"></a></span>
 			<br>
 
 			<label class="label_alumnograduacion_nombre">Nombre</label>
-			<input type='text' id='alumnograduacion_nombre' name='alumnograduacion_nombre' onblur=" return entidad.ADD_alumnograduacion_nombre_validation();"></input>
+			<input type='text' id='alumnograduacion_nombre' name='alumnograduacion_nombre'></input>
 			<span id="span_error_alumnograduacion_nombre"><a id="error_alumnograduacion_nombre"></a></span>
 			<br>
 
 			<label class="label_alumnograduacion_apellidos">Apellidos</label>
-			<input type='text' id='alumnograduacion_apellidos' name='alumnograduacion_apellidos' onblur=" return entidad.ADD_alumnograduacion_apellidos_validation();"></input>
+			<input type='text' id='alumnograduacion_apellidos' name='alumnograduacion_apellidos'></input>
 			<span id="span_error_alumnograduacion_apellidos"><a id="error_alumnograduacion_apellidos"></a></span>
 			<br>
 
             <label for="alumnograduacion_titulacion">Titulacion</label>
-            <select id="alumnograducion_titulacion" name="alumnograduacion_titulacion" onblur=" return entidad.ADD_alumnograduacion_titulacion_validation();">
-                <option value="GREI" selected="selected">GREI</option>
+            <select id="alumnograduacion_titulacion" name="alumnograduacion_titulacion">
+                <option selected="selected"></option>
+                <option value="GREI">GREI</option>
                 <option value="GRIA">GRIA</option>
                 <option value="MEI">MEI</option>
                 <option value="MIA">MIA</option>
@@ -47,33 +48,34 @@ class alumnograduacion extends EntidadAbstracta {
             <br>
 
 			<label class="label_alumnograduacion_dni">Dni</label>
-			<input type='text' id='alumnograduacion_dni' name='alumnograduacion_dni' onblur=" return entidad.ADD_alumnograduacion_dni_validation();"></input>
+			<input type='text' id='alumnograduacion_dni' name='alumnograduacion_dni'></input>
 			<span id="span_error_alumnograduacion_dni"><a id="error_alumnograduacion_dni"></a></span>
 			<br>
 			
 			<label class="label_alumnograduacion_telefono">Telefono</label>
-			<input type='text' id='alumnograduacion_telefono' name='alumnograduacion_telefono' onblur=" return entidad.ADD_alumnograduacion_telefono_validation();"></input>
+			<input type='text' id='alumnograduacion_telefono' name='alumnograduacion_telefono'></input>
 			<span id="span_error_alumnograduacion_telefono"><a id="error_alumnograduacion_telefono"></a></span>
 			<br>
 
 			<label class="label_alumnograduacion_direccion">Direccion</label>
-			<input type='text' id='alumnograduacion_direccion' name='alumnograduacion_direccion' onblur=" return entidad.ADD_alumnograduacion_direccion_validation();"></input>
-			<span id="span_error_alumnograduacion_direccion"><a id="error_alumnograduacion_direccion"></a></span>
-			<br>
+            <textarea rows="3" cols="33" type='text' id='alumnograduacion_direccion' name='alumnograduacion_direccion'></textarea>
+            <span id="span_error_alumnograduacion_direccion"><a id="error_alumnograduacion_direccion"></a></span>
+            <br>
 
 			<label class="label_alumnograduacion_email">Email</label>
-			<input type='text' id='alumnograduacion_email' name='alumnograduacion_email' onblur=" return entidad.ADD_alumnograduacion_email_validation();"></input>
+			<input type='text' id='alumnograduacion_email' name='alumnograduacion_email'></input>
 			<span id="span_error_alumnograduacion_email"><a id="error_alumnograduacion_email"></a></span>
 			<br>
+
+            <label id="label_nuevo_alumnograduacion_fotoacto" class="label_nuevo_foto_persona">Nueva Foto acto</label>
+			<input type='file' id='nuevo_alumnograduacion_fotoacto' name='nuevo_alumnograduacion_fotoacto'></input>
+			<span id="span_error_nuevo_alumnograduacion_fotoacto"><a id="error_nuevo_alumnograduacion_fotoacto"></a></span>
 
 			<label id="label_alumnograduacion_fotoacto" class="label_alumnograduacion_fotoacto">Foto acto</label>
 			<input type='text' id='alumnograduacion_fotoacto' name='alumnograduacion_fotoacto'></input>
 			<span id="span_error_alumnograduacion_fotoacto"><a id="error_alumnograduacion_fotoacto"></a></span>
 			<a id="link_alumnograduacion_fotoacto" href="http://193.147.87.202/ET2/filesuploaded/files_alumnograduacion_fotoacto/"><img src="./iconos/FILE.png" /></a>
 			
-			<label id="label_nuevo_alumnograduacion_fotoacto" class="label_nuevo_foto_persona">Nueva Foto acto</label>
-			<input type='file' id='nuevo_alumnograduacion_fotoacto' name='nuevo_alumnograduacion_fotoacto'></input>
-			<span id="span_error_nuevo_alumnograduacion_fotoacto"><a id="error_nuevo_alumnograduacion_fotoacto"></a></span>
 			<br>
 		</form>
 		`;
@@ -151,33 +153,18 @@ class alumnograduacion extends EntidadAbstracta {
 
 
     ADD_alumnograduacion_titulacion_validation() {
-        var menu=document.getElementsByName('alumnograduacion_titulacion');
-        var contador=0;
-        var valores=['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
-
-        for(var i=0; i<menu.length; i++){
-            if(menu[i].checked){
-                if(valores.includes(menu[i].value)){
-                    contador++;
-                }else{
-                    if(!(menu[i].value=='')){
-                        this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
-                        return 'alumnograduacion_titulacion_format_KO';
-                    }
-                }
-            }
+        const valor=document.getElementById('alumnograduacion_titulacion').value;
+        const valoresPermitidos=['GREI', 'GRIA','MEI', 'MIA', 'PCEO'];
+        if(!valoresPermitidos.includes(valor)){
+            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_valor_KO');
+            return "alumnograduacion_titulacion_valor_KO";
         }
-        var codeerror='';
-        switch(contador){
-            case 1:
-                this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
-                return true;
-            default:
-                codeerror='alumnograduacion_tituacion_vacio_KO';
-                break;
+        if(valor==''){
+            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_vacio_KO');
+            return "alumnograduacion_titulacion_vacio_KO";
         }
-        this.dom.mostrar_error_campo('alumnograduacion_titulacion', codeerror);
-        return codeerror;
+        this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
+        return true;
     }
 
     ADD_alumnograduacion_dni_validation() {
@@ -217,16 +204,15 @@ class alumnograduacion extends EntidadAbstracta {
     }
 
     ADD_alumnograduacion_direccion_validation() {
-        if (!(this.validations.min_size('alumnograduacion_direccion', 5))) {
+        if (!(this.personalize_direccion_min_size('alumnograduacion_direccion', 5))) {
             this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_min_size_KO');
             return "alumnograduacion_direccion_min_size_KO";
         }
-        if (!(this.validations.max_size('alumnograduacion_direccion', 100))) {
+        if (!(this.personalize_direccion_max_size('alumnograduacion_direccion', 100))) {
             this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_max_size_KO');
             return "alumnograduacion_direccion_max_size_KO";
         }
-        // Calle abc, 12, 1ºB, 32001, Ourense -->> ^[a-zA-ZáéíóúÁÉÍÓÚÑñ0-9 ]\,[0-9]{1,}\, 
-        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,\/ºª]+$'))) {
+        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,/ºª]+$'))) {
             this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_format_KO');
             return "alumnograduacion_direccion_format_KO";
         }
@@ -234,7 +220,6 @@ class alumnograduacion extends EntidadAbstracta {
         this.dom.mostrar_exito_campo('alumnograduacion_direccion');
         return true;
     }
-
     ADD_alumnograduacion_email_validation() {
         if (!(this.validations.min_size('alumnograduacion_email', 5))) {
             this.dom.mostrar_error_campo('alumnograduacion_email', 'alumnograduacion_email_min_size_KO');
@@ -453,14 +438,11 @@ class alumnograduacion extends EntidadAbstracta {
 
 	SEARCH_alumnograduacion_titulacion_validation() {
         if (document.getElementById('alumnograduacion_titulacion').value !== '') {
-            //AQUI ESTA EL FALLO
-            const valor = document.getElementById('alumnograduacion_titulacion').value.trim().toUpperCase();
-            const valoresPermitidos = ['GREI', 'GRIA', 'MEI', 'MIA', 'PCEO'];
-
-            // Verificar si el valor es una subcadena de algún valor permitido
-            const coincide = valoresPermitidos.some(cadena => cadena.includes(valor));
-
-            if (!coincide) {
+            if(!(this.validations.max_size('alumnograduacion_titulacion', 4))){
+                this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_max_size_KO');
+                return "alumnograduacion_titulacion_max_size_KO";
+            }
+            if(!(this.validations.format('alumnograduacion_titulacion', '^[A-Z]*$'))){
                 this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_format_KO');
                 return "alumnograduacion_titulacion_format_KO";
             }
@@ -694,6 +676,14 @@ class alumnograduacion extends EntidadAbstracta {
         const sinExtension=nombre.substring(0, nombre.lastIndexOf('.'));
         return sinExtension.length<=maximoCaracteres;
     }
+    personalize_direccion_min_size(direccion, tamMin){
+        const input=document.getElementById(direccion).value.trim();
+        return input.length>=tamMin;
+    }
+    personalize_direccion_max_size(direccion, tamMax){
+        const input=document.getElementById(direccion).value.trim();
+        return input.length<=tamMax;
+    }
     /*
         A partir de aqui todo seria para la creacion de los formularios para hacer los add, edit y search
     */
@@ -704,7 +694,7 @@ class alumnograduacion extends EntidadAbstracta {
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.ADD_submit_'+this.nombreentidad+'()');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.ADD();');
-        //nuevo_fotoacto oculto
+        //fotoacto oculto
         this.dom.hide_element('alumnograduacion_fotoacto');
         this.dom.hide_element_form('alumnograduacion_fotoacto');
         //validaciones
@@ -727,7 +717,6 @@ class alumnograduacion extends EntidadAbstracta {
         this.dom.colocarboton('SEARCH');
         setLang();
     }
-    //como no tengo fecha, aqui no tendría que cambiarle el formato a nada
     createForm_EDIT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
         document.getElementById('Div_IU_form').style.display='block';

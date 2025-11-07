@@ -10,72 +10,68 @@ class ubicacion extends EntidadAbstracta{
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_ubicacion();">
 
 			<label class="label_id_site">Identificador del sitio</label>
-			<input type='text' id='id_site' name='id_site' onblur=" return entidad.ADD_id_site_validation();"></input>
+			<input type='text' id='id_site' name='id_site'></input>
 			<span id="span_error_id_site"><a id="error_id_site"></a></span>
 			<br>
 
 			<label class="label_site_latitud">Latitud WGS84</label>
-			<input type='text' id='site_latitud' name='site_latitud' onblur=" return entidad.ADD_site_latitud_validation();"></input>
+			<input type='text' id='site_latitud' name='site_latitud'></input>
 			<span id="span_error_site_latitud"><a id="error_site_latitud"></a></span>
 			<br>
 
 			<label class="label_site_longitud">Longitud WGS84</label>
-			<input type='text' id='site_longitud' name='site_longitud' onblur=" return entidad.ADD_site_longitud_validation();"></input>
+			<input type='text' id='site_longitud' name='site_longitud'></input>
 			<span id="span_error_site_longitud"><a id="error_site_longitud"></a></span>
 			<br>
 
 			<label class="label_site_altitude">Altitud sitio</label>
-			<input type='text' id='site_altitude' name='site_altitude' onblur=" return entidad.ADD_site_altitude_validation();"></input>
+			<input type='text' id='site_altitude' name='site_altitude'></input>
 			<span id="span_error_site_altitude"><a id="error_site_altitude"></a></span>
 			<br>
 
 			<label class="label_site_locality">Localidad del sitio</label>
-			<input type='text' id='site_locality' name='site_locality' onblur=" return entidad.ADD_site_locality_validation();"></input>
+			<input type='text' id='site_locality' name='site_locality'></input>
 			<span id="span_error_site_locality"><a id="error_site_locality"></a></span>
 			<br>
 
 			<label class="label_site_provider_login">Login proveedor sitio</label>
-			<input type='text' id='site_provider_login' name='site_provider_login' onblur=" return entidad.ADD_site_provider_login_validation();"></input>
+			<input type='text' id='site_provider_login' name='site_provider_login'></input>
 			<span id="span_error_site_provider_login"><a id="error_site_provider_login"></a></span>
 			<br>
 			
 			<label class="label_nuevo_site_north_photo">Nueva foto hacia el norte</label>
 			<input type='file' id='nuevo_site_north_photo' name='nuevo_site_north_photo'></input>
 			<span id="span_error_nuevo_site_north_photo"><a id="error_nuevo_site_north_photo"></a></span>
-			<br>
 
-			<label class="label_nuevo_site_south_photo">Nueva foto hacia el sur</label>
-			<input type='file' id='nuevo_site_south_photo' name='nuevo_site_south_photo'></input>
-			<span id="span_error_nuevo_site_south_photo"><a id="error_nuevo_site_south_photo"></a></span>
-			<br>
-
-			<label class="label_nuevo_site_east_photo">Nueva foto hacia el oeste</label>
-			<input type='file' id='nuevo_site_east_photo' name='nuevo_site_east_photo'></input>
-			<span id="span_error_nuevo_site_east_photo"><a id="error_nuevo_site_east_photo"></a></span>
-			<br>
-
-            <label class="label_nuevo_site_west_photo">Nueva foto hacia el este</label>
-			<input type='file' id='nuevo_site_west_photo' name='nuevo_site_west_photo'></input>
-			<span id="span_error_nuevo_site_west_photo"><a id="error_nuevo_site_west_photo"></a></span>
-			<br>
-
-			<label id="label_site_north_photo" class="label_site_north_photo">Foto hacia el norte</label>
+            <label id="label_site_north_photo" class="label_site_north_photo">Foto hacia el norte</label>
 			<input type='text' id='site_north_photo' name='site_north_photo'></input>
 			<span id="span_error_site_north_photo"><a id="error_site_north_photo"></a></span>
 			<a id="link_north_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_north_photo/"><img src="./iconos/FILE.png" /></a>
 			<br>
 
-			<label id="label_site_south_photo" class="label_site_south_photo">Foto hacia el sur</label>
+			<label class="label_nuevo_site_south_photo">Nueva foto hacia el sur</label>
+			<input type='file' id='nuevo_site_south_photo' name='nuevo_site_south_photo'></input>
+			<span id="span_error_nuevo_site_south_photo"><a id="error_nuevo_site_south_photo"></a></span>
+
+            <label id="label_site_south_photo" class="label_site_south_photo">Foto hacia el sur</label>
 			<input type='text' id='site_south_photo' name='site_south_photo'></input>
 			<span id="span_error_site_south_photo"><a id="error_site_south_photo"></a></span>
 			<a id="link_south_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_south_photo/"><img src="./iconos/FILE.png" /></a>
             <br>
+
+			<label class="label_nuevo_site_east_photo">Nueva foto hacia el oeste</label>
+			<input type='file' id='nuevo_site_east_photo' name='nuevo_site_east_photo'></input>
+			<span id="span_error_nuevo_site_east_photo"><a id="error_nuevo_site_east_photo"></a></span>
 
             <label id="label_site_east_photo" class="label_site_east_photo">Foto hacia el este</label>
 			<input type='text' id='site_east_photo' name='site_east_photo'></input>
 			<span id="span_error_site_east_photo"><a id="error_site_east_photo"></a></span>
 			<a id="link_east_photo" href="http://193.147.87.202/ET2/filesuploaded/files_site_east_photo/"><img src="./iconos/FILE.png" /></a>
             <br>
+
+            <label class="label_nuevo_site_west_photo">Nueva foto hacia el este</label>
+			<input type='file' id='nuevo_site_west_photo' name='nuevo_site_west_photo'></input>
+			<span id="span_error_nuevo_site_west_photo"><a id="error_nuevo_site_west_photo"></a></span>
 
             <label id="label_site_west_photo" class="label_site_west_photo">Foto hacia el oeste</label>
 			<input type='text' id='site_west_photo' name='site_west_photo'></input>
