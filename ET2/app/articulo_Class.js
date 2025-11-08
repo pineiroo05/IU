@@ -95,7 +95,7 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_AutoresA_validation(){
-        if(!(this.validations.min_size('AutoresA', 5))){
+        if(!(this.validations.min_size('AutoresA', 3))){
             this.dom.mostrar_error_campo('AutoresA', 'AutoresA_min_size_KO');
             return "AutoresA_min_size_KO";
         }
@@ -111,7 +111,7 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_TituloA_validation(){
-        if(!(this.validations.min_size('TituloA', 10))){
+        if(!(this.validations.min_size('TituloA', 4))){
             this.dom.mostrar_error_campo('TituloA', 'TituloA_min_size_KO');
             return "TituloA_min_size_KO";
         }
@@ -345,13 +345,13 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_max_file_name_size_KO');
             return "nuevo_FicheropdfA_max_file_name_size_KO";
         }
-        this.dom.mostrar_exito_campo('FicheropdfA');
+        this.dom.mostrar_exito_campo('nuevo_FicheropdfA');
         return true;
     }
     EDIT_EstadoA_validation(){
         return this.ADD_EstadoA_validation();
     }
-    EDIT_submit_articulo(){
+/*  EDIT_submit_articulo(){
         let result=(this.EDIT_CodigoA_validation()&
             this.EDIT_AutoresA_validation()&
             this.EDIT_TituloA_validation()&
@@ -363,6 +363,25 @@ class articulo extends EntidadAbstracta{
             this.EDIT_FechaPublicacionR_validation()&
             this.EDIT_nuevo_FicheropdfA_validation()&
             this.EDIT_EstadoA_validation())
+        result=Boolean(result);
+        return true;
+    }
+*/
+    EDIT_submit_articulo(){
+        console.log("Comprobacion")
+        let result=[this.EDIT_CodigoA_validation(),
+            this.EDIT_AutoresA_validation(),
+            this.EDIT_TituloA_validation(),
+            this.EDIT_TituloR_validation(),
+            this.EDIT_ISSN_validation(),
+            this.EDIT_VolumenR_validation(),
+            this.EDIT_PagIniA_validation(),
+            this.EDIT_PagFinA_validation(),
+            this.EDIT_FechaPublicacionR_validation(),
+            this.EDIT_nuevo_FicheropdfA_validation(),
+            this.EDIT_EstadoA_validation()];
+        console.log("Resultado validacion: ", result);
+        console.log('Datos del formulario:', new FormData(document.getElementById('form_iu')));
         result=Boolean(result);
         return result;
     }
@@ -661,7 +680,9 @@ class articulo extends EntidadAbstracta{
     //Creacion de formularios
     createForm_ADD(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_ADD');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.ADD_submit_'+this.nombreentidad+'()');
         //action
@@ -669,6 +690,7 @@ class articulo extends EntidadAbstracta{
         //nuevo_fotoacto oculto
         this.dom.hide_element('FicheropdfA');
         this.dom.hide_element_form('FicheropdfA');
+        this.dom.hide_element('link_FicheropdfA');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
@@ -676,14 +698,18 @@ class articulo extends EntidadAbstracta{
     }
     createForm_SEARCH(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_SEARCH');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.SEARCH_submit_'+this.nombreentidad+'()');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.SEARCH();');
-        //nuevo_fotoacto oculto
+        //campos oculto
         this.dom.hide_element('nuevo_FicheropdfA');
         this.dom.hide_element_form('nuevo_FicheropdfA');
+        this.dom.hide_element('link_FicheropdfA');
+        this.dom.replaceSelectXEmptyInput('FechaPublicacionR');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
@@ -691,33 +717,39 @@ class articulo extends EntidadAbstracta{
     }
     createForm_EDIT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_EDIT');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit_'+this.nombreentidad+'()');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
         //acceso
-        this.dom.assign_property_value('nuevo_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
+        this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //fecha
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
+        console.log('Fecha de bd para edit: ', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
+        this.dom.assign_property_value('CodigoA', 'readonly', 'true');
         this.dom.assign_property_value('FicheropdfA', 'readonly', 'true');
         this.dom.colocarboton('EDIT');
         setLang();
     }
     createForm_DELETE(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_DELETE');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
 
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
@@ -726,19 +758,21 @@ class articulo extends EntidadAbstracta{
     }
     createForm_SHOWCURRENT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_SHOWCURRENT');
         //campos no visibles
         this.dom.hide_element_form('nuevo_FicheropdfA');
-        this.dom.assign_property_value('nuevo_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
+        this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
         setLang();
     }
-    convertirFecha(fechaStr) {
+    /*convertirFecha(fechaStr) {
         if (!fechaStr) return '';
         // Si ya está en formato YYYY-MM-DD, devuélvela tal cual
         if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) return fechaStr;
@@ -753,7 +787,7 @@ class articulo extends EntidadAbstracta{
             return fechaObj.toISOString().split('T')[0];
         }
         return ''; // Si no es válida, deja vacío
-    }
+    }*/
 
     /**
 	 * modifica el formato de visualización de un atributo concreto y se devuelve el valor modificado
@@ -777,7 +811,7 @@ class articulo extends EntidadAbstracta{
                 var dia=a[2];
                 var mes=a[1];
                 var ano=a[0];
-                return dia+'/'+mes+'/'+ano;
+                return dia+'/'+mes+'/'+ano
                 break;
 			case 'default':
 				alert('no existe mostrar especial para ese atributo');

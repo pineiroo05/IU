@@ -35,7 +35,7 @@ class alumnograduacion extends EntidadAbstracta {
 			<span id="span_error_alumnograduacion_apellidos"><a id="error_alumnograduacion_apellidos"></a></span>
 			<br>
 
-            <label for="alumnograduacion_titulacion">Titulacion</label>
+            <label class="alumnograduacion_titulacion">Titulacion</label>
             <select id="alumnograduacion_titulacion" name="alumnograduacion_titulacion">
                 <option selected="selected"></option>
                 <option value="GREI">GREI</option>
@@ -689,7 +689,9 @@ class alumnograduacion extends EntidadAbstracta {
     */
     createForm_ADD(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_ADD');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.ADD_submit_'+this.nombreentidad+'()');
         //action
@@ -697,6 +699,7 @@ class alumnograduacion extends EntidadAbstracta {
         //fotoacto oculto
         this.dom.hide_element('alumnograduacion_fotoacto');
         this.dom.hide_element_form('alumnograduacion_fotoacto');
+        this.dom.hide_element('link_alumnograduacion_fotoacto');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
@@ -704,7 +707,9 @@ class alumnograduacion extends EntidadAbstracta {
     }
     createForm_SEARCH(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_SEARCH');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.SEARCH_submit_'+this.nombreentidad+'()');
         //action
@@ -712,6 +717,8 @@ class alumnograduacion extends EntidadAbstracta {
         //nuevo_fotoacto oculto
         this.dom.hide_element('nuevo_alumnograduacion_fotoacto');
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
+        this.dom.hide_element('link_alumnograduacion_fotoacto');
+        this.dom.replaceSelectXEmptyInput('alumnograduacion_titulacion');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
@@ -719,13 +726,15 @@ class alumnograduacion extends EntidadAbstracta {
     }
     createForm_EDIT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_EDIT');
         //onsubmit
         this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.EDIT_submit_'+this.nombreentidad+'()');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
         //acceso al fichero de fotoacto
-        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_alumnograduacion_fotoacto/'+fila.alumnograduacion_fotoacto);
+        this.dom.assign_property_value('link_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_alumnograduacion_fotoacto/'+fila.alumnograduacion_fotoacto);
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //validaciones y campos inactivos
@@ -735,7 +744,9 @@ class alumnograduacion extends EntidadAbstracta {
     }
     createForm_DELETE(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_DELETE');
         //action
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
         //oculto el nuevo_fotoacto
@@ -750,10 +761,12 @@ class alumnograduacion extends EntidadAbstracta {
     }
     createForm_SHOWCURRENT(fila){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
-        document.getElementById('Div_IU_form').style.display='block';
+        this.dom.show_element('Div_IU_form', 'block');
+        this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
+		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_SHOWCURRENT');
         //campos no visibles
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
-        this.dom.assign_property_value('nuevo_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_alumnograduacion_fotoacto/'+fila.alumnograduacion_fotoacto);
+        this.dom.assign_property_value('link_alumnograduacion_fotoacto', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_alumnograduacion_fotoacto/'+fila.alumnograduacion_fotoacto);
         //rellenar valores
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
