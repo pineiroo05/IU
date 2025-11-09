@@ -11,6 +11,6 @@ PROBLEMA EN ARTICULO: la fecha y los input date, fallan y da sql_KO. PROBLEMA DE
 
 -- ubicacion: fallo general de arriba, por lo demas a simple vista bien.
 
-- falta por meter las validaciones del search en altitud, longitud y latitud, tanto en ubicacion_Class, como en ET2_infotest.
+- validaciones de latitud... Mirar de darle una vuelta y ver si podria buscar solo con un '-', o poniendo 9. (Actualmente no deja).
 
 FALTAN ACABAR LAS TRADUCCIONES

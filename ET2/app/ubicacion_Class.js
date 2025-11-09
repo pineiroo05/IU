@@ -468,12 +468,47 @@ class ubicacion extends EntidadAbstracta{
         return true;
     }
     SEARCH_site_latitud_validation(){
+        const latitud=document.getElementById('site_latitud').value.trim();
+        if(!latitud || latitud ===''){
+            return true;
+        }
+        if(!this.personalize_coord_formato_rango(latitud, 'latitud')){
+            this.dom.mostrar_error_campo('site_latitud', 'site_latitud_formato_rango_KO');
+            return "site_latitud_formato_rango_KO";
+        }
+        if(!this.personalize_coord_decimales(latitud, 6)){
+            this.dom.mostrar_error_campo('site_latitud', 'site_latitud_decimales_KO');
+            return "site_latitud_decimales_KO";
+        }
+        this.dom.mostrar_exito_campo('site_latitud');
         return true;
     }
     SEARCH_site_longitud_validation(){
+        const longitud=document.getElementById('site_longitud').value.trim();
+        if(!longitud || longitud ===''){
+            return true;
+        }
+        if(!this.personalize_coord_formato_rango(longitud, 'longitud')){
+            this.dom.mostrar_error_campo('site_longitud', 'site_longitud_formato_rango_KO');
+            return "site_longitud_formato_rango_KO";
+        }
+        if(!this.personalize_coord_decimales(longitud, 6)){
+            this.dom.mostrar_error_campo('site_longitud', 'site_longitud_decimales_KO');
+            return "site_longitud_decimales_KO";
+        }
+        this.dom.mostrar_exito_campo('site_longitud');
         return true;
     }
     SEARCH_site_altitude_validation(){
+        const altitud=document.getElementById('site_altitude').value.trim();
+        if(!altitud || altitud===''){
+            return true;
+        }
+        if(!this.personalize_altitude_coord_formato_rango(altitud)){
+            this.dom.mostrar_error_campo('site_altitude', 'site_altitude_formato_rango_KO');
+            return "site_altitude_formato_rango_KO";
+        }
+        this.dom.mostrar_exito_campo('site_altitude');
         return true;
     }
     SEARCH_site_locality_validation(){
@@ -560,7 +595,6 @@ class ubicacion extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('site_west_photo');
         return true;
     }
-    //Faltan altitud, longitud y latitud
     SEARCH_submit_ubicacion(){
         let result=(this.SEARCH_id_site_validation()&
             this.SEARCH_site_altitude_validation()&

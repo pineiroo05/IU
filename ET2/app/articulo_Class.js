@@ -351,7 +351,7 @@ class articulo extends EntidadAbstracta{
     EDIT_EstadoA_validation(){
         return this.ADD_EstadoA_validation();
     }
-/*  EDIT_submit_articulo(){
+    EDIT_submit_articulo(){
         let result=(this.EDIT_CodigoA_validation()&
             this.EDIT_AutoresA_validation()&
             this.EDIT_TituloA_validation()&
@@ -366,7 +366,7 @@ class articulo extends EntidadAbstracta{
         result=Boolean(result);
         return true;
     }
-*/
+/*
     EDIT_submit_articulo(){
         console.log("Comprobacion")
         let result=[this.EDIT_CodigoA_validation(),
@@ -385,7 +385,7 @@ class articulo extends EntidadAbstracta{
         result=Boolean(result);
         return result;
     }
-
+*/
     //Validaciones search
     SEARCH_CodigoA_validation(){
         if(document.getElementById('CodigoA').value !== ''){
