@@ -605,10 +605,11 @@ class articulo extends EntidadAbstracta{
         if(valorInicio===''){
             return false;
         }
-        const ini=parseInt(valorInicio, 10);
-        if(isNaN(ini)){
-            return true;
+        const soloNums=/^[0-9]+$/.test(valorInicio);
+        if(!soloNums){
+            return false;
         }
+        const ini=parseInt(valorInicio, 10);
         if(ini<1||ini>9999){
             return true;
         }
@@ -628,14 +629,18 @@ class articulo extends EntidadAbstracta{
         if(valorFin===''){
             return false;
         }
-        const fin=parseInt(valorFin, 10);
-        if(isNaN(fin)){
-            return true;
+        const soloNums=/^[0-9]+$/.test(valorFin);
+        if(!soloNums){
+            return false;
         }
+        const fin=parseInt(valorFin, 10);
         if(valorInicio!==''){
             const ini=parseInt(valorInicio,10);
             if(!isNaN(ini)){
-                if(fin<ini || fin>9999){
+                if(fin<ini){
+                    return 'PagFinA_mayor_igual_inicial_KO';
+                }
+                if(fin>9999){
                     return true;
                 }
             }

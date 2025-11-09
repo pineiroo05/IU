@@ -13,4 +13,5 @@ PROBLEMA EN ARTICULO: la fecha y los input date, fallan y da sql_KO. PROBLEMA DE
 
 - validaciones de latitud... Mirar de darle una vuelta y ver si podria buscar solo con un '-', o poniendo 9. (Actualmente no deja).
 
-FALTAN ACABAR LAS TRADUCCIONES
+FALTAN ACABAR LAS TRADUCCIONES, Y ARREGLAR COSAS RELACIONADAS CON LAS PRUEBAS QUE ME DAN INCORRECTAS.
+DE LAS PRUEBAS ECHARLE OJO A LOS DATE Y SELECT. TAMBIEN AL TEMA DE RANGO Y TAL EN PagFinA
