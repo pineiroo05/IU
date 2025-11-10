@@ -9,47 +9,47 @@ class articulo extends EntidadAbstracta{
         var form_content = `
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_articulo();">
 
-			<label id="label_CodigoA" class="label_CodigoA">Código artículo</label>
+			<label class="label_CodigoA">Código artículo</label>
 			<input type='text' id='CodigoA' name='CodigoA'></input>
 			<span id="span_error_CodigoA"><a id="error_CodigoA"></a></span>
 			<br>
 
-			<label id="label_AutoresA" class="label_AutoresA">Nombres autores</label>
+			<label class="label_AutoresA">Nombres autores</label>
 			<input type='text' id='AutoresA' name='AutoresA'></input>
 			<span id="span_error_AutoresA"><a id="error_AutoresA"></a></span>
 			<br>
 
-			<label id="label_TituloA" class="label_TituloA">Título artículo</label>
+			<label class="label_TituloA">Título artículo</label>
 			<input type='text' id='TituloA' name='TituloA'></input>
 			<span id="span_error_TituloA"><a id="error_TituloA"></a></span>
 			<br>
 
-			<label id="label_TituloR" class="label_TituloR">Título revista</label>
+			<label class="label_TituloR">Título revista</label>
 			<input type='text' id='TituloR' name='TituloR'></input>
 			<span id="span_error_TituloR"><a id="error_TituloR"></a></span>
 			<br>
 
-			<label id="label_ISSN" class="label_ISSN">ISSN</label>
+			<label class="label_ISSN">ISSN</label>
 			<input type='text' id='ISSN' name='ISSN'></input>
 			<span id="span_error_ISSN"><a id="error_ISSN"></a></span>
 			<br>
 
-			<label id="label_VolumenR" class="label_VolumenR">Volumen de la revista</label>
+			<label class="label_VolumenR">Volumen de la revista</label>
 			<input type='text' id='VolumenR' name='VolumenR'></input>
 			<span id="span_error_VolumenR"><a id="error_VolumenR"></a></span>
 			<br>
 			
-			<label id="label_pagIniA" class="label_PagIniA">Número página inicial artículo</label>
+			<label class="label_PagIniA">Número página inicial artículo</label>
 			<input type='text' id='PagIniA' name='PagIniA'></input>
 			<span id="span_error_PagIniA"><a id="error_PagIniA"></a></span>
 			<br>
 
-			<label id="label_PagFinA" class="label_PagFinA">Número página final artículo</label>
+			<label class="label_PagFinA">Número página final artículo</label>
 			<input type='text' id='PagFinA' name='PagFinA'></input>
 			<span id="span_error_PagFinA"><a id="error_PagFinA"></a></span>
 			<br>
 
-			<label id="FechaPublicacionR" class="label_FechaPublicacionR">Fecha publicacion artículo</label>
+			<label class="label_FechaPublicacionR">Fecha publicacion artículo</label>
 			<input type='date' id='FechaPublicacionR' name='FechaPublicacionR'></input>
 			<span id="span_error_FechaPublicacionR"><a id="error_FechaPublicacionR"></a></span>
 			<br>
@@ -78,6 +78,22 @@ class articulo extends EntidadAbstracta{
     }
 
     //Validaciones add
+    ADD_CodigoA_validation(){
+        if(!(this.validations.min_size('CodigoA', 1))){
+            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_min_size_KO');
+            return "CodigoA_min_size_KO";
+        }
+        if(!(this.validations.max_size('CodigoA', 11))){
+            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_max_size_KO');
+            return "CodigoA_max_size_KO";
+        }
+        if(!(this.validations.format('CodigoA', '^[0-9]*$'))){
+            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_format_KO');
+            return "CodigoA_format_KO";
+        }
+        this.dom.mostrar_exito_campo('CodigoA');
+        return true;
+    }
     ADD_AutoresA_validation(){
         if(!(this.validations.min_size('AutoresA', 3))){
             this.dom.mostrar_error_campo('AutoresA', 'AutoresA_min_size_KO');
@@ -205,13 +221,13 @@ class articulo extends EntidadAbstracta{
     ADD_FechaPublicacionR_validation(){
         if(!(this.personalize_fecha_min_size('FechaPublicacionR', 10))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_min_size_KO');
-            return "FechaPublicacionR_min_size_KO";
+            return "FechaPublicacion_min_size_KO";
         }
         if(!(this.personalize_fecha_max_size('FechaPublicacionR', 10))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_max_size_KO');
             return "FechaPublicacionR_max_size_KO";
         }
-        if(!(this.validations.format('FechaPublicacionR', '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$'))){
+        if(!(this.validations.format('FechaPublicacionR', '^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'))){
             this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_format_KO');
             return "FechaPublicacionR_format_KO";
         }
@@ -261,7 +277,8 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_submit_articulo(){
-        let result=(this.ADD_AutoresA_validation()&
+        let result=(this.ADD_CodigoA_validation()&
+            this.ADD_AutoresA_validation()&
             this.ADD_TituloA_validation()&
             this.ADD_TituloR_validation()&
             this.ADD_ISSN_validation()&
@@ -276,6 +293,9 @@ class articulo extends EntidadAbstracta{
     }
 
     //Validaciones edit
+    EDIT_CodigoA_validation(){
+        return this.ADD_CodigoA_validation();
+    }
     EDIT_AutoresA_validation(){
         return this.ADD_AutoresA_validation();
     }
@@ -332,8 +352,8 @@ class articulo extends EntidadAbstracta{
         return this.ADD_EstadoA_validation();
     }
     EDIT_submit_articulo(){
-
-        let result=(this.EDIT_AutoresA_validation()&
+        let result=(this.EDIT_CodigoA_validation()&
+            this.EDIT_AutoresA_validation()&
             this.EDIT_TituloA_validation()&
             this.EDIT_TituloR_validation()&
             this.EDIT_ISSN_validation()&
@@ -346,6 +366,26 @@ class articulo extends EntidadAbstracta{
         result=Boolean(result);
         return true;
     }
+/*
+    EDIT_submit_articulo(){
+        console.log("Comprobacion")
+        let result=[this.EDIT_CodigoA_validation(),
+            this.EDIT_AutoresA_validation(),
+            this.EDIT_TituloA_validation(),
+            this.EDIT_TituloR_validation(),
+            this.EDIT_ISSN_validation(),
+            this.EDIT_VolumenR_validation(),
+            this.EDIT_PagIniA_validation(),
+            this.EDIT_PagFinA_validation(),
+            this.EDIT_FechaPublicacionR_validation(),
+            this.EDIT_nuevo_FicheropdfA_validation(),
+            this.EDIT_EstadoA_validation()];
+        console.log("Resultado validacion: ", result);
+        console.log('Datos del formulario:', new FormData(document.getElementById('form_iu')));
+        result=Boolean(result);
+        return result;
+    }
+*/
     //Validaciones search
     SEARCH_CodigoA_validation(){
         if(document.getElementById('CodigoA').value !== ''){
@@ -479,7 +519,7 @@ class articulo extends EntidadAbstracta{
                 this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_max_size_KO');
                 return "FechaPublicacionR_max_size_KO";
             }
-            if(!(this.validations.format('FechaPublicacionR', '^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$'))){
+            if(!(this.validations.format('FechaPublicacionR', '^[0-9/]*$'))){
                 this.dom.mostrar_error_campo('FechaPublicacionR', 'FechaPublicacionR_format_KO');
                 return "FechaPublicacionR_format_KO";
             }
@@ -507,8 +547,8 @@ class articulo extends EntidadAbstracta{
             const valoresPermitidos=['Enviado', 'Revision', 'Publicado'];
             const coincide = valoresPermitidos.some(cadena => cadena.includes(valor));
             if(!coincide){
-                this.dom.mostrar_error_campo('EstadoA', 'EstadoA_valor_KO');
-                return "EstadoA_valor_KO";
+                this.dom.mostrar_error_campo('EstadoA', 'EstadoA_format_KO');
+                return "EstadoA_format_KO";
             }
         }
         this.dom.mostrar_exito_campo('EstadoA');
@@ -641,8 +681,9 @@ class articulo extends EntidadAbstracta{
         const input=document.getElementById(fecha).value.trim();
         return input.length<=tamMax;
     }
+
     //Creacion de formularios
-        createForm_ADD(){
+    createForm_ADD(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
         this.dom.show_element('Div_IU_form', 'block');
         this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
@@ -655,8 +696,6 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element('FicheropdfA');
         this.dom.hide_element_form('FicheropdfA');
         this.dom.hide_element('link_FicheropdfA');
-        this.dom.hide_element('CodigoA');
-        this.dom.hide_element_form('CodigoA');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
@@ -675,6 +714,7 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element('nuevo_FicheropdfA');
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.hide_element('link_FicheropdfA');
+        this.dom.replaceSelectXEmptyInput('FechaPublicacionR');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'SEARCH');
         this.dom.colocarboton('SEARCH');
@@ -692,7 +732,8 @@ class articulo extends EntidadAbstracta{
         //acceso
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //fecha
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         console.log('Fecha de bd para edit: ', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
@@ -712,7 +753,8 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
@@ -728,12 +770,30 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
+        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
         setLang();
     }
+    /*convertirFecha(fechaStr) {
+        if (!fechaStr) return '';
+        // Si ya está en formato YYYY-MM-DD, devuélvela tal cual
+        if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) return fechaStr;
+        // Si viene en DD/MM/YYYY, conviértela
+        if (fechaStr.includes('/')) {
+            let partes = fechaStr.split('/');
+            return `${partes[2]}-${partes[1].padStart(2, '0')}-${partes[0].padStart(2, '0')}`;
+        }
+        // Si es un timestamp o Date, conviértelo
+        let fechaObj = new Date(fechaStr);
+        if (!isNaN(fechaObj.getTime())) {
+            return fechaObj.toISOString().split('T')[0];
+        }
+        return ''; // Si no es válida, deja vacío
+    }*/
+
     /**
 	 * modifica el formato de visualización de un atributo concreto y se devuelve el valor modificado
 	 * en el caso de solicitar cambio de formato para un atributo no implementado se lanza una alerta
