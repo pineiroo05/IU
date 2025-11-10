@@ -9,32 +9,32 @@ class ubicacion extends EntidadAbstracta{
        var form_content = `
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_ubicacion();">
 
-			<label class="label_id_site">Identificador del sitio</label>
+			<label id="label_id_site" class="label_id_site">Identificador del sitio</label>
 			<input type='text' id='id_site' name='id_site'></input>
 			<span id="span_error_id_site"><a id="error_id_site"></a></span>
 			<br>
 
-			<label class="label_site_latitud">Latitud WGS84</label>
+			<label id="label_site_latitud" class="label_site_latitud">Latitud WGS84</label>
 			<input type='text' id='site_latitud' name='site_latitud'></input>
 			<span id="span_error_site_latitud"><a id="error_site_latitud"></a></span>
 			<br>
 
-			<label class="label_site_longitud">Longitud WGS84</label>
+			<label class="label_site_longitud" class="label_site_longitud">Longitud WGS84</label>
 			<input type='text' id='site_longitud' name='site_longitud'></input>
 			<span id="span_error_site_longitud"><a id="error_site_longitud"></a></span>
 			<br>
 
-			<label class="label_site_altitude">Altitud sitio</label>
+			<label id="label_site_altitude" class="label_site_altitude">Altitud sitio</label>
 			<input type='text' id='site_altitude' name='site_altitude'></input>
 			<span id="span_error_site_altitude"><a id="error_site_altitude"></a></span>
 			<br>
 
-			<label class="label_site_locality">Localidad del sitio</label>
+			<label id="label_site_locality" class="label_site_locality">Localidad del sitio</label>
 			<input type='text' id='site_locality' name='site_locality'></input>
 			<span id="span_error_site_locality"><a id="error_site_locality"></a></span>
 			<br>
 
-			<label class="label_site_provider_login">Login proveedor sitio</label>
+			<label id="label_site_provider" class="label_site_provider_login">Login proveedor sitio</label>
 			<input type='text' id='site_provider_login' name='site_provider_login'></input>
 			<span id="span_error_site_provider_login"><a id="error_site_provider_login"></a></span>
 			<br>
@@ -83,22 +83,6 @@ class ubicacion extends EntidadAbstracta{
     }
 
     //Validaciones add
-    ADD_id_site_validation(){
-        if(!(this.validations.min_size('id_site', 1))){
-            this.dom.mostrar_error_campo('id_site', 'id_site_min_size_KO');
-            return "id_site_min_size_KO";
-        }
-        if(!(this.validations.max_size('id_site', 11))){
-            this.dom.mostrar_error_campo('id_site', 'id_site_max_size_KO');
-            return "id_site_max_size_KO";
-        }
-        if(!(this.validations.format('id_site', '^[0-9]*$'))){
-            this.dom.mostrar_error_campo('id_site', 'id_site_format_KO');
-            return "id_site_format_KO";
-        }
-        this.dom.mostrar_exito_campo('id_site');
-        return true;
-    }
     ADD_site_latitud_validation(){
         const latitud=document.getElementById('site_latitud').value.trim();
         if(!latitud || latitud ===''){
@@ -192,8 +176,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_north_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_north_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_type_file_KO');
-            return "nuevo_site_north_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_format_name_file_KO');
+            return "nuevo_site_north_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_north_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_min_file_name_size_KO');
@@ -220,8 +204,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_south_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_south_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_type_file_KO');
-            return "nuevo_site_south_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_format_name_file_KO');
+            return "nuevo_site_south_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_south_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_min_file_name_size_KO');
@@ -248,8 +232,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_east_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_east_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_type_file_KO');
-            return "nuevo_site_east_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_format_name_file_KO');
+            return "nuevo_site_east_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_east_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_min_file_name_size_KO');
@@ -276,8 +260,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_west_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_west_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_type_file_KO');
-            return "nuevo_site_west_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_format_name_file_KO');
+            return "nuevo_site_west_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_west_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_min_file_name_size_KO');
@@ -292,8 +276,7 @@ class ubicacion extends EntidadAbstracta{
     }
     //Faltan latitud, longitud y altitud
     ADD_submit_ubicacion(){
-        let result=(this.ADD_id_site_validation()&
-            this.ADD_site_latitud_validation()&
+        let result=(this.ADD_site_latitud_validation()&
             this.ADD_site_longitud_validation()&
             this.ADD_site_altitude_validation()&
             this.ADD_site_locality_validation()&
@@ -307,9 +290,6 @@ class ubicacion extends EntidadAbstracta{
     }
 
     //Validaciones edit
-    EDIT_id_site_validation(){
-        return this.ADD_id_site_validation();
-    }
     EDIT_site_latitud_validation(){
         return this.ADD_site_latitud_validation();
     }
@@ -339,8 +319,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_north_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_north_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_type_file_KO');
-            return "nuevo_site_north_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_format_name_file_KO');
+            return "nuevo_site_north_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_north_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_north_photo', 'nuevo_site_north_photo_min_file_name_size_KO');
@@ -367,8 +347,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_south_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_south_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_type_file_KO');
-            return "nuevo_site_south_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_format_name_file_KO');
+            return "nuevo_site_south_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_south_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_min_file_name_size_KO');
@@ -376,6 +356,7 @@ class ubicacion extends EntidadAbstracta{
         }
         if(!(this.personalize_max_file_name_size('nuevo_site_south_photo', 50))){
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_max_file_name_size_KO');
+            return "nuevo_site_south_photo_max_file_name_size_KO";
         }
         this.dom.mostrar_exito_campo('nuevo_site_south_photo');
         return true;    
@@ -394,8 +375,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_east_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_east_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_type_file_KO');
-            return "nuevo_site_east_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_format_name_file_KO');
+            return "nuevo_site_east_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_east_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_min_file_name_size_KO');
@@ -403,6 +384,7 @@ class ubicacion extends EntidadAbstracta{
         }
         if(!(this.personalize_max_file_name_size('nuevo_site_east_photo', 50))){
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_max_file_name_size_KO');
+            return "nuevo_site_east_photo_max_file_name_size_KO";
         }
         this.dom.mostrar_exito_campo('nuevo_site_east_photo');
         return true; 
@@ -422,8 +404,8 @@ class ubicacion extends EntidadAbstracta{
             return "nuevo_site_west_photo_type_file_KO";
         }
         if(!(this.validations.format_name_file('nuevo_site_west_photo', '^[a-zA-Z0-9._-]*$'))){
-            this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_type_file_KO');
-            return "nuevo_site_west_photo_type_file_KO";
+            this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_format_name_file_KO');
+            return "nuevo_site_west_photo_format_name_file_KO";
         }
         if(!(this.personalize_min_file_name_size('nuevo_site_west_photo', 7))){
             this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_min_file_name_size_KO');
@@ -438,8 +420,7 @@ class ubicacion extends EntidadAbstracta{
     }
     //Faltan latitud, longitud y altitud
     EDIT_submit_ubicacion(){
-        let result=(this.EDIT_id_site_validation()&
-            this.EDIT_site_altitude_validation()&
+        let result=(this.EDIT_site_altitude_validation()&
             this.EDIT_site_latitud_validation()&
             this.EDIT_site_longitud_validation()&
             this.EDIT_site_locality_validation()&
@@ -695,6 +676,8 @@ class ubicacion extends EntidadAbstracta{
         this.dom.hide_element('link_site_south_photo');
         this.dom.hide_element('link_site_east_photo');
         this.dom.hide_element('link_site_west_photo');
+        this.dom.hide_element('id_site');
+        this.dom.hide_element_form('id_site');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');

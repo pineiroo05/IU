@@ -110,11 +110,11 @@ var textos_ES={
     'label_nuevo_site_east_photo': 'Nueva foto hacia el este',
     'label_nuevo_site_west_photo': 'Nueva foto hacia el oeste',
     //errores validaciones
-    //alumnograduacion_login
+    ////alumnograduacion_login
     'alumnograduacion_login_min_size_KO': 'El login es demasiado corto, deberia tener entre 4 y 15 caracteres',
     'alumnograduacion_login_max_size_KO': 'El login es demasiado largo, deberia tener entre 4 y 15 caracteres',
     'alumnograduacion_login_format_KO': 'El login solo acepta caracteres alfabeticos sin acentos ni ñ',
-    //alumnograduacion_contraseña
+    //alumnograduacion_password
     'alumnograduacion_password_min_size_KO': 'La contraseña es demasiado corta, debería tener entre 8 y 64 caracteres',
     'alumnograduacion_password_max_size_KO': 'La contraseña es demasiado larga, debería tener entre 8 y 64 caracteres',
     'alumnograduacion_password_format_KO': 'La contraseña incumple el formato requerido, solo se aceptan caracteres alfabeticos sin acentos, ni ñ, y espacios',
@@ -127,7 +127,10 @@ var textos_ES={
     'alumnograduacion_apellidos_max_size_KO': 'Los apellidos son demasiado largos, debe tener entre 2 y 35 caracteres',
     'alumnograduacion_apellidos_format_KO': 'Error, solo se aceptan caracteres alfabeticos, ñ y acentos incluidos',
     //alumnograduacion_titulacion
-    'alumnograduacion_titulacion_format_KO': 'Titulacion invalida. Solo tenemos GREI, GRIA, MEI, MIA o PCEO',
+    'alumnograduacion_titulacion_vacio_KO': 'Error, la titulacion no puede quedar vacia',
+    'alumnograduacion_titulacion_valor_KO': 'Titulacion invalida. Solo tenemos GREI, GRIA, MEI, MIA o PCEO',
+    'alumnograduacion_titulacion_max_size_KO': 'Error, valor demasiado grande. No se pueden exceder los 4 caracteres',
+    'alumnograduacion_titulacion_format_KO': 'Formato incorrecto, solo se pueden meter caracteres alfabeticos en mayusculas',
     //alumnograduacion_dni
     'alumnograduacion_dni_min_size_KO': 'El dni/nie es demasiado corto. Debe tener 9 caracteres',
     'alumnograduacion_dni_max_size_KO': 'El dni/nie es demasiado largo. Debe tener 9 caracteres',
@@ -136,8 +139,8 @@ var textos_ES={
     'alumnograduacion_dni_format_nie_KO': 'Error, la cadena introducida no es valida, la letra no se corresponde para esa combinacion de numeros',
     //alumnograduacion_telefono
     'alumnograduacion_telefono_min_size_KO': 'Los numeros de telefono no pueden tener menos de 9 caracteres',
-    'alumnograduacion_telefono_max_size_KO': 'Los numeros de telefono no pueden tener menos de 9 caracteres',
-    'alumnograduacion_format_KO': 'Error, solo se aceptan valores de tipo numerico',
+    'alumnograduacion_telefono_max_size_KO': 'Los numeros de telefono no pueden tener mas de 9 caracteres',
+    'alumnograduacion_telefono_format_KO': 'Error, solo se aceptan valores de tipo numerico',
     //alumnograduacion_direccion
     'alumnograduacion_direccion_min_size_KO': 'Error, la direccion es demasiado corta.',
     'alumnograduacion_direccion_max_size_KO': 'Error, la direccion es demasiado larga.',
@@ -153,5 +156,120 @@ var textos_ES={
     'nuevo_alumnograduacion_fotoacto_not_exist_file_KO': 'Error, si vas a subir una foto debe haber un fichero subido.',
     'nuevo_alumnograduacion_fotoacto_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
     'nuevo_alumnograduacion_fotoacto_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
-    'nuevo_alumnograduacion_fotoacto_format_name_file_KO': 'El nombre no es valido, solo se aceptan nombres de entre 7 y 100 caracteres, sin ñ acentos ni espacios.',
-}
+    'nuevo_alumnograduacion_fotoacto_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    'nuevo_alumnograduacion_fotoacto_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres.',
+    'nuevo_alumnograduacion_fotoacto_max_file_name_size_KO': 'Error, el nombre no puede tener mas de 40 caracteres',
+    //articulo - CodigoA
+    'CodigoA_max_size_KO': 'Error, el codigo es demasiado largo. Debe tener 11 caracteres',
+    'CodigoA_format_KO': 'Error, el codigo del articulo solo acepta caracteres numericos',
+    //articulo - AutoresA
+    'AutoresA_min_size_KO': 'Error, el nombre de los autores es demasiado corto. Deberia tener como minimo 5 caracteres',
+    'AutoresA_format_KO': 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç',
+    'AutoresA_max_size_KO': 'Error, el nombre de los autores es demasiado largo. Deberia tener como maximo 200 caracteres',
+    //articulo - TituloA
+    'TituloA_min_size_KO': 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres',
+    'TituloA_max_size_KO': 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres',
+    'TituloA_format_KO': 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ',
+    //articulo - TituloR
+    'TituloR_min_size_KO': 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres',
+    'TituloR_max_size_KO': 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres',
+    'TituloR_format_KO': 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos',
+    //articulo - ISSN
+    'ISSN_min_size_KO': 'Error, el issn no puede tener menos de 9 caracteres',
+    'ISSN_max_size_KO': 'Error, el issn no puede tener mas de 9 caracteres',
+    'ISSN_format_KO': 'Error, el issn solo puede tener una cadena de 9 caracteres',
+    'ISSN_valor_valido_KO': 'Error, el valor introducido es erroneo. El digito de control no se corresponde con los digitos.',
+    //articulo - VolumenR
+    'VolumenR_min_size_KO': 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1',
+    'VolumenR_max_size_KO': 'Error, el volumen es demasiado grande. No puede superar al 9999',
+    'VolumenR_format_KO': 'Error, el volumen solo acepta numericos y alfabeticos',
+    //articulo - PagIniA
+    'PagIniA_min_size_KO': 'Error, el nº de pagina de inicio es demasiado pequeño.',
+    'PagIniA_max_size_KO': 'Error, el nº de pagina de inicio es demasiado grande. No puede tener mas de 4 caracteres',
+    'PagIniA_rango_KO': 'Error, la pagina tiene que estar dentro del rango 1 a 1000',
+    'PagIniA_format_KO': 'Error, la pagina solo se puede representar mediante numericos',
+    //articulo - PagFinA
+    'PagFinA_min_size_KO': 'Error, el nº de pagina final es demasiado pequeño.',
+    'PagFinA_max_size_KO': 'Error, el nº de pagina final es demasiado grande. No puede tener mas de 4 caracteres',
+    'PagFinA_rango_KO': 'Error, el numero de pagina debe estar entre la pagina inicial o 0 y 1000',
+    'PagFinA_format_KO': 'Error, la pagina solo se puede representar mediante numericos',
+    //articulo - FechaPublicacionR
+    'FechaPublicacionR_min_size_KO': 'Error, la fecha es demasiado corta. Debe tener 10 caracteres.',
+    'FechaPublicacionR_max_size_KO': 'Error, la fecha es demasiado larga. Debe tener 10 caracteres.',
+    'FechaPublicacionR_format_KO': 'Error, la fecha debe contener numeros separados por barras (dd/mm/aaaa)',
+    //articulo - FicheropdfA
+    'FicheropdfA_max_size_KO': 'Error, el nombre del fichero no puede ser superior a 20 caracteres',
+    'FicheropdfA_format_KO': 'Error, el fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios',
+    //articulo - nuevo_FicheropdfA
+    'nuevo_FicheropdfA_min_file_name_size_KO': 'Error, el nombre del fichero es demasiado corto. No puede ser menor a 7 caracteres.',
+    'nuevo_FicheropdfA_max_file_name_size_KO': 'Error, el nombre del fichero es demasiado largo. No puede ser mayor a 20 caracteres.',
+    'nuevo_FicheropdfA_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
+    'nuevo_FicheropdfA_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_FicheropdfA_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter pdf',
+    'nuevo_FicheropdfA_format_name_file_KO': 'El formato no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    //articulo - EstadoA
+    'EstadoA_vacio_KO': 'Error, el campo no puede quedar vacio',
+    'EstadoA_valor_KO': 'Error, solo hay 3 estados posibles: enviado, revision, publicado',
+    //ubicacion - id_site
+    'id_site_max_size_KO': 'Error, el identificador del sitio es demasiado largo. No puede superar los 11 caracteres',
+    'id_site_format_KO': 'Error, el identificador solo acepta caracteres numericos',
+    //ubicacion - site_latitud
+    'site_latitud_vacio_KO': 'Error, la latitud del sitio no puede ser vacia',
+    'site_latitud_formato_rango_KO': 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -90 y 90',
+    'site_latitud_decimales_KO': 'Error, no puede haber + de 6 decimales',
+    //ubicacion - site_longitud
+    'site_longitud_vacio_KO': 'Error, la longitud del sitio no puede ser vacia',
+    'site_longitud_formato_rango_KO': 'Error, el formato no es valido. Solo se pueden meter valores enteros o decimales entre -180 y 180',
+    'site_longitud_decimales_KO': 'Error, no puede haber + de 6 decimales',
+    //ubicacion - site_altitude
+    'site_altitude_vacio_KO': 'Error, la altitud del sitio no puede ser vacia',
+    'site_altitude_formato_rango_KO': 'Error, el formato no es valido. Solo se pueden meter valores enteros entre -11000 y 9000',
+    //ubicacion - site_locality
+    'site_locality_min_size_KO': 'Error, el nombre de la localidad es demasiado corto. Deberia tener mas de 3 caracteres',
+    'site_locality_max_size_KO': 'Error, el nombre de la localidad es demasiado largo. No puede tener mas de 40 caracteres',
+    'site_locality_format_KO': 'Error, solo se aceptan caracteres alfabeticos (acentos, ñ y ç incluidos) y espacios',
+    //ubicacion - site_provider_login
+    'site_provider_login_min_size_KO': 'Error, el login es demasiado corto. Deberia tener por lo menos 3 caracteres',
+    'site_provider_login_max_size_KO': 'Error, el login es demasiado largo. No puede superar los 30 caracteres',
+    'site_provider_login_format_KO': 'Error, el formato no es valido. Solo se pueden insertar caracteres alfanumericos y _',
+    //ubicacion - site_north_photo
+    'site_north_photo_max_size_KO': 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres',
+    'site_north_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
+    //ubicacion - nuevo_site_north_photo
+    'nuevo_site_north_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
+    'nuevo_site_north_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_north_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
+    'nuevo_site_north_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    'nuevo_site_north_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
+    'nuevo_site_north_photo_max_file_name_size_KO': 'Error, el nombre no puede tener mas de 50 caracteres',
+    //ubicacion - site_south_photo
+    'site_south_photo_max_size_KO': 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres',
+    'site_south_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
+    //ubicacion - nuevo_site_south_photo
+    'nuevo_site_south_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
+    'nuevo_site_south_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_south_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
+    'nuevo_site_south_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    'nuevo_site_south_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
+    'nuevo_site_south_photo_max_file_name_size_KO': 'Error, el nombre no puede tener mas de 50 caracteres',
+    //ubicacion - site_east_photo
+    'site_east_photo_max_size_KO': 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres',
+    'site_east_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
+    //ubicacion - nuevo_site_east_photo
+    'nuevo_site_east_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
+    'nuevo_site_east_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_east_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
+    'nuevo_site_east_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    'nuevo_site_east_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
+    'nuevo_site_east_photo_max_file_name_size_KO': 'Error, el nombre no puede tener mas de 50 caracteres',
+    //ubicacion - site_west_photo
+    'site_west_photo_max_size_KO': 'Error, el nombre del archivo es demasiado largo. Debe tener menos de 50 caracteres',
+    'site_west_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
+    //ubicacion - nuevo_site_west_photo
+    'nuevo_site_west_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
+    'nuevo_site_west_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_west_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
+    'nuevo_site_west_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
+    'nuevo_site_west_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
+    'nuevo_site_west_photo_max_file_name_size_KO': 'Error, el nombre no puede tener mas de 50 caracteres'
+};
