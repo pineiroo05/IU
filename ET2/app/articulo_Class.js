@@ -2,54 +2,54 @@ class articulo extends EntidadAbstracta{
     constructor(esTest){
         super();
         this.columnasamostrar=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA', 'EstadoA'];
-        this.mostrarespecial=['FicheropdfA'];
+        this.mostrarespecial=['FicheropdfA', 'FechaPublicacionR'];
         this.attributes=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA', 'nuevo_FicheropdfA', 'EstadoA'];
     }
     manual_form_creation(){
         var form_content = `
 			<form id='form_iu' action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data" onsubmit="return entidad.ADD_submit_articulo();">
 
-			<label class="label_CodigoA">Código artículo</label>
+			<label id="label_CodigoA" class="label_CodigoA">Código artículo</label>
 			<input type='text' id='CodigoA' name='CodigoA'></input>
 			<span id="span_error_CodigoA"><a id="error_CodigoA"></a></span>
 			<br>
 
-			<label class="label_AutoresA">Nombres autores</label>
+			<label id="label_AutoresA" class="label_AutoresA">Nombres autores</label>
 			<input type='text' id='AutoresA' name='AutoresA'></input>
 			<span id="span_error_AutoresA"><a id="error_AutoresA"></a></span>
 			<br>
 
-			<label class="label_TituloA">Título artículo</label>
+			<label id="label_TituloA" class="label_TituloA">Título artículo</label>
 			<input type='text' id='TituloA' name='TituloA'></input>
 			<span id="span_error_TituloA"><a id="error_TituloA"></a></span>
 			<br>
 
-			<label class="label_TituloR">Título revista</label>
+			<label id="label_TituloR" class="label_TituloR">Título revista</label>
 			<input type='text' id='TituloR' name='TituloR'></input>
 			<span id="span_error_TituloR"><a id="error_TituloR"></a></span>
 			<br>
 
-			<label class="label_ISSN">ISSN</label>
+			<label id="label_ISSN" class="label_ISSN">ISSN</label>
 			<input type='text' id='ISSN' name='ISSN'></input>
 			<span id="span_error_ISSN"><a id="error_ISSN"></a></span>
 			<br>
 
-			<label class="label_VolumenR">Volumen de la revista</label>
+			<label id="label_VolumenR" class="label_VolumenR">Volumen de la revista</label>
 			<input type='text' id='VolumenR' name='VolumenR'></input>
 			<span id="span_error_VolumenR"><a id="error_VolumenR"></a></span>
 			<br>
 			
-			<label class="label_PagIniA">Número página inicial artículo</label>
+			<label id="label_PagIniA" class="label_PagIniA">Número página inicial artículo</label>
 			<input type='text' id='PagIniA' name='PagIniA'></input>
 			<span id="span_error_PagIniA"><a id="error_PagIniA"></a></span>
 			<br>
 
-			<label class="label_PagFinA">Número página final artículo</label>
+			<label id="label_PagFinA" class="label_PagFinA">Número página final artículo</label>
 			<input type='text' id='PagFinA' name='PagFinA'></input>
 			<span id="span_error_PagFinA"><a id="error_PagFinA"></a></span>
 			<br>
 
-			<label class="label_FechaPublicacionR">Fecha publicacion artículo</label>
+			<label id="label_FechaPublicacionR" class="label_FechaPublicacionR">Fecha publicacion artículo</label>
 			<input type='date' id='FechaPublicacionR' name='FechaPublicacionR'></input>
 			<span id="span_error_FechaPublicacionR"><a id="error_FechaPublicacionR"></a></span>
 			<br>
@@ -78,22 +78,6 @@ class articulo extends EntidadAbstracta{
     }
 
     //Validaciones add
-    ADD_CodigoA_validation(){
-        if(!(this.validations.min_size('CodigoA', 1))){
-            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_min_size_KO');
-            return "CodigoA_min_size_KO";
-        }
-        if(!(this.validations.max_size('CodigoA', 11))){
-            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_max_size_KO');
-            return "CodigoA_max_size_KO";
-        }
-        if(!(this.validations.format('CodigoA', '^[0-9]*$'))){
-            this.dom.mostrar_error_campo('CodigoA', 'CodigoA_format_KO');
-            return "CodigoA_format_KO";
-        }
-        this.dom.mostrar_exito_campo('CodigoA');
-        return true;
-    }
     ADD_AutoresA_validation(){
         if(!(this.validations.min_size('AutoresA', 3))){
             this.dom.mostrar_error_campo('AutoresA', 'AutoresA_min_size_KO');
@@ -103,7 +87,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('AutoresA', 'AutoresA_max_size_KO');
             return "AutoresA_max_size_KO";
         }
-        if(!(this.validations.format('AutoresA', '^[A-Za-zÁÉÍÓÚáéíóúÇçÑñ ]*$'))){
+        if(!(this.validations.format('AutoresA', '^[A-Za-zÁÉÍÓÚáéíóúÇçÑñ., ]*$'))){
             this.dom.mostrar_error_campo('AutoresA', 'AutoresA_format_KO');
             return "AutoresA_format_KO";
         }
@@ -119,7 +103,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('TituloA', 'TituloA_max_size_KO');
             return "TituloA_max_size_KO";
         }
-        if(!(this.validations.format('TituloA', '^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ ]*$'))){
+        if(!(this.validations.format('TituloA', '^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ.,:? ]*$'))){
             this.dom.mostrar_error_campo('TituloA', 'TituloA_format_KO');
             return "TituloA_format_KO";
         }
@@ -147,11 +131,11 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('ISSN', 'ISSN_min_size_KO');
             return "ISSN_min_size_KO";
         }
-        if(!(this.validations.max_size('ISSN', 9))){
+        if(!(this.validations.max_size('ISSN', 13))){
             this.dom.mostrar_error_campo('ISSN', 'ISSN_max_size_KO');
             return "ISSN_max_size_KO";
         }
-        if(!(this.validations.format('ISSN', '^[0-9]{4}-[0-9]{3}[0-9X]$'))){
+        if(!(this.validations.format('ISSN', '^(ISSN)?[0-9]{4}-[0-9]{3}[0-9X]$'))){
             this.dom.mostrar_error_campo('ISSN', 'ISSN_format_KO');
             return "ISSN_format_KO";
         }
@@ -277,8 +261,7 @@ class articulo extends EntidadAbstracta{
         return true;
     }
     ADD_submit_articulo(){
-        let result=(this.ADD_CodigoA_validation()&
-            this.ADD_AutoresA_validation()&
+        let result=(this.ADD_AutoresA_validation()&
             this.ADD_TituloA_validation()&
             this.ADD_TituloR_validation()&
             this.ADD_ISSN_validation()&
@@ -289,13 +272,11 @@ class articulo extends EntidadAbstracta{
             this.ADD_nuevo_FicheropdfA_validation()&
             this.ADD_EstadoA_validation())
         result=Boolean(result);
+        this.convertir_date();
         return result;
     }
 
     //Validaciones edit
-    EDIT_CodigoA_validation(){
-        return this.ADD_CodigoA_validation();
-    }
     EDIT_AutoresA_validation(){
         return this.ADD_AutoresA_validation();
     }
@@ -352,8 +333,7 @@ class articulo extends EntidadAbstracta{
         return this.ADD_EstadoA_validation();
     }
     EDIT_submit_articulo(){
-        let result=(this.EDIT_CodigoA_validation()&
-            this.EDIT_AutoresA_validation()&
+        let result=(this.EDIT_AutoresA_validation()&
             this.EDIT_TituloA_validation()&
             this.EDIT_TituloR_validation()&
             this.EDIT_ISSN_validation()&
@@ -364,28 +344,9 @@ class articulo extends EntidadAbstracta{
             this.EDIT_nuevo_FicheropdfA_validation()&
             this.EDIT_EstadoA_validation())
         result=Boolean(result);
+        this.convertir_date();
         return true;
     }
-/*
-    EDIT_submit_articulo(){
-        console.log("Comprobacion")
-        let result=[this.EDIT_CodigoA_validation(),
-            this.EDIT_AutoresA_validation(),
-            this.EDIT_TituloA_validation(),
-            this.EDIT_TituloR_validation(),
-            this.EDIT_ISSN_validation(),
-            this.EDIT_VolumenR_validation(),
-            this.EDIT_PagIniA_validation(),
-            this.EDIT_PagFinA_validation(),
-            this.EDIT_FechaPublicacionR_validation(),
-            this.EDIT_nuevo_FicheropdfA_validation(),
-            this.EDIT_EstadoA_validation()];
-        console.log("Resultado validacion: ", result);
-        console.log('Datos del formulario:', new FormData(document.getElementById('form_iu')));
-        result=Boolean(result);
-        return result;
-    }
-*/
     //Validaciones search
     SEARCH_CodigoA_validation(){
         if(document.getElementById('CodigoA').value !== ''){
@@ -407,7 +368,7 @@ class articulo extends EntidadAbstracta{
                 this.dom.mostrar_error_campo('AutoresA', 'AutoresA_max_size_KO');
                 return "AutoresA_max_size_KO";
             }
-            if(!(this.validations.format('AutoresA', '^[A-Za-zÁÉÍÓÚáéíóúÇçÑñ ]*$'))){
+            if(!(this.validations.format('AutoresA', '^[A-Za-zÁÉÍÓÚáéíóúÇçÑñ., ]*$'))){
                 this.dom.mostrar_error_campo('AutoresA', 'AutoresA_format_KO');
                 return "AutoresA_format_KO";
             }
@@ -421,7 +382,7 @@ class articulo extends EntidadAbstracta{
                 this.dom.mostrar_error_campo('TituloA', 'TituloA_max_size_KO');
                 return "TituloA_max_size_KO";
             }
-            if(!(this.validations.format('TituloA', '^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ ]*$'))){
+            if(!(this.validations.format('TituloA', '^[0-9A-Za-zÁÉÍÓÚáéíóúÑñ.,:? ]*$'))){
                 this.dom.mostrar_error_campo('TituloA', 'TituloA_format_KO');
                 return "TituloA_format_KO";
             }
@@ -445,15 +406,15 @@ class articulo extends EntidadAbstracta{
     }
     SEARCH_ISSN_validation(){
         if(document.getElementById('ISSN').value !== ''){
-            if(!(this.validations.max_size('ISSN', 9))){
+            if(!(this.validations.max_size('ISSN', 13))){
                 this.dom.mostrar_error_campo('ISSN', 'ISSN_max_size_KO');
                 return "ISSN_max_size_KO";
             }
-            if(!(this.validations.format('ISSN', '^[0-9]{0,4}(-)?[0-9X]{0,4}$'))){
+            if(!(this.validations.format('ISSN', '^(ISSN)?[0-9]{0,4}(-)?[0-9X]{0,4}$'))){
                 this.dom.mostrar_error_campo('ISSN', 'ISSN_format_KO');
                 return "ISSN_format_KO";
             }
-            if(document.getElementById('ISSN').length===9){
+            if((document.getElementById('ISSN').value).length===9){
                 if(!(this.personalize_valor_valido('ISSN'))){
                     this.dom.mostrar_error_campo('ISSN', 'ISSN_valor_valido_KO');
                     return "ISSN_valor_valido_KO";
@@ -547,8 +508,8 @@ class articulo extends EntidadAbstracta{
             const valoresPermitidos=['Enviado', 'Revision', 'Publicado'];
             const coincide = valoresPermitidos.some(cadena => cadena.includes(valor));
             if(!coincide){
-                this.dom.mostrar_error_campo('EstadoA', 'EstadoA_format_KO');
-                return "EstadoA_format_KO";
+                this.dom.mostrar_error_campo('EstadoA', 'EstadoA_valor_KO');
+                return "EstadoA_valor_KO";
             }
         }
         this.dom.mostrar_exito_campo('EstadoA');
@@ -653,7 +614,7 @@ class articulo extends EntidadAbstracta{
     }
     personalize_valor_valido(valorIssn){
         const issn=document.getElementById(valorIssn);
-        const valor=issn.value;
+        const valor=(issn.value).replace(/^ISSN/i,'');
         const digitos=valor.replace('-', '');
         //Para sacar el ultimo digito de control
         let sum=0;
@@ -681,7 +642,25 @@ class articulo extends EntidadAbstracta{
         const input=document.getElementById(fecha).value.trim();
         return input.length<=tamMax;
     }
-
+    convertirFechaAFormatoBack(idFecha){
+        const valor=document.getElementById(idFecha).value;
+        if(valor===''){
+            return '';
+        }
+        const [yyyy, mm, dd]=valor.split('-');
+        return `${dd}/${mm}/${yyyy}`;
+    }
+    convertirFechaAFormatoBack(idCampo){
+        const valor = document.getElementById(idCampo).value;
+        if (valor === '') return '';
+        const [yyyy, mm, dd] = valor.split('-');
+        return `${dd}/${mm}/${yyyy}`; // convierte a DD/MM/YYYY
+    }
+    convertir_date(){
+        var fechaPub=document.getElementById('FechaPublicacionR');
+        fechaPub.type="text";
+        fechaPub.value=this.mostrarcambioatributo("FechaPublicacionR", fechaPub.value);
+    }
     //Creacion de formularios
     createForm_ADD(){
         document.getElementById('contenedor_IU_form').innerHTML=this.manual_form_creation();
@@ -696,6 +675,8 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element('FicheropdfA');
         this.dom.hide_element_form('FicheropdfA');
         this.dom.hide_element('link_FicheropdfA');
+        this.dom.hide_element('CodigoA');
+        this.dom.hide_element_form('CodigoA');
         //validaciones
         this.dom.colocarvalidaciones('form_iu', 'ADD');
         this.dom.colocarboton('ADD');
@@ -731,9 +712,6 @@ class articulo extends EntidadAbstracta{
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
         //acceso
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
-        //fecha
-        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         console.log('Fecha de bd para edit: ', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
@@ -748,13 +726,12 @@ class articulo extends EntidadAbstracta{
         this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
 		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_articulo_DELETE');
         //action
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.DELETE_submit_'+this.nombreentidad+'()');
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
 
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //campos inactivos
         this.dom.colocartodosreadonly('form_iu');
@@ -770,30 +747,11 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        //fila.FechaPublicacionR=this.mostrarcambioatributo('FechaPublicacionR', fila.FechaPublicacionR);
-        //fila.FechaPublicacionR = this.convertirFecha(fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
         setLang();
     }
-    /*convertirFecha(fechaStr) {
-        if (!fechaStr) return '';
-        // Si ya está en formato YYYY-MM-DD, devuélvela tal cual
-        if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) return fechaStr;
-        // Si viene en DD/MM/YYYY, conviértela
-        if (fechaStr.includes('/')) {
-            let partes = fechaStr.split('/');
-            return `${partes[2]}-${partes[1].padStart(2, '0')}-${partes[0].padStart(2, '0')}`;
-        }
-        // Si es un timestamp o Date, conviértelo
-        let fechaObj = new Date(fechaStr);
-        if (!isNaN(fechaObj.getTime())) {
-            return fechaObj.toISOString().split('T')[0];
-        }
-        return ''; // Si no es válida, deja vacío
-    }*/
-
     /**
 	 * modifica el formato de visualización de un atributo concreto y se devuelve el valor modificado
 	 * en el caso de solicitar cambio de formato para un atributo no implementado se lanza una alerta

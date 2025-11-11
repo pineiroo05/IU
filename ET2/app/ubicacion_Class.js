@@ -274,7 +274,6 @@ class ubicacion extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('nuevo_site_west_photo');
         return true;
     }
-    //Faltan latitud, longitud y altitud
     ADD_submit_ubicacion(){
         let result=(this.ADD_site_latitud_validation()&
             this.ADD_site_longitud_validation()&
@@ -418,7 +417,6 @@ class ubicacion extends EntidadAbstracta{
         this.dom.mostrar_exito_campo('nuevo_site_west_photo');
         return true;    
     }
-    //Faltan latitud, longitud y altitud
     EDIT_submit_ubicacion(){
         let result=(this.EDIT_site_altitude_validation()&
             this.EDIT_site_latitud_validation()&
@@ -740,6 +738,7 @@ class ubicacion extends EntidadAbstracta{
         this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
 		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_ubicacion_DELETE');
         //action
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.DELETE_submit_'+this.nombreentidad+'()');
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
         //oculto las fotos
         this.dom.hide_element_form('nuevo_site_north_photo'); 

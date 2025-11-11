@@ -169,15 +169,15 @@ var textos_ES={
     //articulo - TituloA
     'TituloA_min_size_KO': 'Error, el titulo es demasiado corto. Deberia tener como minimo 10 caracteres',
     'TituloA_max_size_KO': 'Error, el titulo es demasiado largo. Deberia tener como maximo 100 caracteres',
-    'TituloA_format_KO': 'Error, el formato del titulo solo acepta caracteres alfabeticos con acentos, espacios y ñ',
+    'TituloA_format_KO': 'Error, el formato del nombre solo acepta caracteres alfabeticos con acentos, ñ y ç, ademas de , . : y ?',
     //articulo - TituloR
     'TituloR_min_size_KO': 'Error, el titulo de la revista es demasiado corto. Debería tener como minimo 5 caracteres',
     'TituloR_max_size_KO': 'Error, el titulo de la revista es demasiado largo. Debería tener como maximo 100 caracteres',
     'TituloR_format_KO': 'Error, el formato del titulo solo acepta cartacteres alfabeticos, con acentos, ñ y espacios incluidos',
     //articulo - ISSN
     'ISSN_min_size_KO': 'Error, el issn no puede tener menos de 9 caracteres',
-    'ISSN_max_size_KO': 'Error, el issn no puede tener mas de 9 caracteres',
-    'ISSN_format_KO': 'Error, el issn solo puede tener una cadena de 9 caracteres',
+    'ISSN_max_size_KO': 'Error, el issn no puede tener mas de 13 caracteres',
+    'ISSN_format_KO': 'Error, el issn solo acepta 2 formatos, 1111-111x o bien ISSN1111-111x',
     'ISSN_valor_valido_KO': 'Error, el valor introducido es erroneo. El digito de control no se corresponde con los digitos.',
     //articulo - VolumenR
     'VolumenR_min_size_KO': 'Error, el volumen es demasiado pequeño. No puede ser inferior a 1',

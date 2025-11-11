@@ -169,15 +169,15 @@ var textos_EN={
     //articulo - TituloA
     'TituloA_min_size_KO': 'Error, title is too short. Should have at least 10 characters',
     'TituloA_max_size_KO': 'Error, title is too long. Should have at most 100 characters',
-    'TituloA_format_KO': 'Error, title format only accepts alphabetic characters with accents, spaces and ñ',
+    'TituloA_format_KO': 'Error, title format only accepts alphabetic characters with accents, spaces and ñ, but also , . : and ?',
     //articulo - TituloR
     'TituloR_min_size_KO': 'Error, journal title is too short. Should have at least 5 characters',
     'TituloR_max_size_KO': 'Error, journal title is too long. Should have at most 100 characters',
     'TituloR_format_KO': 'Error, title format only accepts alphabetic characters with accents, ñ and spaces included',
     //articulo - ISSN
     'ISSN_min_size_KO': 'Error, issn cannot have less than 9 characters',
-    'ISSN_max_size_KO': 'Error, issn cannot have more than 9 characters',
-    'ISSN_format_KO': 'Error, issn can only have a 9-character string',
+    'ISSN_max_size_KO': 'Error, issn cannot have more than 13 characters',
+    'ISSN_format_KO': 'Error, issn only accept 2 formats, 1111-111x or ISSN1111-111x',
     'ISSN_valor_valido_KO': 'Error, the entered value is incorrect. The control digit does not match the digits.',
     //articulo - VolumenR
     'VolumenR_min_size_KO': 'Error, volume is too small. Cannot be less than 1',

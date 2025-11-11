@@ -17,10 +17,10 @@
 ## ARTICULO ##
 ### Campos de texto ###
 - Código artículo: 11 caracteres máx, solo números
-- Autores: 5-200 caracteres, letras con acentos, ñ y ç
-- Título artículo: 10-100 caracteres, letras con acentos, espacios y ñ
+- Autores: 5-200 caracteres, letras con acentos, ñ y ç, comas y puntos
+- Título artículo: 10-100 caracteres, letras con acentos, espacios y ñ, comas, puntos, : y ?
 - Título revista: 5-100 caracteres, letras con acentos, ñ y espacios
-- ISSN: 9 caracteres, formato 0000-0000
+- ISSN: 9-13 caracteres, formato 0000-000x o ISSN0000-000x, donde x es el caracter de control (0-9 o bien X)
 - Volumen revista: 1-4 caracteres, números y letras
 - Página inicial: 1-4 caracteres, números, rango 1-1000
 - Página final: 1-4 caracteres, números, >= página inicial, rango 1-1000

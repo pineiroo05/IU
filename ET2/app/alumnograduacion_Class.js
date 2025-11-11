@@ -212,7 +212,7 @@ class alumnograduacion extends EntidadAbstracta {
             this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_max_size_KO');
             return "alumnograduacion_direccion_max_size_KO";
         }
-        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,/ºª]+$'))) {
+        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ .,/ºª]+$'))) {
             this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_format_KO');
             return "alumnograduacion_direccion_format_KO";
         }
@@ -501,7 +501,7 @@ class alumnograduacion extends EntidadAbstracta {
 
     SEARCH_alumnograduacion_direccion_validation() {
     if (document.getElementById('alumnograduacion_direccion').value !== '') {
-        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ ,\/ºª]+$'))) {
+        if (!(this.validations.format('alumnograduacion_direccion', '^[0-9a-zA-ZñÑáéíóúÁÉÍÓÚ .,\/ºª]+$'))) {
                 this.dom.mostrar_error_campo('alumnograduacion_direccion', 'alumnograduacion_direccion_format_KO');
                 return "alumnograduacion_direccion_format_KO";
             }
@@ -750,6 +750,7 @@ class alumnograduacion extends EntidadAbstracta {
         this.dom.remove_class_value('class_contenido_titulo_form','text_contenido_titulo_form');
 		this.dom.assign_class_value('class_contenido_titulo_form', 'text_contenido_titulo_form_alumnograduacion_DELETE');
         //action
+        this.dom.assign_property_value('form_iu', 'onsubmit', 'return entidad.DELETE_submit_'+this.nombreentidad+'()');
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.DELETE();');
         //oculto el nuevo_fotoacto
         this.dom.hide_element_form('nuevo_alumnograduacion_fotoacto');
