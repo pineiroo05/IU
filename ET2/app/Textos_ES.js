@@ -95,6 +95,10 @@ var textos_ES={
     'label_nuevo_FicheropdfA': 'Nuevo fichero articulo',
     'label_EstadoA': 'Estado de tramitación del artículo',
 
+    'EstadoA_publicado': 'Publicado',
+    'EstadoA_enviado': 'Enviado',
+    'EstadoA_revision': 'Revisión',
+
     'label_id_site': 'Identificador sitio',
     'label_site_latitud': 'Latitud WGS84',
     'label_site_longitud': 'Longitud WGS84',
@@ -154,7 +158,7 @@ var textos_ES={
     'alumnograduacion_fotoacto_format_KO': 'El fomato no es valido, solo se pueden meter alfabeticos sin acentos, ni ñ, ni espacios',
     //alumnograduacion_nuevo_fotoacto
     'nuevo_alumnograduacion_fotoacto_not_exist_file_KO': 'Error, si vas a subir una foto debe haber un fichero subido.',
-    'nuevo_alumnograduacion_fotoacto_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_alumnograduacion_fotoacto_max_size_file_KO': 'El archivo no puede tener mas de 2MB',
     'nuevo_alumnograduacion_fotoacto_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
     'nuevo_alumnograduacion_fotoacto_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     'nuevo_alumnograduacion_fotoacto_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres.',
@@ -204,7 +208,7 @@ var textos_ES={
     'nuevo_FicheropdfA_min_file_name_size_KO': 'Error, el nombre del fichero es demasiado corto. No puede ser menor a 7 caracteres.',
     'nuevo_FicheropdfA_max_file_name_size_KO': 'Error, el nombre del fichero es demasiado largo. No puede ser mayor a 20 caracteres.',
     'nuevo_FicheropdfA_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
-    'nuevo_FicheropdfA_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_FicheropdfA_max_size_file_KO': 'El archivo no puede tener mas de 2MB',
     'nuevo_FicheropdfA_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter pdf',
     'nuevo_FicheropdfA_format_name_file_KO': 'El formato no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     //articulo - EstadoA
@@ -237,7 +241,7 @@ var textos_ES={
     'site_north_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
     //ubicacion - nuevo_site_north_photo
     'nuevo_site_north_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
-    'nuevo_site_north_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_north_photo_max_size_file_KO': 'El archivo no puede tener mas de 50KB',
     'nuevo_site_north_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
     'nuevo_site_north_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     'nuevo_site_north_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
@@ -247,7 +251,7 @@ var textos_ES={
     'site_south_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
     //ubicacion - nuevo_site_south_photo
     'nuevo_site_south_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
-    'nuevo_site_south_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_south_photo_max_size_file_KO': 'El archivo no puede tener mas de 50KB',
     'nuevo_site_south_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
     'nuevo_site_south_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     'nuevo_site_south_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
@@ -257,7 +261,7 @@ var textos_ES={
     'site_east_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
     //ubicacion - nuevo_site_east_photo
     'nuevo_site_east_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
-    'nuevo_site_east_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_east_photo_max_size_file_KO': 'El archivo no puede tener mas de 50KB',
     'nuevo_site_east_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
     'nuevo_site_east_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     'nuevo_site_east_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',
@@ -267,7 +271,7 @@ var textos_ES={
     'site_west_photo_format_KO': 'Error, el nombre del archivo no es valido. Solo se aceptan alfanumericos, puntos, - o _',
     //ubicacion - nuevo_site_west_photo
     'nuevo_site_west_photo_not_exist_file_KO': 'Error, si vas a subir un archivo debe haber un fichero subido.',
-    'nuevo_site_west_photo_max_size_file_KO': 'El archivo no puede tener mas de 20MB',
+    'nuevo_site_west_photo_max_size_file_KO': 'El archivo no puede tener mas de 50KB',
     'nuevo_site_west_photo_type_file_KO': 'El tipo de archivo no es valido, solo puedes meter jpg',
     'nuevo_site_west_photo_format_name_file_KO': 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.',
     'nuevo_site_west_photo_min_file_name_size_KO': 'Error, el nombre no puede tener menos de 7 caracteres',

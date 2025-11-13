@@ -195,7 +195,7 @@ class ubicacion extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_not_exist_file_KO');
             return "nuevo_site_south_photo_not_exist_file_KO";
         }
-        if(!(this.validations.max_size_file('nuevo_site_south_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_south_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_max_size_file_KO');
             return "nuevo_site_south_photo_max_size_file_KO";
         }
@@ -223,7 +223,7 @@ class ubicacion extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_not_exist_file_KO');
             return "nuevo_site_east_photo_not_exist_file_KO";
         }
-        if(!(this.validations.max_size_file('nuevo_site_east_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_east_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_max_size_file_KO');
             return "nuevo_site_east_photo_max_size_file_KO";
         }
@@ -251,7 +251,7 @@ class ubicacion extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_not_exist_file_KO');
             return "nuevo_site_west_photo_not_exist_file_KO";
         }
-        if(!(this.validations.max_size_file('nuevo_site_west_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_west_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_max_size_file_KO');
             return "nuevo_site_west_photo_max_size_file_KO";
         }
@@ -337,7 +337,7 @@ class ubicacion extends EntidadAbstracta{
         if(!fichero||fichero.files.length==0){
             return true;
         }
-        if(!(this.validations.max_size_file('nuevo_site_south_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_south_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_south_photo', 'nuevo_site_south_photo_max_size_file_KO');
             return "nuevo_site_south_photo_max_size_file_KO";
         }
@@ -365,7 +365,7 @@ class ubicacion extends EntidadAbstracta{
         if(!fichero||fichero.files.length==0){
             return true;
         }
-        if(!(this.validations.max_size_file('nuevo_site_east_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_east_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_east_photo', 'nuevo_site_east_photo_max_size_file_KO');
             return "nuevo_site_east_photo_max_size_file_KO";
         }
@@ -394,7 +394,7 @@ class ubicacion extends EntidadAbstracta{
         if(!fichero||fichero.files.length==0){
             return true;
         }
-        if(!(this.validations.max_size_file('nuevo_site_west_photo', 2000000))){
+        if(!(this.validations.max_size_file('nuevo_site_west_photo', 500000))){
             this.dom.mostrar_error_campo('nuevo_site_west_photo', 'nuevo_site_west_photo_max_size_file_KO');
             return "nuevo_site_west_photo_max_size_file_KO";
         }

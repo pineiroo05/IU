@@ -2,7 +2,7 @@ class articulo extends EntidadAbstracta{
     constructor(esTest){
         super();
         this.columnasamostrar=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA', 'EstadoA'];
-        this.mostrarespecial=['FicheropdfA', 'FechaPublicacionR'];
+        this.mostrarespecial=['FicheropdfA'];
         this.attributes=['CodigoA', 'AutoresA', 'TituloA', 'TituloR', 'ISSN', 'VolumenR', 'PagIniA', 'PagFinA', 'FechaPublicacionR', 'FicheropdfA', 'nuevo_FicheropdfA', 'EstadoA'];
     }
     manual_form_creation(){
@@ -67,9 +67,9 @@ class articulo extends EntidadAbstracta{
             <label for="EstadoA">Estado de tramitación del artículo</label>
             <select id="EstadoA" name="EstadoA">
                 <option selected="selected"></option>
-                <option value="Publicado">Publicado</option>
-                <option value="Enviado">Enviado</option>
-                <option value="Revision">Revision</option>
+                <option value="Publicado" class="EstadoA_publicado">Publicado</option>
+                <option value="Enviado" class="EstadoA_enviado">Enviado</option>
+                <option value="Revision" class="EstadoA_revision">Revision</option>
             </select>
             <span id="span_error_EstadoA"><a id="error_EstadoA"></a></span>
 		</form>
@@ -243,7 +243,7 @@ class articulo extends EntidadAbstracta{
             this.dom.mostrar_error_campo('nuevo_FicheropdfA', 'nuevo_FicheropdfA_max_file_name_size_KO');
             return "nuevo_FicheropdfA_max_file_name_size_KO";
         }
-        this.dom.mostrar_exito_campo('FicheropdfA');
+        this.dom.mostrar_exito_campo('nuevo_FicheropdfA');
         return true;
     }
     ADD_EstadoA_validation(){
@@ -272,7 +272,9 @@ class articulo extends EntidadAbstracta{
             this.ADD_nuevo_FicheropdfA_validation()&
             this.ADD_EstadoA_validation())
         result=Boolean(result);
-        this.convertir_date();
+        if(result===true){
+            this.convertir_date();
+        }
         return result;
     }
 
@@ -344,7 +346,9 @@ class articulo extends EntidadAbstracta{
             this.EDIT_nuevo_FicheropdfA_validation()&
             this.EDIT_EstadoA_validation())
         result=Boolean(result);
-        this.convertir_date();
+        if(result===true){
+            this.convertir_date();
+        }
         return true;
     }
     //Validaciones search
@@ -642,20 +646,6 @@ class articulo extends EntidadAbstracta{
         const input=document.getElementById(fecha).value.trim();
         return input.length<=tamMax;
     }
-    convertirFechaAFormatoBack(idFecha){
-        const valor=document.getElementById(idFecha).value;
-        if(valor===''){
-            return '';
-        }
-        const [yyyy, mm, dd]=valor.split('-');
-        return `${dd}/${mm}/${yyyy}`;
-    }
-    convertirFechaAFormatoBack(idCampo){
-        const valor = document.getElementById(idCampo).value;
-        if (valor === '') return '';
-        const [yyyy, mm, dd] = valor.split('-');
-        return `${dd}/${mm}/${yyyy}`; // convierte a DD/MM/YYYY
-    }
     convertir_date(){
         var fechaPub=document.getElementById('FechaPublicacionR');
         fechaPub.type="text";
@@ -712,7 +702,7 @@ class articulo extends EntidadAbstracta{
         this.dom.assign_property_value('form_iu', 'action', 'javascript:entidad.EDIT();');
         //acceso
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
-        console.log('Fecha de bd para edit: ', fila.FechaPublicacionR);
+        //console.log('Fecha de bd para edit: ', fila.FechaPublicacionR);
         this.dom.rellenarvaloresform(fila);
         this.dom.colocarvalidaciones('form_iu', 'EDIT');
         this.dom.assign_property_value('CodigoA', 'readonly', 'true');

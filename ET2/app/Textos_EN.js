@@ -54,6 +54,10 @@ var textos_EN={
     'FicheropdfA': 'Article file',
     'nuevo_FicheropdfA': 'New article file',
     'EstadoA': 'Article processing status',
+    
+    'EstadoA_pub': 'Published',
+    'EstadoA_env': 'Send',
+    'EstadoA_rev': 'Revision',
 
     'id_site': 'Site identifier',
     'site_latitud': 'WGS84 latitude',
@@ -94,6 +98,10 @@ var textos_EN={
     'label_FicheropdfA': 'Article file',
     'label_nuevo_FicheropdfA': 'New article file',
     'label_EstadoA': 'Article processing status',
+    
+    'EstadoA_publicado': 'Published',
+    'EstadoA_enviado': 'Sent',
+    'EstadoA_revision': 'Revision',
 
     'label_id_site': 'Site identifier',
     'label_site_latitud': 'WGS84 latitude',
@@ -154,7 +162,7 @@ var textos_EN={
     'alumnograduacion_fotoacto_format_KO': 'Format is not valid, only alphabetic characters without accents, ñ, or spaces are allowed',
     //alumnograduacion_nuevo_fotoacto
     'nuevo_alumnograduacion_fotoacto_not_exist_file_KO': 'Error, if you are going to upload a photo there must be a file uploaded.',
-    'nuevo_alumnograduacion_fotoacto_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_alumnograduacion_fotoacto_max_size_file_KO': 'File cannot be larger than 2MB',
     'nuevo_alumnograduacion_fotoacto_type_file_KO': 'File type is not valid, you can only upload jpg',
     'nuevo_alumnograduacion_fotoacto_format_name_file_KO': 'Name is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     'nuevo_alumnograduacion_fotoacto_min_file_name_size_KO': 'Error, name cannot have less than 7 characters.',
@@ -204,7 +212,7 @@ var textos_EN={
     'nuevo_FicheropdfA_min_file_name_size_KO': 'Error, file name is too short. Cannot be less than 7 characters.',
     'nuevo_FicheropdfA_max_file_name_size_KO': 'Error, file name is too long. Cannot be more than 20 characters.',
     'nuevo_FicheropdfA_not_exist_file_KO': 'Error, if you are going to upload a file there must be a file uploaded.',
-    'nuevo_FicheropdfA_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_FicheropdfA_max_size_file_KO': 'File cannot be larger than 2MB',
     'nuevo_FicheropdfA_type_file_KO': 'File type is not valid, you can only upload pdf',
     'nuevo_FicheropdfA_format_name_file_KO': 'Format is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     //articulo - EstadoA
@@ -237,7 +245,7 @@ var textos_EN={
     'site_north_photo_format_KO': 'Error, file name is not valid. Only alphanumerics, dots, - or _ are accepted',
     //ubicacion - nuevo_site_north_photo
     'nuevo_site_north_photo_not_exist_file_KO': 'Error, if you are going to upload a file there must be a file uploaded.',
-    'nuevo_site_north_photo_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_site_north_photo_max_size_file_KO': 'File cannot be larger than 50KB',
     'nuevo_site_north_photo_type_file_KO': 'File type is not valid, you can only upload jpg',
     'nuevo_site_north_photo_format_name_file_KO': 'Name is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     'nuevo_site_north_photo_min_file_name_size_KO': 'Error, name cannot have less than 7 characters',
@@ -247,7 +255,7 @@ var textos_EN={
     'site_south_photo_format_KO': 'Error, file name is not valid. Only alphanumerics, dots, - or _ are accepted',
     //ubicacion - nuevo_site_south_photo
     'nuevo_site_south_photo_not_exist_file_KO': 'Error, if you are going to upload a file there must be a file uploaded.',
-    'nuevo_site_south_photo_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_site_south_photo_max_size_file_KO': 'File cannot be larger than 50KB',
     'nuevo_site_south_photo_type_file_KO': 'File type is not valid, you can only upload jpg',
     'nuevo_site_south_photo_format_name_file_KO': 'Name is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     'nuevo_site_south_photo_min_file_name_size_KO': 'Error, name cannot have less than 7 characters',
@@ -257,7 +265,7 @@ var textos_EN={
     'site_east_photo_format_KO': 'Error, file name is not valid. Only alphanumerics, dots, - or _ are accepted',
     //ubicacion - nuevo_site_east_photo
     'nuevo_site_east_photo_not_exist_file_KO': 'Error, if you are going to upload a file there must be a file uploaded.',
-    'nuevo_site_east_photo_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_site_east_photo_max_size_file_KO': 'File cannot be larger than 50KB',
     'nuevo_site_east_photo_type_file_KO': 'File type is not valid, you can only upload jpg',
     'nuevo_site_east_photo_format_name_file_KO': 'Name is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     'nuevo_site_east_photo_min_file_name_size_KO': 'Error, name cannot have less than 7 characters',
@@ -267,7 +275,7 @@ var textos_EN={
     'site_west_photo_format_KO': 'Error, file name is not valid. Only alphanumerics, dots, - or _ are accepted',
     //ubicacion - nuevo_site_west_photo
     'nuevo_site_west_photo_not_exist_file_KO': 'Error, if you are going to upload a file there must be a file uploaded.',
-    'nuevo_site_west_photo_max_size_file_KO': 'File cannot be larger than 20MB',
+    'nuevo_site_west_photo_max_size_file_KO': 'File cannot be larger than 50KB',
     'nuevo_site_west_photo_type_file_KO': 'File type is not valid, you can only upload jpg',
     'nuevo_site_west_photo_format_name_file_KO': 'Name is not valid, only alphanumeric characters without ñ, accents or spaces are accepted.',
     'nuevo_site_west_photo_min_file_name_size_KO': 'Error, name cannot have less than 7 characters',

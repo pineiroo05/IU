@@ -12,7 +12,7 @@
 - Foto (nombre): 7-40 caracteres, alfanumérico sin acentos, ñ ni espacios
 
 ### Archivos ###
-- Foto: JPG, máximo 20MB, nombre 7-40 caracteres alfanuméricos
+- Foto: JPG, máximo 2MB, nombre 7-40 caracteres alfanuméricos
 
 ## ARTICULO ##
 ### Campos de texto ###
@@ -29,7 +29,7 @@
 - Estado: enviado, revision, publicado
 
 ### Archivos ###
-- PDF: PDF, máximo 20MB, nombre 7-20 caracteres alfanuméricos
+- PDF: PDF, máximo 2MB, nombre 7-20 caracteres alfanuméricos
 
 ## UBICACION ###
 ### Campos de texto ###
@@ -42,7 +42,7 @@
 - Fotos (nombres): 7-50 caracteres, alfanumérico, puntos, - y _
 
 ### Archivos:
-- Fotos (norte, sur, este, oeste): JPG, máximo 20MB, nombre 7-50 caracteres alfanuméricos
+- Fotos (norte, sur, este, oeste): JPG, máximo 50KB, nombre 7-50 caracteres alfanuméricos
 
 ## FORMATOS GENERALES ###
 ### Tipos de archivo permitidos ###
@@ -50,7 +50,7 @@
 - Documentos: PDF
 
 ### Tamaños máximos ###
-- Archivos: 20MB
+- Archivos: 50KB
 
 ### Caracteres especiales permitidos por categoría ###
 - Solo letras básicas: login, password, nombres de archivos
