@@ -155,13 +155,13 @@ class alumnograduacion extends EntidadAbstracta {
     ADD_alumnograduacion_titulacion_validation() {
         const valor=document.getElementById('alumnograduacion_titulacion').value;
         const valoresPermitidos=['GREI', 'GRIA','MEI', 'MIA', 'PCEO'];
+        if(valor===''){
+            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_vacio_KO');
+            return "alumnograduacion_titulacion_vacio_KO";
+        }
         if(!valoresPermitidos.includes(valor)){
             this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_valor_KO');
             return "alumnograduacion_titulacion_valor_KO";
-        }
-        if(valor==''){
-            this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_vacio_KO');
-            return "alumnograduacion_titulacion_vacio_KO";
         }
         this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
         return true;
@@ -253,7 +253,7 @@ class alumnograduacion extends EntidadAbstracta {
     }
 
     ADD_nuevo_alumnograduacion_fotoacto_validation() {
-        if (!(this.validations.not_exist_file('nuevo_alumnograduacion_fotoacto'))) {
+        if(!(this.validations.not_exist_file('nuevo_alumnograduacion_fotoacto'))) {
             this.dom.mostrar_error_campo('nuevo_alumnograduacion_fotoacto', 'nuevo_alumnograduacion_fotoacto_not_exist_file_KO');
             return "nuevo_alumnograduacion_fotoacto_not_exist_file_KO";
         }
@@ -439,7 +439,7 @@ class alumnograduacion extends EntidadAbstracta {
 	SEARCH_alumnograduacion_titulacion_validation() {
     if (document.getElementById('alumnograduacion_titulacion').value !== '') {
         const value = document.getElementById('alumnograduacion_titulacion').value;
-        if(value.length < 1 || value.length > 4) {
+        if(value.length > 4) {
             this.dom.mostrar_error_campo('alumnograduacion_titulacion', 'alumnograduacion_titulacion_max_size_KO');
             return "alumnograduacion_titulacion_max_size_KO";
         }
@@ -450,8 +450,7 @@ class alumnograduacion extends EntidadAbstracta {
     }
     this.dom.mostrar_exito_campo('alumnograduacion_titulacion');
     return true;
-}
-
+    }
 
     SEARCH_alumnograduacion_dni_validation() {
         if (document.getElementById('alumnograduacion_dni').value !== '') {

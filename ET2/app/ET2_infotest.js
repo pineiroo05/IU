@@ -881,14 +881,14 @@ let articulo_tests_fields=Array(
     Array('articulo', 'FechaPublicacionR', 99, 216, 'SEARCH', [{FechaPublicacionR:'/'}], 'FechaPublicacionR_format_KO'),
     Array('articulo', 'FechaPublicacionR', 99, 217, 'SEARCH', [{FechaPublicacionR:'01_02_2025'}], 'FechaPublicacionR_format_KO'),
     Array('articulo', 'FechaPublicacionR', 99, 218, 'SEARCH', [{FechaPublicacionR:'01|02|2025'}], 'FechaPublicacionR_format_KO'),
-    Array('articulo', 'FechaPublicacionR', 99, 219, 'SEARCH', [{FechaPublicacionR:'01/02/2025'}], 'FechaPublicacionR_format_KO'),
+    Array('articulo', 'FechaPublicacionR', 99, 219, 'SEARCH', [{FechaPublicacionR:'2025-02-01'}], 'FechaPublicacionR_format_KO'),
     Array('articulo', 'FechaPublicacionR', 99, 220, 'SEARCH', [{FechaPublicacionR:'01$02$2025'}], 'FechaPublicacionR_format_KO'),
     Array('articulo', 'FechaPublicacionR', 99, 221, 'SEARCH', [{FechaPublicacionR:'01-02-2025'}], 'FechaPublicacionR_format_KO'),
     Array('articulo', 'FechaPublicacionR', 100, 222, 'SEARCH', [{FechaPublicacionR:''}], true),
     Array('articulo', 'FechaPublicacionR', 100, 223, 'SEARCH', [{FechaPublicacionR:'01'}], true),
-    Array('articulo', 'FechaPublicacionR', 100, 224, 'SEARCH', [{FechaPublicacionR:'-01'}], true),
-    Array('articulo', 'FechaPublicacionR', 100, 225, 'SEARCH', [{FechaPublicacionR:'02-01'}], true),
-    Array('articulo', 'FechaPublicacionR', 100, 226, 'SEARCH', [{FechaPublicacionR:'2025-02-01'}], true),
+    Array('articulo', 'FechaPublicacionR', 100, 224, 'SEARCH', [{FechaPublicacionR:'/01'}], true),
+    Array('articulo', 'FechaPublicacionR', 100, 225, 'SEARCH', [{FechaPublicacionR:'02/01'}], true),
+    Array('articulo', 'FechaPublicacionR', 100, 226, 'SEARCH', [{FechaPublicacionR:'01/02/2025'}], true),
 
     //FicheropdfA
     Array('articulo', 'FicheropdfA', 101, 227, 'SEARCH', [{FicheropdfA:'a'.repeat(21)}], 'FicheropdfA_max_size_KO'),

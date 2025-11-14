@@ -249,13 +249,13 @@ class articulo extends EntidadAbstracta{
     ADD_EstadoA_validation(){
         const valor=document.getElementById('EstadoA').value;
         const valoresPermitidos=['Enviado', 'Revision', 'Publicado'];
-        if(!valoresPermitidos.includes(valor)){
-            this.dom.mostrar_error_campo('EstadoA', 'EstadoA_valor_KO');
-            return "EstadoA_valor_KO";
-        }
         if(valor==''){
             this.dom.mostrar_error_campo('EstadoA', 'EstadoA_vacio_KO');
             return "EstadoA_vacio_KO";
+        }
+        if(!valoresPermitidos.includes(valor)){
+            this.dom.mostrar_error_campo('EstadoA', 'EstadoA_valor_KO');
+            return "EstadoA_valor_KO";
         }
         this.dom.mostrar_exito_campo('EstadoA');
         return true;
@@ -737,10 +737,10 @@ class articulo extends EntidadAbstracta{
         this.dom.hide_element_form('nuevo_FicheropdfA');
         this.dom.assign_property_value('link_FicheropdfA', 'href', 'http://193.147.87.202/ET2/filesuploaded/files_FicheropdfA/'+fila.FicheropdfA);
         //rellenar valores
-        this.dom.rellenarvaloresform(fila);
+        this.dom.rellenarvaloresform(fila);       
         //poner los campos inactivos
         this.dom.colocartodosreadonly('form_iu');
-        setLang();
+        setLang(); 
     }
     /**
 	 * modifica el formato de visualización de un atributo concreto y se devuelve el valor modificado
