@@ -1,4 +1,6 @@
 class Gestor {
+    constructor() {}
+
     atenderMenu(nombreEntidad){
         if(!this.comprobarVariables(nombreEntidad)){
             return;
