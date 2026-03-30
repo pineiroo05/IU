@@ -181,7 +181,6 @@ const estructura_characteristic={
                         min_size: 16,
                         max_size: 200,
                         exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s\\.,:;]+$'
-                        //Ver si me hace falta alguna personalizada
                     },
                     EDIT:{
                         min_size: 16,
