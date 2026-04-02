@@ -110,13 +110,13 @@ const estructura_characteristic={
             rules:{
                 validations: {
                     ADD: {
-                        min_size: 4,
+                        min_size: 3,
                         max_size: 6,
                         exp_reg: '^[a-z]+$',
                         personalized: true //llama a specialized_test_data_type_characteristic()
                     },
                     EDIT: {
-                        min_size: 4,
+                        min_size: 3,
                         max_size: 6,
                         exp_reg: '^[a-z]+$',
                         personalized: true
