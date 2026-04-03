@@ -76,8 +76,8 @@ let analysis_preparation_def_tests=Array(
     Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 48, 'tamaño maximo OK', 'EDIT', 'nuevo_file_analysis_preparation_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
     Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 49, 'tipo fichero OK', 'EDIT', 'nuevo_file_analysis_preparation_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf, doc o docx'),
     Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 50, 'nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_format_name_file_KO', 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 51, 'tamaño minimo nombre OK', 'EDIT', 'nuevo_alumnograduacion_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 52, 'tamaño maximo nombre OK', 'EDIT', 'nuevo_alumnograduacion_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 51, 'tamaño minimo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 52, 'tamaño maximo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
     Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 53, 'todo correcto', 'EDIT', true, 'Fichero correcto')
 );
 

@@ -18,7 +18,7 @@ class project{
         const fechaInicio=document.getElementById('start_date_project').value;
         const fechaFin=document.getElementById('end_date_project').value;
         if(fechaFin<fechaInicio){
-            return "fecha_fin_menor_fin_KO";
+            return "fecha_fin_menor_inicio_KO";
         }
         return true;
     }
