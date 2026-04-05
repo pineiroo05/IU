@@ -1,0 +1,1 @@
+var menu_entidades=['characteristic', 'analysis_preparation', 'project']
