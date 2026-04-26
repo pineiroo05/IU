@@ -16,12 +16,12 @@ class ValidateFieldsForm{
         if(datos.tag==="input"){
             campo.type=datos.type;
         }
+        document.getElementById(this.containerId).appendChild(campo);
         if(datos.type==="file"){
             this.simulacionFichero(id, valor);
-        }else{
-            campo.value=valor;
+        }else {
+            campo.value = valor;
         }
-        document.getElementById(this.containerId).appendChild(campo);
         return campo;
     }
 

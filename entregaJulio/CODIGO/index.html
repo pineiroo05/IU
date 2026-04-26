@@ -2,14 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Entrega de Julio</title>
 
-    <script src="menu_entidades.js"></script>
+    <script src="js/Validations_Class.js"></script>
+    <script src="js/ValidateFieldsForm_Class.js"></script>
     <script src="js/Gestor_Class.js"></script>
     <script src="js/TestForm_Class.js"></script>
+    <script src="js/TestSubmit_Class.js"></script>
+
+    <script src="js/entidades/analysis_preparation_estructura.js"></script>
+    <script src="js/entidades/characteristic_estructura.js"></script>
+    <script src="js/entidades/project_estructura.js"></script>
+
+    <script src="js/entidades/analysis_preparation_Class.js"></script>
+    <script src="js/entidades/characteristic_Class.js"></script>
+    <script src="js/entidades/project_Class.js"></script>
+
+    <script src="js/pruebas/analysis_preparation_tests.js"></script>
+    <script src="js/pruebas/analysis_preparation_TestSubmit.js"></script>
+    <script src="js/pruebas/characteristic_tests.js"></script>
+    <script src="js/pruebas/characteristic_TestSubmit.js"></script>
+    <script src="js/pruebas/project_tests.js"></script>
+    <script src="js/pruebas/project_TestSubmit.js"></script>
+
+    <script src="menu_entidades.js"></script>
 
 </head>
 <body>
-
+    <nav id="menu">
+        <ul id="listaMenu">
+            <li onclick="entidad=new analysis_preparation();">ANALYSIS PREPARATION</li>
+            <li onclick="entidad=new characteristic();">CHARACTERISTIC</li>
+            <li onclick="entidad=new project();">PROJECT</li>
+        </ul>
+    </nav>
+    <div id="gestion_entidad"></div>
+    <div id="resultados_tests"></div>
 </body>
 </html>
