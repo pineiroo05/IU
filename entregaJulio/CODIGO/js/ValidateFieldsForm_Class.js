@@ -5,7 +5,7 @@ class ValidateFieldsForm{
             let div=document.createElement('div');
             div.id=this.containerId;
             div.style.display="none";
-            document.appendChild(div); //Crea el nuevo nodo al final de la estructura
+            document.body.appendChild(div); //Crea el nuevo nodo al final de la estructura
         }
     }
 

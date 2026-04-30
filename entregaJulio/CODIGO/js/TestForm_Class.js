@@ -2,35 +2,45 @@ class TestForm {
     ejecutar(nombreEntidad){
         this.ventana=window.open("", "Resultados test de atributos", "width=800, height=600");
         this.ventana.document.write("<h1>Resultados test de atributos:"+nombreEntidad+"</h1>");
-        this.ventana.document.write("<table border='1'><tr><th>ID</th><th>CAMPO</th><th>VALOR</th><th>ESPERADO</th><th>OBTENIDO</th></tr></table>");
 
-        let entidad=null;
-        if(typeof window[nombreEntidad+'_class'] !== 'undefined'){
-            entidad=new window[nombreEntidad+'_class']();
-        }
-
-        const pruebas=window[nombreEntidad+'_pruebas'];
-        const estructura=window[nombreEntidad+'_estructura'];
         const validacionCampos=new ValidateFieldsForm();
 
+        let pruebas, estructura;
+        try{
+            pruebas = eval(`${nombreEntidad}_pruebas`);
+            estructura=eval(`estructura_${nombreEntidad}`);
+        }catch(e){}
+
+        let entidad=null;
+        try {
+            if (typeof window[nombreEntidad + '_class'] !== 'undefined') {
+                entidad = new window[nombreEntidad + '_class']();
+            }
+        }catch(e){}
+
+        this.ventana.document.write("<table border='1'><tr><th>ID</th><th>CAMPO</th><th>VALOR</th><th>ESPERADO</th><th>OBTENIDO</th></tr>");
+
         pruebas.forEach((prueba, index)=>{
-            let definicionAtributo=estructura.find(atributo=>atributo.nombre === prueba.validarCampo());
+            let definicionAtributo=estructura.attributes[prueba.campoValidar];
             validacionCampos.crearCampo(prueba.campoValidar, prueba.valorProbar, definicionAtributo);
             let resultado=true;
-            if(definicionAtributo.validations.personalize && entidad){
+            let validacionesObj=definicionAtributo.rules.validations.search;
+            if(validacionesObj.personalized && entidad){
                 let metodoPersonalizado=`${prueba.campoValidar}_personalized_validation`;
                 resultado=entidad[metodoPersonalizado]();
             }else{
-                for(let validacion in definicionAtributo.validations){
-                    if(validacion!=='personalize'){
-                        let validaciones=validacionCampos.validarCampo(validacion, prueba.campoValidar, definicionAtributo.validations[validacion]);
-                        if(validaciones!==true){
-                            resultado=prueba.campoValidar+"_"+validaciones+"_KO";
+                for(let validacion in validacionesObj){
+                    if(validacion!=='personalized'){
+                        let hayError=validacionCampos.validarCampo(validacion, prueba.campoValidar, validacionesObj[validacion]);
+                        if(hayError!==true){
+                            resultado=prueba.campoValidar+"_"+validacion+"_KO";
                             break;
                         }
                     }
                 }
             }
+
+
             const filaColor=(resultado===prueba.resultadoEsperado)?"#059a05":"#ff0000";
             this.ventana.document.write(`
                 <tr style="background-color: ${filaColor}">
@@ -43,5 +53,6 @@ class TestForm {
             validacionCampos.limpiar();
         });
         this.ventana.document.write("</table>");
+        this.ventana.document.close();
     }
 }

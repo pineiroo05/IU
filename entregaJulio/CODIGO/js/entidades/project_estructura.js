@@ -1,4 +1,4 @@
-const project_estructura={
+const estructura_project={
     entity:'project',
     attributes:{
         id_project:{

@@ -2,15 +2,21 @@ class Gestor {
     constructor() {}
 
     atenderMenu(nombreEntidad){
-        if(!this.comprobarVariables(nombreEntidad)){
-            return;
+        if(this.comprobarVariables(nombreEntidad)) {
+            this.mostrarPanel(nombreEntidad);
         }
-        this.comprobarVariables(nombreEntidad);
     }
 
     comprobarVariables(nombreEntidad){
-        const necesarias=[`${nombreEntidad}_estructura`, `${nombreEntidad}_def_tests`, `${nombreEntidad}_pruebas`, `${nombreEntidad}_TestSubmit`];
-        let faltantes=necesarias.filter(variable => typeof window[variable] === 'undefined');
+        const necesarias=[`estructura_${nombreEntidad}`, `${nombreEntidad}_def_tests`, `${nombreEntidad}_pruebas`, `${nombreEntidad}_TestSubmit`];
+        let faltantes=[];
+        necesarias.forEach(necesaria=>{
+            try{
+                eval(necesaria);
+            }catch(e){
+                faltantes.push(necesaria);
+            }
+        });
         if(faltantes.length > 0){
             this.mostrarError("");
             return false;
@@ -40,7 +46,7 @@ class Gestor {
     mostrarError(mensaje){
         const modal=document.getElementById('error_modal');
         const span=document.getElementById('mensaje_error');
-        span.innerHTML=mensaje;
+        span.innerHTML=mensaje||"ERROR EN LA CARGA DE VARIABLES";
         modal.style.display="block";
     }
 

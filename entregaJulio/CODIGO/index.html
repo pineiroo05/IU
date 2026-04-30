@@ -31,11 +31,17 @@
 <body>
     <nav id="menu">
         <ul id="listaMenu">
-            <li onclick="entidad=new analysis_preparation();">ANALYSIS PREPARATION</li>
-            <li onclick="entidad=new characteristic();">CHARACTERISTIC</li>
-            <li onclick="entidad=new project();">PROJECT</li>
+            <li onclick="new Gestor().atenderMenu('analysis_preparation')">ANALYSIS PREPARATION</li>
+            <li onclick="new Gestor().atenderMenu('characteristic')">CHARACTERISTIC</li>
+            <li onclick="new Gestor().atenderMenu('project')">PROJECT</li>
         </ul>
     </nav>
+    <div id="zona_modal"></div>
+    <div id="error_modal" style="display: none">
+        <span id="mensaje_error"></span>
+        <button onclick="new Gestor().cerrarModal()">Cerrar</button>
+    </div>
+
     <div id="gestion_entidad"></div>
     <div id="resultados_tests"></div>
 </body>
