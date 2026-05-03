@@ -13,19 +13,21 @@ const estructura_analysis_preparation= {
                 type:'int'
             },
             rules:{
-                ADD:{
-                    min_size:1,
-                    max_size:11,
-                    exp_reg:'^[0-9]+$'
-                },
-                EDIT:{
-                    min_size:1,
-                    max_size:11,
-                    exp_reg:'^[0-9]+$'
-                },
-                SEARCH:{
-                    max_size:11,
-                    exp_reg:'^[0-9]+$'
+                validations: {
+                    ADD: {
+                        min_size: 1,
+                        max_size: 11,
+                        exp_reg: '^[0-9]+$'
+                    },
+                    EDIT: {
+                        min_size: 1,
+                        max_size: 11,
+                        exp_reg: '^[0-9]+$'
+                    },
+                    SEARCH: {
+                        max_size: 11,
+                        exp_reg: '^[0-9]+$'
+                    }
                 }
             }
         },

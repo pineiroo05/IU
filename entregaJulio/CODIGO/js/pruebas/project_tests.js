@@ -159,19 +159,19 @@ let project_def_tests=Array(
     Array('project', 'acronym_project', 'input', 116, 'todo correcto', 'SEARCH', true, 'Valor correcto'),
 
     //id_sampling_methodology
-    Array('project', 'id_sampling_methodology_project', 'input', 117, 'tamaño minimo OK', 'ADD', 'id_sampling_methodology_project_min_size_KO', 'Tamaño demasido corto, debe estar entre 1 y 11'),
-    Array('project', 'id_sampling_methodology_project', 'input', 118, 'tamaño maximo OK', 'ADD', 'id_sampling_methodology_project_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
-    Array('project', 'id_sampling_methodology_project', 'input', 119, 'formato OK', 'ADD', 'id_sampling_methodology_project_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
-    Array('project', 'id_sampling_methodology_project', 'input', 120, 'todo correcto', 'ADD', true, 'Valor correcto'),
+    Array('project', 'id_sampling_methodology', 'input', 117, 'tamaño minimo OK', 'ADD', 'id_sampling_methodology_min_size_KO', 'Tamaño demasido corto, debe estar entre 1 y 11'),
+    Array('project', 'id_sampling_methodology', 'input', 118, 'tamaño maximo OK', 'ADD', 'id_sampling_methodology_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
+    Array('project', 'id_sampling_methodology', 'input', 119, 'formato OK', 'ADD', 'id_sampling_methodology_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
+    Array('project', 'id_sampling_methodology', 'input', 120, 'todo correcto', 'ADD', true, 'Valor correcto'),
 
-    Array('project', 'id_sampling_methodology_project', 'input', 121, 'tamaño minimo OK', 'EDIT', 'id_sampling_methodology_project_min_size_KO', 'Tamaño demasido corto, debe estar entre 1 y 11'),
-    Array('project', 'id_sampling_methodology_project', 'input', 122, 'tamaño maximo OK', 'EDIT', 'id_sampling_methodology_project_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
-    Array('project', 'id_sampling_methodology_project', 'input', 123, 'formato OK', 'EDIT', 'id_sampling_methodology_project_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
-    Array('project', 'id_sampling_methodology_project', 'input', 124, 'todo correcto', 'EDIT', true, 'Valor correcto'),
+    Array('project', 'id_sampling_methodology', 'input', 121, 'tamaño minimo OK', 'EDIT', 'id_sampling_methodology_min_size_KO', 'Tamaño demasido corto, debe estar entre 1 y 11'),
+    Array('project', 'id_sampling_methodology', 'input', 122, 'tamaño maximo OK', 'EDIT', 'id_sampling_methodology_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
+    Array('project', 'id_sampling_methodology', 'input', 123, 'formato OK', 'EDIT', 'id_sampling_methodology_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
+    Array('project', 'id_sampling_methodology', 'input', 124, 'todo correcto', 'EDIT', true, 'Valor correcto'),
 
-    Array('project', 'id_sampling_methodology_project', 'input', 125, 'tamaño maximo OK', 'SEARCH', 'id_sampling_methodology_project_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
-    Array('project', 'id_sampling_methodology_project', 'input', 126, 'formato OK', 'SEARCH', 'id_sampling_methodology_project_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
-    Array('project', 'id_sampling_methodology_project', 'input', 127, 'todo correcto', 'SEARCH', true, 'Valor correcto')
+    Array('project', 'id_sampling_methodology', 'input', 125, 'tamaño maximo OK', 'SEARCH', 'id_sampling_methodology_max_size_KO', 'Tamaño demasido largo, debe estar entre 1 y 11'),
+    Array('project', 'id_sampling_methodology', 'input', 126, 'formato OK', 'SEARCH', 'id_sampling_methodology_format_KO', 'Formato no valido, solo se aceptan caracteres numericos'),
+    Array('project', 'id_sampling_methodology', 'input', 127, 'todo correcto', 'SEARCH', true, 'Valor correcto')
 );
 
 let project_pruebas = Array(
@@ -333,7 +333,25 @@ let project_pruebas = Array(
     Array('project', 'file_project', 81, 130, 'SEARCH', [{file_project: 'doc'}], true),
 
     //nuevo_file_project
-    //COMO VA ESTO????????
+    Array('project', 'nuevo_file_project', 82, 131, 'ADD', [{nuevo_file_project:{max_size_file:'', type_file:'', format_name_file:''}}], 'nuevo_file_project_not_exist_file_KO'),
+    Array('project', 'nuevo_file_project', 83, 132, 'ADD', [{nuevo_file_project:{max_size_file: 20000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], 'nuevo_file_project_max_size_file_KO'),
+    Array('project', 'nuevo_file_project', 84, 133, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'image/png', format_name_file:'documento.pdf'}}], 'nuevo_file_project_type_file_KO'),
+    Array('project', 'nuevo_file_project', 85, 134, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documentó.pdf'}}], 'nuevo_file_project_format_name_file_KO'),
+    Array('project', 'nuevo_file_project', 85, 135, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documeñto.pdf'}}], 'nuevo_file_project_format_name_file_KO'),
+    Array('project', 'nuevo_file_project', 85, 136, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'docume nto.pdf'}}], 'nuevo_file_project_format_name_file_file_KO'),
+    Array('project', 'nuevo_file_project', 86, 137, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'do.pdf'}}], 'nuevo_file_project_min_file_name_sizeKO'),
+    Array('project', 'nuevo_file_project', 87, 138, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'d'.repeat(100)+'.pdf'}}], 'nuevo_file_project_max_file_name_sizeKO'),
+    Array('project', 'nuevo_file_project', 88, 139, 'ADD', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], true),
+
+    Array('project', 'nuevo_file_project', 89, 140, 'EDIT', [{nuevo_file_project:{max_size_file: 20000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], 'nuevo_file_project_max_size_file_KO'),
+    Array('project', 'nuevo_file_project', 90, 141, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'image/png', format_name_file:'documento.pdf'}}], 'nuevo_file_project_type_file_KO'),
+    Array('project', 'nuevo_file_project', 91, 142, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documentó.pdf'}}], 'nuevo_file_project_format_name_file_KO'),
+    Array('project', 'nuevo_file_project', 91, 143, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documeñto.pdf'}}], 'nuevo_file_project_format_name_file_KO'),
+    Array('project', 'nuevo_file_project', 91, 144, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'docume nto.pdf'}}], 'nuevo_file_project_format_name_file_file_KO'),
+    Array('project', 'nuevo_file_project', 92, 145, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'do.pdf'}}], 'nuevo_file_project_min_file_name_sizeKO'),
+    Array('project', 'nuevo_file_project', 93, 146, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'d'.repeat(100)+'.pdf'}}], 'nuevo_file_project_max_file_name_sizeKO'),
+    Array('project', 'nuevo_file_project', 94, 147, 'EDIT', [{nuevo_file_project:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], true),
+
 
     //code_project
     Array('project', 'code_project', 95, 148, 'ADD', [{code_project: 'ABC'}], 'code_project_min_size_KO'),
@@ -388,29 +406,29 @@ let project_pruebas = Array(
     Array('project', 'acronym_project', 116, 191, 'SEARCH', [{acronym_project: 'PRO'}], true),
     Array('project', 'acronym_project', 116, 192, 'SEARCH', [{acronym_project: 'PROY.Ñ-01'}], true),
 
-    //id_sampling_methodology_project
-    Array('project', 'id_sampling_methodology_project', 117, 193, 'ADD', [{id_sampling_methodology_project: ''}], 'id_sampling_methodology_project_min_size_KO'),
-    Array('project', 'id_sampling_methodology_project', 118, 194, 'ADD', [{id_sampling_methodology_project: '123456789012'}], 'id_sampling_methodology_project_max_size_KO'),
-    Array('project', 'id_sampling_methodology_project', 119, 195, 'ADD', [{id_sampling_methodology_project: 'abc'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 119, 196, 'ADD', [{id_sampling_methodology_project: '12.3'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 119, 197, 'ADD', [{id_sampling_methodology_project: '12-3'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 120, 198, 'ADD', [{id_sampling_methodology_project: '77'}], true),
+    //id_sampling_methodology
+    Array('project', 'id_sampling_methodology', 117, 193, 'ADD', [{id_sampling_methodology: ''}], 'id_sampling_methodology_min_size_KO'),
+    Array('project', 'id_sampling_methodology', 118, 194, 'ADD', [{id_sampling_methodology: '123456789012'}], 'id_sampling_methodology_max_size_KO'),
+    Array('project', 'id_sampling_methodology', 119, 195, 'ADD', [{id_sampling_methodology: 'abc'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 119, 196, 'ADD', [{id_sampling_methodology: '12.3'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 119, 197, 'ADD', [{id_sampling_methodology: '12-3'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 120, 198, 'ADD', [{id_sampling_methodology: '77'}], true),
 
-    Array('project', 'id_sampling_methodology_project', 121, 199, 'EDIT', [{id_sampling_methodology_project: ''}], 'id_sampling_methodology_project_min_size_KO'),
-    Array('project', 'id_sampling_methodology_project', 122, 200, 'EDIT', [{id_sampling_methodology_project: '123456789012'}], 'id_sampling_methodology_project_max_size_KO'),
-    Array('project', 'id_sampling_methodology_project', 123, 201, 'EDIT', [{id_sampling_methodology_project: 'abc'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 123, 202, 'EDIT', [{id_sampling_methodology_project: ' '}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 123, 203, 'EDIT', [{id_sampling_methodology_project: '@'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 124, 204, 'EDIT', [{id_sampling_methodology_project: '88'}], true),
+    Array('project', 'id_sampling_methodology', 121, 199, 'EDIT', [{id_sampling_methodology: ''}], 'id_sampling_methodology_min_size_KO'),
+    Array('project', 'id_sampling_methodology', 122, 200, 'EDIT', [{id_sampling_methodology: '123456789012'}], 'id_sampling_methodology_max_size_KO'),
+    Array('project', 'id_sampling_methodology', 123, 201, 'EDIT', [{id_sampling_methodology: 'abc'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 123, 202, 'EDIT', [{id_sampling_methodology: ' '}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 123, 203, 'EDIT', [{id_sampling_methodology: '@'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 124, 204, 'EDIT', [{id_sampling_methodology: '88'}], true),
 
-    Array('project', 'id_sampling_methodology_project', 125, 205, 'SEARCH', [{id_sampling_methodology_project: '123456789012'}], 'id_sampling_methodology_project_max_size_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 206, 'SEARCH', [{id_sampling_methodology_project: 'abc'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 207, 'SEARCH', [{id_sampling_methodology_project: '-'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 208, 'SEARCH', [{id_sampling_methodology_project: '.'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 209, 'SEARCH', [{id_sampling_methodology_project: ' '}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 210, 'SEARCH', [{id_sampling_methodology_project: '1_'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 126, 211, 'SEARCH', [{id_sampling_methodology_project: '!!'}], 'id_sampling_methodology_project_format_KO'),
-    Array('project', 'id_sampling_methodology_project', 127, 212, 'SEARCH', [{id_sampling_methodology_project: ''}], true),
-    Array('project', 'id_sampling_methodology_project', 127, 213, 'SEARCH', [{id_sampling_methodology_project: '1'}], true),
-    Array('project', 'id_sampling_methodology_project', 127, 214, 'SEARCH', [{id_sampling_methodology_project: '99'}], true)
+    Array('project', 'id_sampling_methodology', 125, 205, 'SEARCH', [{id_sampling_methodology: '123456789012'}], 'id_sampling_methodology_max_size_KO'),
+    Array('project', 'id_sampling_methodology', 126, 206, 'SEARCH', [{id_sampling_methodology: 'abc'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 126, 207, 'SEARCH', [{id_sampling_methodology: '-'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 126, 208, 'SEARCH', [{id_sampling_methodology: '.'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 126, 209, 'SEARCH', [{id_sampling_methodology: ' '}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 126, 210, 'SEARCH', [{id_sampling_methodology: '1_'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 126, 211, 'SEARCH', [{id_sampling_methodology: '!!'}], 'id_sampling_methodology_format_KO'),
+    Array('project', 'id_sampling_methodology', 127, 212, 'SEARCH', [{id_sampling_methodology: ''}], true),
+    Array('project', 'id_sampling_methodology', 127, 213, 'SEARCH', [{id_sampling_methodology: '1'}], true),
+    Array('project', 'id_sampling_methodology', 127, 214, 'SEARCH', [{id_sampling_methodology: '99'}], true)
 );

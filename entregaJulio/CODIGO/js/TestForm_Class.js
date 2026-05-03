@@ -21,36 +21,48 @@ class TestForm {
         this.ventana.document.write("<table border='1'><tr><th>ID</th><th>CAMPO</th><th>VALOR</th><th>ESPERADO</th><th>OBTENIDO</th></tr>");
 
         pruebas.forEach((prueba, index)=>{
-            let definicionAtributo=estructura.attributes[prueba.campoValidar];
-            validacionCampos.crearCampo(prueba.campoValidar, prueba.valorProbar, definicionAtributo);
-            let resultado=true;
-            let validacionesObj=definicionAtributo.rules.validations.search;
-            if(validacionesObj.personalized && entidad){
-                let metodoPersonalizado=`${prueba.campoValidar}_personalized_validation`;
-                resultado=entidad[metodoPersonalizado]();
-            }else{
-                for(let validacion in validacionesObj){
-                    if(validacion!=='personalized'){
-                        let hayError=validacionCampos.validarCampo(validacion, prueba.campoValidar, validacionesObj[validacion]);
-                        if(hayError!==true){
-                            resultado=prueba.campoValidar+"_"+validacion+"_KO";
+            const campoNombre=prueba[1];
+            const accion=prueba[4];
+            const valorProbar=prueba[5][0][campoNombre];
+            const resultadoEsperado=prueba[6];
+            let definicionAtributo=estructura.attributes[campoNombre];
+            if(!definicionAtributo) {
+                this.ventana.document.write(`
+                    <tr style="background-color:#ff0000;">
+                        <td>${index}</td>
+                        <td>${prueba.campoValidar}</td>
+                        <td colspan="3">El campo '${prueba.campoValidar}' no existe</td>
+                    </tr>
+                `);
+                validacionCampos.crearCampo(campoNombre, valorProbar, definicionAtributo);
+                let reglas = definicionAtributo.rules.validations[accion];
+                let resultadoObtenido = true;
+
+                if (reglas) {
+                    for (let tipoValidacion in reglas) {
+                        let error = validacionCampos.validarCampo(tipoValidacion, campoNombre, reglas[tipoValidacion]);
+                        if (error !== true) {
+                            resultadoObtenido = `${campoNombre}_${tipoValidacion}_KO`;
                             break;
                         }
                     }
                 }
+
+                const esCorrecto=(resultadoObtenido===resultadoEsperado);
+                const filaColor=esCorrecto?"#ff0000":"#00ff00";
+                this.ventana.document.write(`
+                    <tr style="background-color:${filaColor};">
+                        <td>${index}</td>
+                        <td>${campoNombre}</td>
+                        <td>${accion}</td>
+                        <td>${valorProbar}</td>
+                        <td>${resultadoEsperado}</td>
+                        <td>${resultadoObtenido}</td>
+                    </tr>
+                `);
+
+
             }
-
-
-            const filaColor=(resultado===prueba.resultadoEsperado)?"#059a05":"#ff0000";
-            this.ventana.document.write(`
-                <tr style="background-color: ${filaColor}">
-                    <td>${index}</td>
-                    <td>${prueba.campoValidar}</td>
-                    <td>${prueba.valorProbar}</td>
-                    <td>${prueba.resultadoEsperado}</td>
-                    <td>${resultado}</td>
-                </tr>`);
-            validacionCampos.limpiar();
         });
         this.ventana.document.write("</table>");
         this.ventana.document.close();

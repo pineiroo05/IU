@@ -22,5 +22,5 @@ class project{
         }
         return true;
     }
-
 }
+//window.project=project;

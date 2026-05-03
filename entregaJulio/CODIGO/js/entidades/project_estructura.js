@@ -52,11 +52,11 @@ const estructura_project={
                     EDIT: {
                         min_size: 15,
                         max_size: 100,
-                        exp_reg: '^[A-Za-z\s]+$'
+                        exp_reg: '^[A-Za-z\\s]+$'
                     },
                     SEARCH: {
                         max_size: 100,
-                        exp_reg: '^[A-Za-z\s]+$'
+                        exp_reg: '^[A-Za-z\\s]+$'
                     }
                 }
             }
@@ -142,16 +142,16 @@ const estructura_project={
                     ADD: {
                         min_size: 6,
                         max_size: 60,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     },
                     EDIT: {
                         min_size: 6,
                         max_size: 60,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     },
                     SEARCH: {
                         max_size: 60,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     }
                 }
             }
@@ -172,16 +172,16 @@ const estructura_project={
                     ADD: {
                         min_size: 6,
                         max_size: 100,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     },
                     EDIT: {
                         min_size: 6,
                         max_size: 100,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     },
                     SEARCH: {
                         max_size: 100,
-                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$'
+                        exp_reg: '^[A-Za-zÑñÁáÉéÍíÓóÚú\\s]+$'
                     }
                 }
             }
@@ -217,7 +217,6 @@ const estructura_project={
                 }
             }
         },
-        //add y edit. EL TAMAÑO MAXIMO Y MINIMO SE COMPRUEBA????
         nuevo_file_project:{
             html:{
                 tag:'input',
