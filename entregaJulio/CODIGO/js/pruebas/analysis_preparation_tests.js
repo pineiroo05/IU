@@ -65,20 +65,20 @@ let analysis_preparation_def_tests=Array(
     Array('analysis_preparation', 'file_analysis_preparation', 'input', 47, 'todo correcto', 'SEARCH', true, 'Todo correcto'),
 
     //nuevo_file_analysis_preparation
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 41, 'existe el fichero', 'ADD', 'nuevo_file_analysis_preparation_not_exist_file_KO', 'Error, si vas a subir un documento debe haber un fichero subido.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 42, 'tamaño maximo OK', 'ADD', 'nuevo_file_analysis_preparation_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 43, 'tipo fichero OK', 'ADD', 'nuevo_file_analysis_preparation_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf, doc o docx'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 44, 'nombre OK', 'ADD', 'nuevo_file_analysis_preparation_format_name_file_KO', 'El nombre no es valido, solo se caracteres alfanumericos, sin ñ acentos ni espacios.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 45, 'tamaño minimo nombre OK', 'ADD', 'nuevo_file_analysis_preparation_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 46, 'tamaño maximo nombre OK', 'ADD', 'nuevo_file_analysis_preparation_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 47, 'todo correcto', 'ADD', true, 'Fichero correcto'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 48, 'existe el fichero', 'ADD', 'nuevo_file_analysis_preparation_not_exist_file_KO', 'Error, si vas a subir un documento debe haber un fichero subido.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 49, 'tamaño maximo OK', 'ADD', 'nuevo_file_analysis_preparation_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 50, 'tipo fichero OK', 'ADD', 'nuevo_file_analysis_preparation_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf, doc o docx'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 51, 'nombre OK', 'ADD', 'nuevo_file_analysis_preparation_format_name_file_KO', 'El nombre no es valido, solo se caracteres alfanumericos, sin ñ acentos ni espacios.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 52, 'tamaño minimo nombre OK', 'ADD', 'nuevo_file_analysis_preparation_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 53, 'tamaño maximo nombre OK', 'ADD', 'nuevo_file_analysis_preparation_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 54, 'todo correcto', 'ADD', true, 'Fichero correcto'),
 
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 48, 'tamaño maximo OK', 'EDIT', 'nuevo_file_analysis_preparation_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 49, 'tipo fichero OK', 'EDIT', 'nuevo_file_analysis_preparation_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf, doc o docx'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 50, 'nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_format_name_file_KO', 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 51, 'tamaño minimo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 52, 'tamaño maximo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
-    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 53, 'todo correcto', 'EDIT', true, 'Fichero correcto')
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 55, 'tamaño maximo OK', 'EDIT', 'nuevo_file_analysis_preparation_max_size_file_KO', 'El archivo no puede tener mas de 20MB'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 56, 'tipo fichero OK', 'EDIT', 'nuevo_file_analysis_preparation_type_file_KO', 'El tipo de archivo no es valido, solo puedes meter pdf, doc o docx'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 57, 'nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_format_name_file_KO', 'El nombre no es valido, solo se aceptan caracteres alfanumericos, sin ñ acentos ni espacios.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 58, 'tamaño minimo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_min_file_name_size_KO', 'Error, el nombre no puede tener menos de 7 caracteres.'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 59, 'tamaño maximo nombre OK', 'EDIT', 'nuevo_file_analysis_preparation_max_file_name_size_KO', 'Error, el nombre no puede tener mas de 100 caracteres'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 'inputfile', 60, 'todo correcto', 'EDIT', true, 'Fichero correcto')
 );
 
 let analysis_preparation_pruebas = Array(
@@ -193,5 +193,22 @@ let analysis_preparation_pruebas = Array(
     Array('analysis_preparation', 'file_analysis_preparation', 47, 80, 'SEARCH', [{file_analysis_preparation: 'archivo.pdf'}], true),
 
     // nuevo_file_analysis_preparation
-    // FALTA ESTOOOOOOO!!!!!
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 48, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:'',type_file:'',format_name_file:''}}], 'nuevo_file_analysis_preparation_not_exist_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 49, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:20000000,type_file:'application/pdf',format_name_file:'documento.pdf'}}], 'nuevo_file_analysis_preparation_max_size_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 50, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'image/png',format_name_file:'documento.pdf'}}], 'nuevo_file_analysis_preparation_type_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 51, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documentó.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 51, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documeñto.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 51, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'docume nto.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 52, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'do.pdf'}}], 'nuevo_file_analysis_preparation_min_file_name_size_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 53, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'a'.repeat(104)}}], 'nuevo_file_analysis_preparation_max_file_name_size_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 54, 81, 'ADD', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documento.pdf'}}], true),
+
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 55, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:20000000,type_file:'application/pdf',format_name_file:'documento.pdf'}}], 'nuevo_file_analysis_preparation_max_size_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 56, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'image/png',format_name_file:'documento.pdf'}}], 'nuevo_file_analysis_preparation_type_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 57, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documentó.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 57, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documeñto.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 57, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'docume nto.pdf'}}], 'nuevo_file_analysis_preparation_format_name_file_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 58, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'do.pdf'}}], 'nuevo_file_analysis_preparation_min_file_name_size_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 59, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'a'.repeat(104)}}], 'nuevo_file_analysis_preparation_max_file_name_size_KO'),
+    Array('analysis_preparation', 'nuevo_file_analysis_preparation', 60, 81, 'EDIT', [{nuevo_file_characteristic:{max_size_file:2000000 ,type_file:'application/pdf',format_name_file:'documento.pdf'}}], true),
 );

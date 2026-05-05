@@ -305,7 +305,7 @@ let characteristic_pruebas=Array(
     Array('characteristic', 'nuevo_file_characteristic', 79, 135, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documeñto.pdf'}}], 'nuevo_file_characteristic_format_name_file_KO'),
     Array('characteristic', 'nuevo_file_characteristic', 79, 136, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'docume nto.pdf'}}], 'nuevo_file_characteristic_format_name_file_file_KO'),
     Array('characteristic', 'nuevo_file_characteristic', 80, 137, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'do.pdf'}}], 'nuevo_file_characteristic_min_file_name_size_KO'),
-    Array('characteristic', 'nuevo_file_characteristic', 81, 138, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'d'.repeat(100)+'.pdf'}}], 'nuevo_file_characteristic_max_file_name_size_KO'),
+    Array('characteristic', 'nuevo_file_characteristic', 81, 138, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'d'.repeat(104)}}], 'nuevo_file_characteristic_max_file_name_size_KO'),
     Array('characteristic', 'nuevo_file_characteristic', 82, 139, 'ADD', [{nuevo_file_characteristic:{max_size_file: 2000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], true),
 
     Array('characteristic', 'nuevo_file_characteristic', 83, 141, 'EDIT', [{nuevo_file_characteristic:{max_size_file: 20000000,type_file:'application/pdf', format_name_file:'documento.pdf'}}], 'nuevo_file_characteristic_max_size_file_KO'),

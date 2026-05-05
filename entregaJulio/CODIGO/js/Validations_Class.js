@@ -3,29 +3,30 @@ class Validations {
 
     static min_size(id, minimo){
         let valor=document.getElementById(id).value;
-        return valor.length<minimo;
+        return valor.length>=minimo;
     }
 
     static max_size(id, maximo){
         let valor=document.getElementById(id).value;
-        return valor.length>maximo;
+        return valor.length<=maximo;
     }
 
-    static format(id, expReg){
+    static exp_reg(id, expReg){
         let expresionRegular=new RegExp(expReg);
         let valor=document.getElementById(id).value;
+        if(valor.length===0){return true;}
         return expresionRegular.test(valor);
     }
 
     //Para ficheros
     static no_exist_file(id){
         let file=document.getElementById(id);
-        return file.files[0].length === 0;
+        return file.files && file.files.length>0;
     }
 
     static max_size_file(id, tamMax){
         let file=document.getElementById(id);
-        return file.files.length>tamMax;
+        return file.files[0].size<=tamMax;
     }
 
     static type_file(id, arrayTipos){

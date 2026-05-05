@@ -47,7 +47,7 @@ const estructura_project={
                     ADD: {
                         min_size: 15,
                         max_size: 100,
-                        exp_reg: '^[A-Za-z\s]+$'
+                        exp_reg: '^[A-Za-z\\s]+$'
                     },
                     EDIT: {
                         min_size: 15,
@@ -77,18 +77,18 @@ const estructura_project={
                     ADD: {
                         min_size: 10,
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$', //Luego habria que convertir el input date en string para que trabaje con las barras. Recuperar la hardcodeada de miguel anxo
+                        exp_reg: '^[0-9]{2}/[0-9]{2}/[0-9]{4}$', //Luego habria que convertir el input date en string para que trabaje con las barras. Recuperar la hardcodeada de miguel anxo
                         personalized: true //Mira que la fecha no sea pasada
                     },
                     EDIT: {
                         min_size: 10,
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$',
+                        exp_reg: '^[0-9]{2}/[0-9]{2}/[0-9]{4}$',
                         personalized: true
                     },
                     SEARCH: {
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+                        exp_reg: '^[0-9\\/]+$'
                         //personalized:true
                     }
                 }
@@ -110,18 +110,18 @@ const estructura_project={
                     ADD: {
                         min_size: 10,
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$',
+                        exp_reg: '^[0-9]{2}/[0-9]{2}/[0-9]{4}$',
                         personalized: true
                     },
                     EDIT: {
                         min_size: 10,
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$',
+                        exp_reg: '^[0-9]{2}/[0-9]{2}/[0-9]{4}$',
                         personalized: true
                     },
                     SEARCH: {
                         max_size: 10,
-                        exp_reg: '^[0-9]{4}-[0-9]{2}-[0-9]{2}$'
+                        exp_reg: '^[0-9/]+$'
                     }
                 }
             }
@@ -203,16 +203,16 @@ const estructura_project={
                     ADD: {
                         min_size: 30,
                         max_size: 500,
-                        exp_reg: '^[\\x00-\\x7F\\s]+$'
+                        exp_reg: '^[\\u0000-\\u024F\\s]+$'
                     },
                     EDIT: {
                         min_size: 30,
                         max_size: 500,
-                        exp_reg: '^[\\x00-\\x7F\\s]+$'
+                        exp_reg: '^[\\u0000-\\u024F\\s]+$'
                     },
                     SEARCH: {
                         max_size: 500,
-                        exp_reg: '^[\\x00-\\x7F\\s]+$'
+                        exp_reg: '^[\\u0000-\\u024F\\s]+$'
                     }
                 }
             }
@@ -281,16 +281,16 @@ const estructura_project={
                     ADD: {
                         min_size: 6,
                         max_size: 50,
-                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;\\-]+$'
                     },
                     EDIT: {
                         min_size: 6,
                         max_size: 50,
-                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;\\-]+$'
                     },
                     SEARCH: {
                         max_size: 50,
-                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\s\\.,:;\\-]+$'
                     }
                 }
             }
@@ -311,16 +311,16 @@ const estructura_project={
                     ADD: {
                         min_size: 6,
                         max_size: 15,
-                        exp_reg: '^[A-Za-z\\s\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\.:,;\\-]+$'
                     },
                     EDIT: {
                         min_size: 6,
                         max_size: 15,
-                        exp_reg: '^[A-Za-z\\s\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\.,:;\\-]+$'
                     },
                     SEARCH: {
                         max_size: 15,
-                        exp_reg: '^[A-Za-z\\.,:;]+$'
+                        exp_reg: '^[A-Za-zÑñ\\.,:;\\-]+$'
                     }
                 }
             }

@@ -14,11 +14,11 @@ class ValidateFieldsForm{
         let campo=document.createElement(datos.tag);
         campo.id=id;
         if(datos.tag==="input"){
-            campo.type=datos.type;
+            campo.type=datos.type==="file"?"file":"text"; //Hardcodeada horrible xd
         }
         document.getElementById(this.containerId).appendChild(campo);
         if(datos.type==="file"){
-            this.simulacionFichero(id, valor);
+            this.simulacionFichero(campo, String(valor));
         }else {
             campo.value = valor;
         }
@@ -27,7 +27,12 @@ class ValidateFieldsForm{
 
     validarCampo(validacion, id, parametros){
         if(typeof Validations[validacion] === 'function'){ //Es la movida del acceso dinamico. Comprueba si validacion es una funcion, y luego la ejecuta
-            return Validations[validacion](id, parametros);
+            let resultado=Validations[validacion](id, parametros);
+            if(resultado!==true){
+                let nombreError=validacion==='exp_reg'?'format':validacion;
+                return `${id}_${nombreError}_KO`;
+            }
+            return true;
         }else{
             return "No existe esa validacion";
         }
