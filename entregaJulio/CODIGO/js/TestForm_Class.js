@@ -138,7 +138,6 @@ class TestForm {
                             if(!(tipoValidacion in reglas)){
                                 continue;
                             }
-                            console.log('Validando:', tipoValidacion, 'para:', campoNombre);
                             if(tipoValidacion==='personalized'&&reglas[tipoValidacion]===true) {
                                 let metodo=`${campoNombre}_personalized_validation`;
                                 if (entidad && typeof entidad[metodo] === 'function') {

@@ -124,7 +124,6 @@ const estructura_analysis_preparation= {
             }
         },
         //add y edit
-        //VER DE PONER LOS LIMITES DE TAMAÑO 7 Y 100
         nuevo_file_analysis_preparation:{
             html:{
                 tag:'input',
@@ -139,14 +138,19 @@ const estructura_analysis_preparation= {
             rules:{
                 validations:{
                     ADD:{
-                        type_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}],
-                        max_size_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}],
-                        format_name_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}]
+                        not_exist_file:true,
+                        type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+                        max_size_file:2000000,
+                        min_file_name_size:7,
+                        max_file_name_size:100,
+                        format_name_file:'^[A-Za-z\\._-]+$'
                     },
                     EDIT:{
-                        type_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}],
-                        max_size_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}],
-                        format_name_file:[{max_size_file:2000000},{type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']},{format_name_file:'^[A-Za-z\\._-]+$'}]
+                        type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+                        max_size_file:2000000,
+                        min_file_name_size:7,
+                        max_file_name_size:100,
+                        format_name_file:'^[A-Za-z\\._-]+$'
                     }
                 }
             }

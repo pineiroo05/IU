@@ -17,6 +17,16 @@ class ValidateFieldsForm{
             campo.type=datos.type==="file"?"file":"text"; //Hardcodeada horrible xd
         }
         document.getElementById(this.containerId).appendChild(campo);
+        //Para el select
+        if(datos.tag==="select" && datos.options && Array.isArray(datos.options)) {
+            datos.options.forEach(opcionTexto => {
+                let opcion = document.createElement('option');
+                opcion.value = opcionTexto;
+                opcion.text = opcionTexto;
+                campo.appendChild(opcion);
+            });
+        }
+        //Para archivos
         if(datos.type==="file"){
             if(valor && typeof valor==="object") {
                 this.simulacionFichero(campo, valor);
