@@ -18,7 +18,7 @@ class Gestor {
             }
         });
         if(faltantes.length > 0){
-            this.mostrarError("");
+            this.mostrarError(`Faltan las siguientes variables: ${faltantes.join(', ')}`);
             return false;
         }
         return true;
@@ -31,15 +31,16 @@ class Gestor {
         h2.innerText=`Entidad: ${nombreEntidad}`;
         zona.appendChild(h2);
         //TestForm
-        let botonTestForm=document.createElement('boton_testForm');
+        let botonTestForm=document.createElement('button');
         botonTestForm.innerText="Test atributos";
         botonTestForm.onclick=()=>new TestForm().ejecutar(nombreEntidad);
         //TestSubmit
-        let botonTestSubmit=document.createElement('boton_testSubmit');
+        let botonTestSubmit=document.createElement('button');
         botonTestSubmit.innerText="Test formulario";
         botonTestSubmit.onclick=()=>new TestSubmit().ejecutar(nombreEntidad);
 
         zona.appendChild(botonTestForm);
+        zona.appendChild(document.createTextNode(' '));
         zona.appendChild(botonTestSubmit);
     }
 

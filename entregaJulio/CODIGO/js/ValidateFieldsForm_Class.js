@@ -18,9 +18,11 @@ class ValidateFieldsForm{
         }
         document.getElementById(this.containerId).appendChild(campo);
         if(datos.type==="file"){
-            this.simulacionFichero(campo, String(valor));
+            if(valor && typeof valor==="object") {
+                this.simulacionFichero(campo, valor);
+            }
         }else {
-            campo.value = valor;
+            campo.value = valor||'';
         }
         return campo;
     }
@@ -39,17 +41,18 @@ class ValidateFieldsForm{
     }
 
     //Entiendo q hay q simular la subida de un fichero o algo
-    simulacionFichero(campo, nombreFichero, mime="application/octet-stream"){
+    simulacionFichero(campo, objeto){
+        const nombreFichero=objeto.format_name_file||'';
+        const tipoMime=objeto.type_file||'application/octet-stream';
+        const tam=objeto.max_size_file||0;
         if(!nombreFichero){
+            const fichero=new DataTransfer();
+            campo.files=fichero.files;
             return;
         }
-        if(mime==="application/octet-stream"){
-            if(nombreFichero.endsWith(".jpg")){mime="image/jpeg";}
-            if(nombreFichero.endsWith(".png")){mime="image/png";}
-            if(nombreFichero.endsWith(".pdf")){mime="application/pdf";}
-        }
-        const blob=new Blob([""], {type:mime}); //Contenido del fichero
-        const file=new File([blob],nombreFichero,{type:mime}); //Nuevo fichero
+        const contenido=new Uint8Array(tam);
+        const blob=new Blob([contenido],{type:tipoMime});
+        const file=new File([blob], nombreFichero, {type:tipoMime});
         const transfer=new DataTransfer();
         transfer.items.add(file);
         campo.files=transfer.files;

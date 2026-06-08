@@ -1,18 +1,18 @@
-const estructura_project={
-    entity:'project',
-    attributes:{
-        id_project:{
-            html:{
-                tag:'input',
-                type:'number',
-                component_visible_size:5
+const estructura_project= {
+    entity: 'project',
+    attributes: {
+        id_project: {
+            html: {
+                tag: 'input',
+                type: 'number',
+                component_visible_size: 5
             },
-            db:{
-                is_pk:true,
-                is_autoincrement:true,
-                type:'int'
+            db: {
+                is_pk: true,
+                is_autoincrement: true,
+                type: 'int'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 1,
@@ -31,18 +31,18 @@ const estructura_project={
                 }
             }
         },
-        name_project:{
-            html:{
-                tag:'input',
-                type:'text',
-                component_visible_size:20
+        name_project: {
+            html: {
+                tag: 'input',
+                type: 'text',
+                component_visible_size: 20
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 15,
@@ -61,18 +61,18 @@ const estructura_project={
                 }
             }
         },
-        start_date_project:{
-            html:{
-                tag:'input',
-                type:'date',
-                component_visible_size:10
+        start_date_project: {
+            html: {
+                tag: 'input',
+                type: 'date',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'date',
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'date',
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 10,
@@ -88,24 +88,24 @@ const estructura_project={
                     },
                     SEARCH: {
                         max_size: 10,
-                        exp_reg: '^[0-9\\/]+$'
+                        exp_reg: '^([0-9]{2}/[0-9]{2}/[0-9]{4}|[0-9]{2}/[0-9]{4})$'
                         //personalized:true
                     }
                 }
             }
         },
-        end_date_project:{
-            html:{
-                tag:'input',
-                type:'date',
-                component_visible_size:10
+        end_date_project: {
+            html: {
+                tag: 'input',
+                type: 'date',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'date',
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'date',
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 10,
@@ -126,18 +126,18 @@ const estructura_project={
                 }
             }
         },
-        responsable_project:{
+        responsable_project: {
             html: {
                 tag: 'input',
                 type: 'text',
                 component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 6,
@@ -156,18 +156,18 @@ const estructura_project={
                 }
             }
         },
-        organization_project:{
-            html:{
-                tag:'input',
-                type:'text',
-                component_visible_size:10
+        organization_project: {
+            html: {
+                tag: 'input',
+                type: 'text',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 6,
@@ -186,19 +186,19 @@ const estructura_project={
                 }
             }
         },
-        description_project:{
-            html:{
-                tag:'textarea',
-                rows:3,
-                columns:20,
-                component_visible_size:20
+        description_project: {
+            html: {
+                tag: 'textarea',
+                rows: 3,
+                columns: 20,
+                component_visible_size: 20
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 30,
@@ -217,45 +217,50 @@ const estructura_project={
                 }
             }
         },
-        nuevo_file_project:{
-            html:{
-                tag:'input',
-                type:'file',
-                component_visible_size:20
+        nuevo_file_project: {
+            html: {
+                tag: 'input',
+                type: 'file',
+                component_visible_size: 20
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
-                        type_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}],
-                        max_size_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}],
-                        format_name_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}]
+                        not_exist_file: true,
+                        type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+                        max_size_file: 2000000,
+                        min_file_name_size: 7,
+                        max_file_name_size: 100,
+                        format_name_file: '^[A-Za-z\\.]+$'
                     },
                     EDIT: {
-                        type_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}],
-                        max_size_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}],
-                        format_name_file: [{max_size_file: 2000000}, {type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']}, {format_name_file: '^[A-Za-z\\.]+$'}]
+                        type_file: ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
+                        max_size_file: 2000000,
+                        min_file_name_size: 7,
+                        max_file_name_size: 100,
+                        format_name_file: '^[A-Za-z\\.]+$'
                     }
                 }
             }
         },
         //search
-        file_project:{
-            html:{
-                tag:'input',
-                type:'text',
-                component_visible_size:10
+        file_project: {
+            html: {
+                tag: 'input',
+                type: 'text',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     SEARCH: {
                         max_size: 100,
@@ -265,18 +270,18 @@ const estructura_project={
             }
         },
         //Como manejo el unique??
-        code_project:{
-            html:{
-                tag:'input',
-                type:'text',
-                component_visible_size:10
+        code_project: {
+            html: {
+                tag: 'input',
+                type: 'text',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 6,
@@ -295,18 +300,18 @@ const estructura_project={
                 }
             }
         },
-        acronym_project:{
-            html:{
-                tag:'input',
-                type:'text',
-                component_visible_size:10
+        acronym_project: {
+            html: {
+                tag: 'input',
+                type: 'text',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'string'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'string'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 6,
@@ -325,18 +330,18 @@ const estructura_project={
                 }
             }
         },
-        id_sampling_methodology:{
-            html:{
-                tag:'input',
-                type:'number',
-                component_visible_size:10
+        id_sampling_methodology: {
+            html: {
+                tag: 'input',
+                type: 'number',
+                component_visible_size: 10
             },
-            db:{
-                is_pk:false,
-                is_autoincrement:false,
-                type:'int'
+            db: {
+                is_pk: false,
+                is_autoincrement: false,
+                type: 'int'
             },
-            rules:{
+            rules: {
                 validations: {
                     ADD: {
                         min_size: 1,

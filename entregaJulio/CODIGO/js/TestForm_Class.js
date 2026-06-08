@@ -6,11 +6,7 @@ class TestForm {
         const validacionCampos=new ValidateFieldsForm();
 
         let pruebas, defTests, estructura;
-        /*try{
-            pruebas = eval(`${nombreEntidad}_pruebas`);
-            defTests = eval(`${nombreEntidad}_def_tests`);
-            estructura=eval(`estructura_${nombreEntidad}`);
-        }catch(e){}*/
+
         try{
             pruebas = eval(`${nombreEntidad}_pruebas`);
         }catch(e){ console.log('Error pruebas:', e); }
@@ -30,9 +26,6 @@ class TestForm {
                 entidad = new claseEntidad();
             }
         }catch(e){}
-        /*console.log('entidad:', entidad);
-        console.log('window[nombreEntidad]:', window[nombreEntidad]);
-        console.log('typeof:', typeof window[nombreEntidad]);*/
 
         //Bloque 1
         this.ventana.document.write("<h2>1. Estructura de la entidad</h2>");
@@ -140,9 +133,12 @@ class TestForm {
                     let reglas=definicionAtributo.rules.validations[accion];
                     resultadoObtenido=true;
                     if(reglas){
-                        const ordenValidaciones=['min_size', 'max_size', 'exp_reg', 'personalized', 'type_file', 'max_size_file', 'format_name_file'];
+                        const ordenValidaciones=['min_size', 'max_size', 'exp_reg', 'personalized', 'not_exist_file', 'max_size_file', 'min_file_name_size', 'max_file_name_size', 'format_name_file', 'type_file'];
                         for(let tipoValidacion of ordenValidaciones){
-                            if(!(tipoValidacion in reglas))continue;
+                            if(!(tipoValidacion in reglas)){
+                                continue;
+                            }
+                            console.log('Validando:', tipoValidacion, 'para:', campoNombre);
                             if(tipoValidacion==='personalized'&&reglas[tipoValidacion]===true) {
                                 let metodo=`${campoNombre}_personalized_validation`;
                                 if (entidad && typeof entidad[metodo] === 'function') {

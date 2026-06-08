@@ -28,20 +28,32 @@
 
 </head>
 <body>
+    <header id="cabecera">
+        <h1>Sistema de pruebas</h1>
+        <a href="API.html", id="enlace_api" title="Ver documentacion API">API</a>
+    </header>
     <nav id="menu">
+        <button id="icono_menu" onclick="document.getElementById('listaMenu').classList.toggle('visible')">MENU</button>
         <ul id="listaMenu">
             <li onclick="new Gestor().atenderMenu('analysis_preparation')">ANALYSIS PREPARATION</li>
             <li onclick="new Gestor().atenderMenu('characteristic')">CHARACTERISTIC</li>
             <li onclick="new Gestor().atenderMenu('project')">PROJECT</li>
         </ul>
     </nav>
-    <div id="zona_modal"></div>
+    <main id="zona_trabajo">
+        <div id="zona_modal"></div>
+        <div id="gestion_entidad"></div>
+        <div id="resultados_tests"></div>
+    </main>
     <div id="error_modal" style="display: none">
-        <span id="mensaje_error"></span>
-        <button onclick="new Gestor().cerrarModal()">Cerrar</button>
+        <div id="error_modal_contenido">
+            <span id="mensaje_error"></span>
+            <button onclick="new Gestor().cerrarModal()">Cerrar</button>
+        </div>
     </div>
 
-    <div id="gestion_entidad"></div>
-    <div id="resultados_tests"></div>
+    <footer id="pie">
+        <p>Entrega Julio</p>
+    </footer>
 </body>
 </html>

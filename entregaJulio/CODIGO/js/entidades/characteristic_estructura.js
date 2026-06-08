@@ -88,7 +88,7 @@ const estructura_characteristic={
                     SEARCH: {
                         //tag: 'input',
                         //type: 'text',
-                        min_size: 80,
+                        //min_size: 80,
                         max_size: 5000,
                         exp_reg: '^[A-Za-z\s\\.,:;]+$'
                     }

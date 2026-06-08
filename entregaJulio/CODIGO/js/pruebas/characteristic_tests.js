@@ -147,7 +147,7 @@ let characteristic_pruebas=Array(
     Array('characteristic', 'id_characteristic', 11, 23, 'SEARCH', [{id_characteristic: '123'}], true),
 
     //name_characteristic
-    Array('characteristic', 'name_characteristic', 12, 24, 'ADD', [{name_characteristic:'a'.repeat(6)}], 'name_characteristoc_min_size_KO'),
+    Array('characteristic', 'name_characteristic', 12, 24, 'ADD', [{name_characteristic:'a'.repeat(6)}], 'name_characteristic_min_size_KO'),
     Array('characteristic', 'name_characteristic', 13, 25, 'ADD', [{name_characteristic:'a'.repeat(102)}], 'name_characteristic_max_size_KO'),
     Array('characteristic', 'name_characteristic', 14, 26, 'ADD', [{name_characteristic:'abcñefgh'}], 'name_characteristic_format_KO'),
     Array('characteristic', 'name_characteristic', 14, 27, 'ADD', [{name_characteristic:'abc efgh'}], 'name_characteristic_format_KO'),
@@ -155,7 +155,7 @@ let characteristic_pruebas=Array(
     Array('characteristic', 'name_characteristic', 14, 29, 'ADD', [{name_characteristic:'abc_dfgh'}], 'name_characteristic_format_KO'),
     Array('characteristic', 'name_characteristic', 15, 30, 'ADD', [{name_characteristic:'abcdefghi'}], true),
 
-    Array('characteristic', 'name_characteristic', 16, 31, 'EDIT', [{name_characteristic:'a'.repeat(6)}], 'name_characteristoc_min_size_KO'),
+    Array('characteristic', 'name_characteristic', 16, 31, 'EDIT', [{name_characteristic:'a'.repeat(6)}], 'name_characteristic_min_size_KO'),
     Array('characteristic', 'name_characteristic', 17, 32, 'EDIT', [{name_characteristic:'a'.repeat(102)}], 'name_characteristic_max_size_KO'),
     Array('characteristic', 'name_characteristic', 18, 33, 'EDIT', [{name_characteristic:'abcñefgh'}], 'name_characteristic_format_KO'),
     Array('characteristic', 'name_characteristic', 18, 34, 'EDIT', [{name_characteristic:'abc efgh'}], 'name_characteristic_format_KO'),
