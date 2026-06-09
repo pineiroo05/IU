@@ -68,11 +68,11 @@ class TestSubmit {
         const resultados = [];
 
         pruebas.forEach(prueba => {
-            const accion          = prueba[1];
-            const numeroTest      = prueba[2];
-            const descripcion     = prueba[3];
-            const datos           = prueba[4];
-            const errorEsperado   = prueba[5];
+            const accion=prueba[1];
+            const numeroTest=prueba[2];
+            const descripcion=prueba[3];
+            const datos=prueba[4];
+            const errorEsperado=prueba[5];
 
             if (!resumen[accion]) resumen[accion] = { total: 0, correctas: 0, incorrectas: 0 };
             resumen[accion].total++;

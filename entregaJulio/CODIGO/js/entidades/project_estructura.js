@@ -88,8 +88,8 @@ const estructura_project= {
                     },
                     SEARCH: {
                         max_size: 10,
-                        exp_reg: '^([0-9]{2}/[0-9]{2}/[0-9]{4}|[0-9]{2}/[0-9]{4})$'
-                        //personalized:true
+                        exp_reg: '^[0-9/]+$',
+                        personalized:true
                     }
                 }
             }
@@ -121,7 +121,8 @@ const estructura_project= {
                     },
                     SEARCH: {
                         max_size: 10,
-                        exp_reg: '^[0-9/]+$'
+                        exp_reg: '^[0-9/]+$',
+                        personalized:true
                     }
                 }
             }

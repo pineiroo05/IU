@@ -6,10 +6,10 @@ class characteristic{
 
     data_type_characteristic_personalized_validation(accion){
         const valor=document.getElementById('data_type_characteristic').value;
-        if(accion==='SEARCH' && (valor==='' || valor===null)){
+        const permitidos=['number', 'text', 'set'];
+        if(accion==='SEARCH' && (valor===''||valor===null||permitidos.some(opcion=>opcion.includes(valor)))){
             return true;
         }
-        const permitidos=['number', 'text', 'set'];
         if(!permitidos.includes(valor)){
             return "data_type_characteristic_valor_permitido_KO";
         }
@@ -18,10 +18,10 @@ class characteristic{
 
     category_characteristic_personalized_validation(accion){
         const valor=document.getElementById('category_characteristic').value;
-        if(accion==='SEARCH' && (valor===''||valor===null)){
+        const permitidos=['soil_site', 'soil_chem', 'soil_bio'];
+        if(accion==='SEARCH' && (valor===''||valor===null||permitidos.some(opcion=>opcion.includes(valor)))){
             return true;
         }
-        const permitidos=['soil_site', 'soil_chem', 'soil_bio'];
         if(!permitidos.includes(valor)){
             return "category_characteristic_valor_permitido_KO";
         }
