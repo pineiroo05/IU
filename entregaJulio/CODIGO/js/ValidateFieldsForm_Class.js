@@ -13,26 +13,39 @@ class ValidateFieldsForm{
         const datos=infoAtributo.html;
         let campo=document.createElement(datos.tag);
         campo.id=id;
-        if(datos.tag==="input"){
-            campo.type=datos.type==="file"?"file":"text"; //Hardcodeada horrible xd
+        if(datos.tag==="input") {
+            campo.type = datos.type === "file" ? "file" : "text";
         }
-        document.getElementById(this.containerId).appendChild(campo);
         //Para el select
-        if(datos.tag==="select" && datos.options && Array.isArray(datos.options)) {
-            datos.options.forEach(opcionTexto => {
-                let opcion = document.createElement('option');
-                opcion.value = opcionTexto;
-                opcion.text = opcionTexto;
-                campo.appendChild(opcion);
+        if(datos.tag==="select" && datos.options) {
+            //chapucilla para poder hacer las busquedas con el select vacio
+            let opVacia=document.createElement('option');
+            opVacia.id='';
+            opVacia.text='';
+            campo.appendChild(opVacia);
+            datos.options.forEach(opcion=>{
+                let op=document.createElement('option');
+                op.value=opcion;
+                op.text=opcion;
+                campo.appendChild(op);
             });
         }
+        document.getElementById(this.containerId).appendChild(campo);
         //Para archivos
         if(datos.type==="file"){
             if(valor && typeof valor==="object") {
                 this.simulacionFichero(campo, valor);
             }
         }else {
+            //chapuza extrema, pero no se me ocurrio otra forma para que el select me funcionase bien...
+            if(datos.tag==="select" && valor && campo.value!==valor){
+                let opTemp=document.createElement('option');
+                opTemp.value=valor;
+                opTemp.text=valor;
+                campo.appendChild(opTemp);
+            }
             campo.value = valor||'';
+            //console.log('campo:', id, 'tag:', datos.tag, 'valor asignado:', valor, 'valor real:', campo.value, 'options:', campo.options?.length);
         }
         return campo;
     }

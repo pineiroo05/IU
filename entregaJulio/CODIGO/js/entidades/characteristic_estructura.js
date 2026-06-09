@@ -123,8 +123,8 @@ const estructura_characteristic={
                     },
                     SEARCH: {
                         max_size: 6,
-                        exp_reg: '^[a-z]+$'
-                        //personalized: true
+                        exp_reg: '^[a-z]+$',
+                        personalized: true
                     }
                 }
             }
@@ -157,8 +157,8 @@ const estructura_characteristic={
                     },
                     SEARCH: {
                         max_size: 9,
-                        exp_reg: '^[a-z\\_]+$'
-                        //personalized: true
+                        exp_reg: '^[a-z\\_]+$',
+                        personalized: true
                     }
                 }
             }

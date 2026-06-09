@@ -23,7 +23,7 @@ class TestSubmit {
                 if (tipoValidacion === 'personalized' && reglas[tipoValidacion] === true) {
                     let metodo = `${nombreAtributo}_personalized_validation`;
                     if (typeof entidad[metodo] === 'function') {
-                        let resultado = entidad[metodo]();
+                        let resultado = entidad[metodo](accion);
                         if (resultado !== true) {
                             return resultado;
                         }

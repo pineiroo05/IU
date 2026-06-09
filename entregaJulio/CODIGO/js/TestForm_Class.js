@@ -141,7 +141,7 @@ class TestForm {
                             if(tipoValidacion==='personalized'&&reglas[tipoValidacion]===true) {
                                 let metodo=`${campoNombre}_personalized_validation`;
                                 if (entidad && typeof entidad[metodo] === 'function') {
-                                    let resultado=entidad[metodo]();
+                                    let resultado=entidad[metodo](accion);
                                     if (resultado!==true) {
                                         resultadoObtenido=resultado;
                                         break;
