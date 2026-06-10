@@ -1,0 +1,113 @@
+:root {
+    --fondo: #CDCDCD;
+}
+
+* {
+    padding: 0;
+    color: black;
+    font-family: Arial;
+}
+
+body {
+    background-color: var(--fondo);
+    margin: 0;
+}
+
+/*Cabecera*/
+#cabecera{
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:white;
+    padding: 16pt;
+    user-select: none;
+}
+
+#enlace_api{
+    background-color: yellow;
+    padding: 6px 10px;
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+/*Menu*/
+#menu{
+    background-color: red;
+}
+
+#icono_menu{
+    width: fit-content;
+    padding: 10px;
+    border:none;
+    background-color: red;
+    /*backdrop-filter: blur(8px);*/
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#icono_menu:hover{
+    background-color: darkred;
+}
+
+#listaMenu{
+    list-style: none;
+    display: none;
+}
+
+#listaMenu.visible{
+    display: block;
+}
+
+#listaMenu li{
+    width: fit-content;
+    padding: 10px;
+    border: none;
+    /*border-radius: 5px;*/
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}
+
+#listaMenu li:hover{
+    background-color: darkred;
+}
+
+/*Area de trabajo*/
+#zona_trabajo{
+    flex: 1;
+    padding: 20px;
+}
+
+#gestion_entidad,
+#resultados_tests,
+#zona_modal{
+    background-color: wheat;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/*Tablas y tal*/
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: darkred;
+    color: white;
+}
+
+th,td{
+    border: 1px, solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: darkred;
+}
+
