@@ -1,1 +1,1 @@
-info_entrega = Array("Julio", "45145215x", "Enrique Piñeiro Lopez", 90);
+info_entrega = Array("Julio", "45145215x", "Enrique Piñeiro Lopez", 96);

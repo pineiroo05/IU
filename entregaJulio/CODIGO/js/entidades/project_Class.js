@@ -15,6 +15,10 @@ class project{
         const fechaInicio=elemInicio.value;
         const fechaFin=elemFin.value;
 
+        if(!fechaInicio||!fechaFin){
+            return true;
+        }
+
         const [diaInicio, mesInicio, anoInicio]=fechaInicio.split('/');
         const [diaFin, mesFin, anoFin]=fechaFin.split('/');
 
@@ -27,7 +31,7 @@ class project{
         return true;
     }
 
-    end_date_project_personalized_validation(){
+    /*end_date_project_personalized_validation(){
         const elemInicio=document.getElementById('start_date_project');
         const elemFin=document.getElementById('end_date_project');
 
@@ -48,5 +52,5 @@ class project{
             return "fecha_fin_menor_inicio_KO";
         }
         return true;
-    }
+    }*/
 }
