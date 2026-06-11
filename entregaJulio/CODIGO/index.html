@@ -35,12 +35,18 @@
     </header>
     <nav id="menu">
         <button id="icono_menu" onclick="document.getElementById('listaMenu').classList.toggle('visible')">MENU</button>
-        <ul id="listaMenu">
-            <li onclick="new Gestor().atenderMenu('analysis_preparation')">ANALYSIS PREPARATION</li>
-            <li onclick="new Gestor().atenderMenu('characteristic')">CHARACTERISTIC</li>
-            <li onclick="new Gestor().atenderMenu('project')">PROJECT</li>
-        </ul>
+        <ul id="listaMenu"></ul>
     </nav>
+    <!--Para lo de la generacion dinamica-->
+    <script>
+        const lista=document.getElementById('listaMenu');
+        menu_entidades.forEach(function(entidad){
+            const li=document.createElement('li');
+            li.textContent=entidad.toUpperCase().replace('_',' ');
+            li.onclick=function (){new Gestor().atenderMenu(entidad);};
+            lista.appendChild(li);
+        });
+    </script>
     <main id="zona_trabajo">
         <div id="zona_modal"></div>
         <div id="gestion_entidad"></div>

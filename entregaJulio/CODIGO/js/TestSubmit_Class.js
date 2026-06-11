@@ -2,6 +2,7 @@ class TestSubmit {
     checkSubmit(nombreEntidad, entidad, accion, datos, estructura, validacionCampos){
         const ordenValidaciones=['min_size', 'max_size', 'exp_reg', 'personalized', 'not_exist_file', 'max_size_file', 'type_file', 'min_file_name_size', 'max_file_name_size', 'format_name_file'];
         validacionCampos.limpiar();
+        const erroresEncontrados=[];
 
         //Crear los campos
         for(let nombreAtributo in estructura.attributes){
@@ -25,18 +26,20 @@ class TestSubmit {
                     if (typeof entidad[metodo] === 'function') {
                         let resultado = entidad[metodo](accion);
                         if (resultado !== true) {
-                            return resultado;
+                            erroresEncontrados.push(resultado);
+                            break; //pasa al sig atb
                         }
                     }
                 } else {
                     let error = validacionCampos.validarCampo(tipoValidacion, nombreAtributo, reglas[tipoValidacion]);
                     if (error !== true) {
-                        return error;
+                        erroresEncontrados.push(error);
+                        break;
                     }
                 }
             }
         }
-        return true;
+        return erroresEncontrados.length===0?true:erroresEncontrados;
     }
 
     ejecutar(nombreEntidad) {
@@ -50,18 +53,13 @@ class TestSubmit {
         this.ventana = window.open('', 'Resultados test submit', 'width=800, height=600');
         this.ventana.document.write(`<h1>Resultados test submit: ${nombreEntidad}</h1>`);
 
-        if (typeof claseEntidad !== 'function') {
-            this.ventana.document.write(`<p style="color:red">Error: '${nombreEntidad}' no es una clase válida.</p>`);
-            this.ventana.document.close();
-            return;
-        }
         if (!pruebas || !estructura) {
             this.ventana.document.write(`<p style="color:red">Error: No hay pruebas o estructura para ${nombreEntidad}</p>`);
             this.ventana.document.close();
             return;
         }
 
-        const entidad = new claseEntidad();
+        const entidad=(typeof claseEntidad==='function')?new claseEntidad():{};
 
         // Resumen por acción
         const resumen = {};
@@ -79,10 +77,26 @@ class TestSubmit {
 
             const resultadoObtenido=this.checkSubmit(nombreEntidad, entidad, accion, datos, estructura, validacionCampos);
 
-            const esCorrecto = (resultadoObtenido === errorEsperado);
-            if (esCorrecto) {
-                resumen[accion].correctas++;
+            let esCorrecto;
+            if (errorEsperado===true) {
+                esCorrecto=(resultadoObtenido===true);
             }else {
+                if(Array.isArray(resultadoObtenido)){
+                    let esperadoArray=Array.isArray(errorEsperado)?errorEsperado:errorEsperado.split(',').map(e=>e.trim());
+                    let obtenidoArray=resultadoObtenido.map(e=>e.trim());
+                    if(esperadoArray.length===obtenidoArray.length){
+                        esCorrecto=esperadoArray.every(error=>obtenidoArray.includes(error));
+                    }else{
+                        esCorrecto=false;
+                    }
+                }else{
+                    esCorrecto=false;
+                }
+            }
+
+            if(esCorrecto){
+                resumen[accion].correctas++;
+            }else{
                 resumen[accion].incorrectas++;
             }
 
@@ -110,12 +124,13 @@ class TestSubmit {
             ventanaDetalle.document.write('<table border="1"><tr><th>Nº</th><th>Acción</th><th>Descripción</th><th>Esperado</th><th>Obtenido</th><th>Resultado</th></tr>');
             resultados.forEach(r => {
                 let color = r.esCorrecto ? '#00ff00' : '#ff0000';
+                let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
                 ventanaDetalle.document.write(`<tr style="background-color:${color}">
                     <td>${r.numeroTest}</td>
                     <td>${r.accion}</td>
                     <td>${r.descripcion}</td>
                     <td>${r.errorEsperado}</td>
-                    <td>${r.resultadoObtenido}</td>
+                    <td>${obtenidos}</td>
                     <td>${r.esCorrecto ? 'CORRECTO' : 'FALLO'}</td>
                 </tr>`);
             });

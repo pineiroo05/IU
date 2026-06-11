@@ -1,4 +1,4 @@
-:root {
+/*:root {
     --fondo: #CDCDCD;
 }
 
@@ -13,7 +13,6 @@ body {
     margin: 0;
 }
 
-/*Cabecera*/
 #cabecera{
     border: 0;
     display: flex;
@@ -31,7 +30,7 @@ body {
     border-radius: 5px;
 }
 
-/*Menu*/
+
 #menu{
     background-color: red;
 }
@@ -41,7 +40,7 @@ body {
     padding: 10px;
     border:none;
     background-color: red;
-    /*backdrop-filter: blur(8px);*/
+    /*backdrop-filter: blur(8px);
     color: white;
     font-size: 16px;
     cursor: pointer;
@@ -64,7 +63,7 @@ body {
     width: fit-content;
     padding: 10px;
     border: none;
-    /*border-radius: 5px;*/
+    /*border-radius: 5px;
     background-color: red;
     color: white;
     cursor: pointer;
@@ -74,7 +73,7 @@ body {
     background-color: darkred;
 }
 
-/*Area de trabajo*/
+
 #zona_trabajo{
     flex: 1;
     padding: 20px;
@@ -90,7 +89,6 @@ body {
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-/*Tablas y tal*/
 table{
     width: 100%;
     border-collapse: collapse;
@@ -110,4 +108,4 @@ th,td{
 tr:nth-child(even){
     background-color: darkred;
 }
-
+*/

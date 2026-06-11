@@ -1,7 +1,7 @@
 class project{
     constructor(){
         this.entidad="project";
-        this.attributes=['id_project', 'name_project', 'start_date_project', 'end_date_project', 'responsable_project', 'organization_project', 'description_project', 'nuevo_file_project', 'file_project', 'code_project', 'acronym_project', 'id_sampling_project'];
+        this.attributes=['id_project', 'name_project', 'start_date_project', 'end_date_project', 'responsable_project', 'organization_project', 'description_project', 'nuevo_file_project', 'file_project', 'code_project', 'acronym_project', 'id_sampling_methodology'];
     }
 
     start_date_project_personalized_validation(){

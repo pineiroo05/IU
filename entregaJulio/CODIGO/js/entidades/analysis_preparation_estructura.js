@@ -107,12 +107,12 @@ const estructura_analysis_preparation= {
             rules:{
                 validations:{
                     ADD:{
-                        min_size:16,
+                        min_size:6,
                         max_size:200,
                         exp_reg:'^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s\\.,:;]+$'
                     },
                     EDIT:{
-                        min_size:16,
+                        min_size:6,
                         max_size:200,
                         exp_reg:'^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s\\.,:;]+$'
                     },
