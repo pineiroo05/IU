@@ -25,7 +25,7 @@ class Gestor {
     }
 
     mostrarPanel(nombreEntidad){
-        const zona=document.getElementById('zona_modal');
+        const zona=document.getElementById('gestion_entidad');
         zona.innerHTML="";
         let h2=document.createElement('h2');
         h2.innerText=`Entidad: ${nombreEntidad}`;
@@ -45,7 +45,7 @@ class Gestor {
     }
 
     mostrarError(mensaje){
-        const modal=document.getElementById('error_modal');
+        const modal=document.getElementById('zona_modal');
         const span=document.getElementById('mensaje_error');
         span.innerHTML=mensaje||"ERROR EN LA CARGA DE VARIABLES";
         modal.style.display="block";

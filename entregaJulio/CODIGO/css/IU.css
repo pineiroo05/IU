@@ -1,7 +1,9 @@
 :root {
-    --fondo-cabecera: #0f172a;       /* Slate 900 */
+    --fondo-cabecera: #0f172a;
+    --color-principal: white;
+    --otro-color: #2c3f75;
     --fuente: Helvetica;
-    --transicion: all 0.3 ease;
+    --transicion: all 0.3s ease;
 }
 *{
     box-sizing: border-box;
@@ -9,7 +11,12 @@
     padding: 0;
 }
 body{
-
+    background-color: var(--color-principal);
+    color: var(--fondo-cabecera);
+    display: flex;
+    font-family: var(--fuente);
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /*Cabecera*/
@@ -22,7 +29,6 @@ body{
 }
 #cabecera h1{
     font-size: 1.5rem;
-    font-family: var(--fuente);
     color: white;
 }
 #enlace_api{
@@ -31,7 +37,6 @@ body{
     border: 1px solid white;
     padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
-    font-family: var(--fuente);
     font-size: 0.85rem;
     transition:var(--transicion);
 }
@@ -42,48 +47,114 @@ body{
 
 /*Menu*/
 #menu{
-    background-color:white;
-    padding:0.75rem 2rem;
-    border-bottom: 1px solid #2e3d52;
+    background-color: var(--otro-color);
+    padding:1rem 2rem;
+    border-bottom: 1px solid var(--otro-color);
 }
 #icono_menu{
-    background-color: white;
-    color:var(--fondo-cabecera);
-    border: 1px solid var(--fondo-cabecera);
-    border-radius: 0.35rem;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0.375rem;
     padding: 0.5rem 1.25rem;
-    font-family: var(--fuente);
     font-size: 0.85rem;
     font-weight: 600;
     transition: var(--transicion);
     cursor: pointer;
 }
 #icono_menu:hover{
-    background-color: var(--fondo-cabecera);
-    color: white;
+    background-color: white;
+    color: var(--otro-color);
+    border-color: white;
+    transform: translateY(-2px);
 }
 #listaMenu{
     display: none;
     list-style: none;
     margin-top: 2rem;
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 0.3s ease-out;
 }
 #listaMenu.visible{
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.25rem;
 }
 #listaMenu li{
-    background-color: white;
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
+    background-color: rgba(15,25,42,0.4);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.375rem;
     border: 1px solid var(--fondo-cabecera);
-    font-family: var(--fuente);
     font-size: 0.85rem;
     text-align: center;
     cursor: pointer;
     transition: var(--transicion);
+    /*backdrop-filter: blur(4px);*/
 }
 #listaMenu li:hover{
-    background-color: var(--fondo-cabecera);
-    color: white;
+    background-color: white;
+    color: var(--fondo-cabecera);
+    border-color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/*Zona de trabajo*/
+#zona_trabajo{
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+#zona_modal, #gestion_entidad, #resultados{
+    color: white;
+    background-color: var(--otro-color);
+    border-radius: 0.5rem;
+    border: 1px solid var(--otro-color);
+    padding: 1rem;
+}
+#zona_modal:empty, #gestion_entidad:empty, #resultados:empty{
+    display: none;
+}
+
+#gestion_entidad button {
+    background-color: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+    transition: var(--transicion);
+}
+#gestion_entidad button:hover {
+    background-color: white;
+    color: var(--otro-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
+
+
+/*Pie*/
+#pie{
+    background-color: var(--fondo-cabecera);
+    padding: 1.25rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+}
+#pie p{
+    color: white;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
 }
