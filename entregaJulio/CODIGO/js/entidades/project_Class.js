@@ -31,7 +31,7 @@ class project{
         return true;
     }
 
-    /*end_date_project_personalized_validation(){
+    end_date_project_personalized_validation(){
         const elemInicio=document.getElementById('start_date_project');
         const elemFin=document.getElementById('end_date_project');
 
@@ -49,8 +49,8 @@ class project{
         const fin=new Date(anoFin, mesFin-1, diaFin);
 
         if(fin<inicio){
-            return "fecha_fin_menor_inicio_KO";
+            return "fecha_inicio_mayor_fin_KO";
         }
         return true;
-    }*/
+    }
 }

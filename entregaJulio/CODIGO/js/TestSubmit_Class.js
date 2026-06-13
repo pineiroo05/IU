@@ -26,14 +26,18 @@ class TestSubmit {
                     if (typeof entidad[metodo] === 'function') {
                         let resultado = entidad[metodo](accion);
                         if (resultado !== true) {
-                            erroresEncontrados.push(resultado);
+                            if(!erroresEncontrados.includes(resultado)) {
+                                erroresEncontrados.push(resultado);
+                            }
                             break; //pasa al sig atb
                         }
                     }
                 } else {
                     let error = validacionCampos.validarCampo(tipoValidacion, nombreAtributo, reglas[tipoValidacion]);
                     if (error !== true) {
-                        erroresEncontrados.push(error);
+                        if(!erroresEncontrados.includes(error)) {
+                            erroresEncontrados.push(error);
+                        }
                         break;
                     }
                 }
@@ -116,7 +120,7 @@ class TestSubmit {
         }
         this.ventana.document.write('</table>');
 
-        // Botón detalle
+        // Botón detalles
         this.ventana.document.write('<br><button onclick="window.abrirDetalleSubmit()">Ver detalle de pruebas</button>');
         this.ventana.abrirDetalleSubmit = () => {
             let ventanaDetalle = window.open('', 'Detalle submit', 'width=900, height=600');

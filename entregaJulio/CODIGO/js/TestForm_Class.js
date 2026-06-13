@@ -89,7 +89,7 @@ class TestForm {
             let contadorPruebasCorrectas=0;
             let resultados=[];
 
-            pruebas.forEach((prueba,index) => {
+            pruebas.forEach(prueba => {
                 let bienDefinida=(
                     typeof prueba[0]==='string'&&
                     typeof prueba[1]==='string'&&
@@ -159,7 +159,7 @@ class TestForm {
                 }
                 const esCorrecto=(resultadoObtenido===resultadoEsperado);
                 if(esCorrecto){contadorPruebasCorrectas++;}
-                resultados.push({index,campoNombre,accion,valorProbar,resultadoEsperado,resultadoObtenido,esCorrecto});
+                resultados.push({numeroPrueba:prueba[3],campoNombre,accion,valorProbar,resultadoEsperado,resultadoObtenido,esCorrecto});
             });
             this.ventana.document.write(`<p>Numero total de pruebas: <b>${totalPruebas}</b></p>`);
             this.ventana.document.write(`<p>Pruebas bien definidas: <b>${contadorPruebasBienDefinidas}</b></p>`);
@@ -187,7 +187,7 @@ class TestForm {
                     let color=resultado.esCorrecto?"#00ff00":"#ff0000";
                     ventanaDetalles.document.write(`
                         <tr style="background-color:${color}">
-                            <td>${resultado.index}</td>
+                            <td>${resultado.numeroPrueba}</td>
                             <td>${resultado.accion}</td>
                             <td>${resultado.campoNombre}</td>
                             <td>${resultado.valorProbar}</td>
