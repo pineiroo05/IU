@@ -20,18 +20,18 @@ body{
 }
 
 /*Cabecera*/
-#cabecera{
+#cabecera, #cabecera_api{
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--fondo-cabecera);
     padding: 1.25rem 2rem;
 }
-#cabecera h1{
+#cabecera h1, #cabecera_api h1{
     font-size: 1.5rem;
     color: white;
 }
-#enlace_api{
+#enlace_api, #enlace_index{
     background-color: var(--fondo-cabecera);
     color:white;
     border: 1px solid white;
@@ -40,12 +40,12 @@ body{
     font-size: 0.85rem;
     transition:var(--transicion);
 }
-#enlace_api:hover{
+#enlace_api:hover, #enlace_index:hover{
     background-color: white;
     color:var(--fondo-cabecera);
 }
 
-/*Menu*/
+/*PARA EL INDEX.HTML*/
 #menu{
     background-color: var(--otro-color);
     padding:1rem 2rem;
@@ -101,8 +101,6 @@ body{
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-
-/*Zona de trabajo*/
 #zona_trabajo{
     flex: 1;
     padding: 2rem;
@@ -122,7 +120,6 @@ body{
 #zona_modal:empty, #gestion_entidad:empty, #resultados_tests:empty{
     display: none;
 }
-
 #zona_modal{
     display: none;
     position: fixed;
@@ -158,7 +155,6 @@ body{
     background-color: white;
     color: var(--otro-color);
 }
-
 #gestion_entidad button {
     background-color: rgba(255,255,255,0.15);
     color: white;
@@ -176,12 +172,7 @@ body{
     color: var(--otro-color);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-
-
-
-
-/*Pie*/
-#pie{
+#pie_index, #pie_api{
     background-color: var(--fondo-cabecera);
     padding: 1.25rem 2rem;
     display: flex;
@@ -189,8 +180,46 @@ body{
     align-items: center;
     margin-top: auto;
 }
-#pie p{
+#pie_index p, #pie_api p{
     color: white;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
+}
+
+/*PARA EL API.HTML*/
+#menu_api{
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+    background-color: var(--otro-color);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--otro-color);
+    gap: 0.75rem;
+}
+.boton_api{
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0.375rem;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transicion);
+    cursor: pointer;
+    user-select: none;
+}
+.boton_api:hover{
+    background-color: white;
+    color: var(--otro-color);
+    border-color: white;
+    transform: translateY(-2px);
+}
+#zona_api{
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

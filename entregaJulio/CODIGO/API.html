@@ -2,9 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="./css/IU.css">
+    <title>API</title>
 </head>
 <body>
+    <input type="radio" id="cerrar" name="pepe" checked hidden>
+    <input type="radio" id="tests" name="pepe" hidden>
+    <input type="radio" id="validaciones" name="pepe" hidden>
+    <input type="radio" id="submits" name="pepe" hidden>
 
+    <header id="cabecera_api">
+        <h1>API</h1>
+        <a href="index.html" id="enlace_index">Volver al index</a>
+    </header>
+
+    <nav id="menu_api">
+        <label for="tests" class="boton_api">CLASES DE TEST</label>
+        <label for="validaciones" class="boton_api">CLASES DE VALIDACION</label>
+        <label for="submits" class="boton_api">CLASES DE SUBMIT</label>
+    </nav>
+
+    <main id="zona_api">
+        <div id="zona_api_test" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Informacion sobre las clases de test</h2>
+
+        </div>
+        <div id="zona_api_validacion" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Informacion sobre las clases de validacion</h2>
+
+        </div>
+        <div id="zona_api_submit" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Informacion sobre las clases de submit</h2>
+        </div>
+    </main>
+
+    <footer id="pie_api">
+        <p>Entrega Julio</p>
+    </footer>
 </body>
 </html>
+
+<!--
+Mi idea es q al darle a cada boton se despliegue la info de cada clase. Mirar de meter un boton de ocultar o algo (tipo una cruz).
+Ver si tmb es buena idea q al darle a otro de los botones de tipo de clases, si ya habia otro abierto se cierre tmb.
+-->
