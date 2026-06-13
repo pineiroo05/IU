@@ -46,12 +46,17 @@ class Gestor {
 
     mostrarError(mensaje){
         const modal=document.getElementById('zona_modal');
-        const span=document.getElementById('mensaje_error');
-        span.innerHTML=mensaje||"ERROR EN LA CARGA DE VARIABLES";
-        modal.style.display="block";
+        modal.innerHTML=`
+            <div class="cont_modal">
+                <h3>Error</h3>
+                <p>${mensaje}</p>
+                <button onclick="new Gestor().cerrarModal()">Cerrar</button>
+            </div>
+        `;
+        modal.style.display="flex";
     }
 
     cerrarModal(){
-        document.getElementById('error_modal').style.display="none";
+        document.getElementById('zona_modal').style.display="none";
     }
 }
