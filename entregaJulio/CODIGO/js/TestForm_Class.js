@@ -1,24 +1,19 @@
 class TestForm {
     ejecutar(nombreEntidad){
-        this.ventana=window.open("", "Resultados test de atributos", "width=800, height=600");
-        this.ventana.document.write("<h1>Resultados test de atributos:"+nombreEntidad+"</h1>");
+        const resultados_tests=document.getElementById('resultados_tests');
+        const zona_modal=document.getElementById('zona_modal');
 
         const validacionCampos=new ValidateFieldsForm();
-
         let pruebas, defTests, estructura;
-
         try{
             pruebas = eval(`${nombreEntidad}_pruebas`);
         }catch(e){ console.log('Error pruebas:', e); }
-
         try{
             defTests = eval(`${nombreEntidad}_def_tests`);
         }catch(e){ console.log('Error defTests:', e); }
-
         try{
             estructura = eval(`estructura_${nombreEntidad}`);
         }catch(e){ console.log('Error estructura:', e); }
-
         let entidad=null;
         try {
             let claseEntidad=eval(nombreEntidad);
@@ -27,23 +22,25 @@ class TestForm {
             }
         }catch(e){}
 
+        let ventana=`<div class="resumen">`
+        ventana+=`<h1>Resultados test de atributos: ${nombreEntidad}</h1>`;
         //Bloque 1
-        this.ventana.document.write("<h2>1. Estructura de la entidad</h2>");
+        ventana+=`<h2>1. Estructura de la entidad</h2>`;
         if(!estructura){
-            this.ventana.document.write(`<p style="color:red">Error, no hay estructura_${nombreEntidad}.</p>`);
+            ventana+=`<p style="color:red">Error, no hay estructura_${nombreEntidad}.</p>`;
         }else{
-            this.ventana.document.write(`<p style="color:green">Estructura correcta</p>`);
-            this.ventana.document.write(`<ul>`);
+            ventana+=`<p style="color:green">Estructura correcta</p>`;
+            ventana+=`<ul>`;
                 for(let atb in estructura.attributes) {
-                    this.ventana.document.write(`<li>${atb}</li>`);
+                    ventana+=`<li>${atb}</li>`;
                 }
-                this.ventana.document.write(`</ul>`);
+                ventana+=`</ul>`;
         }
 
         //BLoque 2
-        this.ventana.document.write(`<h2>2. Definicion de tests</h2>`);
+        ventana+=`<h2>2. Definicion de tests</h2>`;
         if(!defTests){
-            this.ventana.document.write(`<p style="color:red">Error, no hay ${nombreEntidad}_def_tests.></p>`)
+            ventana+=`<p style="color:red">Error, no hay ${nombreEntidad}_def_tests.></p>`;
         }else{
             let totalDefiniciones=defTests.length;
             let contadorCorrectas=0;
@@ -68,19 +65,19 @@ class TestForm {
                 }
                 definicionesPorAtb[campo]++;
             });
-            this.ventana.document.write(`<p>Numero total de definiciones: <b>${totalDefiniciones}</b></p>`);
-            this.ventana.document.write(`<p>Definiciones correctas: <b>${contadorCorrectas}</b></p>`);
-            this.ventana.document.write(`<table border="1"><tr><th>Atributo</th><th>Numero de definiciones</th></tr>`);
+            ventana+=`<p>Numero total de definiciones: <b>${totalDefiniciones}</b></p>`;
+            ventana+=`<p>Definiciones correctas: <b>${contadorCorrectas}</b></p>`;
+            ventana+=`<table border="1"><tr><th>Atributo</th><th>Numero de definiciones</th></tr>`;
             for(let campo in definicionesPorAtb){
-                this.ventana.document.write(`<tr><td>${campo}</td><td>${definicionesPorAtb[campo]}</td></tr>`);
+                ventana+=`<tr><td>${campo}</td><td>${definicionesPorAtb[campo]}</td></tr>`;
             }
-            this.ventana.document.write(`</table>`)
+            ventana+=`</table>`;
         }
 
         //Bloque 3
-        this.ventana.document.write(`<h2>3. Pruebas</h2>`);
+        ventana+=`<h2>3. Pruebas</h2>`;
         if(!pruebas){
-            this.ventana.document.write(`<p style="color:red">Error, no hay ${nombreEntidad}_pruebas</p>`);
+            ventana+=`<p style="color:red">Error, no hay ${nombreEntidad}_pruebas</p>`;
         }else{
             let totalPruebas=pruebas.length;
             let contadorPruebasBienDefinidas=0;
@@ -161,46 +158,58 @@ class TestForm {
                 if(esCorrecto){contadorPruebasCorrectas++;}
                 resultados.push({numeroPrueba:prueba[3],campoNombre,accion,valorProbar,resultadoEsperado,resultadoObtenido,esCorrecto});
             });
-            this.ventana.document.write(`<p>Numero total de pruebas: <b>${totalPruebas}</b></p>`);
-            this.ventana.document.write(`<p>Pruebas bien definidas: <b>${contadorPruebasBienDefinidas}</b></p>`);
-            this.ventana.document.write(`<p>Pruebas correctas: <b>${contadorPruebasCorrectas}</b></p>`);
-
-            this.ventana.document.write(`<h3>Resumen definicion test</h3>`);
-            this.ventana.document.write(`<table border="1"><tr><th>Numero definicion</th><th>Pruebas con error</th><th>Pruebas sin error></th></tr>`)
+            ventana+=`<p>Numero total de pruebas: <b>${totalPruebas}</b></p>`;
+            ventana+=`<p>Pruebas bien definidas: <b>${contadorPruebasBienDefinidas}</b></p>`;
+            ventana+=`<p>Pruebas correctas: <b>${contadorPruebasCorrectas}</b></p>`;
+            
+            ventana+=`<h3>Resumen definicion test</h3>`;
+            ventana+=`<table border="1"><tr><th>Numero definicion</th><th>Pruebas con error</th><th>Pruebas sin error></th></tr>`;
             for(let numDef in pruebasErroneas){
-                this.ventana.document.write(`
-                    <tr> 
-                        <td>${numDef}</td>
-                        <td>${pruebasErroneas[numDef]}</td>
-                        <td>${pruebasSinError[numDef]}</td>
-                    </tr>
-                `);
-            } //ojo: si pongo arriba solo pruebasErroneas saca object Object
-            this.ventana.document.write(`</table>`);
-
-            this.ventana.document.write(`<br><button onclick="window.abrirDetalles()">Ver pruebas</button>`);
-            this.ventana.abrirDetalles=()=>{
-                let ventanaDetalles=window.open("", "Pruebas detalladas", "width=900, height=600");
-                ventanaDetalles.document.write(`<h1>Pruebas de ${nombreEntidad}</h1>`);
-                ventanaDetalles.document.write(`<table border="1"><tr><th>ID</th><th>CAMPO</th><th>ACCION</th><th>VALOR</th><th>ESPERADO</th><th>OBTENIDO</th><th>RESULTADO</th></tr>`);
-                resultados.forEach(resultado => {
-                    let color=resultado.esCorrecto?"#00ff00":"#ff0000";
-                    ventanaDetalles.document.write(`
-                        <tr style="background-color:${color}">
-                            <td>${resultado.numeroPrueba}</td>
-                            <td>${resultado.accion}</td>
-                            <td>${resultado.campoNombre}</td>
-                            <td>${resultado.valorProbar}</td>
-                            <td>${resultado.resultadoEsperado}</td>
-                            <td>${resultado.resultadoObtenido}</td>
-                            <td>${resultado.esCorrecto?"CORRECTO":"ERRONEO"}</td>
-                        </tr>
-                    `);
-                });
-                ventanaDetalles.document.write(`</table>`);
-                ventanaDetalles.document.close();
-            };
+                ventana+=`<tr><td>${numDef}</td><td>${pruebasErroneas[numDef]}</td><td>${pruebasSinError[numDef]}</td></tr>`;
+            } 
+            //ojo: si pongo arriba solo pruebasErroneas saca object Object
+            ventana += `</table>`;
+            ventana += `<br><button id="boton_detalles">Ver pruebas</button>`;
+            resultados_tests.innerHTML = ventana;
+            const botonDetalles = document.getElementById('boton_detalles');
+            if (botonDetalles) {
+                botonDetalles.onclick = () => {
+                    let htmlModal = `
+                        <div class="cont_modal modal-tabla">
+                            <span id="botonCerrarDetalles" class="cerrar-aspa">✕</span>
+                            <h1>Pruebas de: ${nombreEntidad}</h1>
+                            <table border="1" class="tabla-modal">
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th>CAMPO</th>
+                                    <th>ACCION</th>
+                                    <th>VALOR</th>
+                                    <th>ESPERADO</th>
+                                    <th>OBTENIDO</th>
+                                    <th>RESULTADO</th>
+                                </tr>`;
+                    resultados.forEach(resultado => {
+                        let claseFila = resultado.esCorrecto ? "fila-correcta" : "fila-fallo";
+                        htmlModal += `
+                            <tr class="${claseFila}">
+                                <td class="text-center">${resultado.numeroPrueba}</td>
+                                <td>${resultado.accion}</td>
+                                <td>${resultado.campoNombre}</td>
+                                <td>${resultado.valorProbar}</td>
+                                <td>${resultado.resultadoEsperado}</td>
+                                <td>${resultado.resultadoObtenido}</td>
+                                <td>${resultado.esCorrecto ? "CORRECTO" : "ERRONEO"}</td>
+                            </tr>`;
+                    });
+                    htmlModal += `</table></div>`;
+                    zona_modal.innerHTML = htmlModal;
+                    zona_modal.style.display='block';
+                    document.getElementById('botonCerrarDetalles').onclick = () => {
+                        zona_modal.style.display='none';
+                        zona_modal.innerHTML="";
+                    };
+                };
+            }
         }
-        this.ventana.document.close();
     }
 }

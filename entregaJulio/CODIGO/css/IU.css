@@ -127,10 +127,13 @@ body{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10000;
     align-items: center;
     justify-content: center;
+}
+zona_modal.visible{
+    display: flex;
 }
 .cont_modal{
     background-color: var(--otro-color);
@@ -155,6 +158,19 @@ body{
     background-color: white;
     color: var(--otro-color);
 }
+.cont_modal.modal-tabla{
+    max-width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+}
+.botonCerrarDetalles{
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
 #gestion_entidad button {
     background-color: rgba(255,255,255,0.15);
     color: white;
@@ -172,6 +188,80 @@ body{
     color: var(--otro-color);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+/*De aqui en adelante es para la zona de resultados*/
+#resultados_tests .resumen{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+#resultados_tests h1{
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
+}
+#resultados_tests h2{
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+#resultados_tests h3{
+    font-size: 1rem;
+}
+#resultados_tests ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+#resultados_tests li{
+    background-color: rgba(15,25,42,0.4);
+    border: 1px solid white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+}
+#resultados_tests table{
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(15,25,42,0.4);
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+#resultados_tests th{
+    background-color: var(--fondo-cabecera);
+    color: white;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+#resultados_tests td{
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+#resultados_tests button{
+    align-self: flex-start;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transicion);
+}
+#resultados_tests button:hover{
+    background-color: white;
+    color: var(--otro-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+
 #pie_index, #pie_api{
     background-color: var(--fondo-cabecera);
     padding: 1.25rem 2rem;

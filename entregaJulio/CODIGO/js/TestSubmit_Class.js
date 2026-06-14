@@ -47,6 +47,9 @@ class TestSubmit {
     }
 
     ejecutar(nombreEntidad) {
+        let resultados_tests=document.getElementById('resultados_tests');
+        let zona_modal=document.getElementById('zona_modal');
+
         let claseEntidad, pruebas, estructura;
         const validacionCampos = new ValidateFieldsForm();
 
@@ -54,12 +57,12 @@ class TestSubmit {
         try { pruebas = eval(`${nombreEntidad}_TestSubmit`); } catch(e) {}
         try { claseEntidad = eval(nombreEntidad); } catch(e) {}
 
-        this.ventana = window.open('', 'Resultados test submit', 'width=800, height=600');
-        this.ventana.document.write(`<h1>Resultados test submit: ${nombreEntidad}</h1>`);
+        let ventana=`<div class="resumen">`;
+        ventana+=`<h1>Resultados test de submit: ${nombreEntidad}</h1>`;
 
         if (!pruebas || !estructura) {
-            this.ventana.document.write(`<p style="color:red">Error: No hay pruebas o estructura para ${nombreEntidad}</p>`);
-            this.ventana.document.close();
+            ventana+=`<p style="color:red">Error: No hay pruebas o estructura para ${nombreEntidad}</p>`;
+            resultados_tests.innerHTML=ventana;
             return;
         }
 
@@ -97,51 +100,72 @@ class TestSubmit {
                     esCorrecto=false;
                 }
             }
-
             if(esCorrecto){
                 resumen[accion].correctas++;
             }else{
                 resumen[accion].incorrectas++;
             }
-
             resultados.push({ numeroTest, accion, descripcion, errorEsperado, resultadoObtenido, esCorrecto });
         });
 
         // Mostrar resumen por acción
-        this.ventana.document.write('<h2>Resumen por acción</h2>');
-        this.ventana.document.write('<table border="1"><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>');
+        ventana+='<h2>Resumen por acción</h2>';
+        ventana+='<table border="1"><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>';
         for (let accion in resumen) {
-            this.ventana.document.write(`<tr>
+            ventana+=`<tr>
                 <td>${accion}</td>
                 <td>${resumen[accion].total}</td>
                 <td>${resumen[accion].correctas}</td>
                 <td>${resumen[accion].incorrectas}</td>
-            </tr>`);
+            </tr>`;
         }
-        this.ventana.document.write('</table>');
+        ventana+='</table>';
 
         // Botón detalles
-        this.ventana.document.write('<br><button onclick="window.abrirDetalleSubmit()">Ver detalle de pruebas</button>');
-        this.ventana.abrirDetalleSubmit = () => {
-            let ventanaDetalle = window.open('', 'Detalle submit', 'width=900, height=600');
-            ventanaDetalle.document.write(`<h1>Detalle pruebas submit: ${nombreEntidad}</h1>`);
-            ventanaDetalle.document.write('<table border="1"><tr><th>Nº</th><th>Acción</th><th>Descripción</th><th>Esperado</th><th>Obtenido</th><th>Resultado</th></tr>');
-            resultados.forEach(r => {
-                let color = r.esCorrecto ? '#00ff00' : '#ff0000';
-                let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
-                ventanaDetalle.document.write(`<tr style="background-color:${color}">
-                    <td>${r.numeroTest}</td>
-                    <td>${r.accion}</td>
-                    <td>${r.descripcion}</td>
-                    <td>${r.errorEsperado}</td>
-                    <td>${obtenidos}</td>
-                    <td>${r.esCorrecto ? 'CORRECTO' : 'FALLO'}</td>
-                </tr>`);
-            });
-            ventanaDetalle.document.write('</table>');
-            ventanaDetalle.document.close();
-        };
+        ventana+='<br><button id="boton_detalles">Ver detalle de pruebas</button>';
+        ventana+=`</div>`;
+        resultados_tests.innerHTML=ventana;
+        const botonDetalles=document.getElementById('boton_detalles');
+        if(botonDetalles){
+            botonDetalles.onclick=()=>{
+                let htmlModal=`
+                    <div class="resumen">
+                        <span id="botonCerrarDetalles" class="botonCerrarDetalles">X</span>
+                        <h1>Pruebas de submit de ${nombreEntidad}</h1>
+                        <table border="1" class="tablaDetalles">
+                            <tr>
+                                <th>Nº</th>
+                                <th>Accion</th>
+                                <th>Descripcion</th>
+                                <th>Esperado</th>
+                                <th>Obtenido</th>
+                                <th>Resultado</th>
+                            </tr>
+                `;
+                resultados.forEach(r=>{
+                    let claseFila=r.esCorrecto?'filaCorrecta':'fillaErronea';
+                    let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(','):r.resultadoObtenido;
+                    htmlModal+=`
+                        <tr class="${claseFila}">
+                            <td class="texto">${r.numeroTest}</td>
+                            <td>${r.accion}</td>
+                            <td>${r.descripcion}</td>
+                            <td>${r.errorEsperado}</td>
+                            <td>${obtenidos}</td>
+                            <td>${r.esCorrecto?'CORRECTO':'FALLO'}</td>
+                        </tr>
+                    `;
+                });
+                htmlModal+='</table></div>'
+                zona_modal.innerHTML=htmlModal;
+                zona_modal.style.display="block";
+                document.getElementById('botonCerrarDetalles').onclick=()=>{
+                    zona_modal.style.display="none";
+                    zona_modal.innerHTML="";
+                };
+            };
+        }
 
-        this.ventana.document.close();
+
     }
 }
