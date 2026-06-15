@@ -110,7 +110,7 @@ class TestSubmit {
 
         // Mostrar resumen por acción
         ventana+='<h2>Resumen por acción</h2>';
-        ventana+='<table border="1"><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>';
+        ventana+='<table><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>';
         for (let accion in resumen) {
             ventana+=`<tr>
                 <td>${accion}</td>
@@ -129,10 +129,10 @@ class TestSubmit {
         if(botonDetalles){
             botonDetalles.onclick=()=>{
                 let htmlModal=`
-                    <div class="resumen">
-                        <span id="botonCerrarDetalles" class="botonCerrarDetalles">X</span>
+                    <div class="cont_modal modal-tabla">
+                        <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
                         <h1>Pruebas de submit de ${nombreEntidad}</h1>
-                        <table border="1" class="tablaDetalles">
+                        <div class="tabla-scroll"><table class="tabla-modal">
                             <tr>
                                 <th>Nº</th>
                                 <th>Accion</th>
@@ -143,29 +143,30 @@ class TestSubmit {
                             </tr>
                 `;
                 resultados.forEach(r=>{
-                    let claseFila=r.esCorrecto?'filaCorrecta':'fillaErronea';
-                    let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(','):r.resultadoObtenido;
+                    let claseFila=r.esCorrecto?'fila-correcta':'filla-fallo';
+                    let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
+                    let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
                     htmlModal+=`
                         <tr class="${claseFila}">
                             <td class="texto">${r.numeroTest}</td>
                             <td>${r.accion}</td>
                             <td>${r.descripcion}</td>
-                            <td>${r.errorEsperado}</td>
+                            <td>${esperados}</td>
                             <td>${obtenidos}</td>
                             <td>${r.esCorrecto?'CORRECTO':'FALLO'}</td>
                         </tr>
                     `;
                 });
-                htmlModal+='</table></div>'
+                htmlModal+='</table></div></div>'
                 zona_modal.innerHTML=htmlModal;
-                zona_modal.style.display="block";
+                zona_modal.style.display="flex";
+                document.body.classList.add("modal-abierto");
                 document.getElementById('botonCerrarDetalles').onclick=()=>{
                     zona_modal.style.display="none";
                     zona_modal.innerHTML="";
+                    document.body.classList.remove("modal-abierto");
                 };
             };
         }
-
-
     }
 }

@@ -18,6 +18,9 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+body.modal-abierto{
+    overflow: hidden;
+}
 
 /*Cabecera*/
 #cabecera, #cabecera_api{
@@ -92,7 +95,6 @@ body{
     text-align: center;
     cursor: pointer;
     transition: var(--transicion);
-    /*backdrop-filter: blur(4px);*/
 }
 #listaMenu li:hover{
     background-color: white;
@@ -110,7 +112,7 @@ body{
     flex-direction: column;
     gap: 2rem;
 }
-#zona_modal, #gestion_entidad, #resultados_tests{
+#gestion_entidad, #resultados_tests{
     color: white;
     background-color: var(--otro-color);
     border-radius: 0.5rem;
@@ -132,7 +134,7 @@ body{
     align-items: center;
     justify-content: center;
 }
-zona_modal.visible{
+#zona_modal.visible{
     display: flex;
 }
 .cont_modal{
@@ -161,16 +163,55 @@ zona_modal.visible{
 .cont_modal.modal-tabla{
     max-width: 90%;
     max-height: 85vh;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     position: relative;
+    overflow: hidden;
 }
-.botonCerrarDetalles{
+.cruz-cerrar{
     position: absolute;
     top: 1rem;
     right: 1.25rem;
     cursor: pointer;
     font-size: 1.5rem;
 }
+.tabla-scroll{
+    flex: 1;
+    overflow: auto;
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.tabla-modal{
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgba(15,25,42,0.4);
+}
+.tabla-modal th{
+    background-color: var(--fondo-cabecera);
+    color: white;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.tabla-modal td{
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.tabla-modal .fila-correcta{
+    background-color: rgba(0,255,0,0.1);
+}
+.tabla-modal .fila-fallo{
+    background-color: rgba(255,0,0,0.1);
+}
+
 #gestion_entidad button {
     background-color: rgba(255,255,255,0.15);
     color: white;
@@ -215,17 +256,18 @@ zona_modal.visible{
 }
 #resultados_tests li{
     background-color: rgba(15,25,42,0.4);
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     padding: 0.4rem 0.8rem;
     border-radius: 0.5rem;
     font-size: 0.85rem;
 }
 #resultados_tests table{
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     width: 100%;
     max-width: 600px;
     background-color: rgba(15,25,42,0.4);
-    border: 1px solid white;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 0.5rem;
     overflow: hidden;
 }
@@ -236,6 +278,7 @@ zona_modal.visible{
     text-align: center;
     font-size: 0.85rem;
     font-weight: 600;
+    text-align: center;
 }
 #resultados_tests td{
     padding: 0.75rem 1rem;

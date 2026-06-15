@@ -67,7 +67,7 @@ class TestForm {
             });
             ventana+=`<p>Numero total de definiciones: <b>${totalDefiniciones}</b></p>`;
             ventana+=`<p>Definiciones correctas: <b>${contadorCorrectas}</b></p>`;
-            ventana+=`<table border="1"><tr><th>Atributo</th><th>Numero de definiciones</th></tr>`;
+            ventana+=`<table><tr><th>Atributo</th><th>Numero de definiciones</th></tr>`;
             for(let campo in definicionesPorAtb){
                 ventana+=`<tr><td>${campo}</td><td>${definicionesPorAtb[campo]}</td></tr>`;
             }
@@ -163,7 +163,7 @@ class TestForm {
             ventana+=`<p>Pruebas correctas: <b>${contadorPruebasCorrectas}</b></p>`;
             
             ventana+=`<h3>Resumen definicion test</h3>`;
-            ventana+=`<table border="1"><tr><th>Numero definicion</th><th>Pruebas con error</th><th>Pruebas sin error></th></tr>`;
+            ventana+=`<table><tr><th>Numero definicion</th><th>Pruebas con error</th><th>Pruebas sin error</th></tr>`;
             for(let numDef in pruebasErroneas){
                 ventana+=`<tr><td>${numDef}</td><td>${pruebasErroneas[numDef]}</td><td>${pruebasSinError[numDef]}</td></tr>`;
             } 
@@ -176,13 +176,13 @@ class TestForm {
                 botonDetalles.onclick = () => {
                     let htmlModal = `
                         <div class="cont_modal modal-tabla">
-                            <span id="botonCerrarDetalles" class="cerrar-aspa">✕</span>
+                            <span id="botonCerrarDetalles" class="cruz-cerrar">✕</span>
                             <h1>Pruebas de: ${nombreEntidad}</h1>
-                            <table border="1" class="tabla-modal">
+                            <div class="tabla-scroll"><table class="tabla-modal">
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th>CAMPO</th>
                                     <th>ACCION</th>
+                                    <th>CAMPO</th>
                                     <th>VALOR</th>
                                     <th>ESPERADO</th>
                                     <th>OBTENIDO</th>
@@ -201,12 +201,14 @@ class TestForm {
                                 <td>${resultado.esCorrecto ? "CORRECTO" : "ERRONEO"}</td>
                             </tr>`;
                     });
-                    htmlModal += `</table></div>`;
+                    htmlModal += `</table></div></div>`;
                     zona_modal.innerHTML = htmlModal;
-                    zona_modal.style.display='block';
+                    zona_modal.style.display='flex';
+                    document.body.classList.add("modal-abierto");
                     document.getElementById('botonCerrarDetalles').onclick = () => {
                         zona_modal.style.display='none';
                         zona_modal.innerHTML="";
+                        document.body.classList.remove("modal-abierto");
                     };
                 };
             }

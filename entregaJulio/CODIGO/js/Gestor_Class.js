@@ -2,6 +2,29 @@ class Gestor {
     constructor() {}
 
     atenderMenu(nombreEntidad){
+        //Se carga todo lo q estaba abierto antes
+        const zonaResultados=document.getElementById('resultados_tests');
+        const zonaModal=document.getElementById('zona_modal');
+        const gestionEntidad=document.getElementById('gestion_entidad');
+        if(gestionEntidad && gestionEntidad.getAttribute('info-entidad-activa')===nombreEntidad){
+            gestionEntidad.innerHTML='';
+            gestionEntidad.removeAttribute('info-entidad-activa');
+            if(zonaResultados){
+                zonaResultados.innerHTML='';
+            }
+            if(zonaModal){
+                zonaModal.style.display='none';
+                zonaModal.innerHTML='';
+            }
+            return;
+        }
+        if(zonaResultados){
+            zonaResultados.innerHTML=``;
+        }
+        if(zonaModal){
+            zonaModal.style.display="none";
+            zonaModal.innerHTML=``;
+        }
         if(this.comprobarVariables(nombreEntidad)) {
             this.mostrarPanel(nombreEntidad);
         }
@@ -27,6 +50,7 @@ class Gestor {
     mostrarPanel(nombreEntidad){
         const zona=document.getElementById('gestion_entidad');
         zona.innerHTML="";
+        zona.setAttribute('info-entidad-activa', nombreEntidad); //Esto es para q al pulsar la entidad activa se guarde su estado
         let h2=document.createElement('h2');
         h2.innerText=`Entidad: ${nombreEntidad}`;
         zona.appendChild(h2);
