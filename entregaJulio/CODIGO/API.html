@@ -32,15 +32,273 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: ejecutar(nombreEntidad)</h4>
                     <p><strong>Descripcion: </strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+
+                <h3>Clase Gestor</h3>
+                <p class="descripcion_clase"><strong>Descripcion: </strong></p>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: atenderMenu(nombreEntidad)</h4>
+                    <p><strong>Descripcion: </strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
+                    <p><strong>Descripcion: </strong></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
+                    <p><strong>Descripcion: </strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarError(mensaje)</h4>
+                    <p><strong>Descripcion: </strong></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: cerrarModal()</h4>
+                    <p><strong>Descripcion: </strong></p>
+                    <p><strong>Informacion devuelta: </strong>void</p>
+                </div>
+            </article>
+        </div>
+
+        <div id="zona_api_validacion" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Información sobre las clases de validación</h2>
+
+            <article class="clase_documentacion">
+                <h3>Clase: ValidateFieldsForm</h3>
+                <p class="descripcion_clase"><strong>Descripción:</strong> </p>
+
+                <div class="metodo_documentacion">
+                    <h4>Método: crearCampo(id, valor, infoAtributo)</h4>
+                    <p><strong>Descripción:</strong> Crea un elemento HTML según las normas de la estructura de la entidad, configura sus propiedades, le asigna el valor de prueba y lo añade al DOM.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>id</strong></td><td>String</td><td>Identificador del nuevo nodo HTML.</td></tr>
+                            <tr><td><strong>valor</strong></td><td>String/Object</td><td>Dato de prueba a introducir en el campo (puede ser un objeto para simular ficheros).</td></tr>
+                            <tr><td><strong>infoAtributo</strong></td><td>Object</td><td></td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Información devuelta:</strong> HTMLElement-El nodo del elemento de formulario recién creado y colocado en el DOM.</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Método: validarCampo(validacion, id, parametros)</h4>
+                    <p><strong>Descripción:</strong> Invoca al metodo de validacion concreto de cada campo.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>validacion</strong></td><td>String</td><td>Nombre del método a ejecutar.</td></tr>
+                            <tr><td><strong>id</strong></td><td>String</td><td>ID del elemento HTML temporal que contiene el valor que se va a evaluar.</td></tr>
+                            <tr><td><strong>parametros</strong></td><td>Mixed</td><td>Criterios de validacion de la regla.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Información devuelta:</strong> Boolean/String-Devuelve true si pasa la prueba. Si falla, devuelve el codigo de error. Si la regla existe, devuelve un mensaje de aviso.</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Método: simulacionFichero(campo, objeto)</h4>
+                    <p><strong>Descripción:</strong> crea un fichero simulado para el testeo de los campos relacionados con los ficheros.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>campo</strong></td><td>HTMLElement</td><td>El nodo input file donde se monta el archivo.</td></tr>
+                            <tr><td><strong>objeto</strong></td><td>Object</td><td>Elemento donde se describen las caracteristicas del fichero a crear (tamaño,tipo,nombre...).</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Información devuelta:</strong>void</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Método: limpiar()</h4>
+                    <p><strong>Descripción:</strong> Limipia por completo el contenedor temporal eliminando todos los elementos HTML que se añadieron previamente.</p>
+                    <p><strong>Parámetros:</strong> Ninguno.</p>
+                    <p><strong>Información devuelta:</strong>void</p>
                 </div>
             </article>
 
+            <article class="clase_documentacion">
+                <h3>Clase: Validations</h3>
+                <p class="descripcion_clase"><strong>Descripcion: </strong></p>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: min_size(id,minimo)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el tamaño del campo considerado es mayor del minimo requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>minimo</td><td>Integer</td><td>Valor utiizado para comparar con el tamaño del valor asignado al campo. Representa el minimo aceptado.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por encima del minimo y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: max_size(id,maximo)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el tamaño del campo considerado es menor del maximo requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>maximo</td><td>Integer</td><td>Valor utiizado para comparar con el tamaño del valor asignado al campo. Representa el maximo aceptado.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por debajo del maximo y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: exp_reg(id,expReg)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el valor del campo cumple con el formato requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>expReg</td><td>String</td><td>Expresion utilizada para ver si el valor del campo cumple con el formato requerido.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor cumple el formato y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: not_exist_file(id)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si hay o no un fichero subido al campo que lo requiera.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si existe fichero y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: max_size_file(id,tamMax)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar que el tamaño del fichero no exceda un valor maximo.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>tamMax</td><td>Integer</td><td>Valor utiizado para comparar con el tamaño del fichero este por debajo del maximo aceptado.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por debajo del maximo y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: type_file(id,arrayTipos)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el tipo del fichero subido, se corresponde con alguno de los tipos aceptados.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>arrayTipos</td><td>Object???</td><td>Array que contiene los tipos de fichero con los que se compara el tipo del fichero subido.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por encima del minimo y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: format_name_file(id,expReg)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el valor del nombre del fichero cumple con el formato requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>expReg</td><td>String</td><td>Expresion utilizada para ver si el valor del nombre del fichero cumple con el formato requerido.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor cumple el formato y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: min_file_name_size(id,minimo)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el tamaño del nombre del fichero es mayor que el minimo requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>minimo</td><td>Integer</td><td>Valor utiizado para comparar con el tamaño del nombre del fichero. Representa el minimo aceptado.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por encima del minimo y false en otro caso.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: max_file_name_size(id,maximo)</h4>
+                    <p><strong>Descripcion: </strong>Metodo para comprobar si el tamaño del nombre del fichero es menor que el maximo requerido.</p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>id</td><td>String</td><td>Identifica el campo sobre el que se van a hacer las pruebas</td></tr>
+                            <tr><td>maximo</td><td>Integer</td><td>Valor utiizado para comparar con el tamaño del nombre del fichero. Representa el maximo aceptado.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><strong>Informacion devuelta: </strong>boolean, true si el valor esta por debajo del maximo y false en otro caso.</p>
+                </div>
+            </article>
         </div>
-        <div id="zona_api_validacion" class="seccion_zona">
-            <label for="cerrar" class="boton_api">X</label>
-            <h2>Informacion sobre las clases de validacion</h2>
 
-        </div>
         <div id="zona_api_submit" class="seccion_zona">
             <label for="cerrar" class="boton_api">X</label>
             <h2>Informacion sobre las clases de submit</h2>
