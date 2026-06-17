@@ -143,7 +143,7 @@ class TestSubmit {
                             </tr>
                 `;
                 resultados.forEach(r=>{
-                    let claseFila=r.esCorrecto?'fila-correcta':'filla-fallo';
+                    let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
                     let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
                     let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
                     htmlModal+=`
