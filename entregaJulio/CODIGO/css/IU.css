@@ -108,6 +108,7 @@ body.modal-abierto{
     padding: 2rem;
     max-width: 1400px;
     width: 100%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -304,7 +305,6 @@ body.modal-abierto{
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-
 #pie_index, #pie_api{
     background-color: var(--fondo-cabecera);
     padding: 1.25rem 2rem;
@@ -323,7 +323,7 @@ body.modal-abierto{
 #menu_api{
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: center;*/
+    justify-content: center;
     background-color: var(--otro-color);
     padding: 1rem 2rem;
     border-bottom: 1px solid var(--otro-color);
@@ -353,6 +353,106 @@ body.modal-abierto{
     max-width: 1400px;
     width: 100%;
     display: flex;
+    margin: 0 auto;
     flex-direction: column;
     gap: 2rem;
+}
+#zona_api h2{
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0.7rem;
+}
+.seccion_zona{
+    display: none;
+    position: relative;
+    background-color: var(--otro-color);
+    color: white;
+    border: 1px solid var(--otro-color);
+    border-radius: 0.5rem;
+}
+#tests:checked~#zona_api #zona_api_test,
+#validaciones:checked~#zona_api #zona_api_validacion,
+#submits:checked~#zona_api #zona_api_submit{
+    display: block;
+}
+.seccion_zona .boton_api[for="cerrar"] {
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+    line-height: 1;
+    cursor: pointer;
+}
+.seccion_zona .boton_api[for="cerrar"]:hover{
+    color: white;
+    background: none;
+    transform: translateY(0px);
+}
+.clase_documentacion{
+    margin-top: 1.5rem;
+    /*border-bottom: 1px solid rgba(255,255,255,0.1);*/
+    padding-bottom: 1.5rem;
+}
+.clase_documentacion h3{
+    text-align: center;
+    font-size: 1.2rem;
+    color: wheat;
+    margin-bottom: 0.5rem;
+}
+.descripcion_clase{
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+    font-style: italic;
+}
+.metodo_documentacion{
+    background-color: rgba(15,25,42,0.3);
+    border-radius: 0 0.5rem 0.5rem 0;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.metodo_documentacion h4{
+    text-align: center;
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+}
+.metodo_documentacion p{
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+.metodo_documentacion table{
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    background-color: rgba(15,25,42,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+.metodo_documentacion th{
+    background-color: var(--fondo-cabecera);
+    color: white;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.metodo_documentacion td{
+    padding: 0.75rem 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+.clase_documentacion .tag, .metodo_documentacion .tag{
+    font-weight: bold;
+    color: white;
 }

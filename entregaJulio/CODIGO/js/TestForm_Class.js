@@ -176,7 +176,7 @@ class TestForm {
                 botonDetalles.onclick = () => {
                     let htmlModal = `
                         <div class="cont_modal modal-tabla">
-                            <span id="botonCerrarDetalles" class="cruz-cerrar">✕</span>
+                            <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
                             <h1>Pruebas de: ${nombreEntidad}</h1>
                             <div class="tabla-scroll"><table class="tabla-modal">
                                 <tr>
