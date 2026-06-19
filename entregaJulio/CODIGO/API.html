@@ -28,15 +28,107 @@
             <h2>Informacion sobre las clases de test</h2>
             <article class="clase_documentacion">
                 <h3>Clase TestForm</h3>
-                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de evaluar de forma dinámica las estructuras y definiciones de test definidos para cada entidad, y de ejecutar las pruebas.</p>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de evaluar de forma dinámica las estructuras y definiciones de test definidos para cada entidad, y de ejecutar las pruebas de atributos.</p>
                 <div class="metodo_documentacion">
                     <h4>Metodo: ejecutar(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span></p>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de comprobar la existencia de los ficheros asociados a cada entidad y de ejecutar todas las pruebas. Crea los objetos que luego se insertan en el modal correspondiente.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
                         </thead>
                         <tbody>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: cargarDatosEntidad(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>intenta cargar de forma dinamica utilizando eval, los js de los datos asociados a la entidad.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>nombreEntidad</td><td>string</td><td>Nombre de la entidad de la cual queremos cargar los datos.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>Object, contiene toda la informacion asociada a la entidad.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: procesarEstructura(estructura,nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>procesa el objeto que contiene la informacion de la entidad (obtenido en cargarDatosEntidad), para poder generar el bloque de resultados. Comprueba si la estructura existe y lista sus atributos.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>estructura</td><td>Object</td><td>Objeto que contiene el Json de la estructura considerada.</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad considerada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>String, html correspondiente al primer bloque a mostrar.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: procesarDefinicionTests(defTests,nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>evalua el formato del array de definiciones de pruebas de atributos. Realiza el control acumulando el conteo de las pruebas planificadas por cada campo.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>defTests</td><td>Array</td><td>Array con las configuraciones de tests de atributos.</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad considerada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>String, html correspondiente a la informacion del segundo bloque.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: procesarPruebas(datos, nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>recorre el conjunto de test de atributos. Crea los campos en el validador, ejecuta las reglas y compara el resultado obtenido con el esperado.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>datos</td><td>Object</td><td>Estructura completa de datos obtenida en la carga dinámica</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>Object. Contiene un html, y el array de resultados.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: ejecutarReglasValidaciones(campoNombre, accion, reglas, entidad)</h4>
+                    <p><span class="tag">Descripcion: </span>método que aplica de forma secuencial y en orden las reglas de tamaño, formato o validaciones personalizadas del atributo.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>campoNombre</td><td>String</td><td>Nombre del atributo bajo análisis</td></tr>
+                            <tr><td>accion</td><td>String</td><td>Acción a realizar (SEARCH, ADD, EDIT...)</td></tr>
+                            <tr><td>reglas</td><td>Object</td><td>Conjunto de resticciones aplicables.</td></tr>
+                            <tr><td>entidad</td><td>Object</td><td>Instancia de la clase de la entidad para invocar funciones personalizadas</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>Boolean/String, true si supera los filtros, en caso contrario devuelve el codigo de error.</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: configurarBotonDetalles(resultados, nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que inyecta el evento dinámico (onclick) al botón encargado de desplegar la ventana modal del sistema, pintando las filas en funcion de si la prueba fue un éxito o un fallo</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>resultados</td><td>Array</td><td>Colección de objetos procesados con el estado final de los tests ejecutados</td></tr>
                             <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
                         </tbody>
                     </table>
@@ -48,6 +140,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: atenderMenu(nombreEntidad)</h4>
                     <p><span class="tag">Descripcion: </span>metodo que responde a la seleccion de una entidad concreta, preparando la interfaz para mostrar los test.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -61,6 +154,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
                     <p><span class="tag">Descripcion: </span>metodo encargado de comprobar que todas las variables especificadas en la estructura correspondiente a la entidad seleccionada existen.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -74,6 +168,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
                     <p><span class="tag">Descripcion: </span> método encargado de mostrar la interfaz con los botones para los test de atributos y formulario.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -87,6 +182,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: mostrarError(mensaje)</h4>
                     <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falto algo de la estructura</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -100,6 +196,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: cerrarModal()</h4>
                     <p><span class="tag">Descripcion: </span>oculta los modales activos en la pantalla.</p>
+                    <p><span class="tag">Parametros: </span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
             </article>
@@ -116,6 +213,7 @@
                 <div class="metodo_documentacion">
                     <h4>Método: crearCampo(id, valor, infoAtributo)</h4>
                     <p><span class="tag">Descripción: </span> Crea un elemento HTML según las normas de la estructura de la entidad, configura sus propiedades, le asigna el valor de prueba y lo añade al DOM.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
@@ -132,6 +230,7 @@
                 <div class="metodo_documentacion">
                     <h4>Método: validarCampo(validacion, id, parametros)</h4>
                     <p><span class="tag">Descripción: </span> Invoca al metodo de validacion concreto de cada campo.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
@@ -148,6 +247,7 @@
                 <div class="metodo_documentacion">
                     <h4>Método: simulacionFichero(campo, objeto)</h4>
                     <p><span class="tag">Descripción: </span> crea un fichero simulado para el testeo de los campos relacionados con los ficheros.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parámetro</th><th>Tipo</th><th>Descripción</th></tr>
@@ -170,10 +270,11 @@
 
             <article class="clase_documentacion">
                 <h3>Clase: Validations</h3>
-                <p class="descripcion_clase"><span class="tag">Descripcion: </span></p>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase que contiene todos los metodos necesarios para comprobar si el dato introducido en cada campo es valido según los parametros marcados en la estructura de cada entidad.</p>
                 <div class="metodo_documentacion">
                     <h4>Metodo: min_size(id,minimo)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el tamaño del campo considerado es mayor del minimo requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -188,6 +289,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: max_size(id,maximo)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el tamaño del campo considerado es menor del maximo requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -202,6 +304,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: exp_reg(id,expReg)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el valor del campo cumple con el formato requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -216,6 +319,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: not_exist_file(id)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si hay o no un fichero subido al campo que lo requiera.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -229,6 +333,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: max_size_file(id,tamMax)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar que el tamaño del fichero no exceda un valor maximo.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -243,6 +348,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: type_file(id,arrayTipos)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el tipo del fichero subido, se corresponde con alguno de los tipos aceptados.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -257,6 +363,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: format_name_file(id,expReg)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el valor del nombre del fichero cumple con el formato requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -271,6 +378,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: min_file_name_size(id,minimo)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el tamaño del nombre del fichero es mayor que el minimo requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -285,6 +393,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: max_file_name_size(id,maximo)</h4>
                     <p><span class="tag">Descripcion: </span>Metodo para comprobar si el tamaño del nombre del fichero es menor que el maximo requerido.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -319,6 +428,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: data_type_characteristic_personalized_validation(accion)</h4>
                     <p><span class="tag">Descripcion: </span>comprueba que el valor seleccionado para el campo data_type de la entidad sea uno de los valores aceptados (number, text o set).</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -332,6 +442,7 @@
                 <div class="metodo_documentacion">
                     <h4>Metodo: category_characteristic_personalized_validation(accion)</h4>
                     <p><span class="tag">Descripcion: </span>comprueba que el valor seleccionado para el campo category de la entidad sea uno de los valores aceptados (soil_site, soil_chem o soil_bio).</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
                             <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
@@ -349,35 +460,99 @@
             <label for="cerrar" class="boton_api">X</label>
             <h2>Informacion sobre las clases de submit</h2>
             <article class="clase_documentacion">
-                <h3>Clase: submit</h3>
-                <p class="descripcion_clase"><span class="tag">Descripcion: </span></p>
+                <h3>Clase TestSubmit</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>Clase encargada de ejecutar la validacion simulando el envío de un formulario completo. Evalúa las reglas de todos los atributos de una entidad, recopilando los errores detectados.</p>
                 <div class="metodo_documentacion">
-                    <h4>Metodo: checkSubmit(nombreentidad, entidad, accion, datos, estructura, validacionCampos)</h4>
-                    <p><span class="tag">Descripcion: </span></p>
+                    <h4>Metodo: checkSubmit(nombreEntidad, entidad, accion, datos, estructura)</h4>
+                    <p><span class="tag">Descripcion: </span>Simula el envio del formulario cargando todos los atributos definidos en la estructura. Itera sobre las restricciones de cada campo bajo un orden estricto de prioridades y recopila en un array los mensajes de error únicos generados.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
-                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
                         </thead>
                         <tbody>
                             <tr><td>nombreEntidad</td><td>String</td><td>Nombre que identifica a la entidad a procesar.</td></tr>
-                            <tr><td>entidad</td><td>Object</td><td>Instancia que contiene los metodos dimanicos de validacion personalizados.</td></tr>
-                            <tr><td>accion</td><td>String</td><td>Tipo de accion que se esta llevando a cabo/evaluando sobre el atributo.</td></tr>
-                            <tr><td>datos</td><td>Object</td><td>Contiene los pares clave-valor que simulan los datos introducidos.</td></tr>
+                            <tr><td>entidad</td><td>Object</td><td>Instancia que contiene los métodos dinámicos de validación personalizados.</td></tr>
+                            <tr><td>accion</td><td>String</td><td>Accion a realizar.</td></tr>
+                            <tr><td>datos</td><td>Object</td><td>Contiene los pares clave-valor que simulan los datos introducidos en el formulario.</td></tr>
                             <tr><td>estructura</td><td>Object</td><td>Objeto que contiene la estructura de los atributos y restricciones de validación de la entidad.</td></tr>
-                            <tr><td>validacionCampos</td><td>ValidateFieldsForm</td><td>Instancia del motor de validacion encargado de limpiar, crear y comprobar los campos.</td></tr>
                         </tbody>
                     </table>
-                    <p><span class="tag">Informacion devuelta: </span>boolean, </p>
+                    <p><span class="tag">Informacion devuelta: </span>Boolean/Array. Retorna true si el formulario es completamente válido, o un Array con los errores unicos encontrados.</p>
                 </div>
+
                 <div class="metodo_documentacion">
                     <h4>Metodo: ejecutar(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span></p>
+                    <p><span class="tag">Descripcion: </span>comprueba que los datos y estructuras necesarios existan, e invoca el procesamiento las pruebas, inyecta la tabla de resumen por acciones en el DOM y activa el cuadro de detalles.</p>
+                    <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
-                            <tr><th>Parametros</th><th>Tipo</th><th>Descripcion</th></tr>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
                         </thead>
                         <tbody>
-                            <tr><td>nombreEntidad</td><td>string</td><td>Representa la entidad sobre la que se van a ejecutar las pruebas.</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Entidad sobre la que se hacen las pruebas.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Metodo: cargaDatosEntidad(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>Recupera toda la informacion asociada a la entidad: su estructura, pruebas de submit, y crea una instancia de la clase de la entidad para acceder a las pruebas personalizadas.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Entidad de la que se quiere cargar su informacion.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>Object. Contiene las caracteristicas de cada entidad (pruebas, estructura, entidad).</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Metodo: procesarPruebasSubmit(datos, nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>Recorre el array completo de pruebas de submit. Ejecuta la función de control para cada caso y compara los errores esperados respecto a los obtenidos, y almacena el numero de pruebas correctas y erroneas de cada accion.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>datos</td><td>Object</td><td>Objeto que contiene las pruebas, entidad y estructura de datos cargadas.</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>Object. Devuelve un objeto estructurado con las propiedades: <code>resumen</code> [contadores estadísticos agrupados] y <code>resultados</code> [matriz detallada de mapeos individuales para el modal]).</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Metodo: procesarResumenAcciones(resumen)</h4>
+                    <p><span class="tag">Descripcion: </span>Construye la tabla resumen de las pruebas realizadas, aciertos y fallos por cada acción.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>resumen</td><td>Object</td><td>Estructura con el recuento total, de pruebas correctas e incorrectas de las acciones evaluadas.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>String. Código HTML de la tabla resumen.</p>
+                </div>
+
+                <div class="metodo_documentacion">
+                    <h4>Metodo: configurarBotonDetalles(resultados, nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que inyecta el evento dinámico (onclick) al botón encargado de desplegar la ventana modal del sistema, pintando las filas en funcion de si la prueba fue un éxito o un fallo.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>resultados</td><td>Array</td><td>Array que contiene el estado de cada test realizado.</td></tr>
+                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada.</td></tr>
                         </tbody>
                     </table>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
@@ -391,8 +566,3 @@
     </footer>
 </body>
 </html>
-
-<!--
-Mi idea es q al darle a cada boton se despliegue la info de cada clase. Mirar de meter un boton de ocultar o algo (tipo una cruz).
-Ver si tmb es buena idea q al darle a otro de los botones de tipo de clases, si ya habia otro abierto se cierre tmb.
--->

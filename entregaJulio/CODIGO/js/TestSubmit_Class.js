@@ -1,14 +1,17 @@
 class TestSubmit {
-    checkSubmit(nombreEntidad, entidad, accion, datos, estructura, validacionCampos){
+    constructor(){
+        this.validacionCampos=new ValidateFieldsForm();
+    }
+    checkSubmit(nombreEntidad, entidad, accion, datos, estructura){
         const ordenValidaciones=['min_size', 'max_size', 'exp_reg', 'personalized', 'not_exist_file', 'max_size_file', 'type_file', 'min_file_name_size', 'max_file_name_size', 'format_name_file'];
-        validacionCampos.limpiar();
+        this.validacionCampos.limpiar();
         const erroresEncontrados=[];
 
         //Crear los campos
         for(let nombreAtributo in estructura.attributes){
             let atributo=estructura.attributes[nombreAtributo];
             let valorPrueba=(datos && datos[nombreAtributo]!==undefined)?datos[nombreAtributo]:'';
-            validacionCampos.crearCampo(nombreAtributo, valorPrueba, atributo);
+            this.validacionCampos.crearCampo(nombreAtributo, valorPrueba, atributo);
         }
         //Validar en orden
         for(let nombreAtributo in estructura.attributes){
@@ -33,7 +36,7 @@ class TestSubmit {
                         }
                     }
                 } else {
-                    let error = validacionCampos.validarCampo(tipoValidacion, nombreAtributo, reglas[tipoValidacion]);
+                    let error=this.validacionCampos.validarCampo(tipoValidacion, nombreAtributo, reglas[tipoValidacion]);
                     if (error !== true) {
                         if(!erroresEncontrados.includes(error)) {
                             erroresEncontrados.push(error);
@@ -46,44 +49,56 @@ class TestSubmit {
         return erroresEncontrados.length===0?true:erroresEncontrados;
     }
 
-    ejecutar(nombreEntidad) {
-        let resultados_tests=document.getElementById('resultados_tests');
-        let zona_modal=document.getElementById('zona_modal');
-
-        let claseEntidad, pruebas, estructura;
-        const validacionCampos = new ValidateFieldsForm();
-
-        try { estructura = eval(`estructura_${nombreEntidad}`); } catch(e) {}
-        try { pruebas = eval(`${nombreEntidad}_TestSubmit`); } catch(e) {}
-        try { claseEntidad = eval(nombreEntidad); } catch(e) {}
-
+    ejecutar(nombreEntidad){
+        const resultados_tests=document.getElementById('resultados_tests');
+        const datos=this.cargaDatosEntidad(nombreEntidad);
         let ventana=`<div class="resumen">`;
         ventana+=`<h1>Resultados test de submit: ${nombreEntidad}</h1>`;
 
-        if (!pruebas || !estructura) {
+        if (!datos.pruebas || !datos.estructura) {
             ventana+=`<p style="color:red">Error: No hay pruebas o estructura para ${nombreEntidad}</p>`;
             resultados_tests.innerHTML=ventana;
             return;
         }
+        const infoSubmit=this.procesarPruebasSubmit(datos, nombreEntidad);
+        ventana+=this.procesarResumenAcciones(infoSubmit.resumen);
+        ventana+=`<br><button id="boton_detalles">Ver detalle de pruebas</button>`;
+        ventana+=`</div>`;
+        resultados_tests.innerHTML=ventana;
+        this.configurarBotonDetalles(infoSubmit.resultados, nombreEntidad);
+    }
 
+    cargaDatosEntidad(nombreEntidad){
+        let claseEntidad, pruebas, estructura;
+        try{
+            estructura=eval(`estructura_${nombreEntidad}`);
+        }catch(e){console.log("Error estructura submit: ", e);}
+        try{
+            pruebas=eval(`${nombreEntidad}_TestSubmit`);
+        }catch(e){console.log("Error pruebas submit: ", e);}
+        try{
+            claseEntidad=eval(nombreEntidad);
+        }catch(e){}
         const entidad=(typeof claseEntidad==='function')?new claseEntidad():{};
+        return {pruebas, estructura, entidad};
+    }
 
-        // Resumen por acción
-        const resumen = {};
-        const resultados = [];
+    procesarPruebasSubmit(datos, nombreEntidad){
+        const resumen={};
+        const resultados=[];
 
-        pruebas.forEach(prueba => {
+        datos.pruebas.forEach(prueba=>{
             const accion=prueba[1];
             const numeroTest=prueba[2];
             const descripcion=prueba[3];
-            const datos=prueba[4];
+            const datosPrueba=prueba[4];
             const errorEsperado=prueba[5];
 
-            if (!resumen[accion]) resumen[accion] = { total: 0, correctas: 0, incorrectas: 0 };
+            if (!resumen[accion]){
+                resumen[accion]={total:0, correctas:0, incorrectas:0};
+            }
             resumen[accion].total++;
-
-            const resultadoObtenido=this.checkSubmit(nombreEntidad, entidad, accion, datos, estructura, validacionCampos);
-
+            const resultadoObtenido=this.checkSubmit(nombreEntidad, datos.entidad, accion, datosPrueba, datos.estructura);
             let esCorrecto;
             if (errorEsperado===true) {
                 esCorrecto=(resultadoObtenido===true);
@@ -107,66 +122,67 @@ class TestSubmit {
             }
             resultados.push({ numeroTest, accion, descripcion, errorEsperado, resultadoObtenido, esCorrecto });
         });
+        return {resumen,resultados};
+    }
 
-        // Mostrar resumen por acción
-        ventana+='<h2>Resumen por acción</h2>';
-        ventana+='<table><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>';
-        for (let accion in resumen) {
-            ventana+=`<tr>
+    procesarResumenAcciones(resumen){
+        let html='<h2>Resumen por acción</h2>';
+        html+='<table><tr><th>Acción</th><th>Total</th><th>Correctas</th><th>Incorrectas</th></tr>';
+        for(let accion in resumen) {
+            html+=`<tr>
                 <td>${accion}</td>
                 <td>${resumen[accion].total}</td>
                 <td>${resumen[accion].correctas}</td>
                 <td>${resumen[accion].incorrectas}</td>
             </tr>`;
         }
-        ventana+='</table>';
-
-        // Botón detalles
-        ventana+='<br><button id="boton_detalles">Ver detalle de pruebas</button>';
-        ventana+=`</div>`;
-        resultados_tests.innerHTML=ventana;
+        html+='</table>';
+        return html;
+    }
+    configurarBotonDetalles(resultados,nombreEntidad){
         const botonDetalles=document.getElementById('boton_detalles');
-        if(botonDetalles){
-            botonDetalles.onclick=()=>{
-                let htmlModal=`
-                    <div class="cont_modal modal-tabla">
-                        <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                        <h1>Pruebas de submit de ${nombreEntidad}</h1>
-                        <div class="tabla-scroll"><table class="tabla-modal">
-                            <tr>
-                                <th>Nº</th>
-                                <th>Accion</th>
-                                <th>Descripcion</th>
-                                <th>Esperado</th>
-                                <th>Obtenido</th>
-                                <th>Resultado</th>
-                            </tr>
-                `;
-                resultados.forEach(r=>{
-                    let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
-                    let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
-                    let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
-                    htmlModal+=`
-                        <tr class="${claseFila}">
-                            <td class="texto">${r.numeroTest}</td>
-                            <td>${r.accion}</td>
-                            <td>${r.descripcion}</td>
-                            <td>${esperados}</td>
-                            <td>${obtenidos}</td>
-                            <td>${r.esCorrecto?'CORRECTO':'FALLO'}</td>
-                        </tr>
-                    `;
-                });
-                htmlModal+='</table></div></div>'
-                zona_modal.innerHTML=htmlModal;
-                zona_modal.style.display="flex";
-                document.body.classList.add("modal-abierto");
-                document.getElementById('botonCerrarDetalles').onclick=()=>{
-                    zona_modal.style.display="none";
-                    zona_modal.innerHTML="";
-                    document.body.classList.remove("modal-abierto");
-                };
-            };
+        if(!botonDetalles){
+            return;
         }
+        botonDetalles.onclick=()=>{
+            let htmlModal=`
+                <div class="cont_modal modal-tabla">
+                    <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
+                    <h1>Pruebas de submit de ${nombreEntidad}</h1>
+                    <div class="tabla-scroll"><table class="tabla-modal">
+                        <tr>
+                            <th>Nº</th>
+                            <th>Accion</th>
+                            <th>Descripcion</th>
+                            <th>Esperado</th>
+                            <th>Obtenido</th>
+                            <th>Resultado</th>
+                        </tr>
+            `;
+            resultados.forEach(r=>{
+                let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
+                let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
+                let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
+                htmlModal+=`
+                    <tr class="${claseFila}">
+                        <td class="texto">${r.numeroTest}</td>
+                        <td>${r.accion}</td>
+                        <td>${r.descripcion}</td>
+                        <td>${esperados}</td>
+                        <td>${obtenidos}</td>
+                        <td>${r.esCorrecto?'CORRECTO':'FALLO'}</td>
+                    </tr>
+               `;
+            });
+            htmlModal+='</table></div></div>'
+            zona_modal.innerHTML=htmlModal;
+            zona_modal.style.display="flex";
+            document.body.classList.add("modal-abierto");
+            document.getElementById('botonCerrarDetalles').onclick=()=>{
+                zona_modal.style.display="none";
+                zona_modal.innerHTML="";
+                document.body.classList.remove("modal-abierto");
+            };
+        };
     }
 }
