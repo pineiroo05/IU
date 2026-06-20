@@ -22,7 +22,7 @@ body.modal-abierto{
     overflow: hidden;
 }
 
-/*Cabecera*/
+/*CABECERA*/
 #cabecera, #cabecera_api{
     display: flex;
     justify-content: space-between;
@@ -48,16 +48,19 @@ body.modal-abierto{
     color:var(--fondo-cabecera);
 }
 
-/*PARA EL INDEX.HTML*/
+/*INDEX.HTML*/
 #menu{
     background-color: var(--otro-color);
     padding:1rem 2rem;
     border-bottom: 1px solid var(--otro-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
 }
 #icono_menu{
     background-color: rgba(255,255,255,0.1);
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 0.375rem;
     padding: 0.5rem 1.25rem;
     font-size: 0.85rem;
@@ -72,17 +75,27 @@ body.modal-abierto{
     transform: translateY(-2px);
 }
 #listaMenu{
-    display: none;
     list-style: none;
-    margin-top: 2rem;
-    animation: fadeIn 0.3s ease-out;
-}
-#listaMenu.visible{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     gap: 0.75rem;
     flex-wrap: wrap;
+
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    margin-top: 0;
+    overflow: hidden;
+
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out, margin-top 0.3s ease-out, visibility 0.3s;
+}
+#listaMenu.visible{
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
     margin-top: 1.25rem;
 }
 #listaMenu li{
@@ -90,7 +103,7 @@ body.modal-abierto{
     color: white;
     padding: 0.5rem 1.25rem;
     border-radius: 0.375rem;
-    border: 1px solid var(--fondo-cabecera);
+    border: none;
     font-size: 0.85rem;
     text-align: center;
     cursor: pointer;
@@ -103,6 +116,7 @@ body.modal-abierto{
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+/*Zona de trabajo/resultados*/
 #zona_trabajo{
     flex: 1;
     padding: 2rem;
@@ -123,8 +137,9 @@ body.modal-abierto{
 #zona_modal:empty, #gestion_entidad:empty, #resultados_tests:empty{
     display: none;
 }
+/*Modales*/
 #zona_modal{
-    display: none;
+    display: flex;
     position: fixed;
     top: 0;
     left: 0;
@@ -134,19 +149,143 @@ body.modal-abierto{
     z-index: 10000;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 #zona_modal.visible{
-    display: flex;
+    opacity: 1;
+    visibility: visible;
 }
+
 .cont_modal{
     background-color: var(--otro-color);
     color: white;
     padding: 25px;
     border-radius: 0.5rem;
-    border: 1px solid var(--otro-color);
-    text-align: center;
-
+    border: 1px solid rgba(255,255,255,0.15);
+    text-align: left;
+    position: relative;
+    width: 90%;
+    max-width: 650px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
+#zona_modal.visible .cont_modal {
+    transform: translateY(0);
+}
+.cont_modal h1{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0 1.5rem;
+    line-height: 1.3;
+}
+.cont_modal h2{
+    font-size: 1.25rem;
+    color: wheat;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.25rem;
+}
+.modal-contenido-scroll{
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+.modal-contenido-scroll p{
+    margin-bottom: 1rem;
+    color: rgba(255,255,255,0.9);
+}
+.modal-lista-atributos{
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.modal-lista-atributos li{
+    background-color: rgba(15,25,42,0.6);
+    border-radius: 0.375rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+.modal-contenido-scroll h2 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+.cont_modal table{
+    border-collapse: collapse;
+    width: 100%;
+    background-color: rgba(15,25,42,0.4);
+    margin: 0.75rem 0;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+.cont_modal th{
+    background-color: var(--fondo-cabecera);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+.cont_modal td{
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+.cont_modal.modal-tabla{
+    max-width: 90%;
+    width: 1200px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+.cont_modal.modal-tabla h1 {
+    margin-top: 1rem; /* Deja espacio si aparece el botón de volver*/
+}
+.cruz-cerrar{
+    position: absolute;
+    top: 1rem;
+    right: 1.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    transition: var(--transicion);
+}
+.cruz-cerrar:hover{
+    opacity: 1;
+    transform: scale(1.1);
+}
+.boton-volver{
+    position: absolute;
+    top: 1.2rem;
+    left: 1.25rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.7);
+    transition: var(--transicion);
+    user-select: none;
+}
+.boton-volver:hover{
+    color: white;
+    transform: translateX(-3px);
+}
+
 .cont_modal button{
     margin-top: 1rem;
     padding: 8px 15px;
@@ -156,26 +295,13 @@ body.modal-abierto{
     border-radius: 0.5rem;
     cursor: pointer;
     transition: var(--transicion);
+    font-weight: 600;
 }
 .cont_modal button:hover{
     background-color: white;
     color: var(--otro-color);
 }
-.cont_modal.modal-tabla{
-    max-width: 90%;
-    max-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    overflow: hidden;
-}
-.cruz-cerrar{
-    position: absolute;
-    top: 1rem;
-    right: 1.25rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-}
+/*Tablas de detalles*/
 .tabla-scroll{
     flex: 1;
     overflow: auto;
@@ -212,14 +338,15 @@ body.modal-abierto{
 .tabla-modal .fila-fallo{
     background-color: rgba(255,0,0,0.1);
 }
-
+/*Botones y cosas del panel de gestion d entidad*/
 #gestion_entidad button {
     background-color: rgba(255,255,255,0.15);
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: none;
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     font-size: 0.85rem;
+    font-weight: 600;
     cursor: pointer;
     margin-right: 0.5rem;
     margin-top: 1rem;
@@ -230,81 +357,6 @@ body.modal-abierto{
     color: var(--otro-color);
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
-/*De aqui en adelante es para la zona de resultados*/
-#resultados_tests .resumen{
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-#resultados_tests h1{
-    font-size: 1.6rem;
-    font-weight: bold;
-    border-bottom: 2px solid rgba(255,255,255,0.1);
-    padding-bottom: 0.5rem;
-}
-#resultados_tests h2{
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-}
-#resultados_tests h3{
-    font-size: 1rem;
-}
-#resultados_tests ul{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-#resultados_tests li{
-    background-color: rgba(15,25,42,0.4);
-    /*border: 1px solid white;*/
-    padding: 0.4rem 0.8rem;
-    border-radius: 0.5rem;
-    font-size: 0.85rem;
-}
-#resultados_tests table{
-    border-collapse: separate;
-    border-spacing: 0;
-    width: 100%;
-    max-width: 600px;
-    background-color: rgba(15,25,42,0.4);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 0.5rem;
-    overflow: hidden;
-}
-#resultados_tests th{
-    background-color: var(--fondo-cabecera);
-    color: white;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-}
-#resultados_tests td{
-    padding: 0.75rem 1rem;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 500;
-}
-#resultados_tests button{
-    align-self: flex-start;
-    background-color: rgba(255,255,255,0.1);
-    color: white;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: var(--transicion);
-}
-#resultados_tests button:hover{
-    background-color: white;
-    color: var(--otro-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
 #pie_index, #pie_api{
     background-color: var(--fondo-cabecera);
     padding: 1.25rem 2rem;
@@ -326,13 +378,15 @@ body.modal-abierto{
     justify-content: center;
     background-color: var(--otro-color);
     padding: 1rem 2rem;
-    border-bottom: 1px solid var(--otro-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
     gap: 0.75rem;
 }
 .boton_api{
     background-color: rgba(255,255,255,0.1);
     color: white;
-    border: 1px solid rgba(255,255,255,0.3);
+    border: none;
     border-radius: 0.375rem;
     padding: 0.5rem 1.25rem;
     font-size: 0.85rem;
@@ -369,7 +423,9 @@ body.modal-abierto{
     color: white;
     border: 1px solid var(--otro-color);
     border-radius: 0.5rem;
+    animation: fadeIn 0.35s ease-out;
 }
+/*chapuza para las pestañas de api*/
 #tests:checked~#zona_api #zona_api_test,
 #validaciones:checked~#zona_api #zona_api_validacion,
 #submits:checked~#zona_api #zona_api_submit{
@@ -455,4 +511,14 @@ body.modal-abierto{
 .clase_documentacion .tag, .metodo_documentacion .tag{
     font-weight: bold;
     color: white;
+}
+/*PARA LAS ANIMACIONES*/
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(-10px);
+    }to{
+         opacity: 1;
+         transform: translateY(0);
+     }
 }

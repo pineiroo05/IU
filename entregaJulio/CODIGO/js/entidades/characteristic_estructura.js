@@ -1,4 +1,4 @@
-const estructura_characteristic={
+const characteristic_estructura={
     entity:'characteristic',
     attributes:{
         id_characteristic:{

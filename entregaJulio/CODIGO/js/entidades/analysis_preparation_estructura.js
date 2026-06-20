@@ -1,4 +1,4 @@
-const estructura_analysis_preparation= {
+const analysis_preparation_estructura= {
     entity:'analysis_preparation',
     attributes:{
         id_analysis_preparation:{

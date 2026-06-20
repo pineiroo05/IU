@@ -50,7 +50,14 @@ class TestSubmit {
     }
 
     ejecutar(nombreEntidad){
-        const resultados_tests=document.getElementById('resultados_tests');
+        const datos=this.cargaDatosEntidad(nombreEntidad);
+        if(!datos.pruebas || !datos.estructura){
+            return;
+        }
+        const infoSubmit=this.procesarPruebasSubmit(datos, nombreEntidad);
+        const htmlResumen=this.procesarResumenAcciones(infoSubmit.resumen);
+        this.mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad);
+        /*const resultados_tests=document.getElementById('resultados_tests');
         const datos=this.cargaDatosEntidad(nombreEntidad);
         let ventana=`<div class="resumen">`;
         ventana+=`<h1>Resultados test de submit: ${nombreEntidad}</h1>`;
@@ -65,13 +72,13 @@ class TestSubmit {
         ventana+=`<br><button id="boton_detalles">Ver detalle de pruebas</button>`;
         ventana+=`</div>`;
         resultados_tests.innerHTML=ventana;
-        this.configurarBotonDetalles(infoSubmit.resultados, nombreEntidad);
+        this.configurarBotonDetalles(infoSubmit.resultados, nombreEntidad);*/
     }
 
     cargaDatosEntidad(nombreEntidad){
         let claseEntidad, pruebas, estructura;
         try{
-            estructura=eval(`estructura_${nombreEntidad}`);
+            estructura=eval(`${nombreEntidad}_estructura`);
         }catch(e){console.log("Error estructura submit: ", e);}
         try{
             pruebas=eval(`${nombreEntidad}_TestSubmit`);
@@ -139,7 +146,59 @@ class TestSubmit {
         html+='</table>';
         return html;
     }
-    configurarBotonDetalles(resultados,nombreEntidad){
+    mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad){
+        let html=`
+            <div class="cont_modal">
+                <span id="botonCerrarResumen" class="cruz-cerrar">X</span>
+                <h1>Resultados test de submit: ${nombreEntidad}</h1>
+                <div class="modal-contenido-scroll">
+                    ${htmlResumen}
+                    <br>
+                    <button id="boton_detalles">Ver detalle de pruebas</button>
+                </div>
+            </div>
+        `;
+        new Gestor().abrirModal(html);
+        document.getElementById("botonCerrarResumen").onclick=()=>new Gestor().cerrarModal();
+        document.getElementById("boton_detalles").onclick=()=>{this.mostrarModalDetalles(infoSubmit.resultados, nombreEntidad, htmlResumen, infoSubmit);};
+    }
+
+    mostrarModalDetalles(resultados, nombreEntidad, htmlResumen, infoSubmit){
+        let htmlModal=`
+            <div class="cont_modal modal-tabla">
+                <span id="botonVolver" class="boton-volver">Volver al resumen</span>
+                <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
+                <h1>Pruebas de submit de ${nombreEntidad}</h1>
+                <div class="tabla-scroll">
+                    <table class="tabla-modal">
+                        <tr>
+                            <th>Nº</th>
+                            <th>Accion</th>
+                            <th>Descripcion</th>
+                            <th>Esperado</th>
+                            <th>Obtenido</th>
+                            <th>Resultado</th>
+                        </tr>`;
+        resultados.forEach(r=>{
+            let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
+            let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
+            let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
+            htmlModal += `
+                <tr class="${claseFila}">
+                    <td class="texto">${r.numeroTest}</td>
+                    <td>${r.accion}</td>
+                    <td>${r.descripcion}</td>
+                    <td>${esperados}</td>
+                    <td>${obtenidos}</td>
+                    <td>${r.esCorrecto ? 'CORRECTO' : 'FALLO'}</td>
+                </tr>`;
+        });
+        htmlModal+=`</table></div></div>`;
+        new Gestor().abrirModal(htmlModal);
+        document.getElementById("botonVolver").onclick=()=>{this.mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad);};
+        document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
+    }
+    /*configurarBotonDetalles(resultados,nombreEntidad){
         const botonDetalles=document.getElementById('boton_detalles');
         if(!botonDetalles){
             return;
@@ -184,5 +243,5 @@ class TestSubmit {
                 document.body.classList.remove("modal-abierto");
             };
         };
-    }
+    }*/
 }

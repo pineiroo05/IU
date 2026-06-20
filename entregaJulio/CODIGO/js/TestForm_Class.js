@@ -4,21 +4,15 @@ class TestForm {
     }
 
     ejecutar(nombreEntidad){
-        const resultados_tests=document.getElementById('resultados_tests');
         const datos=this.cargaDatosEntidad(nombreEntidad);
-        let ventana=`<div class="resumen">`;
-        ventana+=`<h1>Resultados test de atributos: ${nombreEntidad}</h1>`;
-        //Bloque 1
-        ventana+=this.procesarEstructura(datos.estructura, nombreEntidad);
-        //Bloque 2
-        ventana+=this.procesarDefinicionTests(datos.defTests, nombreEntidad);
-        //Bloque 3
+        if(!datos.pruebas || !datos.estructura){
+            return;
+        }
+        let htmlResumen=this.procesarEstructura(datos.estructura, nombreEntidad);
+        htmlResumen+=this.procesarDefinicionTests(datos.defTests, nombreEntidad);
         const infoPruebas=this.procesarPruebas(datos, nombreEntidad);
-        ventana+=infoPruebas.html;
-        ventana+=`</div>`;
-        // 4. Inyección en el DOM
-        resultados_tests.innerHTML = ventana;
-        this.configurarBotonDetalles(infoPruebas.resultados, nombreEntidad);
+        htmlResumen+=infoPruebas.html;
+        this.mostrarModalResumen(htmlResumen, infoPruebas, nombreEntidad);
     }
 
     cargaDatosEntidad(nombreEntidad){
@@ -30,7 +24,7 @@ class TestForm {
             defTests=eval(`${nombreEntidad}_def_tests`);
         }catch(e){console.log("Error defTests: ",e);}
         try{
-            estructura=eval(`estructura_${nombreEntidad}`);
+            estructura=eval(`${nombreEntidad}_estructura`);
         }catch(e){console.log("Error estructura: ",e);}
         let entidad=null;
         try{
@@ -42,13 +36,14 @@ class TestForm {
         return {pruebas, defTests, estructura, entidad};
     }
 
-    procesarEstructura(estructura, nombreEntidad){
+    procesarEstructura(estructura){
         let html=`<h2>1. Estructura de la entidad</h2>`;
         if(!estructura){
-            return html+=`<p style="color:red">Error, no hay estructura_${nombreEntidad}!</p>`;
+            return html;
         }
-        html+=`<p style="color:green">Estructura correcta</p>`;
-        html+=`<ul>`;
+        /*html+=`<p style="color:green">Estructura correcta</p>`;*/
+        html+=`<p>Estructura correcta</p>`;
+        html+=`<ul class="modal-lista-atributos">`;
         for(let atb in estructura.attributes){
             html+=`<li>${atb}</li>`;
         }
@@ -56,10 +51,10 @@ class TestForm {
         return html;
     }
 
-    procesarDefinicionTests(defTests, nombreEntidad){
+    procesarDefinicionTests(defTests){
         let html=`<h2>2. Definicion de tests</h2>`;
         if(!defTests){
-            return html+=`<p style="color:red">Error, no hay ${nombreEntidad}_defTests!</p>`;
+            return html;
         }
         let totalDefiniciones=defTests.length;
         let contadorCorrectas=0;
@@ -94,10 +89,10 @@ class TestForm {
         return html;
     }
 
-    procesarPruebas(datos, nombreEntidad){
+    procesarPruebas(datos){
         let html=`<h2>3. Pruebas</h2>`;
         if(!datos.pruebas){
-            return {html:`<p style="color:red">Error, no hay ${nombreEntidad}_pruebas!</p>`};
+            return {html, resultados: []};
         }
         let totalPruebas=datos.pruebas.length;
         let contadorPruebasBienDefinidas=0;
@@ -195,7 +190,56 @@ class TestForm {
         return true;
     }
 
-    configurarBotonDetalles(resultados, nombreEntidad) {
+    mostrarModalResumen(htmlResumen,infoPruebas,nombreEntidad){
+        let html=`
+            <div class="cont_modal">
+                <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
+                <h1>Resultados test de atributos: ${nombreEntidad}</h1>
+                <div class="modal-contenido-scroll">${htmlResumen}</div>
+            </div>
+        `;
+        new Gestor().abrirModal(html);
+        document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
+        document.getElementById("boton_detalles").onclick=()=>this.mostrarModalDetalles(infoPruebas.resultados, nombreEntidad, htmlResumen, infoPruebas);
+    }
+
+    mostrarModalDetalles(resultados, nombreEntidad, htmlResumen, infoPruebas){
+        let htmlModal = `
+            <div class="cont_modal modal-tabla">
+                <span id="botonVolver" class="boton-volver">Volver al resumen</span>
+                <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
+                <h1>Pruebas de: ${nombreEntidad}</h1>
+                <div class="tabla-scroll">
+                    <table class="tabla-modal">
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th>ACCION</th>
+                            <th>CAMPO</th>
+                            <th>VALOR</th>
+                            <th>ESPERADO</th>
+                            <th>OBTENIDO</th>
+                            <th>RESULTADO</th>
+                        </tr>`;
+        resultados.forEach(res=>{
+            let claseFila=res.esCorrecto?"fila-correcta":"fila-fallo";
+            htmlModal+=`
+                <tr class="${claseFila}">
+                    <td class="text-center">${res.numeroPrueba}</td>
+                    <td>${res.accion}</td>
+                    <td>${res.campoNombre}</td>
+                    <td>${res.valorProbar}</td>
+                    <td>${res.resultadoEsperado}</td>
+                    <td>${res.resultadoObtenido}</td>
+                    <td>${res.esCorrecto?"CORRECTO":"ERRONEO"}</td>
+                </tr>`;
+        });
+        htmlModal+=`</table></div></div>`;
+        new Gestor().abrirModal(htmlModal);
+        document.getElementById("botonVolver").onclick=()=>this.mostrarModalResumen(htmlResumen, infoPruebas, nombreEntidad);
+        document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
+    }
+
+    /*configurarBotonDetalles(resultados, nombreEntidad) {
         const botonDetalles=document.getElementById('boton_detalles');
         if (!botonDetalles) return;
 
@@ -238,5 +282,5 @@ class TestForm {
                 document.body.classList.remove("modal-abierto");
             };
         };
-    }
+    }*/
 }

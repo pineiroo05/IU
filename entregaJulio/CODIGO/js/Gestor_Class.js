@@ -4,7 +4,7 @@ class Gestor {
     atenderMenu(nombreEntidad){
         //Se carga todo lo q estaba abierto antes
         const zonaResultados=document.getElementById('resultados_tests');
-        const zonaModal=document.getElementById('zona_modal');
+        /*const zonaModal=document.getElementById('zona_modal');*/
         const gestionEntidad=document.getElementById('gestion_entidad');
         if(gestionEntidad && gestionEntidad.getAttribute('info-entidad-activa')===nombreEntidad){
             gestionEntidad.innerHTML='';
@@ -12,26 +12,23 @@ class Gestor {
             if(zonaResultados){
                 zonaResultados.innerHTML='';
             }
-            if(zonaModal){
-                zonaModal.style.display='none';
-                zonaModal.innerHTML='';
-            }
+            this.cerrarModal();
             return;
         }
         if(zonaResultados){
-            zonaResultados.innerHTML=``;
+            this.cerrarModal();
         }
-        if(zonaModal){
+        /*if(zonaModal){
             zonaModal.style.display="none";
             zonaModal.innerHTML=``;
-        }
+        }*/
         if(this.comprobarVariables(nombreEntidad)) {
             this.mostrarPanel(nombreEntidad);
         }
     }
 
     comprobarVariables(nombreEntidad){
-        const necesarias=[`estructura_${nombreEntidad}`, `${nombreEntidad}_def_tests`, `${nombreEntidad}_pruebas`, `${nombreEntidad}_TestSubmit`];
+        const necesarias=[`${nombreEntidad}_estructura`, `${nombreEntidad}_def_tests`, `${nombreEntidad}_pruebas`, `${nombreEntidad}_TestSubmit`];
         let faltantes=[];
         necesarias.forEach(necesaria=>{
             try{
@@ -69,18 +66,33 @@ class Gestor {
     }
 
     mostrarError(mensaje){
-        const modal=document.getElementById('zona_modal');
-        modal.innerHTML=`
+        const html=`
             <div class="cont_modal">
                 <h3>Error</h3>
                 <p>${mensaje}</p>
                 <button onclick="new Gestor().cerrarModal()">Cerrar</button>
             </div>
         `;
-        modal.style.display="flex";
+        this.abrirModal(html);
+    }
+
+    abrirModal(html){
+        const modal=document.getElementById('zona_modal');
+        if(!modal){
+            return;
+        }
+        modal.innerHTML=html;
+        modal.classList.add('visible');
+        document.body.classList.add('modal-abierto');
     }
 
     cerrarModal(){
-        document.getElementById('zona_modal').style.display="none";
+        const modal=document.getElementById('zona_modal');
+        if(!modal){
+            return;
+        }
+        modal.classList.remove('visible');
+        modal.innerHTML="";
+        document.body.classList.remove('modal-abierto');
     }
 }
