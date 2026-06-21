@@ -1,12 +1,14 @@
 class TestSubmit {
     constructor(){
         this.validacionCampos=new ValidateFieldsForm();
+        this.nombreEntidad="";
+        this.htmlResumen="";
+        this.infoSubmit=null;
     }
     checkSubmit(nombreEntidad, entidad, accion, datos, estructura){
         const ordenValidaciones=['min_size', 'max_size', 'exp_reg', 'personalized', 'not_exist_file', 'max_size_file', 'type_file', 'min_file_name_size', 'max_file_name_size', 'format_name_file'];
         this.validacionCampos.limpiar();
         const erroresEncontrados=[];
-
         //Crear los campos
         for(let nombreAtributo in estructura.attributes){
             let atributo=estructura.attributes[nombreAtributo];
@@ -50,47 +52,34 @@ class TestSubmit {
     }
 
     ejecutar(nombreEntidad){
-        const datos=this.cargaDatosEntidad(nombreEntidad);
+        this.nombreEntidad=nombreEntidad;
+        const datos=this.cargaDatosEntidad();
         if(!datos.pruebas || !datos.estructura){
             return;
         }
-        const infoSubmit=this.procesarPruebasSubmit(datos, nombreEntidad);
-        const htmlResumen=this.procesarResumenAcciones(infoSubmit.resumen);
-        this.mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad);
-        /*const resultados_tests=document.getElementById('resultados_tests');
-        const datos=this.cargaDatosEntidad(nombreEntidad);
-        let ventana=`<div class="resumen">`;
-        ventana+=`<h1>Resultados test de submit: ${nombreEntidad}</h1>`;
-
-        if (!datos.pruebas || !datos.estructura) {
-            ventana+=`<p style="color:red">Error: No hay pruebas o estructura para ${nombreEntidad}</p>`;
-            resultados_tests.innerHTML=ventana;
-            return;
-        }
-        const infoSubmit=this.procesarPruebasSubmit(datos, nombreEntidad);
-        ventana+=this.procesarResumenAcciones(infoSubmit.resumen);
-        ventana+=`<br><button id="boton_detalles">Ver detalle de pruebas</button>`;
-        ventana+=`</div>`;
-        resultados_tests.innerHTML=ventana;
-        this.configurarBotonDetalles(infoSubmit.resultados, nombreEntidad);*/
+        this.infoSubmit=this.procesarPruebasSubmit(datos);
+        this.htmlResumen=this.procesarResumenAcciones(this.infoSubmit.resumen);
+        this.mostrarModalResumen();
     }
 
-    cargaDatosEntidad(nombreEntidad){
+    cargaDatosEntidad(){
         let claseEntidad, pruebas, estructura;
-        try{
-            estructura=eval(`${nombreEntidad}_estructura`);
+        estructura=eval(`${this.nombreEntidad}_estructura`);
+        pruebas=eval(`${this.nombreEntidad}_TestSubmit`);
+        /*try{
+            estructura=eval(`${this.nombreEntidad}_estructura`);
         }catch(e){console.log("Error estructura submit: ", e);}
         try{
-            pruebas=eval(`${nombreEntidad}_TestSubmit`);
-        }catch(e){console.log("Error pruebas submit: ", e);}
+            pruebas=eval(`${this.nombreEntidad}_TestSubmit`);
+        }catch(e){console.log("Error pruebas submit: ", e);}*/
         try{
-            claseEntidad=eval(nombreEntidad);
+            claseEntidad=eval(this.nombreEntidad);
         }catch(e){}
         const entidad=(typeof claseEntidad==='function')?new claseEntidad():{};
         return {pruebas, estructura, entidad};
     }
 
-    procesarPruebasSubmit(datos, nombreEntidad){
+    procesarPruebasSubmit(datos){
         const resumen={};
         const resultados=[];
 
@@ -105,7 +94,7 @@ class TestSubmit {
                 resumen[accion]={total:0, correctas:0, incorrectas:0};
             }
             resumen[accion].total++;
-            const resultadoObtenido=this.checkSubmit(nombreEntidad, datos.entidad, accion, datosPrueba, datos.estructura);
+            const resultadoObtenido=this.checkSubmit(this.nombreEntidad, datos.entidad, accion, datosPrueba, datos.estructura);
             let esCorrecto;
             if (errorEsperado===true) {
                 esCorrecto=(resultadoObtenido===true);
@@ -146,13 +135,13 @@ class TestSubmit {
         html+='</table>';
         return html;
     }
-    mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad){
+    mostrarModalResumen(){
         let html=`
             <div class="cont_modal">
                 <span id="botonCerrarResumen" class="cruz-cerrar">X</span>
-                <h1>Resultados test de submit: ${nombreEntidad}</h1>
+                <h1>Resultados test de submit: ${this.nombreEntidad}</h1>
                 <div class="modal-contenido-scroll">
-                    ${htmlResumen}
+                    ${this.htmlResumen}
                     <br>
                     <button id="boton_detalles">Ver detalle de pruebas</button>
                 </div>
@@ -160,15 +149,15 @@ class TestSubmit {
         `;
         new Gestor().abrirModal(html);
         document.getElementById("botonCerrarResumen").onclick=()=>new Gestor().cerrarModal();
-        document.getElementById("boton_detalles").onclick=()=>{this.mostrarModalDetalles(infoSubmit.resultados, nombreEntidad, htmlResumen, infoSubmit);};
+        document.getElementById("boton_detalles").onclick=()=>{this.mostrarModalDetalles();};
     }
 
-    mostrarModalDetalles(resultados, nombreEntidad, htmlResumen, infoSubmit){
+    mostrarModalDetalles(){
         let htmlModal=`
             <div class="cont_modal modal-tabla">
                 <span id="botonVolver" class="boton-volver">Volver al resumen</span>
                 <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                <h1>Pruebas de submit de ${nombreEntidad}</h1>
+                <h1>Pruebas de submit de ${this.nombreEntidad}</h1>
                 <div class="tabla-scroll">
                     <table class="tabla-modal">
                         <tr>
@@ -179,7 +168,7 @@ class TestSubmit {
                             <th>Obtenido</th>
                             <th>Resultado</th>
                         </tr>`;
-        resultados.forEach(r=>{
+        this.infoSubmit.resultados.forEach(r=>{
             let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
             let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
             let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
@@ -195,7 +184,7 @@ class TestSubmit {
         });
         htmlModal+=`</table></div></div>`;
         new Gestor().abrirModal(htmlModal);
-        document.getElementById("botonVolver").onclick=()=>{this.mostrarModalResumen(htmlResumen, infoSubmit, nombreEntidad);};
+        document.getElementById("botonVolver").onclick=()=>{this.mostrarModalResumen();};
         document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
     }
     /*configurarBotonDetalles(resultados,nombreEntidad){

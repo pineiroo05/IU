@@ -1,34 +1,41 @@
 class TestForm {
     constructor(){
         this.validacionCampos=new ValidateFieldsForm();
+        this.nombreEntidad="";
+        this.htmlResumen="";
+        this.infoPruebas=null;
     }
 
     ejecutar(nombreEntidad){
-        const datos=this.cargaDatosEntidad(nombreEntidad);
+        this.nombreEntidad=nombreEntidad;
+        const datos=this.cargaDatosEntidad();
         if(!datos.pruebas || !datos.estructura){
             return;
         }
-        let htmlResumen=this.procesarEstructura(datos.estructura, nombreEntidad);
-        htmlResumen+=this.procesarDefinicionTests(datos.defTests, nombreEntidad);
-        const infoPruebas=this.procesarPruebas(datos, nombreEntidad);
-        htmlResumen+=infoPruebas.html;
-        this.mostrarModalResumen(htmlResumen, infoPruebas, nombreEntidad);
+        this.htmlResumen=this.procesarEstructura(datos.estructura);
+        this.htmlResumen+=this.procesarDefinicionTests(datos.defTests);
+        this.infoPruebas=this.procesarPruebas(datos);
+        this.htmlResumen+=this.infoPruebas.html;
+        this.mostrarModalResumen();
     }
 
-    cargaDatosEntidad(nombreEntidad){
+    cargaDatosEntidad(){
         let pruebas, defTests, estructura;
-        try{
-            pruebas=eval(`${nombreEntidad}_pruebas`);
+        /*try{
+            pruebas=eval(`${this.nombreEntidad}_pruebas`);
         }catch(e){console.log("Error pruebas: ",e);}
         try{
-            defTests=eval(`${nombreEntidad}_def_tests`);
+            defTests=eval(`${this.nombreEntidad}_def_tests`);
         }catch(e){console.log("Error defTests: ",e);}
         try{
-            estructura=eval(`${nombreEntidad}_estructura`);
-        }catch(e){console.log("Error estructura: ",e);}
+            estructura=eval(`${this.nombreEntidad}_estructura`);
+        }catch(e){console.log("Error estructura: ",e);}*/
+        pruebas = eval(`${this.nombreEntidad}_pruebas`);
+        defTests = eval(`${this.nombreEntidad}_def_tests`);
+        estructura = eval(`${this.nombreEntidad}_estructura`);
         let entidad=null;
         try{
-            let claseEntidad=eval(nombreEntidad);
+            let claseEntidad=eval(this.nombreEntidad);
             if(typeof claseEntidad!=="undefined"){
                 entidad=new claseEntidad();
             }
@@ -190,25 +197,25 @@ class TestForm {
         return true;
     }
 
-    mostrarModalResumen(htmlResumen,infoPruebas,nombreEntidad){
+    mostrarModalResumen(){
         let html=`
             <div class="cont_modal">
                 <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                <h1>Resultados test de atributos: ${nombreEntidad}</h1>
-                <div class="modal-contenido-scroll">${htmlResumen}</div>
+                <h1>Resultados test de atributos: ${this.nombreEntidad}</h1>
+                <div class="modal-contenido-scroll">${this.htmlResumen}</div>
             </div>
         `;
         new Gestor().abrirModal(html);
         document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
-        document.getElementById("boton_detalles").onclick=()=>this.mostrarModalDetalles(infoPruebas.resultados, nombreEntidad, htmlResumen, infoPruebas);
+        document.getElementById("boton_detalles").onclick=()=>this.mostrarModalDetalles();
     }
 
-    mostrarModalDetalles(resultados, nombreEntidad, htmlResumen, infoPruebas){
+    mostrarModalDetalles(){
         let htmlModal = `
             <div class="cont_modal modal-tabla">
                 <span id="botonVolver" class="boton-volver">Volver al resumen</span>
                 <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                <h1>Pruebas de: ${nombreEntidad}</h1>
+                <h1>Pruebas de: ${this.nombreEntidad}</h1>
                 <div class="tabla-scroll">
                     <table class="tabla-modal">
                         <tr>
@@ -220,7 +227,7 @@ class TestForm {
                             <th>OBTENIDO</th>
                             <th>RESULTADO</th>
                         </tr>`;
-        resultados.forEach(res=>{
+        this.infoPruebas.resultados.forEach(res=>{
             let claseFila=res.esCorrecto?"fila-correcta":"fila-fallo";
             htmlModal+=`
                 <tr class="${claseFila}">
@@ -235,52 +242,7 @@ class TestForm {
         });
         htmlModal+=`</table></div></div>`;
         new Gestor().abrirModal(htmlModal);
-        document.getElementById("botonVolver").onclick=()=>this.mostrarModalResumen(htmlResumen, infoPruebas, nombreEntidad);
+        document.getElementById("botonVolver").onclick=()=>this.mostrarModalResumen();
         document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
     }
-
-    /*configurarBotonDetalles(resultados, nombreEntidad) {
-        const botonDetalles=document.getElementById('boton_detalles');
-        if (!botonDetalles) return;
-
-        botonDetalles.onclick=()=>{
-            const zona_modal=document.getElementById('zona_modal');
-            let htmlModal=`
-                <div class="cont_modal modal-tabla">
-                    <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                    <h1>Pruebas de: ${nombreEntidad}</h1>
-                    <div class="tabla-scroll"><table class="tabla-modal">
-                        <tr>
-                            <th class="text-center">ID</th>
-                            <th>ACCION</th>
-                            <th>CAMPO</th>
-                            <th>VALOR</th>
-                            <th>ESPERADO</th>
-                            <th>OBTENIDO</th>
-                            <th>RESULTADO</th>
-                        </tr>`;
-            resultados.forEach(res => {
-                let claseFila = res.esCorrecto ? "fila-correcta" : "fila-fallo";
-                htmlModal+=`
-                    <tr class="${claseFila}">
-                        <td class="text-center">${res.numeroPrueba}</td>
-                        <td>${res.accion}</td>
-                        <td>${res.campoNombre}</td>
-                        <td>${res.valorProbar}</td>
-                        <td>${res.resultadoEsperado}</td>
-                        <td>${res.resultadoObtenido}</td>
-                        <td>${res.esCorrecto ? "CORRECTO" : "ERRONEO"}</td>
-                    </tr>`;
-            });
-            htmlModal+=`</table></div></div>`;
-            zona_modal.innerHTML=htmlModal;
-            zona_modal.style.display='flex';
-            document.body.classList.add("modal-abierto");
-            document.getElementById('botonCerrarDetalles').onclick=()=>{
-                zona_modal.style.display='none';
-                zona_modal.innerHTML="";
-                document.body.classList.remove("modal-abierto");
-            };
-        };
-    }*/
 }

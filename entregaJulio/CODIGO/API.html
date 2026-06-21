@@ -58,7 +58,7 @@
                     <p><span class="tag">Informacion devuelta: </span>Object, contiene toda la informacion asociada a la entidad.</p>
                 </div>
                 <div class="metodo_documentacion">
-                    <h4>Metodo: procesarEstructura(estructura,nombreEntidad)</h4>
+                    <h4>Metodo: procesarEstructura(estructura)</h4>
                     <p><span class="tag">Descripcion: </span>procesa el objeto que contiene la informacion de la entidad (obtenido en cargarDatosEntidad), para poder generar el bloque de resultados. Comprueba si la estructura existe y lista sus atributos.</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
@@ -72,7 +72,7 @@
                     <p><span class="tag">Informacion devuelta: </span>String, html correspondiente al primer bloque a mostrar.</p>
                 </div>
                 <div class="metodo_documentacion">
-                    <h4>Metodo: procesarDefinicionTests(defTests,nombreEntidad)</h4>
+                    <h4>Metodo: procesarDefinicionTests(defTests)</h4>
                     <p><span class="tag">Descripcion: </span>evalua el formato del array de definiciones de pruebas de atributos. Realiza el control acumulando el conteo de las pruebas planificadas por cada campo.</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
@@ -86,7 +86,7 @@
                     <p><span class="tag">Informacion devuelta: </span>String, html correspondiente a la informacion del segundo bloque.</p>
                 </div>
                 <div class="metodo_documentacion">
-                    <h4>Metodo: procesarPruebas(datos, nombreEntidad)</h4>
+                    <h4>Metodo: procesarPruebas(datos)</h4>
                     <p><span class="tag">Descripcion: </span>recorre el conjunto de test de atributos. Crea los campos en el validador, ejecuta las reglas y compara el resultado obtenido con el esperado.</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
@@ -110,25 +110,22 @@
                         <tbody>
                             <tr><td>campoNombre</td><td>String</td><td>Nombre del atributo bajo análisis</td></tr>
                             <tr><td>accion</td><td>String</td><td>Acción a realizar (SEARCH, ADD, EDIT...)</td></tr>
-                            <tr><td>reglas</td><td>Object</td><td>Conjunto de resticciones aplicables.</td></tr>
+                            <tr><td>reglas</td><td>Object</td><td>Conjunto de restricciones aplicables.</td></tr>
                             <tr><td>entidad</td><td>Object</td><td>Instancia de la clase de la entidad para invocar funciones personalizadas</td></tr>
                         </tbody>
                     </table>
                     <p><span class="tag">Informacion devuelta: </span>Boolean/String, true si supera los filtros, en caso contrario devuelve el codigo de error.</p>
                 </div>
                 <div class="metodo_documentacion">
-                    <h4>Metodo: configurarBotonDetalles(resultados, nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que inyecta el evento dinámico (onclick) al botón encargado de desplegar la ventana modal del sistema, pintando las filas en funcion de si la prueba fue un éxito o un fallo</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>resultados</td><td>Array</td><td>Colección de objetos procesados con el estado final de los tests ejecutados</td></tr>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
+                    <h4>Metodo: mostrarModalResumen()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion resumida de una entidad concreta. Para ello hace uso del metodo abrirModal de la clase Gestor.</p>
+                    <p><span class="tag">Parametros:</span>ninguno</p>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarModalDetalles()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion detallada de las pruebas de atributos. Hace uso del metodo abrirModal de la clase Gestor.</p>
+                    <p><span class="tag">Parametros:</span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
 
@@ -178,7 +175,7 @@
                 </div>
                 <div class="metodo_documentacion">
                     <h4>Metodo: mostrarError(mensaje)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falto algo de la estructura</p>
+                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falte algo de la estructura</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
@@ -186,6 +183,20 @@
                         </thead>
                         <tbody>
                             <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: abrirModal(html)</h4>
+                    <p><span class="tag">Descripcion: </span>muestra los modales correspondientes con la informacion que corresponde.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>html</td><td>String</td><td>Informacion a mostrar en la ventana modal.</td></tr>
                         </tbody>
                     </table>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
@@ -494,22 +505,14 @@
                 </div>
 
                 <div class="metodo_documentacion">
-                    <h4>Metodo: cargaDatosEntidad(nombreEntidad)</h4>
+                    <h4>Metodo: cargaDatosEntidad()</h4>
                     <p><span class="tag">Descripcion: </span>Recupera toda la informacion asociada a la entidad: su estructura, pruebas de submit, y crea una instancia de la clase de la entidad para acceder a las pruebas personalizadas.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Entidad de la que se quiere cargar su informacion.</td></tr>
-                        </tbody>
-                    </table>
+                    <p><span class="tag">Parametros:</span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>Object. Contiene las caracteristicas de cada entidad (pruebas, estructura, entidad).</p>
                 </div>
 
                 <div class="metodo_documentacion">
-                    <h4>Metodo: procesarPruebasSubmit(datos, nombreEntidad)</h4>
+                    <h4>Metodo: procesarPruebasSubmit(datos)</h4>
                     <p><span class="tag">Descripcion: </span>Recorre el array completo de pruebas de submit. Ejecuta la función de control para cada caso y compara los errores esperados respecto a los obtenidos, y almacena el numero de pruebas correctas y erroneas de cada accion.</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
@@ -518,7 +521,6 @@
                         </thead>
                         <tbody>
                             <tr><td>datos</td><td>Object</td><td>Objeto que contiene las pruebas, entidad y estructura de datos cargadas.</td></tr>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada.</td></tr>
                         </tbody>
                     </table>
                     <p><span class="tag">Informacion devuelta: </span>Object. Devuelve un objeto estructurado con las propiedades: <code>resumen</code> [contadores estadísticos agrupados] y <code>resultados</code> [matriz detallada de mapeos individuales para el modal]).</p>
@@ -540,18 +542,15 @@
                 </div>
 
                 <div class="metodo_documentacion">
-                    <h4>Metodo: configurarBotonDetalles(resultados, nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que inyecta el evento dinámico (onclick) al botón encargado de desplegar la ventana modal del sistema, pintando las filas en funcion de si la prueba fue un éxito o un fallo.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>resultados</td><td>Array</td><td>Array que contiene el estado de cada test realizado.</td></tr>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada.</td></tr>
-                        </tbody>
-                    </table>
+                    <h4>Metodo: mostrarModalResumen()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion resumida de los test de submit según cada acción. Para ello hace uso del metodo abrirModal de la clase Gestor.</p>
+                    <p><span class="tag">Parametros:</span>ninguno</p>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarModalDetalles()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion detallada de las pruebas de formulario. Hace uso del metodo abrirModal de la clase Gestor.</p>
+                    <p><span class="tag">Parametros:</span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
             </article>
