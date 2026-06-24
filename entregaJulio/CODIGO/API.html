@@ -10,16 +10,20 @@
     <input type="radio" id="tests" name="pepe" hidden>
     <input type="radio" id="validaciones" name="pepe" hidden>
     <input type="radio" id="submits" name="pepe" hidden>
+    <input type="radio" id="diagramas" name="pepe" hidden>
 
     <header id="cabecera_api">
         <h1>API</h1>
-        <a href="index.html" id="enlace_index">Volver al inicio</a>
+        <a href="index.html" id="enlace_index" title="Volver al inicio">
+            <img src="./img/casa.png" alt="Volver al inicio" class="icono_index">
+        </a>
     </header>
 
     <nav id="menu_api">
         <label for="tests" class="boton_api">CLASES DE TEST</label>
         <label for="validaciones" class="boton_api">CLASES DE VALIDACION</label>
         <label for="submits" class="boton_api">CLASES DE SUBMIT</label>
+        <label for="diagramas" class="boton_api">DIAGRAMAS DE FLUJO</label>
     </nav>
 
     <main id="zona_api">
@@ -189,7 +193,7 @@
                 </div>
                 <div class="metodo_documentacion">
                     <h4>Metodo: abrirModal(html)</h4>
-                    <p><span class="tag">Descripcion: </span>muestra los modales correspondientes con la informacion que corresponde.</p>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que muestra los modales correspondientes con la informacion que corresponde.</p>
                     <p><span class="tag">Parametros:</span></p>
                     <table>
                         <thead>
@@ -203,7 +207,7 @@
                 </div>
                 <div class="metodo_documentacion">
                     <h4>Metodo: cerrarModal()</h4>
-                    <p><span class="tag">Descripcion: </span>oculta los modales activos en la pantalla.</p>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que se encarga de ocultar los modales activos en la pantalla.</p>
                     <p><span class="tag">Parametros: </span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
@@ -553,6 +557,113 @@
                     <p><span class="tag">Parametros:</span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
+                <h3>Clase Gestor</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de controlar la interfaz. Se encarga de controlar que las variables de cada entidad existen y en caso de que existan se muestran los botones de test. En caso negativo se encarga de crear el modal de error correspondiente.</p>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: atenderMenu(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que responde a la seleccion de una entidad concreta, preparando la interfaz para mostrar los test.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de comprobar que todas las variables especificadas en la estructura correspondiente a la entidad seleccionada existen.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span> método encargado de mostrar la interfaz con los botones para los test de atributos y formulario.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarError(mensaje)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falte algo de la estructura</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: abrirModal(html)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que muestra los modales correspondientes con la informacion que corresponde.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>html</td><td>String</td><td>Informacion a mostrar en la ventana modal.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: cerrarModal()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que se encarga de ocultar los modales activos en la pantalla.</p>
+                    <p><span class="tag">Parametros: </span>ninguno</p>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+            </article>
+        </div>
+
+        <div id="zona_api_diagramas" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Diagramas de flujo del sistema</h2>
+            <article class="clase_documentacion">
+                <h3>1. Diagrama general</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagrama de flujo explicativo del funcionamiento global del sistema</p>
+                <div class="contenedor_diagrama">
+                    <img src="./img/general.png" alt="Diagrama general" class="imagen_diagrama">
+                </div>
+            </article>
+
+            <article class="clase_documentacion">
+                <h3>2. Diagrama de TestForm</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagrama explicativo de la clase TestForm, encargada de ejecutar las pruebas de atributos.</p>
+                <div class="contenedor_diagrama">
+                    <img src="./img/testForm.png" alt="Diagrama testForm" class="imagen_diagrama">
+                </div>
+            </article>
+
+            <article class="clase_documentacion">
+                <h3>3. Diagramas de TestSubmit</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagramas explicativos del flujo de pruebas de submit. Se incluye un diagrama general de testSubmit y otro especifico para el metodo checkSubmit de dicha clase.</p>
+                <div class="contenedor_diagrama">
+                    <h4>TestSubmit</h4>
+                    <img src="./img/testSubmit.png" alt="Diagrama testSubmit" class="imagen_diagrama">
+                </div>
             </article>
         </div>
     </main>
@@ -560,5 +671,6 @@
     <footer id="pie_api">
         <p>Entrega Julio</p>
     </footer>
+
 </body>
 </html>

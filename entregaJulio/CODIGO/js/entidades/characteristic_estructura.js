@@ -211,14 +211,14 @@ const characteristic_estructura={
                     ADD:{
                         not_exist_file:true,
                         type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-                        max_size_file:2000000,
+                        max_size_file:200000,
                         min_file_name_size:7,
                         max_file_name_size:100,
                         format_name_file:'^[A-Za-z\\._-]+$'
                     },
                     EDIT:{
                         type_file:['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
-                        max_size_file:2000000,
+                        max_size_file:200000,
                         min_file_name_size:7,
                         max_file_name_size:100,
                         format_name_file:'^[A-Za-z\\._-]+$'

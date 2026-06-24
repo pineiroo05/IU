@@ -4,7 +4,6 @@ class Gestor {
     atenderMenu(nombreEntidad){
         //Se carga todo lo q estaba abierto antes
         const zonaResultados=document.getElementById('resultados_tests');
-        /*const zonaModal=document.getElementById('zona_modal');*/
         const gestionEntidad=document.getElementById('gestion_entidad');
         if(gestionEntidad && gestionEntidad.getAttribute('info-entidad-activa')===nombreEntidad){
             gestionEntidad.innerHTML='';
@@ -18,10 +17,6 @@ class Gestor {
         if(zonaResultados){
             this.cerrarModal();
         }
-        /*if(zonaModal){
-            zonaModal.style.display="none";
-            zonaModal.innerHTML=``;
-        }*/
         if(this.comprobarVariables(nombreEntidad)) {
             this.mostrarPanel(nombreEntidad);
         }
