@@ -524,7 +524,7 @@ body.modal-abierto{
     display: block;
     vertical-align: top;
     width: 100%;
-    max-width: 900px;
+    max-width: 1200px;
     margin: 2.5rem auto;
     text-align: center;
 }
@@ -536,12 +536,15 @@ body.modal-abierto{
     letter-spacing: 0.03em;
 }
 .imagen_diagrama {
+    max-height: 45vh;
+    max-width: 90%;
     width: 100%;
-    max-width: 100%;
     height: auto;
+    object-fit: contain;
     display: block;
     margin: 0 auto;
     border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 /*PARA LAS ANIMACIONES*/
 @keyframes fadeIn{
