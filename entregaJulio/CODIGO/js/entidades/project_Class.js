@@ -42,6 +42,10 @@ class project{
         const fechaInicio=elemInicio.value;
         const fechaFin=elemFin.value;
 
+        if(!fechaInicio||!fechaFin){
+            return true;
+        }
+
         const [diaInicio, mesInicio, anoInicio]=fechaInicio.split('/');
         const [diaFin, mesFin, anoFin]=fechaFin.split('/');
 
