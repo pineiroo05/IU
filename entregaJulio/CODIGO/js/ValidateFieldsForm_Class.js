@@ -37,7 +37,6 @@ class ValidateFieldsForm{
                 this.simulacionFichero(campo, valor);
             }
         }else {
-            //chapuza extrema, pero no se me ocurrio otra forma para que el select me funcionase bien...
             if(datos.tag==="select" && valor && campo.value!==valor){
                 let opTemp=document.createElement('option');
                 opTemp.value=valor;
@@ -45,7 +44,6 @@ class ValidateFieldsForm{
                 campo.appendChild(opTemp);
             }
             campo.value = valor||'';
-            //console.log('campo:', id, 'tag:', datos.tag, 'valor asignado:', valor, 'valor real:', campo.value, 'options:', campo.options?.length);
         }
         return campo;
     }
@@ -63,7 +61,6 @@ class ValidateFieldsForm{
         }
     }
 
-    //Entiendo q hay q simular la subida de un fichero o algo
     simulacionFichero(campo, objeto){
         const nombreFichero=objeto.format_name_file||'';
         const tipoMime=objeto.type_file||'application/octet-stream';

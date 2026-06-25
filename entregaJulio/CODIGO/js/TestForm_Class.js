@@ -21,15 +21,6 @@ class TestForm {
 
     cargaDatosEntidad(){
         let pruebas, defTests, estructura;
-        /*try{
-            pruebas=eval(`${this.nombreEntidad}_pruebas`);
-        }catch(e){console.log("Error pruebas: ",e);}
-        try{
-            defTests=eval(`${this.nombreEntidad}_def_tests`);
-        }catch(e){console.log("Error defTests: ",e);}
-        try{
-            estructura=eval(`${this.nombreEntidad}_estructura`);
-        }catch(e){console.log("Error estructura: ",e);}*/
         pruebas = eval(`${this.nombreEntidad}_pruebas`);
         defTests = eval(`${this.nombreEntidad}_def_tests`);
         estructura = eval(`${this.nombreEntidad}_estructura`);
@@ -48,7 +39,6 @@ class TestForm {
         if(!estructura){
             return html;
         }
-        /*html+=`<p style="color:green">Estructura correcta</p>`;*/
         html+=`<p>Estructura correcta</p>`;
         html+=`<ul class="modal-lista-atributos">`;
         for(let atb in estructura.attributes){

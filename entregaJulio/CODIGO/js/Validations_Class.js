@@ -34,7 +34,6 @@ class Validations {
 
     static type_file(id, arrayTipos){
         let file=document.getElementById(id);
-        //console.log('type_file - id:', id, 'file:', file, 'files:', file?.files, 'tipo:', file?.files?.[0]?.type, 'arrayTipos:', arrayTipos);
         if(!file.files || file.files.length===0){
             return false;
         }

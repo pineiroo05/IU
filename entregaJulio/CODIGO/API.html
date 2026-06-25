@@ -7,6 +7,7 @@
 </head>
 <body>
     <input type="radio" id="cerrar" name="pepe" checked hidden>
+    <input type="radio" id="gestor" name="pepe" hidden>
     <input type="radio" id="tests" name="pepe" hidden>
     <input type="radio" id="validaciones" name="pepe" hidden>
     <input type="radio" id="submits" name="pepe" hidden>
@@ -20,6 +21,7 @@
     </header>
 
     <nav id="menu_api">
+        <label for="gestor" class="boton_api">GESTOR</label>
         <label for="tests" class="boton_api">CLASES DE TEST</label>
         <label for="validaciones" class="boton_api">CLASES DE VALIDACION</label>
         <label for="submits" class="boton_api">CLASES DE SUBMIT</label>
@@ -27,6 +29,91 @@
     </nav>
 
     <main id="zona_api">
+        <div id="zona_api_gestor" class="seccion_zona">
+            <label for="cerrar" class="boton_api">X</label>
+            <h2>Informacion sobre las clases de test</h2>
+            <article class="clase_documentacion">
+                <h3>Clase Gestor</h3>
+                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de controlar la interfaz. Se encarga de controlar que las variables de cada entidad existen y en caso de que existan se muestran los botones de test. En caso negativo se encarga de crear el modal de error correspondiente.</p>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: atenderMenu(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que responde a la seleccion de una entidad concreta, preparando la interfaz para mostrar los test.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo encargado de comprobar que todas las variables especificadas en la estructura correspondiente a la entidad seleccionada existen.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
+                    <p><span class="tag">Descripcion: </span> método encargado de mostrar la interfaz con los botones para los test de atributos y formulario.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: mostrarError(mensaje)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falte algo de la estructura</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: abrirModal(html)</h4>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que muestra los modales correspondientes con la informacion que corresponde.</p>
+                    <p><span class="tag">Parametros:</span></p>
+                    <table>
+                        <thead>
+                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr><td>html</td><td>String</td><td>Informacion a mostrar en la ventana modal.</td></tr>
+                        </tbody>
+                    </table>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+                <div class="metodo_documentacion">
+                    <h4>Metodo: cerrarModal()</h4>
+                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que se encarga de ocultar los modales activos en la pantalla.</p>
+                    <p><span class="tag">Parametros: </span>ninguno</p>
+                    <p><span class="tag">Informacion devuelta: </span>void</p>
+                </div>
+            </article>
+        </div>
+
         <div id="zona_api_test" class="seccion_zona">
             <label for="cerrar" class="boton_api">X</label>
             <h2>Informacion sobre las clases de test</h2>
@@ -130,85 +217,6 @@
                     <h4>Metodo: mostrarModalDetalles()</h4>
                     <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion detallada de las pruebas de atributos. Hace uso del metodo abrirModal de la clase Gestor.</p>
                     <p><span class="tag">Parametros:</span>ninguno</p>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-
-                <h3>Clase Gestor</h3>
-                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de controlar la interfaz. Se encarga de controlar que las variables de cada entidad existen y en caso de que existan se muestran los botones de test. En caso negativo se encarga de crear el modal de error correspondiente.</p>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: atenderMenu(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que responde a la seleccion de una entidad concreta, preparando la interfaz para mostrar los test.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo encargado de comprobar que todas las variables especificadas en la estructura correspondiente a la entidad seleccionada existen.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span> método encargado de mostrar la interfaz con los botones para los test de atributos y formulario.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: mostrarError(mensaje)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falte algo de la estructura</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: abrirModal(html)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que muestra los modales correspondientes con la informacion que corresponde.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                            <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>html</td><td>String</td><td>Informacion a mostrar en la ventana modal.</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: cerrarModal()</h4>
-                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que se encarga de ocultar los modales activos en la pantalla.</p>
-                    <p><span class="tag">Parametros: </span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
             </article>
@@ -555,84 +563,6 @@
                     <h4>Metodo: mostrarModalDetalles()</h4>
                     <p><span class="tag">Descripcion: </span>metodo encargado de mostrar la informacion detallada de las pruebas de formulario. Hace uso del metodo abrirModal de la clase Gestor.</p>
                     <p><span class="tag">Parametros:</span>ninguno</p>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <h3>Clase Gestor</h3>
-                <p class="descripcion_clase"><span class="tag">Descripcion: </span>clase encargada de controlar la interfaz. Se encarga de controlar que las variables de cada entidad existen y en caso de que existan se muestran los botones de test. En caso negativo se encarga de crear el modal de error correspondiente.</p>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: atenderMenu(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que responde a la seleccion de una entidad concreta, preparando la interfaz para mostrar los test.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: comprobarVariables(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo encargado de comprobar que todas las variables especificadas en la estructura correspondiente a la entidad seleccionada existen.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: mostrarPanel(nombreEntidad)</h4>
-                    <p><span class="tag">Descripcion: </span> método encargado de mostrar la interfaz con los botones para los test de atributos y formulario.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>nombreEntidad</td><td>String</td><td>Nombre de la entidad seleccionada</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: mostrarError(mensaje)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo que interrumpe la ejecucion normal, para poder mostrar el modal de error en caso de que falte algo de la estructura</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>mensaje</td><td>String</td><td>Mensaje a mostrar en caso de error</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: abrirModal(html)</h4>
-                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que muestra los modales correspondientes con la informacion que corresponde.</p>
-                    <p><span class="tag">Parametros:</span></p>
-                    <table>
-                        <thead>
-                        <tr><th>Parametro</th><th>Tipo</th><th>Descripcion</th></tr>
-                        </thead>
-                        <tbody>
-                        <tr><td>html</td><td>String</td><td>Informacion a mostrar en la ventana modal.</td></tr>
-                        </tbody>
-                    </table>
-                    <p><span class="tag">Informacion devuelta: </span>void</p>
-                </div>
-                <div class="metodo_documentacion">
-                    <h4>Metodo: cerrarModal()</h4>
-                    <p><span class="tag">Descripcion: </span>metodo utilizado por TestForm y TestSubmit, que se encarga de ocultar los modales activos en la pantalla.</p>
-                    <p><span class="tag">Parametros: </span>ninguno</p>
                     <p><span class="tag">Informacion devuelta: </span>void</p>
                 </div>
             </article>

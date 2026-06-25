@@ -71,7 +71,7 @@ class Gestor {
         this.abrirModal(html);
     }
 
-    abrirModal(html){
+     abrirModal(html){
         const modal=document.getElementById('zona_modal');
         if(!modal){
             return;

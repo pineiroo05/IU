@@ -66,12 +66,6 @@ class TestSubmit {
         let claseEntidad, pruebas, estructura;
         estructura=eval(`${this.nombreEntidad}_estructura`);
         pruebas=eval(`${this.nombreEntidad}_TestSubmit`);
-        /*try{
-            estructura=eval(`${this.nombreEntidad}_estructura`);
-        }catch(e){console.log("Error estructura submit: ", e);}
-        try{
-            pruebas=eval(`${this.nombreEntidad}_TestSubmit`);
-        }catch(e){console.log("Error pruebas submit: ", e);}*/
         try{
             claseEntidad=eval(this.nombreEntidad);
         }catch(e){}
@@ -187,50 +181,4 @@ class TestSubmit {
         document.getElementById("botonVolver").onclick=()=>{this.mostrarModalResumen();};
         document.getElementById("botonCerrarDetalles").onclick=()=>new Gestor().cerrarModal();
     }
-    /*configurarBotonDetalles(resultados,nombreEntidad){
-        const botonDetalles=document.getElementById('boton_detalles');
-        if(!botonDetalles){
-            return;
-        }
-        botonDetalles.onclick=()=>{
-            let htmlModal=`
-                <div class="cont_modal modal-tabla">
-                    <span id="botonCerrarDetalles" class="cruz-cerrar">X</span>
-                    <h1>Pruebas de submit de ${nombreEntidad}</h1>
-                    <div class="tabla-scroll"><table class="tabla-modal">
-                        <tr>
-                            <th>Nº</th>
-                            <th>Accion</th>
-                            <th>Descripcion</th>
-                            <th>Esperado</th>
-                            <th>Obtenido</th>
-                            <th>Resultado</th>
-                        </tr>
-            `;
-            resultados.forEach(r=>{
-                let claseFila=r.esCorrecto?'fila-correcta':'fila-fallo';
-                let obtenidos=Array.isArray(r.resultadoObtenido)?r.resultadoObtenido.join(', '):r.resultadoObtenido;
-                let esperados=Array.isArray(r.errorEsperado)?r.errorEsperado.join(", "):r.errorEsperado;
-                htmlModal+=`
-                    <tr class="${claseFila}">
-                        <td class="texto">${r.numeroTest}</td>
-                        <td>${r.accion}</td>
-                        <td>${r.descripcion}</td>
-                        <td>${esperados}</td>
-                        <td>${obtenidos}</td>
-                        <td>${r.esCorrecto?'CORRECTO':'FALLO'}</td>
-                    </tr>
-               `;
-            });
-            htmlModal+='</table></div></div>'
-            zona_modal.innerHTML=htmlModal;
-            zona_modal.style.display="flex";
-            document.body.classList.add("modal-abierto");
-            document.getElementById('botonCerrarDetalles').onclick=()=>{
-                zona_modal.style.display="none";
-                zona_modal.innerHTML="";
-                document.body.classList.remove("modal-abierto");
-            };
-        };
-    }*/
 }

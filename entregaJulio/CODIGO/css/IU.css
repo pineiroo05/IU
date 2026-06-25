@@ -430,7 +430,7 @@ body.modal-abierto{
     border-radius: 0.5rem;
     animation: fadeIn 0.35s ease-out;
 }
-/*chapuza para las pestañas de api*/
+#gestor:checked~#zona_api #zona_api_gestor,
 #tests:checked~#zona_api #zona_api_test,
 #validaciones:checked~#zona_api #zona_api_validacion,
 #submits:checked~#zona_api #zona_api_submit,
