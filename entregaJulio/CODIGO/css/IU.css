@@ -538,13 +538,70 @@ body.modal-abierto{
 .imagen_diagrama {
     max-height: 45vh;
     max-width: 90%;
-    width: 100%;
+    width: auto;
     height: auto;
-    object-fit: contain;
     display: block;
     margin: 0 auto;
     border-radius: 0.5rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.imagen_diagrama:hover{
+    transform: scale(1.01);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.6);
+}
+
+.modal-imagen-grande {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 100000;
+    align-items: center;
+    justify-content: center;
+}
+.modal-imagen-grande.activo {
+    display: flex;
+}
+.contenedor-flexible-imagen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--otro-color);
+    border-radius: 0.75rem;
+    width: 94vw;
+    max-height: 90vh;
+    padding: 45px 20px 20px 20px;
+    border: none;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+.cerrarImagen {
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    font-family: var(--fuente);
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    user-select: none;
+    line-height: 1;
+}
+.cerrarImagen:hover {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+.imagen-api-ampliada {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 /*PARA LAS ANIMACIONES*/
 @keyframes fadeIn{

@@ -645,7 +645,7 @@
                 <h3>1. Diagrama general</h3>
                 <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagrama de flujo explicativo del funcionamiento global del sistema</p>
                 <div class="contenedor_diagrama">
-                    <img src="./img/general.png" alt="Diagrama general" class="imagen_diagrama">
+                    <img src="./img/general.png" alt="Diagrama general" class="imagen_diagrama" onclick="abrirModalImagen('./img/general.png')">
                 </div>
             </article>
 
@@ -653,7 +653,7 @@
                 <h3>2. Diagrama de TestForm</h3>
                 <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagrama explicativo de la clase TestForm, encargada de ejecutar las pruebas de atributos.</p>
                 <div class="contenedor_diagrama">
-                    <img src="./img/testForm.png" alt="Diagrama testForm" class="imagen_diagrama">
+                    <img src="./img/testForm.png" alt="Diagrama testForm" class="imagen_diagrama" onclick="abrirModalImagen('./img/testForm.png')">
                 </div>
             </article>
 
@@ -662,19 +662,41 @@
                 <p class="descripcion_clase"><span class="tag">Descripcion: </span>diagramas explicativos del flujo de pruebas de submit. Se incluye un diagrama general de testSubmit y otro especifico para el metodo checkSubmit de dicha clase.</p>
                 <div class="contenedor_diagrama">
                     <h4>TestSubmit</h4>
-                    <img src="./img/testSubmit.png" alt="Diagrama testSubmit" class="imagen_diagrama">
+                    <img src="./img/testSubmit.png" alt="Diagrama testSubmit" class="imagen_diagrama" onclick="abrirModalImagen('./img/testSubmit.png')">
                 </div>
                 <div class="contenedor_diagrama">
                     <h4>Metodo checkSubmit</h4>
-                    <img src="./img/checkSubmit.png" alt="Diagrama testSubmit" class="imagen_diagrama">
+                    <img src="./img/checkSubmit.png" alt="Diagrama testSubmit" class="imagen_diagrama" onclick="abrirModalImagen('./img/checkSubmit.png')">
                 </div>
             </article>
         </div>
     </main>
 
     <footer id="pie_api">
-        <p>Entrega Julio</p>
+        <p>Entrega Julio. Enrique Piñeiro López</p>
     </footer>
+
+    <div id="modalImagen" class="modal-imagen-grande">
+        <div class="contenedor-flexible-imagen">
+            <span class="cerrarImagen" onclick="cerrarModalImagen()">X</span>
+            <img id="contenedor_imagen" class="imagen_ampliada" src="">
+        </div>
+    </div>
+
+    <script>
+        function abrirModalImagen(ruta){
+            const modal=document.getElementById("modalImagen");
+            const imagen=document.getElementById("contenedor_imagen");
+            imagen.src=ruta;
+            modal.classList.add('activo');
+            document.body.classList.add('modal-abierto');
+        }
+        function cerrarModalImagen(){
+            const modal=document.getElementById("modalImagen");
+            modal.classList.remove('activo');
+            document.body.classList.remove('modal-abierto');
+        }
+    </script>
 
 </body>
 </html>
